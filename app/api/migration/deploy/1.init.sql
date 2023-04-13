@@ -9,7 +9,7 @@ CREATE TABLE account (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     last_name TEXT NOT NULL,
     first_name TEXT NOT NULL,
-    email TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
     role rank NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
