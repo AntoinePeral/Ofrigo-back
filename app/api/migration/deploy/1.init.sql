@@ -3,7 +3,7 @@
 BEGIN;
 
 CREATE TYPE rank AS ENUM ('user', 'admin');
-CREATE TYPE measure AS ENUM ('mg', 'ml', 'c.à.c', 'c.à.s', 'pincée', 'sachets', 'paquet', 'coeur', 'tranches', 'pot', 'boîtes', 'bouquet', 'boule', 'rouleau', 'gousses', 'feuille', '');
+CREATE TYPE measure AS ENUM ('mg', 'ml', 'c.à.c', 'c.à.s', 'pincée', 'sachets', 'paquet', 'coeur', 'tranches', 'pot', 'boîtes', 'bouquet', 'boule', 'rouleau', 'gousses', 'feuille');
 
 CREATE TABLE account (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
