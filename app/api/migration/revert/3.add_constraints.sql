@@ -51,6 +51,6 @@ DROP DOMAIN little_title_validator;
 DROP DOMAIN content_validator;
 DROP DOMAIN rate_validator;
 DROP DOMAIN positive_int;
-DROP DOMAIN positive_number;
+DROP DOMAIN positive_number_or_null;
 
 COMMIT;

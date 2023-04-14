@@ -41,7 +41,7 @@ Recipe.belongsToMany(Ingredient, {
     foreignKey: "recipe_id",
     otherKey: "ingredient_id",
     as: "recipeIngredient",
-    through: "recipe_has_ingredient_with_quantity"
+    through: Quantity
 });
 
 Ingredient.belongsToMany(Recipe, {

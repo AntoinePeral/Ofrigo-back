@@ -3,7 +3,7 @@
 BEGIN;
 
 CREATE DOMAIN email_validator as TEXT CHECK ( VALUE ~ '^[\w\-_]+(\.[\w\-_]+)?@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)?\.[a-z]{2,}$');
-CREATE DOMAIN password_validator as TEXT CHECK (VALUE ~ '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?.])[A-Za-z\d#$@!%&*?.]{8,30}$');
+CREATE DOMAIN password_validator as TEXT CHECK (VALUE ~ '^(?=.*[a-z])(?=.*[A-Z])(?=.*[#$@!%&*?.])[A-Za-z\d#$@!%&*?.]{8,30}$');
 CREATE DOMAIN lenghtName_validator as TEXT CHECK (VALUE ~ '^[a-zA-Z]{2,100}$');
 CREATE DOMAIN title_validator AS TEXT CHECK (LENGTH(VALUE) <= 100);
 CREATE DOMAIN little_title_validator AS TEXT CHECK (LENGTH(VALUE) <= 50);

@@ -6,3 +6,4 @@ Epicerie
 Crémerie
 Fruits de mer
 Oeufs
+Céréale
