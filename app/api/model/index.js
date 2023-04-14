@@ -41,7 +41,7 @@ Recipe.belongsToMany(Ingredient, {
     foreignKey: "recipe_id",
     otherKey: "ingredient_id",
     as: "recipeIngredient",
-    through: "recipe_has_ingredient_with_quantity"
+    through: Quantity
 });
 
 Ingredient.belongsToMany(Recipe, {
@@ -94,11 +94,6 @@ Step.belongsTo(Recipe, {
     foreignKey: "recipe_id",
     as: "stepRecipe"
 });
-
-// Recipe <-> Quantity
-
-Recipe.hasOne(Quantity);
-Quantity.belongsTo(Recipe);
 
 module.exports = { 
     Account,
