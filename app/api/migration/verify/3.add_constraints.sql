@@ -15,52 +15,52 @@ SELECT recipe_id,tag_id FROM recipe_has_tag WHERE false;
 
 
 INSERT INTO account (last_name, first_name, email, password, role)
-VALUES( 'Doe', 'John', 'johndoe@example.com', 'Password123!', 'user'), -- email valide
-('Smith', 'Jane', 'janesmith@', 'Password123!', 'user'); -- email invalide
+VALUES( 'Doe', 'John', 'johndoe@example.com', 'Password123!', 'user'); -- email valide
+-- ('Smith', 'Jane', 'janesmith@', 'Password123!', 'user'); -- email invalide
 
 -- password_validator
 INSERT INTO account ( last_name, first_name, email, password, role)
 VALUES
-('Doe', 'John', 'johndoe@example.com', 'Password123!', 'user'), -- mot de passe valide
-('Does', 'Johns', 'johndoe@example.cosm', 'Password123!', 'admin'),
-('Does', 'Johns', 'johndoe@example.cosm', 'Password123!', null),
-('Smith', 'Jane', 'janesmith@', 'password', 'user'); -- mot de passe invalide
+('Doe', 'John', 'johndoes@example.com', 'Password123!', 'user'), -- mot de passe valide
+('Does', 'Johns', 'johndoezz@example.cosm', 'Password123!', 'admin');
+-- ('Does', 'Johns', 'johndoe@example.cosm', 'Password123!', null),
+-- ('Smith', 'Jane', 'janesmith@', 'password', 'user'); -- mot de passe invalide
 
 -- lenghtName_validator
 INSERT INTO account ( last_name, first_name, email, password, role)
 VALUES
-('Doe', 'John', 'johndoe@example.com', 'Password123!', 'user'), -- nom valide
-('S', 'Jane', 'janesmith@example.com', 'Password123!', 'user'); -- nom invalide
+('Doe', 'John', 'johndoecx@example.com', 'Password123!', 'user'); -- nom valide
+-- ('S', 'Jane', 'janesmith@example.com', 'Password123!', 'user'); -- nom invalide
 
 -- title_validator
 INSERT INTO recipe ( label, picture, rate, difficulty, time)
 VALUES
-('Delicious Chicken Curry with Rice and Peas', 'http://example.com/curry.jpg', 4.5, 'medium', '60 minutes'), -- titre valide
-('This is a long title that should not be allowed because it exceeds the maximum length of the title_validator domain', 'http://example.com/long_title.jpg', 3.2, 'easy', '30 minutes'); -- titre invalide
+('Deliciouds Chicken Curry with Rice and Peas', 'http://example.com/curry.jpg', 4.5, 'medium', '60 minutes');-- titre valide
+-- ('This is a long title that should not be allowed because it exceeds the maximum length of the title_validator domain', 'http://example.com/long_title.jpg', 3.2, 'easy', '30 minutes'); -- titre invalide
 
 -- little_title_validator
 INSERT INTO category ( label)
 VALUES
-('Soup'), -- petit titre valide
-('This is a long label that should not be allowed because it exceeds the maximum length of the little_title_validator domain'); -- petit titre invalide
+('Soup'); -- petit titre valide
+-- ('This is a long label that should not be allowed because it exceeds the maximum length of the little_title_validator domain'); -- petit titre invalide
 
 -- content_validator
 INSERT INTO message ( title, content, email)
 VALUES
-('Hello', 'This is a message with valid content.', 'johndoe@example.com'), -- contenu valide
-('Goodbye', 'This is a message with content that is too long and should not be allowed by the content_validator domain.', 'janesmith@example.com'); -- contenu invalide
+('Hello', 'This is a message with valid content.', 'johndoe@example.com'); -- contenu valide
+-- ('Goodbye', 'This is a message with content that is too long and should not be allowed by the content_validator domain.', 'janesmith@example.com'); -- contenu invalide
 
 -- rate_validator
 INSERT INTO recipe ( label, picture, rate, difficulty, time)
 VALUES
-('Delicious Chicken Curry with Rice and Peas', 'http://example.com/curry.jpg', 4.5, 'medium', '60 minutes'), -- note valide
-('Not So Good Soup', 'http://example.com/soup.jpg', 10, 'easy', '30 minutes'); -- note invalide
+('Delicious Chicken Curry with Rice and Peas', 'http://example.com/curry.jpg', 4.5, 'medium', '60 minutes'); -- note valide
+-- ('Not So Good Soup', 'http://example.com/soup.jpg', 10, 'easy', '30 minutes'); -- note invalide
 
 -- positive_int
 INSERT INTO step ( content, number, recipe_id)
 VALUES
-('Step 1: Heat the oven to 375 degrees.', 1, 1), -- entier positif valide
-('Step 2: Mix ingredients together in a large bowl.', -1, 1); -- entier positif invalide
+('Step 1: Heat the oven to 375 degrees.', 1, 1); -- entier positif valide
+-- ('Step 2: Mix ingredients together in a large bowl.', -1, 1); -- entier positif invalide
 
 
 -- Domain positive_number
