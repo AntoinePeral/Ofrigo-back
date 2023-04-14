@@ -95,11 +95,6 @@ Step.belongsTo(Recipe, {
     as: "stepRecipe"
 });
 
-// Recipe <-> Quantity
-
-Recipe.hasOne(Quantity);
-Quantity.belongsTo(Recipe);
-
 module.exports = { 
     Account,
     Category,
