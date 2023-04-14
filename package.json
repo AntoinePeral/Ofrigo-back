@@ -1,0 +1,21 @@
+{
+  "name": "api-ofrigo",
+  "version": "1.0.0",
+  "description": "API O'Frigo Apothéose",
+  "main": "server.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin Lienard",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "pg": "^8.10.0",
+    "sequelize": "^6.31.0"
+  }
+}
