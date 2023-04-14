@@ -33,15 +33,9 @@ Crème coco
 Pâte de curry rouge
 Concentré de tomate
 Citron vertes
-Piment
-Basilic
 Oignon
 Huile d'olive
 Lentilles vertes
-Salade
-Pains hamburger
-Ketchup
-Mayonnaise
 Curry 
 Cube de bouillon de poule
 Laurier 
@@ -55,10 +49,10 @@ Filet de poulet
 Calamar
 Moule
 Crevette
-Bouillon de volaille
 Melon
 Thym
 Eau
+Salade
 Feta
 Jambon cru 
 Jus de citron
@@ -71,6 +65,5 @@ Chocolat noir
 Sucre semoule
 Fromage ail et fines herbes
 Fajitas
-Tomate pelée
 Penne
 Herbe de provence
