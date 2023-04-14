@@ -2,11 +2,11 @@
 
 BEGIN;
 
---INSERT INTO account(last_name, first_name, email, password, role) VALUES
---('lienard', 'kevin', 'kevin@gmail.com', '1234', 'admin');
+INSERT INTO account(last_name, first_name, email, password, role) VALUES
+('lienard', 'kevin', 'kevin@gmail.com', 'PAssword1234!', 'admin');
 
---INSERT INTO message(title, content, email) VALUES
---('test', 'Ceci est un test', 'antoine_Peral@gmail.com');
+INSERT INTO message(title, content, email) VALUES
+('test', 'Ceci est un test', 'antoine_Peral@gmail.com');
 
 INSERT INTO category(label) VALUES
 ('Légumes'),
