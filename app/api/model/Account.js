@@ -1,28 +1,26 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../sequelize/sequelize-client");
+const CoreModel = require("./CoreModel");
 
-class Account extends Model {}
+class Account extends CoreModel{
+    static tableName = 'account';
+    first_name;
+    last_name;
+    email;
+    #password;
+    #role;
+    created_at;
+    updated_at;
 
-Account.init({
-  last_name: {
-    type: DataTypes.STRING,
-  },
-  first_name: {
-    type: DataTypes.STRING
-  },
-  email: {
-    type: DataTypes.STRING
-  },
-  password: {
-    type: DataTypes.STRING
-  },
-  role: {
-    type: DataTypes.STRING
-  }
-}, 
-{
-  sequelize,
-  tableName: "account"
-});
+    constructor(obj){
+        super(obj);
+        this.id = obj.id;
+        this.first_name = obj.first_name;
+        this.last_name = obj.last_name;
+        this.email = obj.email;
+        this.#password = obj.password;
+        this.#role = obj.role;
+        this.created_at = obj.created_at;
+        this.updated_at = obj.updated_at;
+    };
+};
 
 module.exports = Account;

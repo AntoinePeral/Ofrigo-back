@@ -1,22 +1,22 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../sequelize/sequelize-client");
+const CoreModel = require("./CoreModel");
 
-class Message extends Model {}
+class Message extends CoreModel{
+    static tableName = 'message';
+    title;
+    content;
+    email;
+    created_at;
+    updated_at;
 
-Message.init({
-  title: {
-    type: DataTypes.STRING,
-  },
-  content: {
-    type: DataTypes.STRING
-  },
-  email: {
-    type: DataTypes.STRING
-  }
-}, 
-{
-  sequelize,
-  tableName: "message"
-});
+    constructor(obj){
+        super(obj);
+        this.id = obj.id;
+        this.title = obj.title;
+        this.content = obj.content;
+        this.email = obj.email;
+        this.created_at = obj.created_at;
+        this.updated_at = obj.updated_at;
+    };
+};
 
 module.exports = Message;
