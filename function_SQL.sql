@@ -11,6 +11,8 @@ r.picture,
 r.rate,
 r.difficulty,
 r.time,
+r.created_at,
+r.updated_at,
 (
 	SELECT 
 		json_agg(
@@ -49,7 +51,7 @@ r.time,
 FROM recipe r
 JOIN recipe_has_ingredient_with_quantity riq ON riq.recipe_id = r.id
 GROUP BY r.id
-ORDER BY r.id ASC;
+ORDER BY r.id ASC
 
 --AFFICHE UNE RECETTE AVEC INGREDIENTS, CATEGORIES, QUANTITES, ETAPES, TAGS 
 
@@ -60,6 +62,8 @@ r.picture,
 r.rate,
 r.difficulty,
 r.time,
+r.created_at,
+r.updated_at,
 (
 	SELECT 
 		json_agg(
@@ -97,6 +101,6 @@ r.time,
 ) AS tag
 FROM recipe r
 JOIN recipe_has_ingredient_with_quantity riq ON riq.recipe_id = r.id
-WHERE r.id=r_id
+WHERE r.id_recipe_id
 GROUP BY r.id
-ORDER BY r.id ASC;
+ORDER BY r.id ASC
