@@ -2,11 +2,11 @@
 CREATE OR REPLACE FUNCTION convertQuantity(r_id int, i_id int) RETURNS TABLE (ingredient_quantity text)  AS $$
 SELECT
 	CASE
-		WHEN riq.ingredient_quantity >0 AND  riq.ingredient_quantity <1000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity),'mg')
-		WHEN riq.ingredient_quantity >=1000 AND  riq.ingredient_quantity <1000000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity/1000),'g')
-		WHEN riq.ingredient_quantity >=1000000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity/1000000),'kg')
-		WHEN riq.ingredient_quantity >10 AND  riq.ingredient_quantity <1000 AND i.unit='ml' THEN CONCAT(ROUND(riq.ingredient_quantity/10),'cl')
-		WHEN riq.ingredient_quantity >=1000 AND i.unit='ml' THEN CONCAT(ROUND(riq.ingredient_quantity/1000),'l')
+		WHEN riq.ingredient_quantity >0 AND  riq.ingredient_quantity <1000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity), ' ', 'mg')
+		WHEN riq.ingredient_quantity >=1000 AND  riq.ingredient_quantity <1000000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity/1000), ' ','g')
+		WHEN riq.ingredient_quantity >=1000000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity/1000000), ' ','kg')
+		WHEN riq.ingredient_quantity >10 AND  riq.ingredient_quantity <1000 AND i.unit='ml' THEN CONCAT(ROUND(riq.ingredient_quantity/10), ' ','cl')
+		WHEN riq.ingredient_quantity >=1000 AND i.unit='ml' THEN CONCAT(ROUND(riq.ingredient_quantity/1000), ' ','l')
 		WHEN i.unit IS NULL THEN CONCAT(riq.ingredient_quantity)
 		WHEN i.unit='mg' AND riq.ingredient_quantity IS NULL THEN NULL
 		WHEN i.unit='paquet' AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ','paquet')
