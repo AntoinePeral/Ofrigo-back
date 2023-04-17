@@ -81,10 +81,9 @@ class Recipe extends CoreModel{
         ORDER BY r.id ASC;`;
 
         const result = [];
-        let recipes;
 
         try {
-            recipes = await ofrigo.query(query);
+            const recipes = await ofrigo.query(query);
             debug(recipes.rows);
 
             for (const recipe of recipes.rows) {

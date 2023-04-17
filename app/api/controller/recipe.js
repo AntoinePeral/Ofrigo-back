@@ -1,6 +1,6 @@
 const debug = require("debug")("recipeController");
 const { Recipe } = require("../model");
-const logRecipe = require("../../service/test/function/logRecepe");
+//const logRecipe = require("../../service/test/function/logRecepe");
 
 const recipeController = {
 
@@ -21,8 +21,6 @@ const recipeController = {
         try{
             const recipe = await Recipe.findOneRecipeWithAll(recipeId);
             debug(recipe);
-
-            logRecipe(recipe);
 
             res.status(200).json(recipe);
         }catch(error){

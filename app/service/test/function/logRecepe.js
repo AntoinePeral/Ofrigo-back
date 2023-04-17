@@ -6,10 +6,8 @@ function logRecipe (recipe){
         console.log('INGREDIENT '+ i + ' : ' + '\n' + 'Nom : ' + ingredient.label + '\n' + 'Categorie : ' + ingredient.category_label + '\n' + 'Quantité : ' + ingredient.ingredient_quantity + '\n');
         i++;
     }
-    i=1;
     for (const step of recipe.step){
         console.log('ETAPE ' + step.number + ' : ' + step.content + '\n');
-        i++;
     }
     i=1;
     for (const tag of recipe.tag){
