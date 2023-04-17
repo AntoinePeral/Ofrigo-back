@@ -101,6 +101,6 @@ r.updated_at,
 ) AS tag
 FROM recipe r
 JOIN recipe_has_ingredient_with_quantity riq ON riq.recipe_id = r.id
-WHERE r.id_recipe_id
+WHERE r.id=recipe_id
 GROUP BY r.id
 ORDER BY r.id ASC
