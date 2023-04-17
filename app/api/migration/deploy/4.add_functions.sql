@@ -64,6 +64,85 @@ ORDER BY r.id ASC
 $$ LANGUAGE SQL;
 
 
+CREATE OR REPLACE FUNCTION convertQuantity(r_id int, i_id int) RETURNS TABLE (ingredient_quantity text)  AS $$
+SELECT
+	CASE
+		WHEN riq.ingredient_quantity >0 AND  riq.ingredient_quantity <1000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity), ' ','mg')
+		WHEN riq.ingredient_quantity >=1000 AND  riq.ingredient_quantity <1000000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity/1000), ' ','g')
+		WHEN riq.ingredient_quantity >=1000000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity/1000000), ' ','kg')
+		WHEN riq.ingredient_quantity >10 AND  riq.ingredient_quantity <1000 AND i.unit='ml' THEN CONCAT(ROUND(riq.ingredient_quantity/10), ' ','cl')
+		WHEN riq.ingredient_quantity >=1000 AND i.unit='ml' THEN CONCAT(ROUND(riq.ingredient_quantity/1000), ' ','l')
+		WHEN i.unit IS NULL THEN CONCAT(riq.ingredient_quantity)
+		WHEN i.unit='mg' AND riq.ingredient_quantity IS NULL THEN NULL
+		WHEN i.unit='paquet' THEN CONCAT(riq.ingredient_quantity, ' ','paquet')
+		WHEN i.unit='pincée' THEN CONCAT(riq.ingredient_quantity, ' ','pincée')
+		WHEN i.unit='boule' THEN CONCAT(riq.ingredient_quantity, ' ','boule')
+		WHEN i.unit='gousses' THEN CONCAT(riq.ingredient_quantity, ' ','gousses')
+		WHEN i.unit='c.à.s' THEN CONCAT(riq.ingredient_quantity, ' ','c.à.s')
+		WHEN i.unit='feuille' THEN CONCAT(riq.ingredient_quantity, ' ','feuille')
+		WHEN i.unit='dose' THEN CONCAT(riq.ingredient_quantity, ' ','dose')
+		WHEN i.unit='tranches' THEN CONCAT(riq.ingredient_quantity, ' ','tranches')
+		WHEN i.unit='rouleau' THEN CONCAT(riq.ingredient_quantity, ' ','rouleau')
+		WHEN i.unit='coeur' THEN CONCAT(riq.ingredient_quantity, ' ','coeur')
+		WHEN i.unit='c.à.c' THEN CONCAT(riq.ingredient_quantity, ' ','c.à.c')
+	END AS ingredient_quantitySELECT
+r.id,
+r.label AS label,
+r.picture,
+r.rate,
+r.difficulty,
+r.time,
+r.created_at,
+r.updated_at,
+(
+	SELECT
+		json_agg(
+			json_build_object(
+				'id', i.id,
+				'label', i.label,
+				'quantity', riq.ingredient_quantity,
+				'unit', i.unit,
+				'ingredient_quantity', (SELECT * FROM convertQuantity(r.id, i.id)),
+				'created_at', i.created_at,
+				'updated_at', i.updated_at,
+				'category_id', c.id,
+				'category_label', c.label,
+				'category_created_at', c.created_at,
+				'category_updated_at', c.updated_at
+			)
+			ORDER BY i.created_at
+		)
+	FROM ingredient i
+	JOIN recipe_has_ingredient_with_quantity riq ON ingredient_id = i.id
+	JOIN category c ON c.id = i.category_id
+	WHERE recipe_id = r.id
+) AS ingredient,
+(
+	SELECT
+		json_agg(s.* ORDER BY s.created_at)
+	FROM step s
+	WHERE s.recipe_id = r.id
+) AS step,
+(
+	SELECT
+		json_agg(t.* ORDER BY t.label ASC)
+	FROM tag t
+	JOIN recipe_has_tag rt ON tag_id = t.id
+	WHERE recipe_id = r.id
+) AS tag
+FROM recipe r
+JOIN recipe_has_ingredient_with_quantity riq ON riq.recipe_id = r.id
+GROUP BY r.id
+ORDER BY r.id ASC
+FROM ingredient i
+JOIN recipe_has_ingredient_with_quantity riq
+ON riq.ingredient_id = i.id
+JOIN recipe r
+ON riq.recipe_id= r.id
+WHERE riq.recipe_id=r_id
+AND riq.ingredient_id=i_id
+$$ LANGUAGE SQL;
+
 -- Function à refaire si on a le temps
 
 -- CREATE OR REPLACE FUNCTION getOneRecipe (recipe_id int) 
