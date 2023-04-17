@@ -45,9 +45,7 @@ class Recipe extends CoreModel{
                     json_build_object(
                         'id', i.id,
                         'label', i.label,
-                        'quantity', riq.ingredient_quantity,
-                        'ingredient_quantity', (SELECT * FROM convertQuantity(r.id, i.id)),
-                        'unit', i.unit,
+                        'quantity', (SELECT * FROM convertQuantity(r.id, i.id)),
                         'created_at', i.created_at,
                         'updated_at', i.updated_at,
                         'category_id', c.id,
@@ -112,9 +110,7 @@ class Recipe extends CoreModel{
                     json_build_object(
                         'id', i.id,
                         'label', i.label,
-                        'quantity', riq.ingredient_quantity,
-                        'ingredient_quantity', (SELECT * FROM convertQuantity(r.id, i.id)),
-                        'unit', i.unit,
+                        'quantity', (SELECT * FROM convertQuantity(r.id, i.id)),
                         'created_at', i.created_at,
                         'updated_at', i.updated_at,
                         'category_id', c.id,
