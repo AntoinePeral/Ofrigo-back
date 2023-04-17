@@ -96,7 +96,7 @@ INSERT INTO recipe(label, picture, rate, difficulty, time) VALUES
 ('Cake du petit-déjeuner banane-chocolat', './app/api/picture/Cake-banane-chocolat.jpg', 4.4, 'Très facile', '45 min'),
 ('Pâte à crêpes (des plus raffinées)', './app/api/picture/Crepes.jpg', 4.7, 'Facile', '17 min'),
 ('Bowl cake moelleux chocolat noisettes', './app/api/picture/Bowl-cake-moelleux-chocolat-noisettes.jpg', 4.5, 'Très facile', '13 min'),
-('Quiche lorraine traditionnelle', './app/api/picture/', 4.8, 'Très facile', '35 min'),
+('Quiche lorraine traditionnelle', './app/api/picture/Quiche-Lorraine.jpg', 4.8, 'Très facile', '35 min'),
 ('Filet de bar en croûte de chorizo, purée et mousse de haricots cocos de Paimpol', './app/api/picture/Filet-de-bar-en-croûte.jpg', 4.2, 'Moyenne', '2 h 30 min'),
 ('Curry de légumes végétarien', './app/api/picture/Curry-de-légume-végétarien.jpg', 4.8, 'Très facile', '1 h 20 min'),
 ('Burger végétarien aux lentilles', './app/api/picture/Burger-vegétarien.jpg', 5, 'Très facile', '55 min'),
