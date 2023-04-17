@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP FUNCTION getAllRecipes,convertQuantity ;
+DROP FUNCTION getAllRecipes,convertQuantity,getOneRecipe ;
 
 COMMIT;
