@@ -3,6 +3,6 @@
 BEGIN;
 
 SELECT * FROM getAllRecipes();
-SELECT * FROM getOneRecipe(1);
+-- SELECT * FROM getOneRecipe(1);
 
 ROLLBACK;

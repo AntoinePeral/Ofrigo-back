@@ -3,7 +3,7 @@
 BEGIN;
 
 INSERT INTO account(last_name, first_name, email, password, role) VALUES
-('Lienard', 'Vevin', 'kevin@gmail.com', 'Password123!', 'admin'),
+('Lienard', 'Kevin', 'kevin@gmail.com', 'Password123!', 'admin'),
 ('Peral', 'Antoine', 'antoine@gmail.com', 'TotoVAalaplage32?', 'user');
 
 INSERT INTO message(title, content, email) VALUES
