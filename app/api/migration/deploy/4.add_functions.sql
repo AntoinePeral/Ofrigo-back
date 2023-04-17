@@ -2,33 +2,16 @@
 CREATE OR REPLACE FUNCTION convertQuantity(r_id int, i_id int) RETURNS TABLE (ingredient_quantity text)  AS $$
 SELECT
 	CASE
-		WHEN riq.ingredient_quantity >0 AND  riq.ingredient_quantity <1000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity), ' ', 'mg')
-		WHEN riq.ingredient_quantity >=1000 AND  riq.ingredient_quantity <1000000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity/1000), ' ','g')
-		WHEN riq.ingredient_quantity >=1000000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity/1000000), ' ','kg')
-		WHEN riq.ingredient_quantity >10 AND  riq.ingredient_quantity <1000 AND i.unit='ml' THEN CONCAT(ROUND(riq.ingredient_quantity/10), ' ','cl')
-		WHEN riq.ingredient_quantity >=1000 AND i.unit='ml' THEN CONCAT(ROUND(riq.ingredient_quantity/1000), ' ','l')
-		WHEN i.unit IS NULL THEN CONCAT(riq.ingredient_quantity)
-		WHEN i.unit='mg' AND riq.ingredient_quantity IS NULL THEN NULL
-		WHEN i.unit='paquet' AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ','paquet')
-		WHEN i.unit='paquet' AND riq.ingredient_quantity > 1 THEN CONCAT(riq.ingredient_quantity, ' ','paquets')
-		WHEN i.unit='pincée' AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ','pincée')
-		WHEN i.unit='pincée' AND riq.ingredient_quantity > 1 THEN CONCAT(riq.ingredient_quantity, ' ','pincées')
-		WHEN i.unit='boule' AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ','boule')
-		WHEN i.unit='boule' AND riq.ingredient_quantity > 1 THEN CONCAT(riq.ingredient_quantity, ' ','boules')
-		WHEN i.unit='gousse' AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ','gousse')
-		WHEN i.unit='gousse' AND riq.ingredient_quantity > 1 THEN CONCAT(riq.ingredient_quantity, ' ','gousses')
-		WHEN i.unit='c.à.s' THEN CONCAT(riq.ingredient_quantity, ' ','c.à.s')
-		WHEN i.unit='feuille' AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ','feuille')
-		WHEN i.unit='feuille' AND riq.ingredient_quantity > 1 THEN CONCAT(riq.ingredient_quantity, ' ','feuilles')
-		WHEN i.unit='dose' AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ','dose')
-		WHEN i.unit='dose' AND riq.ingredient_quantity > 1 THEN CONCAT(riq.ingredient_quantity, ' ','doses')
-		WHEN i.unit='tranche' AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ','tranche')
-		WHEN i.unit='tranche' AND riq.ingredient_quantity > 1 THEN CONCAT(riq.ingredient_quantity, ' ','tranches')
-		WHEN i.unit='rouleau' AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ','rouleau')
-		WHEN i.unit='rouleau' AND riq.ingredient_quantity > 1 THEN CONCAT(riq.ingredient_quantity, ' ','rouleaus')
-		WHEN i.unit='coeur' AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ','coeur')
-		WHEN i.unit='coeur' AND riq.ingredient_quantity > 1 THEN CONCAT(riq.ingredient_quantity, ' ','coeurs')
-		WHEN i.unit='c.à.c' THEN CONCAT(riq.ingredient_quantity, ' ','c.à.c')
+		WHEN riq.ingredient_quantity >0 AND  riq.ingredient_quantity <1000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity), ' ', 'mg', ' de ', LOWER(i.label))
+		WHEN riq.ingredient_quantity >=1000 AND  riq.ingredient_quantity <1000000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity/1000), ' ','g', ' de ', LOWER(i.label))
+		WHEN riq.ingredient_quantity >=1000000 AND i.unit='mg' THEN CONCAT(ROUND(riq.ingredient_quantity/1000000), ' ','kg', ' de ', LOWER(i.label))
+		WHEN riq.ingredient_quantity >10 AND  riq.ingredient_quantity <1000 AND i.unit='ml' THEN CONCAT(ROUND(riq.ingredient_quantity/10), ' ','cl', ' de ', LOWER(i.label))
+		WHEN riq.ingredient_quantity >=1000 AND i.unit='ml' THEN CONCAT(ROUND(riq.ingredient_quantity/1000), ' ','l', ' de ', LOWER(i.label))
+		WHEN riq.ingredient_quantity IS NULL AND i.unit IS NOT NULL THEN LOWER(i.label)
+		WHEN riq.ingredient_quantity IS NOT NULL AND i.unit IS NULL AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ', LOWER(i.label))
+		WHEN riq.ingredient_quantity IS NOT NULL AND i.unit IS NULL AND riq.ingredient_quantity > 1 THEN CONCAT(riq.ingredient_quantity, ' ', LOWER(i.label), 's')
+		WHEN i.unit IS NOT NULL AND riq.ingredient_quantity IS NOT NULL AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ', i.unit, ' de ', LOWER(i.label))
+		WHEN i.unit IS NOT NULL AND riq.ingredient_quantity IS NOT NULL AND riq.ingredient_quantity > 1 AND riq.ingredient_quantity < 10 THEN CONCAT(riq.ingredient_quantity, ' ', i.unit, 's', ' de ', LOWER(i.label))
 	END AS ingredient_quantity
 FROM ingredient i
 JOIN recipe_has_ingredient_with_quantity riq
