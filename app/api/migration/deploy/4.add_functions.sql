@@ -10,8 +10,8 @@ SELECT
 		WHEN riq.ingredient_quantity IS NULL AND i.unit IS NOT NULL THEN LOWER(i.label)
 		WHEN riq.ingredient_quantity IS NOT NULL AND i.unit IS NULL AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ', LOWER(i.label))
 		WHEN riq.ingredient_quantity IS NOT NULL AND i.unit IS NULL AND riq.ingredient_quantity > 1 THEN CONCAT(riq.ingredient_quantity, ' ', LOWER(i.label), 's')
-		WHEN i.unit IS NOT NULL AND riq.ingredient_quantity IS NOT NULL AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ', i.unit, ' de ', LOWER(i.label))
-		WHEN i.unit IS NOT NULL AND riq.ingredient_quantity IS NOT NULL AND riq.ingredient_quantity > 1 AND riq.ingredient_quantity < 10 THEN CONCAT(riq.ingredient_quantity, ' ', i.unit, 's', ' de ', LOWER(i.label))
+		WHEN riq.ingredient_quantity IS NOT NULL AND i.unit IS NOT NULL AND riq.ingredient_quantity < 2 THEN CONCAT(riq.ingredient_quantity, ' ', i.unit, ' de ', LOWER(i.label))
+		WHEN riq.ingredient_quantity IS NOT NULL AND i.unit IS NOT NULL AND riq.ingredient_quantity > 1 AND riq.ingredient_quantity < 10 THEN CONCAT(riq.ingredient_quantity, ' ', i.unit, 's', ' de ', LOWER(i.label))
 	END AS ingredient_quantity
 FROM ingredient i
 JOIN recipe_has_ingredient_with_quantity riq

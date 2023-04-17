@@ -3,7 +3,7 @@ function logRecipe (recipe){
 
     console.log('Recette : ' + recipe.label + '\n' + 'Image : ' + recipe.picture + '\n' + 'Note : ' + recipe.rate + '\n' + 'Difficulté : ' + recipe.difficulty + '\n' + 'Temps de preparation : ' + recipe.time + '\n');
     for (const ingredient of recipe.ingredient){
-        console.log('INGREDIENT '+ i + ' : ' + '\n' + 'Nom : ' + ingredient.label + '\n' + 'Categorie : ' + ingredient.category_label + '\n' + 'Quantité : ' + ingredient.ingredient_quantity + '\n');
+        console.log('INGREDIENT '+ i + ' : ' + '\n' + 'Nom : ' + ingredient.label + '\n' + 'Categorie : ' + ingredient.category_label + '\n' + 'Quantité : ' + ingredient.quantity + '\n');
         i++;
     }
     for (const step of recipe.step){
