@@ -22,6 +22,7 @@ echo "Add versions"
 sqitch add 1.init -n "create tables"
 sqitch add 2.insert -n "insert data"
 sqitch add 3.add_constraints -n "Add constraints"
+sqitch add 4.add_functions -n "add functions"
 
 echo "Create tables"
 sqitch deploy 1.init
@@ -29,3 +30,5 @@ echo "Add data"
 sqitch deploy 2.insert
 echo "Add constraints"
 sqitch deploy 3.add_constraints
+echo "Add functions"
+sqitch deploy 4.add_functions
