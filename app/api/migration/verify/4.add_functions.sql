@@ -3,7 +3,7 @@
 BEGIN;
 
 SELECT * FROM getAllRecipes();
-SELECT * FROM convertQuantity(1, 2)
--- SELECT * FROM getOneRecipe(1);
+SELECT * FROM convertQuantity(1, 2);
+SELECT * FROM getOneRecipe(1);
 
 ROLLBACK;
