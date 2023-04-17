@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP FUNCTION getOneRecipe, getAllRecipes;
+DROP FUNCTION getAllRecipes;
 
 COMMIT;
