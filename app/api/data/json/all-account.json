@@ -1,0 +1,22 @@
+[
+    {
+    "id": 1,
+    "last_name": "Lienard",
+    "first_name": "Vevin",
+    "email": "kevin@gmail.com",
+    "password": "Password123!",
+    "role": "admin",
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 2,
+    "last_name": "Peral",
+    "first_name": "Antoine",
+    "email": "antoine@gmail.com",
+    "password": "TotoVAalaplage32?",
+    "role": "user",
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    }
+]

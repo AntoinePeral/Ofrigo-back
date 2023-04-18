@@ -1,18 +1,41 @@
+const debug = require("debug")("recipeController");
 const { Recipe } = require("../model");
+// const logRecipe = require("../../service/test/function/logRecepe");
 
 const recipeController = {
 
-    getAllRecipe: async (_, res) =>{
-        const recipe = await Recipe.findAll({ include: [ { association: 'recipeIngredient', include: 'ingredientCategory' }, 'recipeTag', 'recipeStep' ], order: [ ['recipeTag', 'label', 'ASC'], ['recipeStep', 'id', 'ASC'] ] });
-    
-        res.status(200).json(recipe);
+    /**
+     * Get all recipes and return json Objects in array
+     * @param {*} _ 
+     * @param {*} res use to response to the client
+     */
+    async getAllRecipe (_, res){
+        try{
+            const recipe = await Recipe.findAllRecipeWithAll();
+            debug(recipe);
+
+            res.status(200).json(recipe);
+        }catch(error){
+            console.log(error);
+        }
     },
 
-    getRecipeWithTags: async (req, res) =>{
+    /**
+     * Get one recipe by his id and return json Object. It contains ingredients, steps, tags and category 
+     * @param {*} req use request to get the params.id
+     * @param {*} res use to response to the client
+     */
+    async getRecipeById (req, res){
         const recipeId = req.params.id;
-        const recipe = await Recipe.findByPk(recipeId, { include: [ { association: 'recipeIngredient', include: 'ingredientCategory' }, 'recipeTag', 'recipeStep' ], order: [ ['recipeTag', 'label', 'ASC'], ['recipeStep', 'id', 'ASC'] ] });
 
-        res.status(200).json(recipe);
+        try{
+            const recipe = await Recipe.findOneRecipeWithAll(recipeId);
+            debug(recipe);
+
+            res.status(200).json(recipe);
+        }catch(error){
+            console.log(error);
+        }
     },
 
 };

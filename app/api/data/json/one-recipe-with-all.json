@@ -1,0 +1,160 @@
+{
+    "id": 1,
+    "label": "Cake du petit-déjeuner banane-chocolat",
+    "picture": "./",
+    "rate": "4.4",
+    "difficulty": "Très facile",
+    "time": "45 min",
+    "ingredient": [
+    {
+    "id": 1,
+    "label": "Farine",
+    "quantity": 180000,
+    "unit": "mg",
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null,
+    "category_id": 5,
+    "category_label": "Epicerie",
+    "category_created_at": "2023-04-14T19:19:04.439488+02:00",
+    "category_updated_at": null
+    },
+    {
+    "id": 2,
+    "label": "Levure chimique",
+    "quantity": 1,
+    "unit": "paquet",
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null,
+    "category_id": 5,
+    "category_label": "Epicerie",
+    "category_created_at": "2023-04-14T19:19:04.439488+02:00",
+    "category_updated_at": null
+    },
+    {
+    "id": 3,
+    "label": "Beurre",
+    "quantity": 20000,
+    "unit": "mg",
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null,
+    "category_id": 6,
+    "category_label": "Crémerie",
+    "category_created_at": "2023-04-14T19:19:04.439488+02:00",
+    "category_updated_at": null
+    },
+    {
+    "id": 4,
+    "label": "Banane",
+    "quantity": 1,
+    "unit": null,
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null,
+    "category_id": 4,
+    "category_label": "Fruits",
+    "category_created_at": "2023-04-14T19:19:04.439488+02:00",
+    "category_updated_at": null
+    },
+    {
+    "id": 5,
+    "label": "Chocolat",
+    "quantity": 40000,
+    "unit": "mg",
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null,
+    "category_id": 5,
+    "category_label": "Epicerie",
+    "category_created_at": "2023-04-14T19:19:04.439488+02:00",
+    "category_updated_at": null
+    },
+    {
+    "id": 6,
+    "label": "Cardamome",
+    "quantity": 1,
+    "unit": "pincée",
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null,
+    "category_id": 5,
+    "category_label": "Epicerie",
+    "category_created_at": "2023-04-14T19:19:04.439488+02:00",
+    "category_updated_at": null
+    },
+    {
+    "id": 7,
+    "label": "Cassonade",
+    "quantity": 70000,
+    "unit": "mg",
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null,
+    "category_id": 5,
+    "category_label": "Epicerie",
+    "category_created_at": "2023-04-14T19:19:04.439488+02:00",
+    "category_updated_at": null
+    },
+    {
+    "id": 8,
+    "label": "Oeuf",
+    "quantity": 1,
+    "unit": null,
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null,
+    "category_id": 8,
+    "category_label": "Oeufs",
+    "category_created_at": "2023-04-14T19:19:04.439488+02:00",
+    "category_updated_at": null
+    },
+    {
+    "id": 9,
+    "label": "Lait",
+    "quantity": 60,
+    "unit": "ml",
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null,
+    "category_id": 6,
+    "category_label": "Crémerie",
+    "category_created_at": "2023-04-14T19:19:04.439488+02:00",
+    "category_updated_at": null
+    }
+    ],
+    "step": [
+    {
+    "id": 1,
+    "content": "Préchauffer le four à 220°C (thermostat 7).",
+    "number": 1,
+    "recipe_id": 1,
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null
+    },
+    {
+    "id": 2,
+    "content": "Dans un saladier, mélanger la farine, la levure, la cassonade, l'oeuf, le beurre, la banane coupée en petits dés, le chocolat coupés en pépites, le lait et la cardamome.",
+    "number": 2,
+    "recipe_id": 1,
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null
+    },
+    {
+    "id": 3,
+    "content": "Verser dans un plat à cake souple de préférence et enfourner pour 30 minutes.",
+    "number": 3,
+    "recipe_id": 1,
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null
+    },
+    {
+    "id": 4,
+    "content": "Au bout de ce temps, la pointe du couteau plantée dans le cake doit ressortir sèche !",
+    "number": 4,
+    "recipe_id": 1,
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null
+    }
+    ],
+    "tag": [
+    {
+    "id": 1,
+    "label": "Petit déjeuner",
+    "created_at": "2023-04-14T19:19:04.439488+02:00",
+    "updated_at": null
+    }
+    ]
+}

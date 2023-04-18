@@ -1,16 +1,14 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../sequelize/sequelize-client");
+const CoreModel = require("./CoreModel");
 
-class Quantity extends Model {}
+class Quantity extends CoreModel{
+    static tableName = 'quantity';
+    ingredient_quantity;
 
-Quantity.init({
-  ingredient_quantity: {
-    type: DataTypes.NUMBER,
-  }
-}, 
-{
-  sequelize,
-  tableName: "recipe_has_ingredient_with_quantity"
-});
+    constructor(obj){
+        super(obj);
+        this.id = obj.id;
+        this.ingredient_quantity = obj.ingredient_quantity;
+    };
+};
 
 module.exports = Quantity;

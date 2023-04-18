@@ -1,19 +1,16 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../sequelize/sequelize-client");
+const CoreModel = require("./CoreModel");
 
-class Step extends Model {}
+class Step extends CoreModel{
+    static tableName = 'step';
+    number;
+    content;
 
-Step.init({
-  content: {
-    type: DataTypes.STRING,
-  },
-  number: {
-    type: DataTypes.INTEGER,
-  }
-}, 
-{
-  sequelize,
-  tableName: "step"
-});
+    constructor(obj){
+        super(obj);
+        this.id = obj.id;
+        this.number = obj.number;
+        this.content = obj.content;
+    };
+};
 
 module.exports = Step;

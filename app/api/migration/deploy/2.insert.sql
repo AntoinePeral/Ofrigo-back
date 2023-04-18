@@ -3,8 +3,8 @@
 BEGIN;
 
 INSERT INTO account(last_name, first_name, email, password, role) VALUES
-('Lienard', 'Vevin', 'kevin@gmail.com', '1234', 'admin'),
-('Peral', 'Antoine', 'antoine@gmail.com', '1234', 'user');
+('Lienard', 'Kevin', 'kevin@gmail.com', 'Password123!', 'admin'),
+('Peral', 'Antoine', 'antoine@gmail.com', 'TotoVAalaplage32?', 'user');
 
 INSERT INTO message(title, content, email) VALUES
 ('message 1', 'Ceci est un test', 'antoine_Peral@gmail.com'),
@@ -52,7 +52,7 @@ INSERT INTO ingredient(label, unit, category_id) VALUES
 ('Cumin', 'c.à.s', 5),
 ('Patate douce ', 'c.à.s', 1),
 ('Echalotes', null, 1),
-('Ail', 'gousses', 1),
+('Ail', 'gousse', 1),
 ('Crème coco', 'ml', 6),
 ('Pâte de curry rouge', 'mg', 5),
 ('Concentré de tomate', 'c.à.s', 5),
@@ -78,13 +78,13 @@ INSERT INTO ingredient(label, unit, category_id) VALUES
 ('Eau', 'c.à.s', 5),
 ('Salade', 'coeur', 1),
 ('Feta', 'mg', 6),
-('Jambon cru', 'tranches', 3),
+('Jambon cru', 'tranche', 3),
 ('Jus de citron', 'c.à.s', 5),
 ('Moutarde', 'c.à.s', 5),
 ('Cheddar', 'mg', 6),
 ('Bière brune', 'ml', 5),
 ('Pain de campagne', null, 9),
-('Jambon blanc', 'tranches', 3),
+('Jambon blanc', 'tranche', 3),
 ('Chocolat noir', 'mg', 5),
 ('Sucre semoule', 'mg', 5),
 ('Fromage ail et fines herbes', null, 6),
@@ -93,21 +93,21 @@ INSERT INTO ingredient(label, unit, category_id) VALUES
 ('Herbe de provence', null, 5);
 
 INSERT INTO recipe(label, picture, rate, difficulty, time) VALUES
-('Cake du petit-déjeuner banane-chocolat', './', 4.4, 'Très facile', '45 min'),
-('Pâte à crêpes (des plus raffinées)', './', 4.7, 'Facile', '17 min'),
-('Bowl cake moelleux chocolat noisettes', './', 4.5, 'Très facile', '13 min'),
-('Quiche lorraine traditionnelle', './', 4.8, 'Très facile', '35 min'),
-('Filet de bar en croûte de chorizo, purée et mousse de haricots cocos de Paimpol', './', 4.2, 'Moyenne', '2 h 30 min'),
-('Curry de légumes végétarien', './', 4.8, 'Très facile', '1 h 20 min'),
-('Burger végétarien aux lentilles', './', 5, 'Très facile', '55 min'),
-('Soupe veloutée de potimarron et pommes de terre', './', 4.9, 'Très facile', '45 min'),
-('Paëlla fruits de mer, chorizo et poulet de Patou', './', 4.8, 'Facile', '1 h 10 min'),
-('Salade melon, feta, jambon', './', 4.8, 'Très facile', '15 min'),
-('Welsh traditionnel à la bière brune', './', 4.3, 'Moyenne', '40 min'),
-('Crème dessert facile au chocolat', './', 4.6, 'Très facile', '15 min'),
-('Pancake Moelleux : recette facile', './', 4.8, 'Très facile', '14 min'),
-('Roulé de jambon original pour apéro', './', 4.8, 'Très facile', '20 min'),
-('Gratin de pâtes au chorizo', './', 4.5, 'Facile', '55 min');
+('Cake du petit-déjeuner banane-chocolat', './app/api/picture/Cake-banane-chocolat.jpg', 4.4, 'Très facile', '45 min'),
+('Pâte à crêpes (des plus raffinées)', './app/api/picture/Crepes.jpg', 4.7, 'Facile', '17 min'),
+('Bowl cake moelleux chocolat noisettes', './app/api/picture/Bowl-cake-moelleux-chocolat-noisettes.jpg', 4.5, 'Très facile', '13 min'),
+('Quiche lorraine traditionnelle', './app/api/picture/Quiche-Lorraine.jpg', 4.8, 'Très facile', '35 min'),
+('Filet de bar en croûte de chorizo, purée et mousse de haricots cocos de Paimpol', './app/api/picture/Filet-de-bar-en-croûte.jpg', 4.2, 'Moyenne', '2 h 30 min'),
+('Curry de légumes végétarien', './app/api/picture/Curry-de-légume-végétarien.jpg', 4.8, 'Très facile', '1 h 20 min'),
+('Burger végétarien aux lentilles', './app/api/picture/Burger-vegétarien.jpg', 5, 'Très facile', '55 min'),
+('Soupe veloutée de potimarron et pommes de terre', './app/api/picture/Soupe-potimarron.jpg', 4.9, 'Très facile', '45 min'),
+('Paëlla fruits de mer, chorizo et poulet de Patou', './app/api/picture/Paella-fruit-de-mer-chorizo.jpg', 4.8, 'Facile', '1 h 10 min'),
+('Salade melon, feta, jambon', './app/api/picture/Salade-melon-feta.jpg', 4.8, 'Très facile', '15 min'),
+('Welsh traditionnel à la bière brune', './app/api/picture/Wesh-traditionnel.jpg', 4.3, 'Moyenne', '40 min'),
+('Crème dessert facile au chocolat', './app/api/picture/Creme-dessert.jpg', 4.6, 'Très facile', '15 min'),
+('Pancake Moelleux : recette facile', './app/api/picture/Pancake.jpg', 4.8, 'Très facile', '14 min'),
+('Roulé de jambon original pour apéro', './app/api/picture/Roulé-jambon.jpg', 4.8, 'Très facile', '20 min'),
+('Gratin de pâtes au chorizo', './app/api/picture/Gratin-de-pates-et-chorizo.jpg', 4.5, 'Facile', '55 min');
 
 INSERT INTO step(content, number, recipe_id) VALUES
 ('Préchauffer le four à 220°C (thermostat 7).', 1, 1),
@@ -332,7 +332,7 @@ INSERT INTO recipe_has_ingredient_with_quantity(recipe_id, ingredient_id, ingred
 (9, 47, 500000),
 (9, 48, 1000000),
 (9, 49, 500000),
-(9, 50, 1000000),
+(9, 50, 1000),
 (9, 51, 15),
 (10, 52, 1),
 (10, 37, 4),
@@ -355,7 +355,7 @@ INSERT INTO recipe_has_ingredient_with_quantity(recipe_id, ingredient_id, ingred
 (12, 65, 100000),
 (12, 3, 50000),
 (12, 1, 40000),
-(12, 9, 1000000),
+(12, 9, 1000),
 (13, 1, 250000),
 (13, 65, 30000),
 (13, 2, 1),

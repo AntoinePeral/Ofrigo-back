@@ -1,0 +1,554 @@
+[
+    {
+    "id": 1,
+    "label": "Farine",
+    "unit": "mg",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 2,
+    "label": "Levure chimique",
+    "unit": "paquet",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 3,
+    "label": "Beurre",
+    "unit": "mg",
+    "category_id": 6,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 4,
+    "label": "Banane",
+    "unit": null,
+    "category_id": 4,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 5,
+    "label": "Chocolat",
+    "unit": "mg",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 6,
+    "label": "Cardamome",
+    "unit": "pincée",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 7,
+    "label": "Cassonade",
+    "unit": "mg",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 8,
+    "label": "Oeuf",
+    "unit": null,
+    "category_id": 8,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 9,
+    "label": "Lait",
+    "unit": "ml",
+    "category_id": 6,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 10,
+    "label": "Sel",
+    "unit": "pincée",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 11,
+    "label": "Sucre en poudre",
+    "unit": "mg",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 12,
+    "label": "Grand-marnier ou de rhum",
+    "unit": null,
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 13,
+    "label": "Pralin",
+    "unit": "pincée",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 14,
+    "label": "Glace vanille",
+    "unit": "boule",
+    "category_id": 6,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 15,
+    "label": "Pâte brisée",
+    "unit": "rouleau",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 16,
+    "label": "Crème fraîche",
+    "unit": "mg",
+    "category_id": 6,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 17,
+    "label": "Lardons",
+    "unit": "mg",
+    "category_id": 3,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 18,
+    "label": "Poivre",
+    "unit": "pincée",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 19,
+    "label": "Muscade",
+    "unit": null,
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 20,
+    "label": "Fond de veau",
+    "unit": "ml",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 21,
+    "label": "Comté",
+    "unit": "mg",
+    "category_id": 6,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 22,
+    "label": "Maïzena",
+    "unit": null,
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 23,
+    "label": "Bar",
+    "unit": "mg",
+    "category_id": 2,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 24,
+    "label": "Chorizo",
+    "unit": "mg",
+    "category_id": 3,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 25,
+    "label": "Chapelure",
+    "unit": "mg",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 26,
+    "label": "Carotte",
+    "unit": "mg",
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 27,
+    "label": "Courgette",
+    "unit": null,
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 28,
+    "label": "Cumin",
+    "unit": "c.à.s",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 29,
+    "label": "Patate douce ",
+    "unit": "c.à.s",
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 30,
+    "label": "Echalotes",
+    "unit": null,
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 31,
+    "label": "Ail",
+    "unit": "gousses",
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 32,
+    "label": "Crème coco",
+    "unit": "ml",
+    "category_id": 6,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 33,
+    "label": "Pâte de curry rouge",
+    "unit": "mg",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 34,
+    "label": "Concentré de tomate",
+    "unit": "c.à.s",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 35,
+    "label": "Citron vertes",
+    "unit": null,
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 36,
+    "label": "Oignon",
+    "unit": null,
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 37,
+    "label": "Huile d'olive",
+    "unit": "c.à.s",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 38,
+    "label": "Lentilles vertes",
+    "unit": "mg",
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 39,
+    "label": "Curry",
+    "unit": "c.à.c",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 40,
+    "label": "Cube de bouillon de poule",
+    "unit": null,
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 41,
+    "label": "Laurier",
+    "unit": "feuille",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 42,
+    "label": "Potimarron",
+    "unit": null,
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 43,
+    "label": "Pomme de terre",
+    "unit": null,
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 44,
+    "label": "Poivron",
+    "unit": null,
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 45,
+    "label": "Tomate",
+    "unit": "mg",
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 46,
+    "label": "Safran",
+    "unit": "dose",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 47,
+    "label": "Riz",
+    "unit": "mg",
+    "category_id": 9,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 48,
+    "label": "Filet de poulet",
+    "unit": "mg",
+    "category_id": 3,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 49,
+    "label": "Calamar",
+    "unit": "mg",
+    "category_id": 2,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 50,
+    "label": "Moule",
+    "unit": "ml",
+    "category_id": 7,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 51,
+    "label": "Crevette",
+    "unit": null,
+    "category_id": 7,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 52,
+    "label": "Melon",
+    "unit": null,
+    "category_id": 4,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 53,
+    "label": "Thym",
+    "unit": "c.à.c",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 54,
+    "label": "Eau",
+    "unit": "c.à.s",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 55,
+    "label": "Salade",
+    "unit": "coeur",
+    "category_id": 1,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 56,
+    "label": "Feta",
+    "unit": "mg",
+    "category_id": 6,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 57,
+    "label": "Jambon cru",
+    "unit": "tranches",
+    "category_id": 3,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 58,
+    "label": "Jus de citron",
+    "unit": "c.à.s",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 59,
+    "label": "Moutarde",
+    "unit": "c.à.s",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 60,
+    "label": "Cheddar",
+    "unit": "mg",
+    "category_id": 6,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 61,
+    "label": "Bière brune",
+    "unit": "ml",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 62,
+    "label": "Pain de campagne",
+    "unit": null,
+    "category_id": 9,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 63,
+    "label": "Jambon blanc",
+    "unit": "tranches",
+    "category_id": 3,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 64,
+    "label": "Chocolat noir",
+    "unit": "mg",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 65,
+    "label": "Sucre semoule",
+    "unit": "mg",
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 66,
+    "label": "Fromage ail et fines herbes",
+    "unit": null,
+    "category_id": 6,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 67,
+    "label": "Fajitas",
+    "unit": null,
+    "category_id": 9,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 68,
+    "label": "Penne",
+    "unit": "mg",
+    "category_id": 9,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    },
+    {
+    "id": 69,
+    "label": "Herbe de provence",
+    "unit": null,
+    "category_id": 5,
+    "created_at": "2023-04-14T17:19:04.439Z",
+    "updated_at": null
+    }
+]
