@@ -9,8 +9,8 @@ class CoreModel{
     };
 
     /**
-     * 
-     * @returns 
+     * Returns all data from a table
+     * @returns Return array
      */
     static async findAll () {
         const query = `SELECT * FROM "${this.tableName}";`;
@@ -31,6 +31,11 @@ class CoreModel{
         return result;
     };
 
+    /**
+     * Returns one data from a table
+     * @param {int} id data id
+     * @returns Return object
+     */
     static async findOne (id) {
         const query = `SELECT * FROM ${this.tableName} WHERE id=${id};`;
 
