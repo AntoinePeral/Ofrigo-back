@@ -95,7 +95,7 @@ class Recipe extends CoreModel{
     };
 
     static async findOneRecipeWithAll (id) {
-        const query = `SELECT
+        /* const query = `SELECT
         r.id,
         r.label AS label,
         r.picture,
@@ -142,7 +142,9 @@ class Recipe extends CoreModel{
         JOIN recipe_has_ingredient_with_quantity riq ON riq.recipe_id = r.id
         WHERE r.id=${id}
         GROUP BY r.id
-        ORDER BY r.id ASC;`;
+        ORDER BY r.id ASC;`; */
+
+        const query = `SELECT * FROM getOneRecipe(${1})`
 
         try {
             const recipe = await ofrigo.query(query);
