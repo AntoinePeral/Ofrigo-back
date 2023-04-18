@@ -3,12 +3,13 @@ const { Message, Ingredient, Recipe, Tag, Category } = require("../../api/model"
 
 const homeController = {
 
-    async getHome(_, res){
+    async getHomePage(_, res){
         const itemsMenu = [ Category.tableName, Ingredient.tableName, Recipe.tableName, Message.tableName, Tag.tableName ];       
 
         res.render("home", {
             homeName: "Home",
             itemsMenu,
+            currentItem: null
         });
     },
 
