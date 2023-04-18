@@ -1,4 +1,4 @@
---  Fonction création de convert des quantity
+--  Create function in DB to convert quantities according to the levels reached by the units of measure
 CREATE OR REPLACE FUNCTION convertQuantity(r_id int, i_id int) RETURNS TABLE (ingredient_quantity text)  AS $$
 SELECT
 	CASE
@@ -22,7 +22,7 @@ WHERE riq.recipe_id=r_id
 AND riq.ingredient_id=i_id
 $$ LANGUAGE SQL;
 
--- Fonction Pour récupérer toutes les recettes
+-- Function to get all recipes and return their label, picture, rate, difficulté, time, ingredients, tags and steps. All is ordered and grouped by the recipe.id 
 CREATE OR REPLACE FUNCTION getAllRecipe ()
   RETURNS TABLE (
     id int,
@@ -88,7 +88,7 @@ $$ LANGUAGE SQL;
 
 
 
--- Function pour récuprer 1 recette
+-- Function to get on recipe by his id and return his label, picture, rate, difficulté, time, ingredients, tags and steps. All is ordered and grouped by the recipe.id 
 CREATE OR REPLACE FUNCTION getOneRecipe (r_id int)
   RETURNS TABLE (
     id int,

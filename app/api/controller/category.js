@@ -3,6 +3,11 @@ const { Category } = require("../model");
 
 const categoryController = {
 
+    /**
+     * Get all categories return json Objects in array
+     * @param {*} _ 
+     * @param {*} res use to response to the client
+     */
     async getAllCategory (_, res){
         try{
             const category = await Category.findAll();
@@ -14,6 +19,11 @@ const categoryController = {
         }
     },
 
+    /**
+     * Get one category by his id json return Object
+     * @param {*} req use request to get the params.id
+     * @param {*} res use to response to the client
+     */
     async getCategoryById (req, res){
         const categoryId = req.params.id;
 

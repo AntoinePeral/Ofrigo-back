@@ -1,7 +1,7 @@
 -- Deploy ofrigo:3.add_constraints to pg
 
 BEGIN;
-
+-- Create Domain to secure and define type in Database  
 CREATE DOMAIN email_validator as TEXT CHECK ( VALUE ~ '^[\w\-_]+(\.[\w\-_]+)?@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)?\.[a-z]{2,}$');
 CREATE DOMAIN password_validator as TEXT CHECK (VALUE ~ '^(?=.*[a-z])(?=.*[A-Z])(?=.*[#$@!%&*?.])[A-Za-z\d#$@!%&*?.]{8,30}$');
 CREATE DOMAIN lenghtName_validator as TEXT CHECK (VALUE ~ '^[a-zA-Z]{2,100}$');

@@ -3,6 +3,11 @@ const { Tag } = require("../model");
 
 const tagController = {
 
+    /**
+     * Get all tags and return json Objects in array
+     * @param {*} _ 
+     * @param {*} res use to response to the client
+     */
     async getAllTag (_, res){
         try{
             const tag = await Tag.findAll();
@@ -14,6 +19,11 @@ const tagController = {
         }
     },
 
+    /**
+     * Get one tag by his id and return json Object.
+     * @param {*} req use request to get the params.id
+     * @param {*} res use to response to the client
+     */
     async getTagById (req, res){
         const tagId = req.params.id;
 

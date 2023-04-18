@@ -3,6 +3,11 @@ const { Message } = require("../model");
 
 const messageController = {
 
+    /**
+     * Get all messages return json Objects in array
+     * @param {*} _ 
+     * @param {*} res use to response to the client
+     */
     async getAllMessage (_, res){
         try{
             const message = await Message.findAll();
@@ -14,6 +19,11 @@ const messageController = {
         }
     },
 
+    /**
+     * Get one message by his id and return json Object
+     * @param {*} req use request to get the params.id
+     * @param {*} res use to response to the client
+     */
     async getMessageById (req, res){
         const messageId = req.params.id;
 

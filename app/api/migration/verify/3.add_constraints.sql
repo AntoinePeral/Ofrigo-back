@@ -1,5 +1,5 @@
 -- Verify ofrigo:3.add_constraints on pg
-
+-- Verify all constraint by some inserts
 BEGIN;
 
 SELECT id,last_name,first_name,email,password,role FROM account WHERE false;

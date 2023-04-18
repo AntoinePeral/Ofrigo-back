@@ -1,5 +1,5 @@
 -- Revert ofrigo:3.add_constraints from pg
-
+-- Revert all Constraints
 BEGIN;
 
 ALTER TABLE account

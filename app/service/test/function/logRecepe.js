@@ -1,3 +1,7 @@
+/**
+ * Return all the formated elements from recipe to test what the front will see
+ * @param {*} recipe Recipe which will be requiried
+ */
 function logRecipe (recipe){
     let i = 1;
 

@@ -4,7 +4,7 @@ const { Pool } = pg;
 
 const ofrigo = new Pool();
 
-(async function(){
+(function(){
     try {
    ofrigo.connect();
    console.log("Connection has been established successfully.");
