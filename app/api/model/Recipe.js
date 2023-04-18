@@ -29,6 +29,10 @@ class Recipe extends CoreModel{
         this.tag = obj.tag;
     };
 
+    /**
+     * Returns all recipe whit ingredient, step and tag
+     * @returns Return array
+     */
     static async findAllRecipeWithAll () {
         const query = `SELECT * FROM getAllRecipe()`;
 
@@ -48,6 +52,11 @@ class Recipe extends CoreModel{
         return result;
     };
 
+    /**
+     * Returns one recipe whit ingredient, step and tag
+     * @param {int} id data id
+     * @returns Return object
+     */
     static async findOneRecipeWithAll (id) {
         const query = `SELECT * FROM getOneRecipe(${id})`;
 

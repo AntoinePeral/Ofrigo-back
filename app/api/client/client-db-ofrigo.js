@@ -4,6 +4,9 @@ const { Pool } = pg;
 
 const ofrigo = new Pool();
 
+/**
+ * Log connection successful or not
+ */
 (function(){
     try {
    ofrigo.connect();
