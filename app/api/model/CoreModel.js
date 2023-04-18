@@ -8,6 +8,10 @@ class CoreModel{
         this.id = obj.id;
     };
 
+    /**
+     * 
+     * @returns 
+     */
     static async findAll () {
         const query = `SELECT * FROM "${this.tableName}";`;
         const result = [];
