@@ -1,7 +1,7 @@
 %syntax-version=1.0.0
 %project=ofrigo
 
-1.init 2023-04-19T13:05:56Z Etudiant O'clock <student@teleporter> # create tables
-2.insert 2023-04-19T13:05:56Z Etudiant O'clock <student@teleporter> # insert data
-3.add_constraints 2023-04-19T13:05:57Z Etudiant O'clock <student@teleporter> # Add constraints
-4.add_functions 2023-04-19T13:05:57Z Etudiant O'clock <student@teleporter> # add functions
+1.init 2023-04-19T15:32:06Z Etudiant O'clock <student@teleporter> # create tables
+2.insert 2023-04-19T15:32:06Z Etudiant O'clock <student@teleporter> # insert data
+3.add_constraints 2023-04-19T15:32:07Z Etudiant O'clock <student@teleporter> # Add constraints
+4.add_functions 2023-04-19T15:32:07Z Etudiant O'clock <student@teleporter> # add functions

@@ -1,5 +1,6 @@
 const debug = require("debug")("accountController");
 const { Account } = require("../model");
+const bcrypt = require('bcrypt');
 
 const accountController = {
     /**
@@ -38,13 +39,24 @@ const accountController = {
 
     async addAccount (req, res, next) {
         const accountBody = req.body;
+
+        // Password encrypting
+        const saltRounds = 10;
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hashedPassword = await bcrypt.hash(accountBody.password, salt);
+
         const account = new Account(accountBody);
+
+        console.log("ACCOUNTBODY:", accountBody);
+        console.log("Account créée en instance:",account);
+        console.log(typeof(hashedPassword));
+        console.log(hashedPassword);
 
         debug(account);
 
         if (account) {
             await account.add({
-                'password': accountBody.password
+                'password': hashedPassword
         });
             debug(account);
 
