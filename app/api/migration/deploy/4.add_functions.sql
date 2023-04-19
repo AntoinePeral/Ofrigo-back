@@ -68,7 +68,15 @@ r.updated_at,
 ) AS ingredient,
 (
 	SELECT
-		json_agg(s.* ORDER BY s.created_at)
+		json_agg(
+			json_build_object(
+					'id', s.id,
+					'content', CONCAT(s.number, '.', s.content),
+					'recipe_id', s.recipe_id,
+					'created_at', s.created_at,
+					'updated_at', s.updated_at
+				)
+		)
 	FROM step s
 	WHERE s.recipe_id = r.id
 ) AS step,
@@ -84,9 +92,6 @@ JOIN recipe_has_ingredient_with_quantity riq ON riq.recipe_id = r.id
 GROUP BY r.id
 ORDER BY r.id ASC
 $$ LANGUAGE SQL;
-
-
-
 
 -- Function to get on recipe by his id and return his label, picture, rate, difficulté, time, ingredients, tags and steps. All is ordered and grouped by the recipe.id 
 CREATE OR REPLACE FUNCTION getOneRecipe (r_id int)
@@ -134,7 +139,15 @@ r.updated_at,
 ) AS ingredient,
 (
 	SELECT
-		json_agg(s.* ORDER BY s.created_at)
+		json_agg(
+			json_build_object(
+					'id', s.id,
+					'content', CONCAT(s.number, '.', s.content),
+					'recipe_id', s.recipe_id,
+					'created_at', s.created_at,
+					'updated_at', s.updated_at
+				)
+		)
 	FROM step s
 	WHERE s.recipe_id = r.id
 ) AS step,
