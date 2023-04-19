@@ -38,7 +38,7 @@ CREATE OR REPLACE FUNCTION getAllRecipe ()
     tag json ) AS $$
 SELECT
 r.id,
-r.label AS label,
+r.label,
 r.picture,
 r.rate,
 r.difficulty,
@@ -109,7 +109,7 @@ CREATE OR REPLACE FUNCTION getOneRecipe (r_id int)
     tag json ) AS $$
 SELECT
 r.id,
-r.label AS label,
+r.label,
 r.picture,
 r.rate,
 r.difficulty,
