@@ -1,12 +1,15 @@
 const debug = require("debug")("activeRecord");
 const ofrigo = require("../client/client-db-ofrigo");
+const Account = require("./Account");
 
 class CoreModel{
     id;
-    
+
     constructor (obj) {
-        this.id = obj.id;
-    };
+        if (obj.id) {
+            this.id = obj.id;
+        }
+    }
 
     /**
      * Returns all data from a table
@@ -49,37 +52,41 @@ class CoreModel{
         }
     };
 
-    /**
-     * Add in database
-     * @param {Object} body 
-     */
-    async add (body) {
+    async add (privateFields = null) {
         const fields = []; 
         const values = [];
         let counter = 1;
         const parameters = [];
 
-        Object.entries(this).forEach(([key,value])=>{
-            console.log("this:::::",   this);
-            if(key != "id"){
+        Object.keys(this).forEach(key =>{
+            if(key !== "id" && key !== "created_at" && key !== "updated_at"){
                 fields.push(key);
+            }
+        });
+
+        Object.values(this).forEach(value =>{
+            if(value !== undefined){
                 values.push(value);
                 parameters.push(`$${counter}`);
                 counter++;
             }
         });
 
-        debug(this.constructor);
+        if(privateFields){
+            Object.entries(privateFields).forEach(([field, value]) =>{
+                fields.push(field);
+                values.push(value);
+                parameters.push(`$${counter}`);
+                counter++;
+            });
+        }
 
-        const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING id;`;
-        debug(query)
+        const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()})`;
         let response;
 
         try {
-            response = await ofrigo.query(query,values);
+            response = await ofrigo.query(query, values);
             debug(response);
-            this.id = response.rows[0].id;
-            debug(response.rows[0].id)
         } catch (error) {
             console.log(error);
         }
@@ -89,12 +96,10 @@ class CoreModel{
      * Update in database
      * @param {Object} body 
      */
-    async update (body) {
+    async update () {
         const fields = []; 
         const values = [];
         let counter = 1;
-
-        values.push(this.id);
 
         Object.entries(this).forEach(([key,value])=>{
             if(key != "id"){
@@ -109,7 +114,6 @@ class CoreModel{
         await ofrigo.query(query, values);
     };
 
-
     /**
      * Delete in database
      * @param {int} id 
@@ -122,10 +126,12 @@ class CoreModel{
         };
         let response;
 
+        console.log(query);
+
         try {
             response = await ofrigo.query(query);
         } catch (error) {
-            console.log(error);
+            console.log("Erreur");
         }
 
         return response.rowCount;
