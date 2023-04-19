@@ -9,8 +9,21 @@ app.set('views', 'app/back/views');
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('./app/back/asset'));
+app.use(express.static("./app/back/asset"));
 
-app.use(account, category, home, ingredient, recipe, message, tag, adminTag, adminRecipe, adminCategory, adminMessage, adminIngredient);
+app.use(
+    account, 
+    category, 
+    home, 
+    ingredient, 
+    recipe, 
+    message, 
+    tag, 
+    adminTag, 
+    adminRecipe, 
+    adminCategory, 
+    adminMessage, 
+    adminIngredient
+);
 
 module.exports = app;

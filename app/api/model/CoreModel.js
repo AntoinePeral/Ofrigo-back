@@ -37,7 +37,11 @@ class CoreModel{
      * @returns Return object
      */
     static async findOne (id) {
-        const query = `SELECT * FROM ${this.tableName} WHERE id=${id};`;
+        //const query = `SELECT * FROM ${this.tableName} WHERE id=${id};`;
+        const query = {
+            text: `SELECT * FROM "${this.tableName}" WHERE id=$1;`,
+            values: [id]
+        };
 
         try {
             const response = await ofrigo.query(query);

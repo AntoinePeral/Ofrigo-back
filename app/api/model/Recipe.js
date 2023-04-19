@@ -58,7 +58,10 @@ class Recipe extends CoreModel{
      * @returns Return object
      */
     static async findOneRecipeWithAll (id) {
-        const query = `SELECT * FROM getOneRecipe(${id})`;
+        const query = {
+            text: `SELECT * FROM getOneRecipe($1);`,
+            values : [id]
+        };
 
         try {
             const recipe = await ofrigo.query(query);
