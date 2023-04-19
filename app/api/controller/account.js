@@ -36,25 +36,22 @@ const accountController = {
         }
     },
 
-    /**
-     * Add account to data
-     * @param {*} req request
-     * @param {*} res response
-     */
-    async addAccount (req, res, next){
+    async addAccount (req, res, next) {
         const accountBody = req.body;
         const account = new Account(accountBody);
+
         debug(account);
-    
+
         if (account) {
-            await account.add();
+            await account.add({
+                'password': accountBody.password
+        });
             debug(account);
-    
+
             res.status(200).json(account);
         }
         else {
-            // console.log(error);
-            console.log("erreur");
+            next(new APIError("Bad request", 500));
         }
     },
 
@@ -67,18 +64,19 @@ const accountController = {
     async updateAccount (req, res, next) {
         const AccountId = req.params.id;
         const accountBody = req.body;
-        let account = await Post.findById(accountBody);
+        let account = await Account.findOne(AccountId);
+        
         debug(account);
 
+        for (const key in accountBody) {
+            account[key] = accountBody[key];
+        }
+
         if (account) {
-            for (const key in req.body) {
-                account[key] = req.body[key];
-            }
-            debug(account);
             await account.update();
-            const account = await Account.findById(AccountId);
-            debug(account);
-            res.status(200).json(account);
+            const newAccount = await Account.findOne(AccountId);
+            debug(newAccount);
+            res.status(200).json(newAccount);
         }
         else {
             // next(new APIError("Bad request", 500));

@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require('cors');
 const app = express();
 const cors = require('cors');
 const { account, authentification, category, ingredient, recipe, message, tag } = require("./api/router");
