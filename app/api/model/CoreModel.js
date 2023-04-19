@@ -48,6 +48,83 @@ class CoreModel{
             console.log(error);
         }
     };
+
+    /**
+     * Add in database
+     * @param {Object} body 
+     */
+    async add (body) {
+        const fields = []; 
+        const values = [];
+        let counter = 1;
+        const parameters = [];
+
+        Object.entries(this).forEach(([key,value])=>{
+            fields.push(key);
+            values.push(value);
+            parameters.push(`$${counter}`);
+            counter++;
+        });
+
+        debug(this.constructor);
+
+        const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING id;`;
+        let response;
+
+        try {
+            response = await ofrigo.query(query,values);
+            debug(response);
+            this.id = response.rows[0].id;
+        } catch (error) {
+            
+        }
+    };
+
+    /**
+     * Update in database
+     * @param {Object} body 
+     */
+    async update (body) {
+        const fields = []; 
+        const values = [];
+        let counter = 1;
+
+        values.push(this.id);
+
+        Object.entries(this).forEach(([key,value])=>{
+            if(key != "id"){
+                fields.push(key + "=$" + counter);
+                values.push(value);
+                counter++;
+            }
+        });
+
+        const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}';`;
+
+        await ofrigo.query(query, values);
+    };
+
+
+    /**
+     * Delete in database
+     * @param {int} id 
+     * @returns 
+     */
+    static async delete (id) {
+        const query = {
+            text: `DELETE FROM "${this.tableName}" WHERE "id"=$1;`,
+            values: [id]
+        };
+        let response;
+
+        try {
+            response = await ofrigo.query(query);
+        } catch (error) {
+            console.log(error);
+        }
+
+        return response.rowCount;
+    };
 };
 
 module.exports = CoreModel;
