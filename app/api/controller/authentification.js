@@ -1,22 +1,29 @@
 const debug = require("debug")("authentificationController");
 const { Account } = require("../model");
+const bcrypt = require('bcrypt');
 
 const authentificationController = {
-    async addAccount (req, res){
-        const accountBody = req.body;
-        const account = new Account(accountBody);
-        debug(account);
-    
-        if (account) {
-            await account.add();
-            debug(account);
-    
-            res.status(200).json(account);
+
+  async login(req, res, next) {
+    const { email, password} = req.body;
+
+    try{
+      const account = await Account.getByEmail(email);
+      if(!account) {
+        next(new APIError('Couple login/mot de passe est incorrect.', 401));
+      } else {
+        const hasMatchingPassword = await bcrypt.compare(password, user.password);
+        if(!hasMatchingPassword) {
+          next(new APIError('Couple login/mot de passe est incorrect.', 401));
         }
-        else {
-            console.log(error);
-        }
-    },
+      }
+    }
+    catch{
+      next(new APIError(`Erreur interne : ${error}`,500));
+    }
+    
+
+  }
 
 };
 

@@ -47,10 +47,11 @@ const accountController = {
         debug(account);
     
         if (account) {
-            await account.add();
+            await account.add(account);
             debug(account);
     
             res.status(200).json(account);
+            // debug(res.json(account));
         }
         else {
             // console.log(error);

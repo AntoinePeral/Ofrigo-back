@@ -7,8 +7,8 @@ class Account extends CoreModel{
     email;
     #password;
     #role;
-    created_at;
-    updated_at;
+    // created_at;
+    // updated_at;
 
     constructor(obj){
         super(obj);
@@ -18,9 +18,10 @@ class Account extends CoreModel{
         this.email = obj.email;
         this.#password = obj.password;
         this.#role = obj.role;
-        this.created_at = obj.created_at;
-        this.updated_at = obj.updated_at;
+        // this.created_at = obj.created_at;
+        // this.updated_at = obj.updated_at;
     };
+
 };
 
 module.exports = Account;

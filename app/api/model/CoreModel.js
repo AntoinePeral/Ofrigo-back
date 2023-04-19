@@ -60,23 +60,28 @@ class CoreModel{
         const parameters = [];
 
         Object.entries(this).forEach(([key,value])=>{
-            fields.push(key);
-            values.push(value);
-            parameters.push(`$${counter}`);
-            counter++;
+            console.log("this:::::",   this);
+            if(key != "id"){
+                fields.push(key);
+                values.push(value);
+                parameters.push(`$${counter}`);
+                counter++;
+            }
         });
 
         debug(this.constructor);
 
         const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING id;`;
+        debug(query)
         let response;
 
         try {
             response = await ofrigo.query(query,values);
             debug(response);
             this.id = response.rows[0].id;
+            debug(response.rows[0].id)
         } catch (error) {
-            
+            console.log(error);
         }
     };
 
