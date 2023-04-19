@@ -1,0 +1,10 @@
+<div class="leftMenu">
+  <aside class="leftMenu_nav">
+    <ul>
+        <li><a href="/">Accueil</a></li>
+        <% for(const item of itemsMenu) { %>
+            <li><a href="/admin/<%=item%>"><%= item.charAt(0).toUpperCase()+ item.slice(1) %></a></li>
+        <% } %>
+    </ul>
+  </aside>
+</div>

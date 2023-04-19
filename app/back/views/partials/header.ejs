@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" /css/style.css">
+
     <title><%= homeName %></title>
 </head>
-<body>
-    <header>
-    
+<body class="body">
+    <header class="header">
+        <div class="logo">
+            <img src="../../picture/Bowl-cake-moelleux-chocolat-noisettes.jpg" alt="Logo à rajouter">
+        </div>
+        <% if (!currentItem) { %>
+            <h1>Dashboard</h1>
+        <%} else{  %>
+            <h1><%= currentItem.charAt(0).toUpperCase()+ currentItem.slice(1) %></h1>
+        <% } %>
+        <a href="#">Se connecter</a>              
     </header>
 <%- include('leftMenu') %>

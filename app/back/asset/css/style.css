@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/*========== ALL ==========*/
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+}
+
+/*========== BODY ==========*/
+
+.body{
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(8, auto);
+  grid-template-areas: 
+  "top top top top top"
+  "left right right right right"
+  "left right right right right"
+  "left right right right right"
+  "left right right right right"
+  "left right right right right"
+  "left right right right right"
+  "bottom bottom bottom bottom bottom"
+  ;
+  height: 100vh;
+}
+
+/*========== HEADER ==========*/
+
+.header{
+  grid-area: top;
+  background-color: #ffa04e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  height: 50px;
+  width: 50px;
+}
+
+.logo img {
+  max-width: 50px;
+  max-height: auto;
+}
+
+/*========== LEFT-MENU ==========*/
+
+.leftMenu{
+  grid-area: left;
+  background-color: #45464c;
+  display: flex;
+  justify-content: space-around;
+}
+
+.leftMenu_nav{
+  display: flex;
+}
+
+.leftMenu ul{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.leftMenu li{
+  display: flex;
+  flex-direction: row;
+}
+
+.leftMenu a{
+  font-size: 1rem;
+  color: white;
+}
+
+/*========== SECTION ==========*/
+
+.section{
+  grid-area: right;
+}
+
+/*========== FOOTER ==========*/
+
+footer{
+  grid-area: bottom;
+  background-color: #ffa04e;
+}
+
+footer ul{
+  display: flex;
+  justify-content: space-evenly;
+}
