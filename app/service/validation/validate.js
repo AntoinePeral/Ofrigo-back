@@ -74,9 +74,7 @@ const validationModule = {
     validateMessage(param){
         return (req, _, next) => {
             const { error } = messageSchema.validate(req[param]);
-            console.log(req[param]);
 
-           
             if (error) {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
