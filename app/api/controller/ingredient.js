@@ -1,4 +1,5 @@
 const debug = require("debug")("ingredientController");
+const APIError = require('../../service/error/APIError');
 const { Ingredient } = require("../model");
 
 const ingredientController = {

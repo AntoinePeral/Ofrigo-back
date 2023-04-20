@@ -1,4 +1,5 @@
 const debug = require("debug")("messageController");
+const APIError = require('../../service/error/APIError');
 const { Message } = require("../model");
 
 const messageController = {

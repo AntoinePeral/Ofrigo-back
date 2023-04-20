@@ -1,4 +1,5 @@
 const debug = require("debug")("accountController");
+const APIError = require('../../service/error/APIError');
 const { Account } = require("../model");
 const bcrypt = require('bcrypt');
 
