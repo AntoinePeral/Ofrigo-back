@@ -1,4 +1,5 @@
 const CoreModel = require("./CoreModel");
+const ofrigo = require("../client/client-db-ofrigo");
 
 class Account extends CoreModel{
     static tableName = 'account';
@@ -24,6 +25,22 @@ class Account extends CoreModel{
 
     get password() {
         return this.#password;
+    };
+
+    /**
+     * Get an account information in the database by his email
+     * @param {string} email instance's email
+     * @returns an instance
+     */
+    static async getByEmail(email) {
+        const preparedQuery = {
+            text : `SELECT * FROM account WHERE email = $1`,
+            values: [email]
+        }
+        console.log(preparedQuery);
+        const result = await ofrigo.query(preparedQuery);
+
+        return result.rows[0];
     };
 };
 
