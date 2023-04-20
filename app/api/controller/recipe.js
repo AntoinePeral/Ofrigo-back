@@ -26,7 +26,7 @@ const recipeController = {
      * @param {*} req use request to get the params.id
      * @param {*} res use to response to the client
      */
-    async getRecipeById (req, res){
+    async getRecipeById (req, res, next){
         const recipeId = req.params.id;
         const recipe = await Recipe.findOneRecipeWithAll(recipeId);
 

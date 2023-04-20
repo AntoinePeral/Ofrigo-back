@@ -18,6 +18,7 @@ const validationModule = {
             const { error } = accountSchema.validate(req[param]);
 
             if (error) {
+                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else {
@@ -31,6 +32,7 @@ const validationModule = {
             const { error } = categorySchema.validate(req[param]);
 
             if (error) {
+                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else {
@@ -44,6 +46,7 @@ const validationModule = {
             const { error } = ingredientSchema.validate(req[param]);
 
             if (error) {
+                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else {
@@ -57,6 +60,7 @@ const validationModule = {
             const { error } = messageSchema.validate(req[param]);
 
             if (error) {
+                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else {
@@ -70,6 +74,7 @@ const validationModule = {
             const { error } = tagSchema.validate(req[param]);
 
             if (error) {
+                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else {
@@ -83,6 +88,7 @@ const validationModule = {
             const { error } = stepSchema.validate(req[param]);
 
             if (error) {
+                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else {
@@ -96,6 +102,7 @@ const validationModule = {
             const { error } = account_has_ingredientSchema.validate(req[param]);
 
             if (error) {
+                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else {
@@ -109,6 +116,7 @@ const validationModule = {
             const { error } = recipe_has_ingredient_with_quantity.validate(req[param]);
 
             if (error) {
+                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else {
@@ -122,6 +130,7 @@ const validationModule = {
             const { error } = recipe_has_tag.validate(req[param]);
 
             if (error) {
+                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else {
