@@ -9,13 +9,14 @@ const categoryController = {
      * @param {*} res use to response to the client
      */
     async getAllCategory (_, res){
-        try{
-            const category = await Category.findAll();
-            debug(category);
+        const category = await Category.findAll();
 
+        if(category){
+            debug(category);
             res.status(200).json(category);
-        }catch(error){
-            console.log(error);
+        }
+        else{
+            next(new APIError("Bad request", 500));
         }
     },
 
@@ -26,14 +27,64 @@ const categoryController = {
      */
     async getCategoryById (req, res){
         const categoryId = req.params.id;
+        const category = await Category.findOne(categoryId);
 
-        try{
-            const category = await Category.findOne(categoryId);
+        if(category){
+            debug(category);
+            res.status(200).json(category);
+        }
+        else{
+            next(new APIError("Bad request", 500));
+        }
+    },
+
+    async addCategory (req, res, next) {
+        const categoryBody = req.body;
+        const category = new Category(categoryBody);
+
+        if(category){
+            debug(category);
+            await category.add();
+            debug(category);
+            res.status(200).json(category);
+        }
+        else{
+            next(new APIError("Bad request", 500));
+        }
+    },
+
+    async updateCategory (req, res, next) {
+        const categoryId = req.params.id;
+        const categoryBody = req.body;
+        let category = await Category.findOne(categoryId);
+
+        if(category){
             debug(category);
 
-            res.status(200).json(category);
-        }catch(error){
-            console.log(error);
+            for (const key in categoryBody) {
+                category[key] = categoryBody[key];
+            }
+
+            await category.update();
+            const newCategory = await Category.findOne(categoryId);
+            debug(newCategory);
+            res.status(200).json(newCategory);
+        }
+        else{
+            next(new APIError("Bad request", 500));
+        }
+    },
+
+    async deleteCategory (req, res, next) {
+        const categoryId = req.params.id;
+        const response = await Category.delete(categoryId);
+
+        if(response){
+            debug(response);
+            res.status(200).json('Succes');
+        }
+        else{
+            next(new APIError("Bad request", 500));
         }
     },
     

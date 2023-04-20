@@ -1,6 +1,5 @@
 const debug = require("debug")("activeRecord");
 const ofrigo = require("../client/client-db-ofrigo");
-const Account = require("./Account");
 
 class CoreModel{
     id;
@@ -58,13 +57,10 @@ class CoreModel{
         let counter = 1;
         const parameters = [];
 
-        Object.keys(this).forEach(key =>{
+        Object.entries(this).forEach(([key, value])=>{
             if(key !== "id" && key !== "created_at" && key !== "updated_at"){
                 fields.push(key);
             }
-        });
-
-        Object.values(this).forEach(value =>{
             if(value !== undefined){
                 values.push(value);
                 parameters.push(`$${counter}`);

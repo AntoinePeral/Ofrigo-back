@@ -9,13 +9,14 @@ const tagController = {
      * @param {*} res use to response to the client
      */
     async getAllTag (_, res){
-        try{
-            const tag = await Tag.findAll();
-            debug(tag);
+        const tag = await Tag.findAll();
 
+        if(tag){
+            debug(tag);
             res.status(200).json(tag);
-        }catch(error){
-            console.log(error);
+        }
+        else{
+            next(new APIError("Bad request", 500));
         }
     },
 
@@ -26,14 +27,64 @@ const tagController = {
      */
     async getTagById (req, res){
         const tagId = req.params.id;
+        const tag = await Tag.findOne(tagId);
 
-        try{
-            const tag = await Tag.findOne(tagId);
+        if(tag){
+            debug(tag);
+            res.status(200).json(tag);
+        }
+        else{
+            next(new APIError("Bad request", 500));
+        }
+    },
+
+    async addTag (req, res, next) {
+        const tagBody = req.body;
+        const tag = new Tag(tagBody);
+
+        if(tag){
+            debug(tag);
+            await tag.add();
+            debug(tag);
+            res.status(200).json(tag);
+        }
+        else{
+            next(new APIError("Bad request", 500));
+        }
+    },
+
+    async updateTag (req, res, next) {
+        const tagId = req.params.id;
+        const tagBody = req.body;
+        let tag = await Tag.findOne(tagId);
+
+        if(tag){
             debug(tag);
 
-            res.status(200).json(tag);
-        }catch(error){
-            console.log(error);
+            for (const key in tagBody) {
+                tag[key] = tagBody[key];
+            }
+
+            await tag.update();
+            const newTag = await Tag.findOne(tagId);
+            debug(newTag);
+            res.status(200).json(newTag);
+        }
+        else{
+            next(new APIError("Bad request", 500));
+        }
+    },
+
+    async deleteTag (req, res, next) {
+        const tagId = req.params.id;
+        const response = await Tag.delete(tagId);
+
+        if(response){
+            debug(response);
+            res.status(200).json('Succes');
+        }
+        else{
+            next(new APIError("Bad request", 500));
         }
     },
     
