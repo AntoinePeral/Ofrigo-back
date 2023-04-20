@@ -39,6 +39,7 @@ class Account extends CoreModel{
         }
         
         const result = await ofrigo.query(query);
+        console.log(result);
 
         return result.rows[0];
     };

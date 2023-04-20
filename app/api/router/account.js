@@ -2,11 +2,14 @@ const { Router } = require("express");
 const accountRouter = Router();
 const { account } = require("../controller");
 const validationModule = require("../../service/validation/validate");
+const authentificationModule = require ('../../service/middleware/authToken');
 
 accountRouter.get("/account", account.getAllAccount);
 accountRouter.get("/account/:id(\\d+)", account.getAccountById);
 accountRouter.post("/register", validationModule.validateUserAccount('body'), account.addAccount);
-accountRouter.put("/profile/:id(\\d+)", validationModule.validateUserAccount('body'), account.updateAccount);
-accountRouter.delete("/profile/:id(\\d+)", account.deleteAccount);
+
+accountRouter.get("/me/profile",authentificationModule.authenticateToken, account.getUserAccount)
+accountRouter.put("/profile/:id(\\d+)", authentificationModule.authenticateToken,validationModule.validateUserAccount('body'), account.updateAccount);
+accountRouter.delete("/profile/:id(\\d+)", authentificationModule.authenticateToken, account.deleteAccount);
 
 module.exports = accountRouter;
