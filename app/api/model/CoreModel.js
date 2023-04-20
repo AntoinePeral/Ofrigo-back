@@ -122,8 +122,6 @@ class CoreModel{
         };
         let response;
 
-        console.log(query);
-
         try {
             response = await ofrigo.query(query);
             debug(response)

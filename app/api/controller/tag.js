@@ -1,4 +1,5 @@
 const debug = require("debug")("tagController");
+const APIError = require('../../service/error/APIError');
 const { Tag } = require("../model");
 
 const tagController = {
@@ -59,8 +60,10 @@ const tagController = {
         let tag = await Tag.findOne(tagId);
 
         if(tag){
-            for (const key in tagBody) {
-                tag[key] = tagBody[key];
+            debug(tag);
+
+            for (const value in tagBody) {
+                tag[value] = tagBody[value];
             }
 
             await tag.update();

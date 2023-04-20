@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
 const errorModule = require("./service/error/errorHandling");
 const { account, authentification, category, ingredient, recipe, message, tag } = require("./api/router");
 

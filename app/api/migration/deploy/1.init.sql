@@ -36,7 +36,7 @@ CREATE TABLE ingredient (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     label TEXT NOT NULL,
     unit measure,
-    category_id INTEGER NOT NULL REFERENCES category("id"),
+    category_id INTEGER NOT NULL REFERENCES category("id") ON UPDATE CASCADE ON DELETE CASCADE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ
 );
@@ -56,7 +56,7 @@ CREATE TABLE step (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     content TEXT NOT NULL,
     number INTEGER NOT NULL,
-    recipe_id INTEGER NOT NULL REFERENCES recipe("id"),
+    recipe_id INTEGER NOT NULL REFERENCES recipe("id") ON UPDATE CASCADE ON DELETE CASCADE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ
 );
@@ -69,24 +69,24 @@ CREATE TABLE tag (
 );
 
 CREATE TABLE account_has_ingredient (
-    account_id INTEGER NOT NULL REFERENCES account("id"),
-    ingredient_id INTEGER NOT NULL REFERENCES ingredient("id"),
+    account_id INTEGER NOT NULL REFERENCES account("id") ON UPDATE CASCADE ON DELETE CASCADE,
+    ingredient_id INTEGER NOT NULL REFERENCES ingredient("id") ON UPDATE CASCADE ON DELETE CASCADE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ
 );
 
 CREATE TABLE recipe_has_ingredient_with_quantity (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    recipe_id INTEGER NOT NULL REFERENCES recipe("id"),
-    ingredient_id INTEGER NOT NULL REFERENCES ingredient("id"),
+    recipe_id INTEGER NOT NULL REFERENCES recipe("id") ON UPDATE CASCADE ON DELETE CASCADE,
+    ingredient_id INTEGER NOT NULL REFERENCES ingredient("id") ON UPDATE CASCADE ON DELETE CASCADE,
     ingredient_quantity NUMERIC,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ
 );
 
 CREATE TABLE recipe_has_tag (
-    recipe_id INTEGER NOT NULL REFERENCES recipe("id"),
-    tag_id INTEGER NOT NULL REFERENCES tag("id"),
+    recipe_id INTEGER NOT NULL REFERENCES recipe("id") ON UPDATE CASCADE ON DELETE CASCADE,
+    tag_id INTEGER NOT NULL REFERENCES tag("id") ON UPDATE CASCADE ON DELETE CASCADE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ
 );
