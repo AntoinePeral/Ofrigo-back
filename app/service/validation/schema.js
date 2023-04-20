@@ -1,18 +1,26 @@
 const Joi = require("joi");
 
 const nameFormat = /^[a-zA-Z\u00C0-\u00FF-]{2,100}$/u;
-const emailFormat = /^[a-zA-Z\u00C0-\u00FF ]*$/u;
+const emailFormat = /^[\w\-_]+(\.[\w\-_]+)?@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)?\.[a-z]{2,}$/u;
 const passwordFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&\/$.#!?§:;+\-%])[A-Za-z\d!?:;@$!%*?&\/$.#%\-]{8,}$/u;
 const roleFormat = /^(user|admin)$/u;
-const titleFormat = /^[a-zA-Z0-9_,.!-]{2,100}$/u;
+const titleFormat = /^[a-zA-Z0-9\s_,.!-]{2,100}$/u;
 const unitFormat = /^[a-z.à-ÿ]{1,20}$/u;
 
-const accountSchema = Joi.object({
+const adminAccountSchema = Joi.object({
     last_name: Joi.string().pattern(nameFormat).required(),
     first_name: Joi.string().pattern(nameFormat).required(),
     email: Joi.string().pattern(emailFormat).required(),
     password: Joi.string().pattern(passwordFormat).required(),
     role: Joi.string().pattern(roleFormat).required()
+});
+
+const userAccountSchema = Joi.object({
+    last_name: Joi.string().pattern(nameFormat).required(),
+    first_name: Joi.string().pattern(nameFormat).required(),
+    email: Joi.string().pattern(emailFormat).required(),
+    password: Joi.string().pattern(passwordFormat).required(),
+    role: Joi.string().pattern(roleFormat)
 });
 
 const categorySchema = Joi.object({
@@ -58,7 +66,8 @@ const recipe_has_tag = Joi.object({
 });
 
 module.exports =  { 
-    accountSchema, 
+    adminAccountSchema,
+    userAccountSchema, 
     categorySchema,
     ingredientSchema,
     messageSchema,

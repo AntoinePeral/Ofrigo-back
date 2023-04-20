@@ -75,7 +75,7 @@ const accountController = {
             }
 
             await account.update();
-            debug(newAccount);
+        
             const newAccount = await Account.findOne(AccountId);
             res.status(200).json(newAccount);
         }

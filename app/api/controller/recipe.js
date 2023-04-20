@@ -26,17 +26,20 @@ const recipeController = {
      * @param {*} req use request to get the params.id
      * @param {*} res use to response to the client
      */
-    async getRecipeById (req, res){
+    async getRecipeById (req, res, next){
         const recipeId = req.params.id;
         const recipe = await Recipe.findOneRecipeWithAll(recipeId);
+        console.log("test", recipe);
 
         if(recipe){
             debug(recipe);
             res.status(200).json(recipe);
         }
         else{
-            next(new APIError("Bad request", 500));
+            console.log("Hello");
+            next(new APIError("message",400));
         }
+
     },
 
     async addRecipe (req, res, next) {

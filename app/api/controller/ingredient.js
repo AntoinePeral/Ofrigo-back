@@ -58,6 +58,7 @@ const ingredientController = {
         const ingredientId = req.params.id;
         const ingredientBody = req.body;
         let ingredient = await Ingredient.findOne(ingredientId);
+        console.log(ingredient);
 
         if(ingredient){
             debug(ingredient);

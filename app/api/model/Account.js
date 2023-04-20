@@ -7,7 +7,7 @@ class Account extends CoreModel{
     first_name;
     email;
     #password;
-    #role;
+    role;
     created_at;
     updated_at;
 
@@ -18,7 +18,7 @@ class Account extends CoreModel{
         this.first_name = obj.first_name;
         this.email = obj.email;
         this.#password = obj.password;
-        this.#role = obj.role;
+        this.role = obj.role;
         this.created_at = obj.created_at;
         this.updated_at = obj.updated_at;
     };
