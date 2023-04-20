@@ -7,12 +7,20 @@ const roleFormat = /^(user|admin)$/u;
 const titleFormat = /^[a-zA-Z0-9\s_,.!-]{2,100}$/u;
 const unitFormat = /^[a-z.à-ÿ]{1,20}$/u;
 
-const accountSchema = Joi.object({
+const adminAccountSchema = Joi.object({
     last_name: Joi.string().pattern(nameFormat).required(),
     first_name: Joi.string().pattern(nameFormat).required(),
     email: Joi.string().pattern(emailFormat).required(),
     password: Joi.string().pattern(passwordFormat).required(),
     role: Joi.string().pattern(roleFormat).required()
+});
+
+const userAccountSchema = Joi.object({
+    last_name: Joi.string().pattern(nameFormat).required(),
+    first_name: Joi.string().pattern(nameFormat).required(),
+    email: Joi.string().pattern(emailFormat).required(),
+    password: Joi.string().pattern(passwordFormat).required(),
+    role: Joi.string().pattern(roleFormat)
 });
 
 const categorySchema = Joi.object({
@@ -58,7 +66,8 @@ const recipe_has_tag = Joi.object({
 });
 
 module.exports =  { 
-    accountSchema, 
+    adminAccountSchema,
+    userAccountSchema, 
     categorySchema,
     ingredientSchema,
     messageSchema,

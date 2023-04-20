@@ -58,7 +58,7 @@ class CoreModel{
         const parameters = [];
 
         Object.entries(this).forEach(([key, value])=>{
-            if(key !== "id" && key !== "created_at" && key !== "updated_at"){
+            if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "role"){
                 fields.push(key);
             }
             if(value !== undefined){
@@ -79,7 +79,7 @@ class CoreModel{
 
         const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()})`;
         let response;
-
+        console.log(query);
         try {
             response = await ofrigo.query(query, values);
             debug(response);
@@ -98,7 +98,7 @@ class CoreModel{
         let counter = 1;
 
         Object.entries(this).forEach(([key,value])=>{
-            if(key != "id"){
+            if(key != "id" && key != "created_at"){
                 fields.push(key + "=$" + counter);
                 values.push(value);
                 counter++;
@@ -106,6 +106,8 @@ class CoreModel{
         });
 
         const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}';`;
+        console.log(query);
+        console.log(values);
 
         await ofrigo.query(query, values);
     };
@@ -129,7 +131,7 @@ class CoreModel{
             console.log("Erreur");
         }
 
-        console.log(response)
+        console.log("response:",response)
         return response.rowCount;
     };
 };

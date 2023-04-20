@@ -35,13 +35,15 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-            next(new APIError("Bad request", 500));
+            next(new APIError("Bad request", 400));
         }
     },
 
     async addMessage (req, res, next) {
         const messageBody = req.body;
+        console.log(messageBody);
         const message = new Message(messageBody);
+        debug(message)
 
         if(message){
             debug(message);
@@ -50,7 +52,7 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-            next(new APIError("Bad request", 500));
+            next(new APIError("Bad request", 400));
         }
     },
 
