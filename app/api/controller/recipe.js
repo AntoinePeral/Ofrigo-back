@@ -37,7 +37,7 @@ const recipeController = {
         }
         else{
             console.log("Hello");
-            next(new APIError("message",400));
+            next(new APIError("hello", 401));
         }
 
     },
@@ -76,7 +76,7 @@ const recipeController = {
             res.status(200).json(newRecipe);
         }
         else{
-            next(new APIError("Bad request", 500));
+            next(new APIError("Bad request", 401));
         }
     },
 

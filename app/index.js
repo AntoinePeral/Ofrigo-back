@@ -7,7 +7,7 @@ const { account, authentification, category, ingredient, recipe, message, tag } 
 app.use(cors());
 app.use(express.json());
 
-app.use(account,authentification, category, ingredient, recipe, message, tag);
+app.use(account, authentification, category, ingredient, recipe, message, tag);
 app.use(errorModule._404);
 app.use(errorModule.manage);
 

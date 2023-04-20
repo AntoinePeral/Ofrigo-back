@@ -2,6 +2,7 @@ const debug = require("debug")("accountController");
 const APIError = require('../../service/error/APIError');
 const { Account } = require("../model");
 const bcrypt = require('bcrypt');
+const authentificationModule = require ('../../service/middleware/authToken');
 
 const accountController = {
 
@@ -39,6 +40,20 @@ const accountController = {
             next(new APIError("Bad request", 500));
         }
     },
+    async getUserAccount(req, res) {
+        if(!req.user.id) {
+            res.status(400).json({error: "User not provided."})
+        }
+        const account = await Account.findOne(req.user.id)
+
+        if(account){
+            debug(account);
+            res.status(200).json(account);
+        }
+        else{
+            next(new APIError("Bad request", 500));
+        }
+    },
 
     async addAccount (req, res, next) {
         const accountBody = req.body;
@@ -49,17 +64,22 @@ const accountController = {
         const hashedPassword = await bcrypt.hash(accountBody.password, salt);
         debug(hashedPassword);
 
-        const account = new Account(accountBody);
+        let account = new Account(accountBody);
 
         if(account){
+            // debug(account);
+            account = await account.add({'password': hashedPassword});
             debug(account);
-            await account.add({'password': hashedPassword});
-            debug(account);
-            res.status(200).json(account);
         }
         else{
             next(new APIError("Bad request", 500));
         }
+
+        const accessToken = authentificationModule.generateAccessToken(account);
+        return res.status(200).json({
+            accessToken,
+            account
+        });
     },
 
     async updateAccount (req, res, next) {

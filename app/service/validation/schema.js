@@ -19,8 +19,7 @@ const userAccountSchema = Joi.object({
     last_name: Joi.string().pattern(nameFormat).required(),
     first_name: Joi.string().pattern(nameFormat).required(),
     email: Joi.string().pattern(emailFormat).required(),
-    password: Joi.string().pattern(passwordFormat).required(),
-    role: Joi.string().pattern(roleFormat)
+    password: Joi.string().pattern(passwordFormat).required()
 });
 
 const categorySchema = Joi.object({

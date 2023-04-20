@@ -77,15 +77,16 @@ class CoreModel{
             });
         }
 
-        const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()})`;
+        const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;
         let response;
-        console.log(query);
         try {
             response = await ofrigo.query(query, values);
             debug(response);
         } catch (error) {
             console.log(error);
         }
+
+        return response.rows[0];
     };
 
     /**
@@ -105,11 +106,10 @@ class CoreModel{
             }
         });
 
-        const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}';`;
-        console.log(query);
-        console.log(values);
+        const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}' RETURNING *;`;
 
-        await ofrigo.query(query, values);
+        const response = await ofrigo.query(query, values);
+        return response.rows[0];
     };
 
     /**
@@ -131,7 +131,6 @@ class CoreModel{
             console.log("Erreur");
         }
 
-        console.log("response:",response)
         return response.rowCount;
     };
 };
