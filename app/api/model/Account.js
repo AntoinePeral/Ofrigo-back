@@ -32,12 +32,12 @@ class Account extends CoreModel{
      * @param {string} email instance's email
      * @returns an instance
      */
-    static async getByEmail(email) {
+    static async findByEmail(email) {
         const query = {
             text : `SELECT * FROM account WHERE email=$1`,
             values: [email]
         }
-        console.log(query);
+        
         const result = await ofrigo.query(query);
 
         return result.rows[0];

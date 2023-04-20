@@ -2,6 +2,9 @@ const debug = require("debug")("accountController");
 const APIError = require('../../service/error/APIError');
 const { Account } = require("../model");
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+dotenv.config({path: '../../../.env'});
 
 const accountController = {
 
