@@ -1,5 +1,5 @@
 const debug = require("debug")("authentificationController");
-const APIError = require('../../service/error/APIError')
+const APIError = require('../../service/error/APIError');
 const { Account } = require("../model");
 const bcrypt = require('bcrypt');
 
@@ -12,6 +12,7 @@ const authentificationController = {
     try{
       const account = await Account.getByEmail(email);
       console.log(account);
+
       if(!account) {
         next(new APIError('Couple login/mot de passe est incorrect.', 401));
       } else {
@@ -21,7 +22,6 @@ const authentificationController = {
       if(!hasMatchingPassword) {
         next(new APIError('Couple login/mot de passe est incorrect.', 401));
       }
-
   
       }
     }

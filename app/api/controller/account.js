@@ -46,12 +46,13 @@ const accountController = {
         const saltRounds = 10;
         const salt = await bcrypt.genSalt(saltRounds);
         const hashedPassword = await bcrypt.hash(accountBody.password, salt);
+        debug(hashedPassword)
 
         const account = new Account(accountBody);
 
         if(account){
             debug(account);
-            await account.add({'password': accountBody.password});
+            await account.add({'password': hashedPassword});
             debug(account);
             res.status(200).json(account);
         }

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "DEBUG=express,activeRecord,accountController,categoryController,ingredientController,messageController,recipeController,tagController,homeController nodemon server.js"
+    "dev": "DEBUG=express,activeRecord,accountController,authentificationController,categoryController,ingredientController,messageController,recipeController,tagController,homeController nodemon server.js"
   },
   "author": "Kevin Lienard",
   "license": "ISC",

@@ -59,8 +59,6 @@ const tagController = {
         let tag = await Tag.findOne(tagId);
 
         if(tag){
-            debug(tag);
-
             for (const key in tagBody) {
                 tag[key] = tagBody[key];
             }

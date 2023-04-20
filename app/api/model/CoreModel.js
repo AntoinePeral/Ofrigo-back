@@ -126,10 +126,12 @@ class CoreModel{
 
         try {
             response = await ofrigo.query(query);
+            debug(response)
         } catch (error) {
             console.log("Erreur");
         }
 
+        console.log(response)
         return response.rowCount;
     };
 };
