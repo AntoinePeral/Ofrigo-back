@@ -52,7 +52,12 @@ class Account extends CoreModel{
      * @returns Return array
      */
     static async findAllAccount () {
-        const query = `SELECT * FROM "${this.tableName}";`;
+        const query = `SELECT * FROM "${this.tableName}"
+        JOIN account_has_ingredient ai
+        ON ai.account_id = acc.id
+        JOIN ingredient i
+        ON i.id = ai.ingredient_id;`;
+        
         const result = [];
         let response;
 
