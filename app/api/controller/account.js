@@ -12,7 +12,7 @@ const accountController = {
      * @param {*} res use to response to the client
      */
     async getAllAccount (_, res){
-        const account = await Account.findAll();
+        const account = await Account.findAllAccount();
 
         if(account){
             debug(account);
