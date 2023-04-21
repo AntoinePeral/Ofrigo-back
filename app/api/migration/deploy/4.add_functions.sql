@@ -38,7 +38,7 @@ CREATE OR REPLACE FUNCTION getAllRecipe ()
     tag json ) AS $$
 SELECT
 r.id,
-r.label AS label,
+r.label,
 r.picture,
 r.rate,
 r.difficulty,
@@ -62,13 +62,23 @@ r.updated_at,
 			ORDER BY i.created_at
 		)
 	FROM ingredient i
-	JOIN recipe_has_ingredient_with_quantity riq ON ingredient_id = i.id
-	JOIN category c ON c.id = i.category_id
+	JOIN recipe_has_ingredient_with_quantity riq 
+	ON riq.ingredient_id = i.id
+	JOIN category c 
+	ON c.id = i.category_id
 	WHERE recipe_id = r.id
 ) AS ingredient,
 (
 	SELECT
-		json_agg(s.* ORDER BY s.created_at)
+		json_agg(
+			json_build_object(
+				'id', s.id,
+				'content', CONCAT(s.number, '.', s.content),
+				'recipe_id', s.id,
+				'created_at', s.created_at,
+				'updated_at', s.updated_at
+			) ORDER BY s.number
+		)
 	FROM step s
 	WHERE s.recipe_id = r.id
 ) AS step,
@@ -76,17 +86,14 @@ r.updated_at,
 	SELECT
 		json_agg(t.* ORDER BY t.label ASC)
 	FROM tag t
-	JOIN recipe_has_tag rt ON tag_id = t.id
-	WHERE recipe_id = r.id
+	JOIN recipe_has_tag rt 
+	ON rt.tag_id = t.id
+	WHERE rt.recipe_id = r.id
 ) AS tag
 FROM recipe r
-JOIN recipe_has_ingredient_with_quantity riq ON riq.recipe_id = r.id
 GROUP BY r.id
 ORDER BY r.id ASC
 $$ LANGUAGE SQL;
-
-
-
 
 -- Function to get on recipe by his id and return his label, picture, rate, difficulté, time, ingredients, tags and steps. All is ordered and grouped by the recipe.id 
 CREATE OR REPLACE FUNCTION getOneRecipe (r_id int)
@@ -104,7 +111,7 @@ CREATE OR REPLACE FUNCTION getOneRecipe (r_id int)
     tag json ) AS $$
 SELECT
 r.id,
-r.label AS label,
+r.label,
 r.picture,
 r.rate,
 r.difficulty,
@@ -128,13 +135,23 @@ r.updated_at,
 			ORDER BY i.created_at
 		)
 	FROM ingredient i
-	JOIN recipe_has_ingredient_with_quantity riq ON ingredient_id = i.id
-	JOIN category c ON c.id = i.category_id
+	JOIN recipe_has_ingredient_with_quantity riq 
+	ON riq.ingredient_id = i.id
+	JOIN category c 
+	ON c.id = i.category_id
 	WHERE recipe_id = r.id
 ) AS ingredient,
 (
 	SELECT
-		json_agg(s.* ORDER BY s.created_at)
+		json_agg(
+			json_build_object(
+				'id', s.id,
+				'content', CONCAT(s.number, '.', s.content),
+				'recipe_id', s.id,
+				'created_at', s.created_at,
+				'updated_at', s.updated_at
+			) ORDER BY s.number
+		)
 	FROM step s
 	WHERE s.recipe_id = r.id
 ) AS step,
@@ -142,11 +159,11 @@ r.updated_at,
 	SELECT
 		json_agg(t.* ORDER BY t.label ASC)
 	FROM tag t
-	JOIN recipe_has_tag rt ON tag_id = t.id
-	WHERE recipe_id = r.id
+	JOIN recipe_has_tag rt 
+	ON rt.tag_id = t.id
+	WHERE rt.recipe_id = r.id
 ) AS tag
 FROM recipe r
-JOIN recipe_has_ingredient_with_quantity riq ON riq.recipe_id = r.id
 WHERE r.id = r_id
 GROUP BY r.id
 ORDER BY r.id ASC

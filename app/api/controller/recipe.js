@@ -71,7 +71,7 @@ const recipeController = {
             }
 
             await recipe.update();
-            const newRecipe = await Account.findOne(recipeId);
+            const newRecipe = await Recipe.findOne(recipeId);
             debug(newRecipe);
             res.status(200).json(newRecipe);
         }

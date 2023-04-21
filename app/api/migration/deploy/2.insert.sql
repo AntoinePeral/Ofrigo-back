@@ -93,21 +93,21 @@ INSERT INTO ingredient(label, unit, category_id) VALUES
 ('Herbe de provence', null, 5);
 
 INSERT INTO recipe(label, picture, rate, difficulty, time) VALUES
-('Cake du petit-déjeuner banane-chocolat', './app/api/picture/Cake-banane-chocolat.jpg', 4.4, 'Très facile', '45 min'),
-('Pâte à crêpes (des plus raffinées)', './app/api/picture/Crepes.jpg', 4.7, 'Facile', '17 min'),
-('Bowl cake moelleux chocolat noisettes', './app/api/picture/Bowl-cake-moelleux-chocolat-noisettes.jpg', 4.5, 'Très facile', '13 min'),
-('Quiche lorraine traditionnelle', './app/api/picture/Quiche-Lorraine.jpg', 4.8, 'Très facile', '35 min'),
-('Filet de bar en croûte de chorizo, purée et mousse de haricots cocos de Paimpol', './app/api/picture/Filet-de-bar-en-croûte.jpg', 4.2, 'Moyenne', '2 h 30 min'),
-('Curry de légumes végétarien', './app/api/picture/Curry-de-légume-végétarien.jpg', 4.8, 'Très facile', '1 h 20 min'),
-('Burger végétarien aux lentilles', './app/api/picture/Burger-vegétarien.jpg', 5, 'Très facile', '55 min'),
-('Soupe veloutée de potimarron et pommes de terre', './app/api/picture/Soupe-potimarron.jpg', 4.9, 'Très facile', '45 min'),
-('Paëlla fruits de mer, chorizo et poulet de Patou', './app/api/picture/Paella-fruit-de-mer-chorizo.jpg', 4.8, 'Facile', '1 h 10 min'),
-('Salade melon, feta, jambon', './app/api/picture/Salade-melon-feta.jpg', 4.8, 'Très facile', '15 min'),
-('Welsh traditionnel à la bière brune', './app/api/picture/Wesh-traditionnel.jpg', 4.3, 'Moyenne', '40 min'),
-('Crème dessert facile au chocolat', './app/api/picture/Creme-dessert.jpg', 4.6, 'Très facile', '15 min'),
-('Pancake Moelleux : recette facile', './app/api/picture/Pancake.jpg', 4.8, 'Très facile', '14 min'),
-('Roulé de jambon original pour apéro', './app/api/picture/Roulé-jambon.jpg', 4.8, 'Très facile', '20 min'),
-('Gratin de pâtes au chorizo', './app/api/picture/Gratin-de-pates-et-chorizo.jpg', 4.5, 'Facile', '55 min');
+('Cake du petit-déjeuner banane-chocolat', 'Cake-banane-chocolat.jpg', 4.4, 'Très facile', '45 min'),
+('Pâte à crêpes (des plus raffinées)', 'Crepes.jpg', 4.7, 'Facile', '17 min'),
+('Bowl cake moelleux chocolat noisettes', 'Bowl-cake-moelleux-chocolat-noisettes.jpg', 4.5, 'Très facile', '13 min'),
+('Quiche lorraine traditionnelle', 'Quiche-Lorraine.jpg', 4.8, 'Très facile', '35 min'),
+('Filet de bar en croûte de chorizo, purée et mousse de haricots cocos de Paimpol', 'Filet-de-bar-en-croûte.jpg', 4.2, 'Moyenne', '2 h 30 min'),
+('Curry de légumes végétarien', 'Curry-de-légume-végétarien.jpg', 4.8, 'Très facile', '1 h 20 min'),
+('Burger végétarien aux lentilles', 'Burger-vegétarien.jpg', 5, 'Très facile', '55 min'),
+('Soupe veloutée de potimarron et pommes de terre', 'Soupe-potimarron.jpg', 4.9, 'Très facile', '45 min'),
+('Paëlla fruits de mer, chorizo et poulet de Patou', 'Paella-fruit-de-mer-chorizo.jpg', 4.8, 'Facile', '1 h 10 min'),
+('Salade melon, feta, jambon', 'Salade-melon-feta.jpg', 4.8, 'Très facile', '15 min'),
+('Welsh traditionnel à la bière brune', 'Wesh-traditionnel.jpg', 4.3, 'Moyenne', '40 min'),
+('Crème dessert facile au chocolat', 'Creme-dessert.jpg', 4.6, 'Très facile', '15 min'),
+('Pancake Moelleux : recette facile', 'Pancake.jpg', 4.8, 'Très facile', '14 min'),
+('Roulé de jambon original pour apéro', 'Roulé-jambon.jpg', 4.8, 'Très facile', '20 min'),
+('Gratin de pâtes au chorizo', 'Gratin-de-pates-et-chorizo.jpg', 4.5, 'Facile', '55 min');
 
 INSERT INTO step(content, number, recipe_id) VALUES
 ('Préchauffer le four à 220°C (thermostat 7).', 1, 1),
