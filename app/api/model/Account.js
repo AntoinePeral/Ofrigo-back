@@ -8,7 +8,7 @@ class Account extends CoreModel{
     email;
     #password;
     role;
-    //ingredient;
+    // ingredient;
     created_at;
     updated_at;
 
@@ -20,7 +20,7 @@ class Account extends CoreModel{
         this.email = obj.email;
         this.#password = obj.password;
         this.role = obj.role;
-        //this.ingredient = obj.ingredient;
+        // this.ingredient = obj.ingredient;
         this.created_at = obj.created_at;
         this.updated_at = obj.updated_at;
 
@@ -52,18 +52,25 @@ class Account extends CoreModel{
      * @returns Return array
      */
     static async findAllAccount () {
-        const query = `SELECT * FROM "${this.tableName}"
-        JOIN account_has_ingredient ai
-        ON ai.account_id = acc.id
-        JOIN ingredient i
-        ON i.id = ai.ingredient_id;`;
+
+        const query = `SELECT 
+        acc.*,
+        (
+            SELECT
+                json_agg(i.* ORDER BY i.label) 
+            FROM ingredient i
+            JOIN account_has_ingredient ai
+            ON ai.ingredient_id = i.id
+            WHERE ai.account_id=acc.id
+        ) AS ingredient
+        FROM account acc
+        GROUP BY acc.id`;
 
         const result = [];
         let response;
 
         try {
             response = await ofrigo.query(query);
-            debug(response.rows);
 
             for (const row of response.rows) {
                 result.push(new this(row));
