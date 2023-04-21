@@ -8,7 +8,7 @@ class Account extends CoreModel{
     email;
     #password;
     role;
-    ingredient;
+    //ingredient;
     created_at;
     updated_at;
 
@@ -20,7 +20,7 @@ class Account extends CoreModel{
         this.email = obj.email;
         this.#password = obj.password;
         this.role = obj.role;
-        this.ingredient = obj.ingredient;
+        //this.ingredient = obj.ingredient;
         this.created_at = obj.created_at;
         this.updated_at = obj.updated_at;
 
@@ -57,7 +57,7 @@ class Account extends CoreModel{
         ON ai.account_id = acc.id
         JOIN ingredient i
         ON i.id = ai.ingredient_id;`;
-        
+
         const result = [];
         let response;
 
