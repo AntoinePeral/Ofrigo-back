@@ -14,14 +14,17 @@ const {
 
 const validationModule = {
 
+    /**
+     * Validate schema user
+     * @param {*} param 
+     * @returns 
+     */
     validateUserAccount(param){
         return (req, _, next) => {
             const { error } = userAccountSchema.validate(req[param]);
-
+            
             if (error) {
-                console.log(error.message);
-                next(new APIError(error.message, 400));
-                console.log(error.message);
+                next (new APIError(error.message, 400));
             }
             else {
                 next();
@@ -33,8 +36,8 @@ const validationModule = {
             const { error } = adminAccountSchema.validate(req[param]);
 
             if (error) {
-                next(new APIError(error.message, 400));
                 console.log(error.message);
+                next(new APIError(error.message, 400));
             }
             else {
                 next();
@@ -49,7 +52,6 @@ const validationModule = {
             if (error) {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
-                console.log(error.message);
             }
             else {
                 next();
@@ -93,7 +95,6 @@ const validationModule = {
             if (error) {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
-                console.log(error.message);
             }
             else {
                 next();
@@ -108,7 +109,6 @@ const validationModule = {
             if (error) {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
-                console.log(error.message);
             }
             else {
                 next();
@@ -123,7 +123,6 @@ const validationModule = {
             if (error) {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
-                console.log(error.message);
             }
             else {
                 next();
@@ -138,7 +137,6 @@ const validationModule = {
             if (error) {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
-                console.log(error.message);
             }
             else {
                 next();
@@ -153,7 +151,6 @@ const validationModule = {
             if (error) {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
-                console.log(error.message);
             }
             else {
                 next();
