@@ -2,7 +2,7 @@ const { Router } = require("express");
 const accountRouter = Router();
 const { account } = require("../controller");
 const validationModule = require("../../service/validation/validate");
-const middleware = require ('../../service/middleware/authToken');
+const authentificationModule = require ('../../service/middleware/authToken');
 
 // Admin
 //accountRouter.get("/account", account.getAllAccount);
@@ -10,7 +10,6 @@ const middleware = require ('../../service/middleware/authToken');
 //accountRouter.get("/me/profile",authentificationModule.authenticateToken, account.getUserAccount);
 //accountRouter.put("/profile/:id(\\d+)", authentificationModule.authenticateToken,validationModule.validateUserAccount('body'), account.updateAccount);
 //accountRouter.delete("/profile/:id(\\d+)", authentificationModule.authenticateToken, account.deleteAccount);
-
 
 // User
 accountRouter.post("/register", validationModule.validateUserAccount('body'), account.addAccount);
