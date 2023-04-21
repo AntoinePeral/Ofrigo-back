@@ -69,8 +69,8 @@ class CoreModel{
         });
 
         if(privateFields){
-            Object.entries(privateFields).forEach(([field, value]) =>{
-                fields.push(field);
+            Object.entries(privateFields).forEach(([key, value]) =>{
+                fields.push(key);
                 values.push(value);
                 parameters.push(`$${counter}`);
                 counter++;

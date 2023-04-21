@@ -67,7 +67,7 @@ const accountController = {
         let account = new Account(accountBody);
 
         if(account){
-            // debug(account);
+            debug(account);
             account = await account.add({'password': hashedPassword});
             debug(account);
         }
@@ -76,6 +76,7 @@ const accountController = {
         }
 
         const accessToken = authentificationModule.generateAccessToken(account);
+        
         return res.status(200).json({
             accessToken,
             account
@@ -90,8 +91,8 @@ const accountController = {
         if(account){
             debug(account);
 
-            for (const key in accountBody) {
-                account[key] = accountBody[key];
+            for (const value in accountBody) {
+                account[value] = accountBody[value];
             }
 
             await account.update();
