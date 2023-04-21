@@ -9,7 +9,7 @@ const messageController = {
      * @param {*} _ 
      * @param {*} res use to response to the client
      */
-    async getAllMessage (_, res){
+    async getAllMessage (_, res, next){
         const message = await Message.findAll();
 
         if(message){
@@ -26,7 +26,7 @@ const messageController = {
      * @param {*} req use request to get the params.id
      * @param {*} res use to response to the client
      */
-    async getMessageById (req, res){
+    async getMessageById (req, res, next){
         const messageId = req.params.id;
         const message = await Message.findOne(messageId);
 

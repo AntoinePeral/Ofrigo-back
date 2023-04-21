@@ -7,8 +7,8 @@ INSERT INTO account(last_name, first_name, email, password, role) VALUES
 ('Peral', 'Antoine', 'antoine@gmail.com', 'TotoVAalaplage32?', 'user');
 
 INSERT INTO message(title, content, email) VALUES
-('message 1', 'Ceci est un test', 'antoine_Peral@gmail.com'),
-('message 2', 'Ceci est un test', 'kevin_lienard@gmail.com');
+('message 1', 'Ceci est un test', 'antoine@gmail.com'),
+('message 2', 'Ceci est un test', 'kevin@gmail.com');
 
 INSERT INTO category(label) VALUES
 ('Légumes'),

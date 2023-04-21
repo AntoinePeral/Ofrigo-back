@@ -5,6 +5,7 @@ class Message extends CoreModel{
     title;
     content;
     email;
+    account;
     created_at;
     updated_at;
 
@@ -14,6 +15,7 @@ class Message extends CoreModel{
         this.title = obj.title;
         this.content = obj.content;
         this.email = obj.email;
+        this.account = obj.account;
         this.created_at = obj.created_at;
         this.updated_at = obj.updated_at;
     };

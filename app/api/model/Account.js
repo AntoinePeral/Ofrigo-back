@@ -1,3 +1,4 @@
+const debug = require("debug")("activeRecord");
 const CoreModel = require("./CoreModel");
 const ofrigo = require("../client/client-db-ofrigo");
 
@@ -8,7 +9,8 @@ class Account extends CoreModel{
     email;
     #password;
     role;
-    // ingredient;
+    ingredient;
+    message;
     created_at;
     updated_at;
 
@@ -20,7 +22,8 @@ class Account extends CoreModel{
         this.email = obj.email;
         this.#password = obj.password;
         this.role = obj.role;
-        // this.ingredient = obj.ingredient;
+        this.ingredient = obj.ingredient;
+        this.message = obj.message;
         this.created_at = obj.created_at;
         this.updated_at = obj.updated_at;
 
@@ -45,59 +48,6 @@ class Account extends CoreModel{
         console.log(result);
 
         return result.rows[0];
-    };
-
-        /**
-     * Returns all data from a table
-     * @returns Return array
-     */
-    static async findAllAccount () {
-
-        const query = `SELECT 
-        acc.*,
-        (
-            SELECT
-                json_agg(i.* ORDER BY i.label) 
-            FROM ingredient i
-            JOIN account_has_ingredient ai
-            ON ai.ingredient_id = i.id
-            WHERE ai.account_id=acc.id
-        ) AS ingredient
-        FROM account acc
-        GROUP BY acc.id`;
-
-        const result = [];
-        let response;
-
-        try {
-            response = await ofrigo.query(query);
-
-            for (const row of response.rows) {
-                result.push(new this(row));
-            }
-        } catch (error) {
-            console.log(error);
-        }
-
-        return result;
-    };
-    
-    /**
-     * Returns one data from a table
-     * @param {int} id data id
-     * @returns Return object
-     */
-    static async findOneAccount (id) {
-        const query = `SELECT * FROM ${this.tableName} WHERE id=${id};`;
-
-        try {
-            const response = await ofrigo.query(query);
-            debug(response.rows[0]);
-
-            return new this(response.rows[0]);
-        } catch (error) {
-            console.log(error);
-        }
     };
 
 };

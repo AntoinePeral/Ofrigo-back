@@ -10,7 +10,6 @@ const errorModule = {
      * @param {*} next 
      */
     async manage(err, req, res, next) {
-        console.log(err);
         if (!err.message) {
             switch (err.code) {
                 case 400:

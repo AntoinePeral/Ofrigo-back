@@ -24,9 +24,10 @@ const validationModule = {
             const { error } = userAccountSchema.validate(req[param]);
             
             if (error) {
-                next (new APIError(error.message, 400));
+                console.log(error.message);
+                next(new APIError(error.message, 400));
             }
-            else {
+            else{
                 next();
             }
         };
@@ -39,7 +40,7 @@ const validationModule = {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
             }
-            else {
+            else{
                 next();
             }
         };
@@ -53,7 +54,7 @@ const validationModule = {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
             }
-            else {
+            else{
                 next();
             }
         };
@@ -67,7 +68,7 @@ const validationModule = {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
             }
-            else {
+            else{
                 next();
             }
         };
@@ -80,9 +81,8 @@ const validationModule = {
             if (error) {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
-                console.log(error.message);
             }
-            else {
+            else{
                 next();
             }
         };
@@ -96,7 +96,7 @@ const validationModule = {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
             }
-            else {
+            else{
                 next();
             }
         };
@@ -110,7 +110,7 @@ const validationModule = {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
             }
-            else {
+            else{
                 next();
             }
         };
@@ -124,7 +124,7 @@ const validationModule = {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
             }
-            else {
+            else{
                 next();
             }
         };
@@ -138,7 +138,7 @@ const validationModule = {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
             }
-            else {
+            else{
                 next();
             }
         };
@@ -149,10 +149,9 @@ const validationModule = {
             const { error } = recipe_has_tag.validate(req[param]);
 
             if (error) {
-                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
-            else {
+            else{
                 next();
             }
         };
