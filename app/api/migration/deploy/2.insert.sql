@@ -248,7 +248,8 @@ INSERT INTO tag(label) VALUES
 ('Pâtes, riz, semoule'),
 ('Plats au fromage');
 
---INSERT INTO account_has_ingredient(account_id, ingredient_id) VALUES
+INSERT INTO account_has_ingredient(account_id, ingredient_id) VALUES
+(1,1);
 
 INSERT INTO recipe_has_ingredient_with_quantity(recipe_id, ingredient_id, ingredient_quantity) VALUES
 (1, 1, 180000),
