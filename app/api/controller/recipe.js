@@ -29,15 +29,13 @@ const recipeController = {
     async getRecipeById (req, res, next){
         const recipeId = req.params.id;
         const recipe = await Recipe.findOneRecipeWithAll(recipeId);
-        console.log("test", recipe);
 
         if(recipe){
             debug(recipe);
             res.status(200).json(recipe);
         }
         else{
-            console.log("Hello");
-            next(new APIError("hello", 401));
+            next(new APIError("Bad request", 500));
         }
 
     },
