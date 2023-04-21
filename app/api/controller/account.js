@@ -11,7 +11,7 @@ const accountController = {
      * @param {*} _ 
      * @param {*} res use to response to the client
      */
-    async getAllAccount (_, res){
+    async getAllAccount (_, res, next){
         const account = await Account.findAll();
 
         if(account){
@@ -28,7 +28,7 @@ const accountController = {
      * @param {*} req use request to get the params.id
      * @param {*} res use it to response to the client
      */
-    async getAccountById (req, res){
+    async getAccountById (req, res, next){
         const accountId = req.params.id;
         const account = await Account.findOne(accountId);
 
@@ -40,7 +40,7 @@ const accountController = {
             next(new APIError("Bad request", 500));
         }
     },
-    async getUserAccount(req, res) {
+    async getUserAccount(req, res, next) {
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
         }
@@ -87,6 +87,8 @@ const accountController = {
         const AccountId = req.params.id;
         const accountBody = req.body;
         let account = await Account.findOne(AccountId);
+
+        console.log(account);
 
         if(account){
             debug(account);

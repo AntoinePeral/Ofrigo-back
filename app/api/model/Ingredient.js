@@ -5,6 +5,7 @@ class Ingredient extends CoreModel{
     label;
     unit;
     category_id;
+    category;
     created_at;
     updated_at;
 
@@ -13,6 +14,7 @@ class Ingredient extends CoreModel{
         this.label = obj.label;
         this.unit = obj.unit;
         this.category_id = obj.category_id;
+        this.category = obj.category;
         this.created_at = obj.created_at;
         this.updated_at = obj.updated_at;
     };

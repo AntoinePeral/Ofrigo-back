@@ -9,7 +9,7 @@ const ingredientController = {
      * @param {*} _ 
      * @param {*} res use to response to the client
      */
-    async getAllIngredient (_, res){
+    async getAllIngredient (_, res, next){
         const ingredient = await Ingredient.findAll();
 
         if(ingredient){
@@ -26,7 +26,7 @@ const ingredientController = {
      * @param {*} req use request to get the params.id
      * @param {*} res use to response to the client
      */
-    async getIngredientById (req, res){
+    async getIngredientById (req, res, next){
         const ingredientId = req.params.id;
         const ingredient = await Ingredient.findOne(ingredientId);
 

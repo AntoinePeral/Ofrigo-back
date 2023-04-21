@@ -19,7 +19,7 @@ const userAccountSchema = Joi.object({
     last_name: Joi.string().pattern(nameFormat).required(),
     first_name: Joi.string().pattern(nameFormat).required(),
     email: Joi.string().pattern(emailFormat).required(),
-    password: Joi.string().pattern(passwordFormat).required()
+    password: Joi.string().pattern(passwordFormat).required().messages({"string.pattern.base": "Le mot de passe doit contenir une majuscule, une minuscule, un caractère spécial et au minimum 8 caractères"})
 });
 
 const categorySchema = Joi.object({

@@ -9,7 +9,7 @@ const categoryController = {
      * @param {*} _ 
      * @param {*} res use to response to the client
      */
-    async getAllCategory (_, res){
+    async getAllCategory (_, res, next){
         const category = await Category.findAll();
 
         if(category){
@@ -26,7 +26,7 @@ const categoryController = {
      * @param {*} req use request to get the params.id
      * @param {*} res use to response to the client
      */
-    async getCategoryById (req, res){
+    async getCategoryById (req, res, next){
         const categoryId = req.params.id;
         const category = await Category.findOne(categoryId);
 

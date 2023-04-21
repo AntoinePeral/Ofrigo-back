@@ -9,7 +9,7 @@ const recipeController = {
      * @param {*} _ 
      * @param {*} res use to response to the client
      */
-    async getAllRecipe (_, res){
+    async getAllRecipe (_, res, next){
         const recipe = await Recipe.findAllRecipeWithAll();
 
         if(recipe){

@@ -9,7 +9,7 @@ const tagController = {
      * @param {*} _ 
      * @param {*} res use to response to the client
      */
-    async getAllTag (_, res){
+    async getAllTag (_, res, next){
         const tag = await Tag.findAll();
 
         if(tag){
@@ -26,7 +26,7 @@ const tagController = {
      * @param {*} req use request to get the params.id
      * @param {*} res use to response to the client
      */
-    async getTagById (req, res){
+    async getTagById (req, res, next){
         const tagId = req.params.id;
         const tag = await Tag.findOne(tagId);
 
