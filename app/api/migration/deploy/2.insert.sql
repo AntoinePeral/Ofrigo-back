@@ -249,7 +249,11 @@ INSERT INTO tag(label) VALUES
 ('Plats au fromage');
 
 INSERT INTO account_has_ingredient(account_id, ingredient_id) VALUES
+<<<<<<< HEAD
 (1,1);
+=======
+(1, 1);
+>>>>>>> 091277ba640834c0170da0fa5c6047fe24cea69e
 
 INSERT INTO recipe_has_ingredient_with_quantity(recipe_id, ingredient_id, ingredient_quantity) VALUES
 (1, 1, 180000),
