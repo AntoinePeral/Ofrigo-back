@@ -1,3 +1,5 @@
+LISTE DES ROUTES DISPONIBLE :
+
 -Account : OK
 /register POST Crée un compte
 /me/profile GET Données utilisateur connecté

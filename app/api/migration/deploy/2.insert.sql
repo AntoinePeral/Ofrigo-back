@@ -50,7 +50,7 @@ INSERT INTO ingredient(label, unit, category_id) VALUES
 ('Carotte', 'mg', 1),
 ('Courgette', null, 1),
 ('Cumin', 'c.à.s', 5),
-('Patate douce ', 'c.à.s', 1),
+('Patate douce', 'c.à.s', 1),
 ('Echalotes', null, 1),
 ('Ail', 'gousse', 1),
 ('Crème coco', 'ml', 6),
