@@ -1,14 +1,7 @@
 %syntax-version=1.0.0
 %project=ofrigo
 
-<<<<<<< HEAD
-1.init 2023-04-21T08:30:40Z Etudiant O'clock <student@teleporter> # create tables
-2.insert 2023-04-21T08:30:41Z Etudiant O'clock <student@teleporter> # insert data
-3.add_constraints 2023-04-21T08:30:41Z Etudiant O'clock <student@teleporter> # Add constraints
-4.add_functions 2023-04-21T08:30:42Z Etudiant O'clock <student@teleporter> # add functions
-=======
 1.init 2023-04-21T08:30:15Z Etudiant O'clock <student@teleporter> # create tables
 2.insert 2023-04-21T08:30:15Z Etudiant O'clock <student@teleporter> # insert data
 3.add_constraints 2023-04-21T08:30:16Z Etudiant O'clock <student@teleporter> # Add constraints
 4.add_functions 2023-04-21T08:30:16Z Etudiant O'clock <student@teleporter> # add functions
->>>>>>> 091277ba640834c0170da0fa5c6047fe24cea69e
