@@ -9,8 +9,7 @@ const authentificationController = {
 
   async login(req, res, next) {
     const {email, password} = req.body;
-    const account = await Account.getByEmail(email);
-    console.log("account:::::::::::",account);
+    const account = await Account.findByEmail(email);
     
 
       if(!account) {
@@ -18,7 +17,6 @@ const authentificationController = {
       } else {
 
       const hasMatchingPassword = await bcrypt.compare(password, account.password);
-      console.log(hasMatchingPassword);
 
 
         if(!hasMatchingPassword) {
