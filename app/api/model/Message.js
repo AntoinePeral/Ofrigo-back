@@ -2,7 +2,7 @@ const CoreModel = require("./CoreModel");
 
 class Message extends CoreModel{
     static tableName = 'message';
-    title;
+    label;
     content;
     email;
     account;
@@ -12,7 +12,7 @@ class Message extends CoreModel{
     constructor(obj){
         super(obj);
         this.id = obj.id;
-        this.title = obj.title;
+        this.label = obj.label;
         this.content = obj.content;
         this.email = obj.email;
         this.account = obj.account;

@@ -6,7 +6,7 @@ INSERT INTO account(last_name, first_name, email, password, role) VALUES
 ('Lienard', 'Kevin', 'kevin@gmail.com', 'Password123!', 'admin'),
 ('Peral', 'Antoine', 'antoine@gmail.com', 'TotoVAalaplage32?', 'user');
 
-INSERT INTO message(title, content, email) VALUES
+INSERT INTO message(label, content, email) VALUES
 ('message 1', 'Ceci est un test', 'antoine@gmail.com'),
 ('message 2', 'Ceci est un test', 'kevin@gmail.com');
 
