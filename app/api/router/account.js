@@ -9,7 +9,7 @@ accountRouter.get("/account", account.getAllAccount);
 accountRouter.get("/account/:id(\\d+)", account.getAccountById);
 accountRouter.get("/me/profile",middleware.authenticateToken, account.getUserAccount);
 accountRouter.post("/profile", account.addAccount);
-//accountRouter.put("/profile/:id(\\d+)", middleware.authenticateToken,validationModule.validateUserAccount('body'), account.updateAccount);
+accountRouter.put("/profile/:id(\\d+)", middleware.authenticateToken,validationModule.validateUserAccount('body'), account.updateAccount);
 accountRouter.delete("/profile/:id(\\d+)", middleware.authenticateToken, account.deleteAccount);
 
 // User
