@@ -2,7 +2,7 @@ const { Router } = require("express");
 const accountRouter = Router();
 const { account } = require("../controller");
 const validationModule = require("../../service/validation/validate");
-const authentificationModule = require ('../../service/middleware/authToken');
+const middleware = require ('../../service/middleware/authToken');
 
 // Admin
 //accountRouter.get("/account", account.getAllAccount);
