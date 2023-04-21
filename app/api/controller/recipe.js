@@ -10,7 +10,7 @@ const recipeController = {
      * @param {*} res use to response to the client
      */
     async getAllRecipe (_, res, next){
-        const recipe = await Recipe.findAllRecipeWithAll();
+        const recipe = await Recipe.findAll();
 
         if(recipe){
             debug(recipe);
@@ -28,7 +28,7 @@ const recipeController = {
      */
     async getRecipeById (req, res, next){
         const recipeId = req.params.id;
-        const recipe = await Recipe.findOneRecipeWithAll(recipeId);
+        const recipe = await Recipe.findOne(recipeId);
 
         if(recipe){
             debug(recipe);

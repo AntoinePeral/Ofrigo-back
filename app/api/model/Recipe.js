@@ -28,47 +28,6 @@ class Recipe extends CoreModel{
         this.step = obj.step;
         this.tag = obj.tag;
     };
-
-    /**
-     * Returns all recipe whit ingredient, step and tag
-     * @returns Return array
-     */
-    static async findAllRecipeWithAll () {
-        const query = `SELECT * FROM getAllRecipe()`;
-
-        const result = [];
-
-        try {
-            const recipes = await ofrigo.query(query);
-            debug(recipes.rows);
-
-            for (const recipe of recipes.rows) {
-                result.push(new this(recipe)); 
-            }
-        } catch (error) {
-            console.log(error);
-        }
-
-        return result;
-    };
-
-    /**
-     * Returns one recipe whit ingredient, step and tag
-     * @param {int} id data id
-     * @returns Return object
-     */
-    static async findOneRecipeWithAll (id) {
-        const query = `SELECT * FROM getOneRecipe(${id})`;
-
-        try {
-            const recipe = await ofrigo.query(query);
-            debug(recipe.rows[0]);
-
-            return new this(recipe.rows[0]);
-        } catch (error) {
-            console.log(error);
-        }
-    };
 };
 
 module.exports = Recipe;
