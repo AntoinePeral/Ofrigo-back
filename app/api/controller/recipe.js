@@ -35,7 +35,7 @@ const recipeController = {
             res.status(200).json(recipe);
         }
         else{
-            next(new APIError("Bad request", 500));
+            next(new APIError("Bad request", 400));
         }
 
     },
