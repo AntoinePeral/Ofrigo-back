@@ -17,89 +17,22 @@ class CoreModel{
     static async findAll () {
         let query
         if(this.tableName == "account"){
-            query = `SELECT 
-            acc.*,
-            (
-                SELECT
-                    json_agg(
-                        json_build_object(
-                            'label', i.label,
-                            'unit', i.unit,
-                            'category_id', i.category_id,
-                            'created_at', i.created_at,
-                            'updated_at', i.updated_at,
-                            'category_label', c.label
-                        ) ORDER BY i.label
-                    ) 
-                FROM ingredient i
-                JOIN category c
-                ON i.category_id=c.id
-                JOIN account_has_ingredient ai
-                ON ai.ingredient_id = i.id
-                WHERE ai.account_id=acc.id
-            ) AS ingredient,
-            (
-                SELECT
-                    json_agg(m.* ORDER BY m.created_at) 
-                FROM message m
-                WHERE m.email=acc.email
-            ) AS message
-            FROM account acc
-            GROUP BY acc.id;`;
+            query = `SELECT * FROM getAllAccount();`;
         }
         if(this.tableName == "category"){
-            query = `SELECT *,
-            (
-                SELECT
-                    json_agg(i.*)
-                FROM ingredient i
-                WHERE i.category_id=c.id
-            ) AS ingredient
-            FROM category c`;
+            query = `SELECT * FROM getAllCategory();`;
         }
         if(this.tableName == "ingredient"){
-            query = `SELECT *,
-            (
-                SELECT
-                    json_agg(c.*)
-                FROM category c
-                WHERE i.category_id=c.id
-            ) AS category
-            FROM ingredient i`;
+            query = `SELECT * FROM getAllIngredient();`;
         }
         if(this.tableName == "message"){
-            query = `SELECT *,
-            (
-                SELECT
-                    json_agg(
-                        json_build_object(
-                            'id', acc.id,
-                            'last_name', acc.last_name,
-                            'first_name', acc.first_name,
-                            'email', acc.email,
-                            'created_at', acc.created_at,
-                            'updated_at', acc.updated_at
-                        )
-                    )
-                FROM account acc
-                WHERE m.email=acc.email
-            ) AS account
-            FROM message m`;
+            query = `SELECT * FROM getAllMessage();`;
         }
         if(this.tableName == "recipe"){
-            query = `SELECT * FROM getAllRecipe()`;
+            query = `SELECT * FROM getAllRecipe();`;
         }
         if(this.tableName == "tag"){
-            query = `SELECT *,
-            (
-                SELECT
-                    json_agg(r.*)
-                FROM recipe r
-                JOIN recipe_has_tag rt
-                ON rt.recipe_id=r.id
-                WHERE rt.tag_id=t.id
-            ) AS recipe
-            FROM tag t`;
+            query = `SELECT * FROM getAllTag();`;
         }
 
         const result = [];
@@ -128,87 +61,25 @@ class CoreModel{
         let query
         if(this.tableName == "account"){
             query = {
-                text: `SELECT 
-                acc.*,
-                (
-                    SELECT
-                        json_agg(
-                            json_build_object(
-                                'label', i.label,
-                                'unit', i.unit,
-                                'category_id', i.category_id,
-                                'created_at', i.created_at,
-                                'updated_at', i.updated_at,
-                                'category_label', c.label
-                            ) ORDER BY i.label
-                        ) 
-                    FROM ingredient i
-                    JOIN category c
-                    ON i.category_id=c.id
-                    JOIN account_has_ingredient ai
-                    ON ai.ingredient_id = i.id
-                    WHERE ai.account_id=acc.id
-                ) AS ingredient,
-                (
-                    SELECT
-                        json_agg(m.* ORDER BY m.created_at) 
-                    FROM message m
-                    WHERE m.email=acc.email
-                ) AS message
-                FROM account acc
-                WHERE acc.id=$1
-                GROUP BY acc.id;`,
+                text: `SELECT * FROM getOneAccount($1);`,
                 values: [id]
             }
         }
         if(this.tableName == "category"){
             query = {
-                text: `SELECT *,
-                (
-                    SELECT
-                        json_agg(i.*)
-                    FROM ingredient i
-                    WHERE i.category_id=c.id
-                ) AS ingredient
-                FROM category c
-                WHERE c.id=$1`,
+                text: `SELECT * FROM getOneCategory($1);`,
                 values: [id]
             }
         }
         if(this.tableName == "ingredient"){
             query = {
-                text: `SELECT *,
-                (
-                    SELECT
-                        json_agg(c.*)
-                    FROM category c
-                    WHERE i.category_id=c.id
-                ) AS category
-                FROM ingredient i
-                WHERE i.id=$1`,
+                text: `SELECT * FROM getOneIngredient($1);`,
                 values: [id]
             }
         }
         if(this.tableName == "message"){
             query = {
-                text: `SELECT *,
-                (
-                    SELECT
-                        json_agg(
-                            json_build_object(
-                                'id', acc.id,
-                                'last_name', acc.last_name,
-                                'first_name', acc.first_name,
-                                'email', acc.email,
-                                'created_at', acc.created_at,
-                                'updated_at', acc.updated_at
-                            )
-                        )
-                    FROM account acc
-                    WHERE m.email=acc.email
-                ) AS account
-                FROM message m
-                WHERE m.id=$1`,
+                text: `SELECT * FROM getOneMessage($1);`,
                 values: [id]
             }
         }
@@ -220,17 +91,7 @@ class CoreModel{
         }
         if(this.tableName == "tag"){
             query = {
-                text: `SELECT *,
-                (
-                    SELECT
-                        json_agg(r.*)
-                    FROM recipe r
-                    JOIN recipe_has_tag rt
-                    ON rt.recipe_id=r.id
-                    WHERE rt.tag_id=t.id
-                ) AS recipe
-                FROM tag t
-                WHERE t.id=$1`,
+                text: `SELECT * FROM getOneTag($1);`,
                 values: [id]
             }
         }
@@ -335,10 +196,6 @@ class CoreModel{
 
         const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;
         let response;
-
-        //console.log(fields);
-        console.log(query);
-        //console.log(values);
         
         try {
             response = await ofrigo.query(query, values);
