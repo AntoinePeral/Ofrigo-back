@@ -119,12 +119,14 @@ const validationModule = {
     validateAccount_has_ingredientSchema(param){
         return (req, _, next) => {
             const { error } = account_has_ingredientSchema.validate(req[param]);
+            console.log("Test");
 
             if (error) {
                 console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else{
+                console.log('ola');
                 next();
             }
         };
@@ -155,7 +157,7 @@ const validationModule = {
                 next();
             }
         };
-    },
+    }
 
 };
 

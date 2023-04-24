@@ -1,5 +1,5 @@
 const account = require("./account");
-const admin = require ('./admin');
+const admin = require ('./adminAccount');
 const authentification = require("./authentification");
 const category = require("./category");
 const ingredient = require("./ingredient");
