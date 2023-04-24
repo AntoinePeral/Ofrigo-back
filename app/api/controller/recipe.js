@@ -29,15 +29,13 @@ const recipeController = {
     async getRecipeById (req, res, next){
         const recipeId = req.params.id;
         const recipe = await Recipe.findOneRecipeWithAll(recipeId);
-        console.log("test", recipe);
 
         if(recipe){
             debug(recipe);
             res.status(200).json(recipe);
         }
         else{
-            console.log("Hello");
-            next(new APIError("hello", 401));
+            next(new APIError("Page not found", 404));
         }
 
     },
@@ -49,7 +47,7 @@ const recipeController = {
         if(recipe){
             debug(recipe);
             await recipe.add();
-            debug(recipe);
+            debug("test", recipe);
             res.status(200).json(recipe);
         }
         else{
@@ -71,7 +69,7 @@ const recipeController = {
             }
 
             await recipe.update();
-            const newRecipe = await Account.findOne(recipeId);
+            const newRecipe = await Recipe.findOne(recipeId);
             debug(newRecipe);
             res.status(200).json(newRecipe);
         }

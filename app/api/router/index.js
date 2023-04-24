@@ -1,4 +1,5 @@
 const account = require("./account");
+const admin = require ('./admin');
 const authentification = require("./authentification");
 const category = require("./category");
 const ingredient = require("./ingredient");
@@ -8,6 +9,7 @@ const tag = require("./tag");
 
 module.exports = { 
     account,
+    admin,
     authentification,
     category,
     ingredient,
