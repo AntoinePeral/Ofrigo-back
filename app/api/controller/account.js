@@ -1,6 +1,6 @@
 const debug = require("debug")("accountController");
 const APIError = require('../../service/error/APIError');
-const { Account } = require("../model");
+const { Account, Ingredient } = require("../model");
 const bcrypt = require('bcrypt');
 const authentificationModule = require ('../../service/middleware/authToken');
 
@@ -88,8 +88,6 @@ const accountController = {
         const accountBody = req.body;
         let account = await Account.findOne(AccountId);
 
-        console.log(account);
-
         if(account){
             debug(account);
 
@@ -114,6 +112,67 @@ const accountController = {
         if(response){
             debug(response);
             res.status(200).json('Succes');
+        }
+        else{
+            next(new APIError("Bad request", 500)); 
+        }
+    },
+
+    async addIngredientToAccount (req, res, next){
+        if(!req.user.id) {
+            res.status(400).json({error: "User not provided."})
+        }
+        const ingredient_id = req.body.ingredient_id;
+        const ingredient = await Ingredient.findOne(ingredient_id);
+        //let account = await Account.findOne(account_id);
+        const account = await Account.findOne(req.user.id)
+        let validation;
+
+        if(account && ingredient){
+            if(account.ingredient){
+                for (const element of account.ingredient){
+                    if(element.id === ingredient.id){
+                        validation = false;
+                    }
+                    else{
+                        validation = true;
+                    }
+                }
+            }
+            else{
+                validation = true;
+            }
+        }
+        if(validation){
+            await account.addIngredient(ingredient_id);
+            return res.status(200).json(account);
+        }
+        else{
+            next(new APIError("Bad request", 500)); 
+        }
+    },
+
+    async deleteIngredientToAccount(req, res, next){
+        const { accountId, ingredientId } = req.params;
+        let account = await Account.findOne(accountId);
+        const ingredient = await Ingredient.findOne(ingredientId);
+        let validation;
+
+        if(account && ingredient){
+            if(account.ingredient){
+                for(const ingredient of account.ingredient){
+                    if(ingredient.id == ingredientId){
+                        validation = true;
+                    }
+                    else{
+                        validation = false;
+                    }
+                }
+            }
+        }
+        if(validation){
+            await account.removeIngredient(ingredientId);
+            res.status(200).json(account);
         }
         else{
             next(new APIError("Bad request", 500)); 

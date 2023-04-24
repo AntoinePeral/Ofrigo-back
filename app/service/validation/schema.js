@@ -84,7 +84,7 @@ const ingredientSchema = Joi.object({
 });
 
 const messageSchema = Joi.object({
-    title: Joi.string().pattern(titleFormat).required().messages({
+    label: Joi.string().pattern(titleFormat).required().messages({
         'string.pattern.base': "Le titre ne respecte pas le nombre de caractère (max100) ou caractères non autorisés",
         'string.empty': 'Le champ titre ne peut pas être vide',
         'any.required': 'Le champ titre est manquant'

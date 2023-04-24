@@ -21,7 +21,7 @@ ALTER TABLE account
 
 
 ALTER TABLE message 
-  ALTER COLUMN title TYPE title_validator,
+  ALTER COLUMN label TYPE title_validator,
   ALTER COLUMN content TYPE content_validator,
   ALTER COLUMN email TYPE email_validator;
 

@@ -2,9 +2,9 @@ const Account = require("./Account");
 const Category = require("./Category");
 const Ingredient = require("./Ingredient");
 const Message = require("./Message");
-//const Quantity = require("./Quantity");
+const Quantity = require("./Quantity");
 const Recipe = require("./Recipe");
-//const Step = require("./Step");
+const Step = require("./Step");
 const Tag = require("./Tag");
 
 module.exports = { 
@@ -12,8 +12,8 @@ module.exports = {
     Category,
     Ingredient,
     Message,
-    //Quantity,
+    Quantity,
     Recipe,
-    //Step,
+    Step,
     Tag
 };

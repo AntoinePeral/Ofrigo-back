@@ -50,6 +50,38 @@ class Account extends CoreModel{
         return result.rows[0];
     };
 
+    async addIngredient(ingredient_id){
+        const query = {
+            text: `INSERT INTO account_has_ingredient(account_id, ingredient_id) VALUES ($1, $2) RETURNING *;`,
+            values: [this.id, ingredient_id]
+        };
+        let response;
+
+        try{
+            response = await ofrigo.query(query);
+            return result.rows[0];
+        }catch(error){
+            console.log(error);
+        }
+    };
+    
+    async removeIngredient(ingredient_id){
+        const query = {
+            text: `DELETE FROM "account_has_ingredient" WHERE "account_id"=$1 AND "ingredient_id"=$2;`,
+            values: [this.id, ingredient_id]
+        };
+        let response;
+
+        try {
+            response = await ofrigo.query(query);
+            debug(response)
+        } catch (error) {
+            console.log("Erreur");
+        }
+
+        return response.rowCount;
+    };
+
 };
 
 module.exports = Account;
