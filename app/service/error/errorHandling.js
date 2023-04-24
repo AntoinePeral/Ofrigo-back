@@ -40,7 +40,7 @@ const errorModule = {
      * @param {*} next middleware pour indiquer à Express qu'il y a une erreur
      */
     _404(_, __, next) {
-        next(new APIError('page not found', 404));
+        next(new APIError('404 message', 404));
     },
     
 };

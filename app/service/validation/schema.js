@@ -129,7 +129,7 @@ const stepSchema = Joi.object({
 
 const account_has_ingredientSchema = Joi.object({
     ingredient_id: Joi.number().min(1).required().messages({
-        'string.empty': 'Un ingrédient doit être sélectionné',
+        'number.empty': 'Un ingrédient doit être sélectionné',
         'any.required': 'Pour ajouter un utilisateur un ingrédient est requis'
     }),
 });
@@ -160,6 +160,7 @@ const recipe_has_tag = Joi.object({
         'any.required': 'Aucun tag sélectionné'
     }),
 });
+
 
 module.exports =  { 
     adminAccountSchema,

@@ -112,6 +112,7 @@ const accountController = {
                 validation = true;
             }
         }
+        console.log(validation);
         if(validation){
             await account.addIngredient(ingredient_id);
             return res.status(200).json(account);

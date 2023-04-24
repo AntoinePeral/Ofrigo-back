@@ -196,6 +196,8 @@ class CoreModel{
 
         const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;
         let response;
+        console.log(query);
+        console.log(values);
         
         try {
             response = await ofrigo.query(query, values);

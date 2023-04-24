@@ -47,7 +47,7 @@ const recipeController = {
         if(recipe){
             debug(recipe);
             await recipe.add();
-            debug(recipe);
+            debug("test", recipe);
             res.status(200).json(recipe);
         }
         else{
@@ -167,7 +167,8 @@ const recipeController = {
         else{
             next(new APIError("Bad request", 500)); 
         }
-    },
+    }
+
 };
 
 module.exports = recipeController;
