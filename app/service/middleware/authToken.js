@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const authentificationModule = {
@@ -7,8 +7,8 @@ const authentificationModule = {
   },
 
   authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization']
-    const token = authHeader && authHeader.split(' ')[1]
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
 
     if (token == null) return res.sendStatus(401)
   
@@ -21,7 +21,6 @@ const authentificationModule = {
     });
   }
 
-}
+};
 
-module.exports = authentificationModule
-
+module.exports = authentificationModule;

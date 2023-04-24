@@ -1,6 +1,6 @@
 const debug = require("debug")("categoryController");
 const APIError = require('../../service/error/APIError');
-const { Category, Ingredient } = require("../model");
+const { Category } = require("../model");
 
 const categoryController = {
 

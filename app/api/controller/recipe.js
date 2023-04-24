@@ -168,27 +168,6 @@ const recipeController = {
             next(new APIError("Bad request", 500)); 
         }
     },
-
-    async addStepToRecipe (req, res, next) {
-
-    },
-
-    async updateStepOfRecipe (req, res, next) {
-
-    },
-
-    async deleteStepToRecipe (req, res, next) {
-
-    },
-
-    async addTagToRecipe (req, res, next) {
-
-    },
-
-    async updateTagOfRecipe (req, res, next) {
-
-    },
-
 };
 
 module.exports = recipeController;

@@ -19,6 +19,38 @@ class Message extends CoreModel{
         this.created_at = obj.created_at;
         this.updated_at = obj.updated_at;
     };
+
+    async findAllMessageUser (){
+        const query = {
+            text: `SELECT * FROM message WHERE email=$1`,
+            values: [this.email]
+        };
+
+        let response;
+
+        try{
+            response = await ofrigo.query(query);
+            return response.rows;
+        }catch(error){
+            console.log(error);
+        }
+    };
+
+    async findOneMessageUser (messageId){
+        const query = {
+            text: `SELECT * FROM message WHERE email=$1 AND id=$2`,
+            values: [this.email, messageId]
+        };
+
+        let response;
+
+        try{
+            response = await ofrigo.query(query);
+            return response.rows[0];
+        }catch(error){
+            console.log(error);
+        }
+    };
 };
 
 module.exports = Message;

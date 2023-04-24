@@ -29,7 +29,7 @@ const messageController = {
     async getMessageById (req, res, next){
         const messageId = req.params.id;
         const message = await Message.findOne(messageId);
-
+        
         if(message){
             debug(message);
             res.status(200).json(message);
@@ -53,6 +53,39 @@ const messageController = {
         }
         else{
             next(new APIError("Bad request", 400));
+        }
+    },
+
+    async getUserMessage (req, res, next) {
+        if(!req.user.id) {
+            res.status(400).json({error: "User not provided."})
+        }
+
+        const message = await Message.findAllUserMessage();
+
+        if(message){
+            debug(message);
+            res.status(200).json(message);
+        }
+        else{
+           next(new APIError("Bad request", 500));
+        }
+    },
+
+    async getUserMessageById (req, res, next) {
+        if(!req.user.id) {
+            res.status(400).json({error: "User not provided."})
+        }
+
+        const messageId = req.params.id;
+        const message = await Message.findOneMessageUser(messageId);
+
+        if(message){
+            debug(message);
+            res.status(200).json(message);
+        }
+        else{
+           next(new APIError("Bad request", 500));
         }
     },
 

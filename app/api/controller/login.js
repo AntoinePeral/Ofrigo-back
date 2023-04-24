@@ -5,9 +5,9 @@ const bcrypt = require('bcrypt');
 const authentificationModule = require ("../../service/middleware/authToken")
 
 
-const authentificationController = {
+const loginController = {
 
-  async login(req, res, next) {
+  async signIn(req, res, next) {
     const {email, password} = req.body;
     const account = await Account.findByEmail(email);
     
@@ -30,4 +30,4 @@ const authentificationController = {
   }
 };
 
-module.exports= authentificationController;
+module.exports= loginController;

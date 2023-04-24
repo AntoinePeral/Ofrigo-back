@@ -128,11 +128,7 @@ const stepSchema = Joi.object({
 });
 
 const account_has_ingredientSchema = Joi.object({
-    account_id: Joi.string().min(1).required().messages({
-        'string.empty': 'Un utilisateur doit être sélectionné',
-        'any.required': 'Pour ajouter un ingrédient un utilisateur est requis'
-    }),
-    ingredient_id: Joi.string().min(1).required().messages({
+    ingredient_id: Joi.number().min(1).required().messages({
         'string.empty': 'Un ingrédient doit être sélectionné',
         'any.required': 'Pour ajouter un utilisateur un ingrédient est requis'
     }),

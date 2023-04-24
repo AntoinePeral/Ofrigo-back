@@ -6,40 +6,6 @@ const authentificationModule = require ('../../service/middleware/authToken');
 
 const accountController = {
 
-    /**
-     * Get all account return json Objects in array
-     * @param {*} _ 
-     * @param {*} res use to response to the client
-     */
-    async getAllAccount (_, res, next){
-        const account = await Account.findAll();
-
-        if(account){
-            debug(account);
-            res.status(200).json(account);
-        }
-        else{
-            next(new APIError("Bad request", 500));
-        }
-    },
-
-    /**
-     * Get one account by his id and return an json object
-     * @param {*} req use request to get the params.id
-     * @param {*} res use it to response to the client
-     */
-    async getAccountById (req, res, next){
-        const accountId = req.params.id;
-        const account = await Account.findOne(accountId);
-
-        if(account){
-            debug(account);
-            res.status(200).json(account);
-        }
-        else{
-            next(new APIError("Bad request", 500));
-        }
-    },
     async getUserAccount(req, res, next) {
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
@@ -84,9 +50,11 @@ const accountController = {
     },
 
     async updateAccount (req, res, next) {
-        const AccountId = req.params.id;
+        if(!req.user.id) {
+            res.status(400).json({error: "User not provided."})
+        }
         const accountBody = req.body;
-        let account = await Account.findOne(AccountId);
+        let account = await Account.findOne(req.user.id);
 
         if(account){
             debug(account);
@@ -106,8 +74,10 @@ const accountController = {
     },
 
     async deleteAccount (req, res, next) {
-        const accountId = req.params.id;
-        const response = await Account.delete(accountId);
+        if(!req.user.id) {
+            res.status(400).json({error: "User not provided."})
+        }
+        const response = await Account.delete(req.user.id);
 
         if(response){
             debug(response);
