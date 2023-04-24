@@ -16,13 +16,13 @@ accountRouter.post('/me/profile/ingredient', authentification.authenticateToken,
 accountRouter.delete('/me/profile/ingredient/:id(\\d+)', authentification.authenticateToken, account.deleteIngredientToAccount);
 
 //Admin
-//accountRouter.get("/admin/profile", authentification.authenticateToken, validationRole.isAdmin, admin.getAllAccount);
-//accountRouter.get("/admin/profile/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, admin.getAccountById);
-//accountRouter.delete("/admin/profile/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, admin.deleteAccount);
+accountRouter.get("/admin/profile", authentification.authenticateToken, validationRole.isAdmin, admin.getAllAccount);
+accountRouter.get("/admin/profile/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, admin.getAccountById);
+accountRouter.delete("/admin/profile/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, admin.deleteAccount);
 
 //Test
-accountRouter.get("/admin/profile", admin.getAllAccount);
-accountRouter.get("/admin/profile/:id(\\d+)", admin.getAccountById);
-accountRouter.delete("/admin/profile/:id(\\d+)", admin.deleteAccount);
+//accountRouter.get("/admin/profile", admin.getAllAccount);
+//accountRouter.get("/admin/profile/:id(\\d+)", admin.getAccountById);
+//accountRouter.delete("/admin/profile/:id(\\d+)", admin.deleteAccount);
 
 module.exports = accountRouter;
