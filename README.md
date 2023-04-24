@@ -38,7 +38,7 @@
 
 ## CATEGORY
 
-### Publicbold text
+### Public
 
 - `/category` <span style="color:green"><strong>`GET`</strong></span> - Affiche toutes les categories
   - `STATUT` :  <span style="color:green"><strong>`OK`</strong></span>
