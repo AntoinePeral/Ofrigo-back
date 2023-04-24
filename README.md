@@ -9,7 +9,6 @@
 |---|---|---|---|
 |`/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Crée un compte|<span style="color:green"><strong>`OK`</strong></span>|
 |`/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter|<span style="color:green"><strong>`OK`</strong></span>|
-|`/admin/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter en tant qu'admin|<strong>`WAITING FOR TEST`</strong>|
 
 ### User
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -23,6 +22,7 @@
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
+|`/admin/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter en tant qu'admin|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/profile`|<span style="color:green"><strong>`GET`</strong></span>|Affiche tous les comptes utilisateur|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/profile/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/profile/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime un compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
