@@ -18,6 +18,43 @@ class Ingredient extends CoreModel{
         this.created_at = obj.created_at;
         this.updated_at = obj.updated_at;
     };
+
+    static async findAllIngredientUser (accountId){
+        const query = {
+            text: `SELECT i.* FROM ingredient i
+            JOIN account_has_ingredient ai
+            ON ai.ingredient_id=i.id
+            WHERE ai.account_id=$1`,
+            values: [accountId]
+        };
+        let response;
+
+        try{
+            response = await ofrigo.query(query);
+            return response.rows;
+        }catch(error){
+            console.log(error);
+        }
+    };
+
+    static async findOneIngredientUser (accountId, ingredientId){
+        const query = {
+            text: `SELECT i.* FROM ingredient i
+            JOIN account_has_ingredient ai
+            ON ai.ingredient_id=i.id
+            WHERE ai.account_id=$1
+            AND i.id=$2`,
+            values: [accountId, ingredientId]
+        };
+        let response;
+
+        try{
+            response = await ofrigo.query(query);
+            return response.rows[0];
+        }catch(error){
+            console.log(error);
+        }
+    };
 };
 
 module.exports = Ingredient;

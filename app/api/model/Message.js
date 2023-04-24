@@ -20,10 +20,10 @@ class Message extends CoreModel{
         this.updated_at = obj.updated_at;
     };
 
-    async findAllMessageUser (){
+    static async findAllMessageUser (email){
         const query = {
             text: `SELECT * FROM message WHERE email=$1`,
-            values: [this.email]
+            values: [email]
         };
 
         let response;
@@ -36,10 +36,10 @@ class Message extends CoreModel{
         }
     };
 
-    async findOneMessageUser (messageId){
+    static async findOneMessageUser (email, messageId){
         const query = {
             text: `SELECT * FROM message WHERE email=$1 AND id=$2`,
-            values: [this.email, messageId]
+            values: [email, messageId]
         };
 
         let response;

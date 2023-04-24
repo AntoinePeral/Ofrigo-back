@@ -1,17 +1,28 @@
 const { Router } = require("express");
 const accountRouter = Router();
 const { account, admin } = require("../controller");
-const validationModule = require("../../service/validation/validate");
-const {adminValidator, authToken} = require('../../service/middleware');
+const validationBody = require("../../service/validation/validate");
+const authentification = require('../../service/middleware/authToken');
+const validationRole = require("../../service/middleware/adminValidator");
 
-accountRouter.post("/register", validationModule.validateUserAccount('body'), account.addAccount);
-accountRouter.get("/me/profile", authToken.authenticateToken, account.getUserAccount);
-accountRouter.get("/admin/profile", authToken.authenticateToken, admin.getAllAccount);
-accountRouter.get("/admin/profile/:id(\\d+)", authToken.authenticateToken, admin.getAccountById);
-accountRouter.delete("/admin/profile/:id(\\d+)", authToken.authenticateToken, admin.deleteAccount);
-accountRouter.put("/me/profile", authToken.authenticateToken, validationModule.validateUserAccount('body'), account.updateAccount);
-accountRouter.delete("/me/profile", authToken.authenticateToken, account.deleteAccount);
-accountRouter.post('/me/profile/ingredient', authToken.authenticateToken, validationModule.validateAccount_has_ingredientSchema('body'), account.addIngredientToAccount);
-accountRouter.delete('/me/profile/ingredient/:id(\\d+)', authToken.authenticateToken, account.deleteIngredientToAccount);
+//Public
+accountRouter.post("/register", validationBody.validateUserAccount('body'), account.addAccount);
+
+//User
+accountRouter.get("/me/profile", authentification.authenticateToken, account.getUserAccount);
+accountRouter.put("/me/profile", authentification.authenticateToken, validationBody.validateUserAccount('body'), account.updateAccount);
+accountRouter.delete("/me/profile", authentification.authenticateToken, account.deleteAccount);
+accountRouter.post('/me/profile/ingredient', authentification.authenticateToken, validationBody.validateAccount_has_ingredientSchema('body'), account.addIngredientToAccount);
+accountRouter.delete('/me/profile/ingredient/:id(\\d+)', authentification.authenticateToken, account.deleteIngredientToAccount);
+
+//Admin
+accountRouter.get("/admin/profile", authentification.authenticateToken, validationRole.isAdmin, admin.getAllAccount);
+accountRouter.get("/admin/profile/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, admin.getAccountById);
+accountRouter.delete("/admin/profile/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, admin.deleteAccount);
+
+//Test
+//accountRouter.get("/admin/profile", admin.getAllAccount);
+//accountRouter.get("/admin/profile/:id(\\d+)", admin.getAccountById);
+//accountRouter.delete("/admin/profile/:id(\\d+)", admin.deleteAccount);
 
 module.exports = accountRouter;
