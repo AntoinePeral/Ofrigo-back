@@ -7,8 +7,8 @@
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Ajouter un compte|<span style="color:green"><strong>`OK`</strong></span>|
-|`/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter|<span style="color:green"><strong>`OK`</strong></span>|
+|`/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Ajouter un compte|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ### User
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -32,8 +32,8 @@
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/category`|<span style="color:green"><strong>`GET`</strong></span>|Affiche toutes les categories|<span style="color:green"><strong>`OK`</strong></span>|
-|`/category/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche une categorie|<span style="color:green"><strong>`OK`</strong></span>|
+|`/category`|<span style="color:green"><strong>`GET`</strong></span>|Affiche toutes les categories|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/category/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche une categorie|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -49,8 +49,8 @@
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/ingredient`|<span style="color:green"><strong>`GET`</strong></span>|Affiche tous les ingrédients|<span style="color:green"><strong>`OK`</strong></span>|
-|`/ingredient/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un ingrédient|<span style="color:green"><strong>`OK`</strong></span>|
+|`/ingredient`|<span style="color:green"><strong>`GET`</strong></span>|Affiche tous les ingrédients|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/ingredient/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ### User
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -72,7 +72,7 @@
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/contact`|<span style="color:aqua"><strong>`POST`</strong></span>|Envoyer un message|<span style="color:green"><strong>`OK`</strong></span>|
+|`/contact`|<span style="color:aqua"><strong>`POST`</strong></span>|Envoyer un message|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ### User
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -97,8 +97,8 @@
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/recipe`|<span style="color:green"><strong>`GET`</strong></span>|Affiche toutes les recettes|<span style="color:green"><strong>`OK`</strong></span>|
-|`/recipe/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche une recette|<span style="color:green"><strong>`OK`</strong></span>|
+|`/recipe`|<span style="color:green"><strong>`GET`</strong></span>|Affiche toutes les recettes|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/recipe/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche une recette|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -114,8 +114,8 @@
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/tag`|<span style="color:green"><strong>`GET`</strong></span>|Affiche tous les tags|<span style="color:green"><strong>`OK`</strong></span>|
-|`/tag/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un tag|<span style="color:green"><strong>`OK`</strong></span>|
+|`/tag`|<span style="color:green"><strong>`GET`</strong></span>|Affiche tous les tags|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/tag/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un tag|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
