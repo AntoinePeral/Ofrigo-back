@@ -188,6 +188,7 @@ acc.*,
 	SELECT
 		json_agg(
 			json_build_object(
+				'id', i.id,
 				'label', i.label,
 				'unit', i.unit,
 				'category_id', i.category_id,
@@ -205,7 +206,7 @@ acc.*,
 ) AS ingredient,
 (
 	SELECT
-		json_agg(m.* ORDER BY m.created_at) 
+		json_agg(m.* ORDER BY m.id DESC) 
 	FROM message m
 	WHERE m.email=acc.email
 ) AS message
@@ -232,6 +233,7 @@ acc.*,
 	SELECT
 		json_agg(
 			json_build_object(
+				'id', i.id,
 				'label', i.label,
 				'unit', i.unit,
 				'category_id', i.category_id,
@@ -249,7 +251,7 @@ acc.*,
 ) AS ingredient,
 (
 	SELECT
-		json_agg(m.* ORDER BY m.created_at) 
+		json_agg(m.* ORDER BY m.id DESC) 
 	FROM message m
 	WHERE m.email=acc.email
 ) AS message
@@ -363,6 +365,7 @@ SELECT *,
 	WHERE m.email=acc.email
 ) AS account
 FROM message m
+ORDER BY m.id DESC
 $$ LANGUAGE SQL;
 
 -- Function to get on message by his id and return his label, content, email and account.
@@ -393,6 +396,7 @@ SELECT *,
 ) AS account
 FROM message m
 WHERE m.id=m_id
+ORDER BY m.id DESC
 $$ LANGUAGE SQL;
 
 -- Function to get all tag and return their label and recipe. All is ordered and grouped by the tag.id

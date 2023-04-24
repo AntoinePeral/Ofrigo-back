@@ -1,6 +1,6 @@
 const debug = require("debug")("recipeController");
 const APIError = require('../../service/error/APIError');
-const { Recipe } = require("../model");
+const { Recipe, Ingredient, Quantity, Step, Tag } = require("../model");
 
 const recipeController = {
 
@@ -90,6 +90,103 @@ const recipeController = {
         else{
             next(new APIError("Bad request", 500));
         }
+    },
+
+    async addIngredientToRecipe (req, res, next) {
+        const recipeId = req.params.id;
+        const { ingredient_id, ingredient_quantity } = req.body;
+        let recipe = await Recipe.findOne(recipeId);
+        const ingredient = await Ingredient.findOne(ingredient_id);
+        let validation;
+
+        if(recipe && ingredient){
+            for (const element of recipe.ingredient){
+                if(element.id === ingredient.id){
+                    validation = false;
+                }
+                else{
+                    validation = true;
+                }
+            }
+        }
+        if(validation){
+            await recipe.addIngredient(ingredient_id, ingredient_quantity);
+            return res.status(200).json(recipe);
+        }
+        else{
+            next(new APIError("Bad request", 500));
+        }
+    },
+
+    async updateIngredientOfRecipe (req, res, next) {
+        const recipeId = req.params.id;
+        const { ingredient_id, ingredient_quantity } = req.body;
+        console.log(req.body);
+        let recipe = await Recipe.findOne(recipeId);
+        const ingredient = await Ingredient.findOne(ingredient_id);
+        let validation;
+
+        if(recipe && ingredient){
+            for (const element of recipe.ingredient){
+                if(element.id === ingredient.id){
+                    validation = true;
+                }
+                else{
+                    validation = false;
+                }
+            }
+        }
+        if(validation){
+            await recipe.updateIngredient(ingredient_id, ingredient_quantity);
+            return res.status(200).json(recipe);
+        }
+        else{
+            next(new APIError("Bad request", 500));
+        }
+    },
+
+    async deleteIngredientOfRecipe (req, res, next) {
+        const { recipeId, ingredientId } = req.params;
+        let recipe = await Recipe.findOne(recipeId);
+        const ingredient = await Ingredient.findOne(ingredientId);
+        let validation;
+
+        for(const ingredient of recipe.ingredient){
+            if(ingredient.id == ingredientId){
+                validation = true;
+            }
+            else{
+                validation = false;
+            }
+        }
+
+        if(validation){
+            await recipe.removeIngredient(ingredientId);
+            res.status(200).json(recipe);
+        }
+        else{
+            next(new APIError("Bad request", 500)); 
+        }
+    },
+
+    async addStepToRecipe (req, res, next) {
+
+    },
+
+    async updateStepOfRecipe (req, res, next) {
+
+    },
+
+    async deleteStepToRecipe (req, res, next) {
+
+    },
+
+    async addTagToRecipe (req, res, next) {
+
+    },
+
+    async updateTagOfRecipe (req, res, next) {
+
     },
 
 };
