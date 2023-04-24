@@ -7,8 +7,8 @@
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Crée un compte|<strong>`WAITING FOR TEST`</strong>
-|`/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter|<strong>`WAITING FOR TEST`</strong>|
+|`/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Crée un compte|<span style="color:green"><strong>`OK`</strong></span>|
+|`/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter|<span style="color:green"><strong>`OK`</strong></span>|
 |`/admin/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter en tant qu'admin|<strong>`WAITING FOR TEST`</strong>|
 
 ### User
