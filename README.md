@@ -2,7 +2,7 @@
 
 # LISTE DES ROUTES
 
-## ACCOUNT
+## <ins>ACCOUNT</ins>
 
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -27,7 +27,7 @@
 |`/admin/profile/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/profile/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime un compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
 
-## CATEGORY
+## <ins>CATEGORY</ins>
 
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -44,7 +44,7 @@
 |`/admin/category/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie une categorie|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/category/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime une categorie |<strong>`WAITING FOR TEST`</strong>|
 
-## INGREDIENT
+## <ins>INGREDIENT</ins>
 
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -67,7 +67,7 @@
 |`/admin/ingredient`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie un ingrédient|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/ingredient`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime un ingrédient|<strong>`WAITING FOR TEST`</strong>|
 
-## MESSAGE
+## <ins>MESSAGE</ins>
 
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -92,7 +92,7 @@
 |`/admin/message/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie un message d'un admin|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/message/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime un message de l'admin|<strong>`WAITING FOR TEST`</strong>|
 
-## RECIPE
+## <ins>RECIPE</ins>
 
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -109,7 +109,7 @@
 |`/admin/recipe/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie une recette|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/recipe/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime une recette|<strong>`WAITING FOR TEST`</strong>|
 
-## TAG
+## <ins>TAG</ins>
 
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
