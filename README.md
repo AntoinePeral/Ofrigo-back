@@ -1,6 +1,6 @@
 # projet-06-o-frigo-back
 
-# LIST OF ROUTES
+# LISTE DES ROUTES
 
 ## ACCOUNT
 
