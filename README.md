@@ -14,11 +14,11 @@
 ### User
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/me/profile`|<span style="color:green"><strong>`GET`</strong></span>|Affiche les données utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie les données de l'utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime son compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile/ingredient`|<span style="color:aqua"><strong>`POST`</strong></span>|Ajoute un ingredient au compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile/ingredient/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime un ingredient du compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/:me/profile`|<span style="color:green"><strong>`GET`</strong></span>|Affiche les données utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/:me/profile`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie les données de l'utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/:me/profile`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime son compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/:me/profile/ingredient`|<span style="color:aqua"><strong>`POST`</strong></span>|Ajoute un ingredient au compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/:me/profile/ingredient/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime un ingredient du compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
 
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -55,7 +55,7 @@
 ### User
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/me/profile/ingredient`|<span style="color:green"><strong>`GET`</strong></span>|Affiche tous les ingredients d'un utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/:me/profile/ingredient`|<span style="color:green"><strong>`GET`</strong></span>|Affiche tous les ingredients d'un utilisateur|<strong>`WAITING FOR TEST`</strong>|
 |`/me/profile/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un ingredient d'un utilisateur|<strong>`WAITING FOR TEST`</strong>|
 
 ### Admin
@@ -77,11 +77,11 @@
 ### User
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/me/profile/message`|<span style="color:green"><strong>`GET`</strong></span>|Affiche toutes les messages d'un utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile/message/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un message d'un utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile/contact`|<span style="color:aqua"><strong>`POST`</strong></span>|Envoyer un message en tant qu'utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile/message/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie un message de l'utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile/message/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime un message de l'utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/:me/profile/message`|<span style="color:green"><strong>`GET`</strong></span>|Affiche toutes les messages d'un utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/:me/profile/message/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un message d'un utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/:me/profile/contact`|<span style="color:aqua"><strong>`POST`</strong></span>|Envoyer un message en tant qu'utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/:me/profile/message/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie un message de l'utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/:me/profile/message/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime un message de l'utilisateur|<strong>`WAITING FOR TEST`</strong>|
 
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
