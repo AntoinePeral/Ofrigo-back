@@ -7,7 +7,7 @@
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Crée un compte|<span style="color:green"><strong>`OK`</strong></span>|
+|`/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Ajouter un compte|<span style="color:green"><strong>`OK`</strong></span>|
 |`/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter|<span style="color:green"><strong>`OK`</strong></span>|
 
 ### User
