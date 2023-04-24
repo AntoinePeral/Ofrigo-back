@@ -9,16 +9,16 @@
 |---|---|---|---|
 |`/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Crée un compte|<strong>`WAITING FOR TEST`</strong>
 |`/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter en tant que admin|<strong>`WAITING FOR TEST`</strong>|
+|`/admin/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter en tant qu'admin|<strong>`WAITING FOR TEST`</strong>|
 
 ### User
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/me/profile`|<span style="color:green"><strong>`GET`</strong></span>|Données utilisateur connecté|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie les données d'un utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime un utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile/ingredient`|<span style="color:aqua"><strong>`POST`</strong></span>|Ajoute un ingredient a l'account|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile/ingredient/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime un ingredient de l'account|<strong>`WAITING FOR TEST`</strong>|
+|`/me/profile`|<span style="color:green"><strong>`GET`</strong></span>|Affiche les données utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/me/profile`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie les données de l'utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/me/profile`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime son compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/me/profile/ingredient`|<span style="color:aqua"><strong>`POST`</strong></span>|Ajoute un ingredient au compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/me/profile/ingredient/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime un ingredient du compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
 
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
@@ -33,13 +33,13 @@
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/category`|<span style="color:green"><strong>`GET`</strong></span>|Affiche toutes les categories|<span style="color:green"><strong>`OK`</strong></span>|
-|`/category/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche une categories|<span style="color:green"><strong>`OK`</strong></span>|
+|`/category/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche une categorie|<span style="color:green"><strong>`OK`</strong></span>|
 
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/admin/category`|<span style="color:green"><strong>`GET`</strong></span>|Affiche toutes les categories|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/category/:id`| <span style="color:green"><strong>`GET`</strong></span>|Affiche une categories|<strong>`WAITING FOR TEST`</strong>|
+|`/admin/category/:id`| <span style="color:green"><strong>`GET`</strong></span>|Affiche une categorie|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/category`|<span style="color:aqua"><strong>`POST`</strong></span>|Crée une categorie|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/category/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie une categorie|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/category/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime une categorie |<strong>`WAITING FOR TEST`</strong>|
@@ -88,7 +88,7 @@
 |---|---|---|---|
 |`/admin/message`|<span style="color:green"><strong>`GET`</strong></span>|Affiche tous les messages|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/message/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un message|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/contact`|<span style="color:aqua"><strong>`POST`</strong></span>|Envoyer un message en tant que admin|<strong>`WAITING FOR TEST`</strong>|
+|`/admin/contact`|<span style="color:aqua"><strong>`POST`</strong></span>|Envoyer un message en tant qu'admin|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/message/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie un message d'un admin|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/message/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprime un message de l'admin|<strong>`WAITING FOR TEST`</strong>|
 
@@ -114,13 +114,13 @@
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/tag`|<span style="color:green"><strong>`GET`</strong></span>|Affiche toutes les tags|<span style="color:green"><strong>`OK`</strong></span>|
+|`/tag`|<span style="color:green"><strong>`GET`</strong></span>|Affiche tous les tags|<span style="color:green"><strong>`OK`</strong></span>|
 |`/tag/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un tag|<span style="color:green"><strong>`OK`</strong></span>|
 
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/admin/tag`|<span style="color:green"><strong>`GET`</strong></span>|Affiche toutes les tags|<strong>`WAITING FOR TEST`</strong>|
+|`/admin/tag`|<span style="color:green"><strong>`GET`</strong></span>|Affiche tous les tags|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/tag/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un tag|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/tag`|<span style="color:aqua"><strong>`POST`</strong></span>|Crée un tag|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/tag/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifie un tag|<strong>`WAITING FOR TEST`</strong>|
