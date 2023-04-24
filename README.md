@@ -72,7 +72,7 @@
 ### Public
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/contact`|<span style="color:aqua"><strong>`POST`</strong></span>|Envoyer un message|<strong>`WAITING FOR TEST`</strong>|
+|`/contact`|<span style="color:aqua"><strong>`POST`</strong></span>|Envoyer un message|<span style="color:green"><strong>`OK`</strong></span>|
 
 ### User
 |ROUTE|VERB|DESCRIPTION|STATUT|
