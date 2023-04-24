@@ -59,7 +59,7 @@ class Account extends CoreModel{
 
         try{
             response = await ofrigo.query(query);
-            return result.rows[0];
+            return response.rows[0];
         }catch(error){
             console.log(error);
         }
@@ -76,7 +76,7 @@ class Account extends CoreModel{
             response = await ofrigo.query(query);
             debug(response)
         } catch (error) {
-            console.log("Erreur");
+            console.log(error);
         }
 
         return response.rowCount;

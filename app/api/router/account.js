@@ -12,6 +12,6 @@ accountRouter.get("/profile/:id(\\d+)", account.getAccountById);
 accountRouter.put("/profile/:id(\\d+)", middleware.authenticateToken, validationModule.validateUserAccount('body'), account.updateAccount);
 accountRouter.delete("/profile/:id(\\d+)", middleware.authenticateToken, account.deleteAccount);
 accountRouter.post('/profile/ingredient', middleware.authenticateToken, account.addIngredientToAccount);
-accountRouter.delete('/profile/:accountId(\\d+)/ingredient/:ingredientId(\\d+)', middleware.authenticateToken, account.deleteIngredientToAccount);
+accountRouter.delete('/profile/ingredient/:id(\\d+)', middleware.authenticateToken, account.deleteIngredientToAccount);
 
 module.exports = accountRouter;

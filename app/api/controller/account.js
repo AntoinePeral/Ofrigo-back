@@ -124,7 +124,6 @@ const accountController = {
         }
         const ingredient_id = req.body.ingredient_id;
         const ingredient = await Ingredient.findOne(ingredient_id);
-        //let account = await Account.findOne(account_id);
         const account = await Account.findOne(req.user.id)
         let validation;
 
@@ -153,8 +152,11 @@ const accountController = {
     },
 
     async deleteIngredientToAccount(req, res, next){
-        const { accountId, ingredientId } = req.params;
-        let account = await Account.findOne(accountId);
+        if(!req.user.id) {
+            res.status(400).json({error: "User not provided."})
+        }
+        const ingredientId = req.params.id;
+        let account = await Account.findOne(req.user.id);
         const ingredient = await Ingredient.findOne(ingredientId);
         let validation;
 
