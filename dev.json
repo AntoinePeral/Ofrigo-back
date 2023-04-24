@@ -1,3 +1,0 @@
-{
-    "dev": "DEBUG=express,activeRecord,accountController,categoryController,ingredientController,messageController,recipeController,tagController,homeController nodemon server.js"
-}
