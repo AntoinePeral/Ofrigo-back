@@ -11,15 +11,12 @@ const authentificationModule = {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
 
-    console.log(token);
-
     if (token == null) return (new APIError("Autorisation refusée, le token est manquant", 401));
   
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
       if (err) {
         next(new APIError("Le token est érroné", 401));
       }
-      console.log("hello");
       req.user = decoded;
       next();
     });

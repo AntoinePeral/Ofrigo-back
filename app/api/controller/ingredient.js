@@ -39,6 +39,39 @@ const ingredientController = {
         }
     },
 
+    async getAllIngredientUser (req, res, next){
+        if(!req.user.id) {
+            res.status(400).json({error: "User not provided."})
+        }
+
+        const ingredient = await Ingredient.findAllIngredientUser(req.user.id);
+
+        if(ingredient){
+            debug(ingredient);
+            res.status(200).json(ingredient);
+        }
+        else{
+            next(new APIError("Bad request", 500));
+        }
+    },
+
+    async getOneIngredientUser (req, res, next){
+        if(!req.user.id) {
+            res.status(400).json({error: "User not provided."})
+        }
+
+        const ingredientId = req.params.id;
+        const ingredient = await Ingredient.findOneIngredientUser(req.user.id, ingredientId);
+
+        if(ingredient){
+            debug(ingredient);
+            res.status(200).json(ingredient);
+        }
+        else{
+            next(new APIError("Bad request", 500));
+        }
+    },
+
     async addIngredient (req, res, next) {
         const ingredientBody = req.body;
         const ingredient = new Ingredient(ingredientBody);

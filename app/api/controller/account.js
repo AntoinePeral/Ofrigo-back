@@ -10,6 +10,7 @@ const accountController = {
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
         }
+
         const account = await Account.findOne(req.user.id)
 
         if(account){
@@ -53,6 +54,7 @@ const accountController = {
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
         }
+
         const accountBody = req.body;
         let account = await Account.findOne(req.user.id);
 
@@ -77,6 +79,7 @@ const accountController = {
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
         }
+
         const response = await Account.delete(req.user.id);
 
         if(response){
@@ -92,6 +95,7 @@ const accountController = {
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
         }
+
         const ingredient_id = req.body.ingredient_id;
         const ingredient = await Ingredient.findOne(ingredient_id);
         const account = await Account.findOne(req.user.id)
@@ -126,6 +130,7 @@ const accountController = {
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
         }
+        
         const ingredientId = req.params.id;
         let account = await Account.findOne(req.user.id);
         const ingredient = await Ingredient.findOne(ingredientId);

@@ -41,7 +41,6 @@ const messageController = {
 
     async addMessage (req, res, next) {
         const messageBody = req.body;
-        console.log(messageBody);
         const message = new Message(messageBody);
         debug(message)
 
@@ -61,7 +60,7 @@ const messageController = {
             res.status(400).json({error: "User not provided."})
         }
 
-        const message = await Message.findAllUserMessage();
+        const message = await Message.findAllUserMessage(req.user.email);
 
         if(message){
             debug(message);
@@ -78,7 +77,7 @@ const messageController = {
         }
 
         const messageId = req.params.id;
-        const message = await Message.findOneMessageUser(messageId);
+        const message = await Message.findOneMessageUser(req.user.email, messageId);
 
         if(message){
             debug(message);

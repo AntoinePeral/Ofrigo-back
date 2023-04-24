@@ -357,6 +357,7 @@ SELECT *,
 				'last_name', acc.last_name,
 				'first_name', acc.first_name,
 				'email', acc.email,
+				'role', acc.role,
 				'created_at', acc.created_at,
 				'updated_at', acc.updated_at
 			)
@@ -387,6 +388,7 @@ SELECT *,
 				'last_name', acc.last_name,
 				'first_name', acc.first_name,
 				'email', acc.email,
+				'role', acc.role,
 				'created_at', acc.created_at,
 				'updated_at', acc.updated_at
 			)

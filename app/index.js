@@ -12,7 +12,7 @@ app.get("/", (_,res)=>{
     res.send("O'Frigo");
 });
 
-app.use(account,login, category, ingredient, recipe, message, tag);
+app.use(account, login, category, ingredient, recipe, message, tag);
 app.use(errorModule._404);
 app.use(errorModule.manage);
 
