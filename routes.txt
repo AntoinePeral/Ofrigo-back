@@ -6,6 +6,7 @@ LISTE DES ROUTES DISPONIBLE :
 
 /register POST Crée un compte
 /login POST Se connecter
+/admin/login Se connecter en tant que admin
 
 - User :
 
@@ -74,8 +75,8 @@ LISTE DES ROUTES DISPONIBLE :
 
 /admin/message GET Affiche tous les messages
 /admin/message/:id GET Affiche un message
-/admin/contact POST Envoyer un message en tant qu'admin
-/admin/message/:id PUT Modifie un message de l'admin
+/admin/contact POST Envoyer un message en tant que admin
+/admin/message/:id PUT Modifie un message d'un admin
 /admin/message/:id DELETE Supprime un message de l'admin
 
 ===Recipe===

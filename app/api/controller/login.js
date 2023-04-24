@@ -27,7 +27,30 @@ const loginController = {
           });
       }
     }
+  },
+
+  async signInAdmin(req, res, next) {
+    const {email, password} = req.body;
+    const account = await Account.findByEmail(email);
+    
+    if(!account) {
+      next(new APIError('Couple login/mot de passe est incorrect.', 401));
+    } 
+    else {
+      const hasMatchingPassword = await bcrypt.compare(password, account.password);
+
+      if(!hasMatchingPassword && account.role === "admin") {
+        next(new APIError('Couple login/mot de passe est incorrect.', 401));
+      } else{
+        const accessToken = authentificationModule.generateAccessToken(account);
+        res.status(200).json({
+              accessToken,
+              account  
+          });
+      }
+    }
   }
+
 };
 
 module.exports= loginController;
