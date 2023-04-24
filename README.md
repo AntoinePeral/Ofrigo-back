@@ -135,7 +135,7 @@
   - `STATUT` : <span style="color:black"><strong>`WAITING FOR TEST`</strong></span>
 - `/admin/recipe/:id` <span style="color:green"><strong>`GET`</strong></span> - Affiche une recette
   - `STATUT` : <span style="color:black"><strong>`WAITING FOR TEST`</strong></span>
-- `/admin/recipe`  <span style="color:blue"><strong>`POST`</strong></span> - Créer une recette (seul)
+- `/admin/recipe`  <span style="color:blue"><strong>`POST`</strong></span> - Créer une recette
   - `STATUT` : <span style="color:black"><strong>`WAITING FOR TEST`</strong></span>
 - `/admin/recipe/:id` <span style="color:orange"><strong>`PUT`</strong></span> - Modifie une recette
   - `STATUT` : <span style="color:black"><strong>`WAITING FOR TEST`</strong></span>
