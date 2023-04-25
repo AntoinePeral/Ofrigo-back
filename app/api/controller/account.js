@@ -37,6 +37,7 @@ const accountController = {
             debug(account);
             account = await account.add({'password': hashedPassword});
             debug(account);
+            console.log(account);
         }
         else{
             next(new APIError("Bad request", 500));
