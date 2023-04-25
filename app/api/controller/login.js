@@ -28,6 +28,7 @@ const loginController = {
       }
     }
   },
+
   async signInAdmin(req, res, next) {
     const {email, password} = req.body;
     const account = await Account.findByEmail(email);
@@ -50,7 +51,7 @@ const loginController = {
           });
       }
     }
-  }
+  },
 
   async signInAdmin(req, res, next) {
     const {email, password} = req.body;

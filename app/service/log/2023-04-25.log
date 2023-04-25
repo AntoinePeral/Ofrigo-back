@@ -1,0 +1,20 @@
+date;contexte;message
+2023-04-25T14:29:39.463Z;/admin/profile;Autorisation refusée, le token est manquant
+2023-04-25T14:32:42.896Z;/admin/profile;Autorisation refusée, le token est manquant
+2023-04-25T14:34:31.911Z;/admin/profile;Autorisation refusée, le token est manquant
+2023-04-25T14:35:03.894Z;/admin/profile;Autorisation refusée, le token est manquant
+2023-04-25T14:35:17.207Z;/admin/profile;Autorisation refusée, le token est manquant
+2023-04-25T14:36:49.211Z;/admin/profile;Autorisation refusée, le token est manquant
+2023-04-25T14:38:30.197Z;/images/icons/gear.png;404 message
+2023-04-25T14:38:46.510Z;/admin/profile/16;Bad request
+2023-04-25T14:38:46.585Z;/images/icons/gear.png;404 message
+2023-04-25T14:39:37.124Z;/admin/profile/16;Cannot read properties of undefined (reading 'role')
+2023-04-25T14:40:00.374Z;/admin/profile/16;Bad request
+2023-04-25T14:40:00.446Z;/images/icons/gear.png;404 message
+2023-04-25T14:40:24.592Z;/admin/profile/16;Bad request
+2023-04-25T14:40:24.638Z;/images/icons/gear.png;404 message
+2023-04-25T14:40:25.101Z;/admin/profile/16;Bad request
+2023-04-25T14:40:25.145Z;/images/icons/gear.png;404 message
+2023-04-25T14:40:25.523Z;/admin/profile/16;Bad request
+2023-04-25T14:40:25.571Z;/images/icons/gear.png;404 message
+2023-04-25T14:40:56.948Z;/admin/profile/16;Cannot read properties of undefined (reading 'role')
