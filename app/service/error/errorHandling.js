@@ -2,7 +2,7 @@ const APIError = require("./APIError");
 const debug = require("debug")("error");
 const path = require("path");
 const fs = require('fs').promises;
-const createWriteStream = require('fs').createWriteStream;
+//const createWriteStream = require('fs').createWriteStream;
 
 const errorModule = {
     /**
@@ -14,27 +14,23 @@ const errorModule = {
      */
     async manage(err, req, res, next) {
         //await errorModule.log(err, req.url);
-
-        if (!err.message) {
-            switch (err.code) {
-                case 400:
-                    res.status(400).json({message:"Bad request"});
-                    break;
-                case 401:
-                    res.status(401).json({message:"Unauthorized"});
-                    break;
-                case 404:
-                    res.status(404).json({message:"Not found"});
-                    break;
-                case 500:
-                    res.status(500).json({message:'Internal server error'});
-                    break;
-                default:
-                    res.status(err.code).json({message:"Internal server error"});
-                    break;
-            }
-        } else {
-            res.status(err.code).json({message: err.message})
+        
+        switch (err.code) {
+            case 400:
+                res.status(400).json("Bad request");
+                break;
+            case 401:
+                res.status(401).json("Unauthorized");
+                break;
+            case 404:
+                res.status(404).json("Not found");
+                break;
+            case 500:
+                res.status(500).json('Internal server error');
+                break;
+            default:
+                res.status(err.code).json("Internal server error");
+                break;
         }
 
     },

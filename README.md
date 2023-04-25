@@ -28,6 +28,8 @@
 |`/admin/profile/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un compte utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/profile/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un compte utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
 
+---------------------------
+
 ## <ins>CATEGORY</ins>
 
 ### Public
@@ -44,6 +46,8 @@
 |`/admin/category`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer une categorie|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/category/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier une categorie|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/category/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer une categorie |<span style="color:gold"><strong>`OK`</strong></span>|
+
+---------------------------
 
 ## <ins>INGREDIENT</ins>
 
@@ -67,6 +71,8 @@
 |`/admin/ingredient`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/ingredient/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/ingredient/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
+
+---------------------------
 
 ## <ins>MESSAGE</ins>
 
@@ -93,6 +99,8 @@
 |`/admin/message/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un message d'un admin|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/message/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un message de l'admin|<span style="color:gold"><strong>`OK`</strong></span>|
 
+---------------------------
+
 ## <ins>RECIPE</ins>
 
 ### Public
@@ -110,6 +118,8 @@
 |`/admin/recipe/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier une recette|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/recipe/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer une recette|<span style="color:gold"><strong>`OK`</strong></span>|
 
+---------------------------
+
 ## <ins>TAG</ins>
 
 ### Public
@@ -126,3 +136,20 @@
 |`/admin/tag`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer un tag|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/tag/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un tag|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/tag/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un tag|<span style="color:gold"><strong>`OK`</strong></span>|
+
+---------------------------
+
+# Evolutions possibles
+
+
+|ETAPE|STATUT|
+|---|---|
+Back-office | En cours|
+Création d’une recette | En cours|
+Modification d’une recette | En cours|
+Gestion d'erreurs + Logs d’erreurs | En cours|
+Test unitaires| En cours|
+Fonctionalité : Noter une recette | En attente|
+Fonctionalité : Les membres peuvent créer des recettes | En attente|
+Fonctionalité : Recettes aléatoires | En attente|
+Fonctionalité : Commenter une recette | En attente|
