@@ -8,7 +8,7 @@
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Ajouter un compte|<span style="color:gold"><strong>`OK`</strong></span>|
-|`/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter|<span style="color:gold"><strong>`OK`</strong></span>| 
 
 ### User
 |ROUTE|VERB|DESCRIPTION|STATUT|
