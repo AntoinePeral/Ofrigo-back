@@ -297,6 +297,38 @@ class CoreModel{
 
         return response.rowCount;
     };
+
+    async addAdmin (privateFields = null){
+        const fields = []; 
+        const values = [];
+        let counter = 1;
+        const parameters = [];
+
+        if(this.constructor.tableName == "account"){
+            Object.entries(this).forEach(([key, value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "ingredient" && key!== "message"){
+                    fields.push(key);
+                }
+                if(value !== undefined){
+                    values.push(value);
+                    parameters.push(`$${counter}`);
+                    counter++;
+                }
+            });
+        }
+
+        const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;
+        let response;
+        
+        try {
+            response = await ofrigo.query(query, values);
+            debug(response);
+        } catch (error) {
+            console.log(error);
+        }
+
+        return response.rows[0];
+    };
 };
 
 module.exports = CoreModel;

@@ -50,6 +50,35 @@ const accountController = {
         });
     },
 
+    async addAdminAccount (req, res, next) {
+        const accountBody = req.body;
+        accountBody.role = "admin";
+
+        // Password encrypting
+        const saltRounds = 10;
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hashedPassword = await bcrypt.hash(accountBody.password, salt);
+        debug(hashedPassword);
+
+        let account = new Account(accountBody);
+
+        if(account){
+            debug(account);
+            account = await account.addAdmin({'password': hashedPassword});
+            debug(account);
+        }
+        else{
+            next(new APIError("Bad request", 500));
+        }
+
+        const accessToken = authentificationModule.generateAccessToken(account);
+        
+        return res.status(200).json({
+            accessToken,
+            account
+        });
+    },
+
     /**
      * 
      * @param {*} req 
