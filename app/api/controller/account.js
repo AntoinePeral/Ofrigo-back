@@ -124,7 +124,6 @@ const accountController = {
                 validation = true;
             }
         }
-        ;
         if(validation){
             await account.addIngredient(ingredient_id);
             account = await Account.findOne(req.user.id)
