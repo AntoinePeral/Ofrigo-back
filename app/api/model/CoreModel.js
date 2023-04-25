@@ -272,7 +272,6 @@ class CoreModel{
         }
 
         const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}' RETURNING *;`;
-
         const response = await ofrigo.query(query, values);
         return response.rows[0];
     };

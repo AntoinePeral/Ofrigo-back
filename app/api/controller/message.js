@@ -62,7 +62,6 @@ const messageController = {
         }
 
         let messageBody = req.body;
-
         messageBody.email = req.user.email;
 
         const message = new Message(messageBody);
