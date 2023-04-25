@@ -18,8 +18,8 @@ messageRouter.delete("/me/profile/message/:id(\\d+)", authentification.authentic
 //Admin
 messageRouter.get("/admin/message", authentification.authenticateToken, validationRole.isAdmin, message.getAllMessage);
 messageRouter.get("/admin/message/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, message.getMessageById);
-messageRouter.post("/admin/contact", authentification.authenticateToken, validationRole.isAdmin, validationBody.validateMessage('body'), message.addMessage);
-messageRouter.put("/admin/message/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, validationBody.validateMessage('body'), message.updateMessage);
+messageRouter.post("/admin/contact", authentification.authenticateToken, validationRole.isAdmin, validationBody.validateMessageUser('body'), message.addMessageUser);
+messageRouter.put("/admin/message/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, validationBody.validateMessageUser('body'), message.updateMessage);
 messageRouter.delete("/admin/message/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, message.deleteMessage);
 
 //Test

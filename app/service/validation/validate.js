@@ -191,10 +191,12 @@ const validationModule = {
     validateLogin(param){
         return (req, _, next) => {
             const { error } = loginSchema.validate(req[param]);
+
             if (error) {
                 next(new APIError(error.message, 400));
             }
             else{
+
                 next();
             }
         };
