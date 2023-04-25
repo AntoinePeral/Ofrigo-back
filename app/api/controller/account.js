@@ -50,6 +50,13 @@ const accountController = {
         });
     },
 
+    /**
+     * 
+     * @param {*} req 
+     * @param {*} res 
+     * @param {*} next 
+     * Le MDP doit être indiqué pour valider le schéma --> EN cas d'update du profile
+     */
     async updateAccount (req, res, next) {
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
@@ -120,7 +127,7 @@ const accountController = {
         if(validation){
             await account.addIngredient(ingredient_id);
             account = await Account.findOne(req.user.id);
-            return res.status(200).json(account);
+            return  res.status(200).json(account);
         }
         else{
             next(new APIError("Bad request", 500)); 
@@ -152,7 +159,7 @@ const accountController = {
         }
         if(validation){
             await account.removeIngredient(ingredientId);
-            account = await Account.findOne(req.user.id);
+            account = await Account.findOne(req.user.id)
             res.status(200).json(account);
         }
         else{

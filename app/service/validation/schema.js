@@ -102,6 +102,20 @@ const messageSchema = Joi.object({
     }),
 });
 
+const messageSchemaUser = Joi.object({
+    label: Joi.string().pattern(titleFormat).required().messages({
+        'string.pattern.base': "Le titre ne respecte pas le nombre de caractère (max100) ou caractères non autorisés",
+        'string.empty': 'Le champ titre ne peut pas être vide',
+        'any.required': 'Le champ titre est manquant'
+    }),
+    content: Joi.string().min(20).max(1000).required().messages({
+        'string.empty': 'Le champ contenu ne peut pas être vide',
+        'string.min': 'Le champ contenu ne peut pas être inférieur à 20 caractères',
+        'string.max': 'Le champ contenu ne peut pas dépassé 1000 caractères',
+        'any.required': 'le champ contenu est manquant'
+    })
+});
+
 const tagSchema = Joi.object({
     label: Joi.string().pattern(titleFormat).required().messages({
         'string.pattern.base': "Le label ne respecte pas le format (max100) ou caractères non autorisés",
@@ -161,6 +175,17 @@ const recipe_has_tag = Joi.object({
     }),
 });
 
+const recipeSchema = Joi.object({
+    label: Joi.string().required(),
+    picture: Joi.string().required(),
+    rate: Joi.string().required(),
+    difficulty: Joi.string().required(),
+    time: Joi.string().required(),
+    ingredient: Joi.array().items(ingredientSchema).required(),
+    step: Joi.array().items(stepSchema).required(),
+    tag: Joi.array().items(tagSchema).required()
+});
+
 
 module.exports =  { 
     adminAccountSchema,
@@ -168,9 +193,11 @@ module.exports =  {
     categorySchema,
     ingredientSchema,
     messageSchema,
+    messageSchemaUser,
     tagSchema,
     stepSchema,
     account_has_ingredientSchema,
     recipe_has_ingredient_with_quantity,
-    recipe_has_tag
+    recipe_has_tag,
+    recipeSchema
  };
