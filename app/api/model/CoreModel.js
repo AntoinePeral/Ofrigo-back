@@ -325,6 +325,14 @@ class CoreModel{
                 });
             }
         }
+        if(privateFields){
+            Object.entries(privateFields).forEach(([key, value]) =>{
+                fields.push(key);
+                values.push(value);
+                parameters.push(`$${counter}`);
+                counter++;
+            });
+        }
 
         const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;
         let response;
@@ -335,7 +343,7 @@ class CoreModel{
         } catch (error) {
             console.log(error);
         }
-
+        console.log("respons",response);
         return response.rows[0];
     };
 };

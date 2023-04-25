@@ -83,7 +83,7 @@ const ingredientController = {
             res.status(200).json(ingredient);
         }
         else{
-            next(new APIError("Bad request", 500));
+            next(new APIError("L'ingrédient est déjà enregistré dans le profile", 500));
         }
     },
 
