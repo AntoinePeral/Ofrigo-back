@@ -56,7 +56,7 @@
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/:me/profile/ingredient`|<span style="color:green"><strong>`GET`</strong></span>|Affiche tous les ingredients d'un utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/me/profile/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un ingredient d'un utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/:me/profile/:id`|<span style="color:green"><strong>`GET`</strong></span>|Affiche un ingredient d'un utilisateur|<strong>`WAITING FOR TEST`</strong>|
 
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
