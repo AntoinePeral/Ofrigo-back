@@ -126,3 +126,20 @@
 |`/admin/tag`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer un tag|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/tag/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un tag|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/tag/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un tag|<span style="color:gold"><strong>`OK`</strong></span>|
+
+---------------------------
+### Evolutions possibles 
+
+
+|FONCTION|NOTE FAISABILITE|STATUT|
+|---|---|---|
+Faire EJS CRUD ||
+Faire EJS LOGIN ||
+Création d’une recette || En cours
+Possibilité offerte aux membres de noter les recettes proposées ||Back(a voir)
+Possibilité offerte aux membres de proposer des recettes || Back(A voir)
+Recettes aléatoires proposés || Possible 
+Espace commentaire → A voir back || AprèS EJS
+Logs d’erreur || Back peut etre
+Joi pour la sécurité  || Fait
+Test unitaires||
