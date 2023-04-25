@@ -55,12 +55,36 @@ const messageController = {
         }
     },
 
+    async addMessageUser (req, res, next) {
+        console.log(req.user);
+        if(!req.user.id) {
+            res.status(400).json({error: "User not provided."})
+        }
+
+        let messageBody = req.body;
+
+        messageBody.email = req.user.email;
+
+        const message = new Message(messageBody);
+        debug(message)
+
+        if(message){
+            debug(message);
+            await message.add();
+            debug(message);
+            res.status(200).json(message);
+        }
+        else{
+            next(new APIError("Bad request", 400));
+        }
+    },
+
     async getUserMessage (req, res, next) {
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
         }
 
-        const message = await Message.findAllUserMessage(req.user.email);
+        const message = await Message.findAllMessageUser(req.user.email);
 
         if(message){
             debug(message);

@@ -5,11 +5,13 @@ const {
     categorySchema, 
     ingredientSchema,
     messageSchema,
+    messageSchemaUser,
     tagSchema,
     stepSchema,
     account_has_ingredientSchema,
     recipe_has_ingredient_with_quantity,
-    recipe_has_tag
+    recipe_has_tag,
+    recipeSchema
 } = require("./schema");
 
 const validationModule = {
@@ -88,6 +90,20 @@ const validationModule = {
         };
     },
 
+    validateMessageUser(param){
+        return (req, _, next) => {
+            const { error } = messageSchemaUser.validate(req[param]);
+
+            if (error) {
+                console.log(error.message);
+                next(new APIError(error.message, 400));
+            }
+            else{
+                next();
+            }
+        };
+    },
+
     validateTag(param){
         return (req, _, next) => {
             const { error } = tagSchema.validate(req[param]);
@@ -149,6 +165,19 @@ const validationModule = {
     validateRecipe_has_tag(param){
         return (req, _, next) => {
             const { error } = recipe_has_tag.validate(req[param]);
+
+            if (error) {
+                next(new APIError(error.message, 400));
+            }
+            else{
+                next();
+            }
+        };
+    },
+
+    validateRecipe(param){
+        return (req, _, next) => {
+            const { error } = recipeSchema.validate(req[param]);
 
             if (error) {
                 next(new APIError(error.message, 400));

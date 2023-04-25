@@ -1,4 +1,5 @@
 const CoreModel = require("./CoreModel");
+const ofrigo = require("../client/client-db-ofrigo");
 
 class Message extends CoreModel{
     static tableName = 'message';
