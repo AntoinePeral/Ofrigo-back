@@ -1,10 +1,10 @@
 const adminValidator ={
   isAdmin(req, _, next, body) {
     if (req.user.role == 'admin') {
-        next();
+      next();
     }
     else {  
-        next(new APIError("Vous n'êtes pas autorisé à accéder à cette page", 401));
+      next(new APIError("Vous n'êtes pas autorisé à accéder à cette page", 401));
     }
   }
 
