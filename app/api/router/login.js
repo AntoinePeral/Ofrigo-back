@@ -5,6 +5,6 @@ const validationRole = require("../../service/middleware/adminValidator");
 const validationBody = require("../../service/validation/validate");
 
 authentificationRouter.post("/login", validationBody.validateLogin('body'), login.signIn);
-authentificationRouter.post("/admin/login", validationBody.validateLogin('body'), validationRole.isAdmin, login.signIn);
+authentificationRouter.post("/admin/login", validationBody.validateLogin('body'), login.signInAdmin);
 
 module.exports = authentificationRouter;

@@ -22,10 +22,11 @@
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/admin/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter en tant qu'admin|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/profile`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les comptes utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/profile/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/profile/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un compte utilisateur|<strong>`WAITING FOR TEST`</strong>|
+|`/admin/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer un compte admin|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter en tant qu'admin|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/profile`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les comptes utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/profile/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un compte utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/profile/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un compte utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ## <ins>CATEGORY</ins>
 
@@ -38,11 +39,11 @@
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/admin/category`|<span style="color:green"><strong>`GET`</strong></span>|Afficher toutes les categories|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/category/:id`| <span style="color:green"><strong>`GET`</strong></span>|Afficher une categorie|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/category`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer une categorie|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/category/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier une categorie|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/category/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer une categorie |<strong>`WAITING FOR TEST`</strong>|
+|`/admin/category`|<span style="color:green"><strong>`GET`</strong></span>|Afficher toutes les categories|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/category/:id`| <span style="color:green"><strong>`GET`</strong></span>|Afficher une categorie|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/category`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer une categorie|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/category/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier une categorie|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/category/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer une categorie |<span style="color:gold"><strong>`OK`</strong></span>|
 
 ## <ins>INGREDIENT</ins>
 
@@ -61,11 +62,11 @@
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/admin/ingredient`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les ingrédients|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/ingredient/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un ingrédient|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/ingredient`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer un ingrédient|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/ingredient`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un ingrédient|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/ingredient`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un ingrédient|<strong>`WAITING FOR TEST`</strong>|
+|`/admin/ingredient`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les ingrédients|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/ingredient/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/ingredient`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/ingredient/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/ingredient/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ## <ins>MESSAGE</ins>
 
@@ -86,11 +87,11 @@
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/admin/message`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les messages|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/message/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un message|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/contact`|<span style="color:aqua"><strong>`POST`</strong></span>|Envoyer un message en tant qu'admin|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/message/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un message d'un admin|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/message/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un message de l'admin|<strong>`WAITING FOR TEST`</strong>|
+|`/admin/message`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les messages|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/message/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un message|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/contact`|<span style="color:aqua"><strong>`POST`</strong></span>|Envoyer un message en tant qu'admin|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/message/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un message d'un admin|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/message/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un message de l'admin|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ## <ins>RECIPE</ins>
 
@@ -103,11 +104,11 @@
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/admin/recipe`|<span style="color:green"><strong>`GET`</strong></span>|Afficher toutes les recettes|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/recipe/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher une recette|<strong>`WAITING FOR TEST`</strong>|
+|`/admin/recipe`|<span style="color:green"><strong>`GET`</strong></span>|Afficher toutes les recettes|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/recipe/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher une recette|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/recipe`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer une recette|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/recipe/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier une recette|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/recipe/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer une recette|<strong>`WAITING FOR TEST`</strong>|
+|`/admin/recipe/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer une recette|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ## <ins>TAG</ins>
 
@@ -120,8 +121,8 @@
 ### Admin
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
-|`/admin/tag`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les tags|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/tag/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un tag|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/tag`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer un tag|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/tag/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un tag|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/tag/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un tag|<strong>`WAITING FOR TEST`</strong>|
+|`/admin/tag`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les tags|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/tag/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un tag|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/tag`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer un tag|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/tag/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un tag|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/tag/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un tag|<span style="color:gold"><strong>`OK`</strong></span>|

@@ -314,7 +314,16 @@ class CoreModel{
                     parameters.push(`$${counter}`);
                     counter++;
                 }
+
             });
+            if(privateFields){
+                Object.entries(privateFields).forEach(([key, value]) =>{
+                    fields.push(key);
+                    values.push(value);
+                    parameters.push(`$${counter}`);
+                    counter++;
+                });
+            }
         }
 
         const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;

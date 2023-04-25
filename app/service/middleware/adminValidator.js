@@ -1,5 +1,5 @@
 const adminValidator ={
-  isAdmin(req, _ , next) {
+  isAdmin(req, _, next, body) {
     if (req.user.role == 'admin') {
         next();
     }

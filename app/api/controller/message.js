@@ -56,7 +56,6 @@ const messageController = {
     },
 
     async addMessageUser (req, res, next) {
-        console.log(req.user);
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
         }
