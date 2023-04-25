@@ -11,7 +11,8 @@ const {
     account_has_ingredientSchema,
     recipe_has_ingredient_with_quantity,
     recipe_has_tag,
-    recipeSchema
+    recipeSchema,
+    loginSchema
 } = require("./schema");
 
 const validationModule = {
@@ -137,7 +138,7 @@ const validationModule = {
             const { error } = account_has_ingredientSchema.validate(req[param]);
             console.log("Test");
 
-            if (error) {
+            if (error) {recipeSchema
                 console.log(error.message);
                 next(new APIError(error.message, 400));
             }
@@ -179,6 +180,18 @@ const validationModule = {
         return (req, _, next) => {
             const { error } = recipeSchema.validate(req[param]);
 
+            if (error) {
+                next(new APIError(error.message, 400));
+            }
+            else{
+                next();
+            }
+        };
+    },
+    validateLogin(param){
+        return (req, _, next) => {
+            const { error } = loginSchema.validate(req[param]);
+            console.log(error);
             if (error) {
                 next(new APIError(error.message, 400));
             }
