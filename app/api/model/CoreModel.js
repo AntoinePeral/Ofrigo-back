@@ -196,8 +196,6 @@ class CoreModel{
 
         const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;
         let response;
-        console.log(query);
-        console.log(values);
         
         try {
             response = await ofrigo.query(query, values);
@@ -274,7 +272,6 @@ class CoreModel{
         }
 
         const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}' RETURNING *;`;
-
         const response = await ofrigo.query(query, values);
         return response.rows[0];
     };

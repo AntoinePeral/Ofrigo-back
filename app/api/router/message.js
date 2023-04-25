@@ -11,7 +11,7 @@ messageRouter.post("/contact", validationBody.validateMessage('body'), message.a
 //User
 messageRouter.get("/me/profile/message", authentification.authenticateToken, message.getUserMessage);
 messageRouter.get("/me/profile/message/:id(\\d+)", authentification.authenticateToken, message.getUserMessageById);
-messageRouter.post("/me/profile/contact", validationBody.validateMessage('body'), message.addMessage);
+messageRouter.post("/me/profile/contact", validationBody.validateMessage('body'), message.addMessageUser);
 messageRouter.put("/me/profile/message/:id(\\d+)", authentification.authenticateToken, validationBody.validateMessage('body'), message.updateMessage);
 messageRouter.delete("/me/profile/message/:id(\\d+)", authentification.authenticateToken, message.deleteMessage);
 

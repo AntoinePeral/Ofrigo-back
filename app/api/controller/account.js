@@ -66,7 +66,7 @@ const accountController = {
             }
 
             await account.update();
-            const newAccount = await Account.findOne(AccountId);
+            const newAccount = await Account.findOne(req.user.id);
             debug(newAccount);
             res.status(200).json(newAccount);
         }
@@ -98,7 +98,7 @@ const accountController = {
 
         const ingredient_id = req.body.ingredient_id;
         const ingredient = await Ingredient.findOne(ingredient_id);
-        const account = await Account.findOne(req.user.id)
+        let account = await Account.findOne(req.user.id)
         let validation;
 
         if(account && ingredient){
@@ -106,6 +106,7 @@ const accountController = {
                 for (const element of account.ingredient){
                     if(element.id === ingredient.id){
                         validation = false;
+                        break;
                     }
                     else{
                         validation = true;
@@ -118,6 +119,7 @@ const accountController = {
         }
         if(validation){
             await account.addIngredient(ingredient_id);
+            account = await Account.findOne(req.user.id);
             return res.status(200).json(account);
         }
         else{
@@ -137,9 +139,10 @@ const accountController = {
 
         if(account && ingredient){
             if(account.ingredient){
-                for(const ingredient of account.ingredient){
-                    if(ingredient.id == ingredientId){
+                for(const element of account.ingredient){
+                    if(element.id == ingredientId){
                         validation = true;
+                        break;
                     }
                     else{
                         validation = false;
@@ -149,6 +152,7 @@ const accountController = {
         }
         if(validation){
             await account.removeIngredient(ingredientId);
+            account = await Account.findOne(req.user.id);
             res.status(200).json(account);
         }
         else{
