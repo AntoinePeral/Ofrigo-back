@@ -159,7 +159,7 @@ const accountController = {
         }
         if(validation){
             await account.removeIngredient(ingredientId);
-            account = await Account.findOne(req.user.id)
+            account = await Account.findOne(req.user.id);
             res.status(200).json(account);
         }
         else{

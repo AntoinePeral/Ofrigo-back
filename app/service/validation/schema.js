@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const nameFormat = /^[a-zA-Z\u00C0-\u00FF-]{2,100}$/u;
+const nameFormat = /^[a-zA-Z\u00C0-\u00FF-\-_]{2,100}$/u;
 const emailFormat = /^[\w\-_]+(\.[\w\-_]+)?@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)?\.[a-z]{2,}$/u;
 const passwordFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&\/$.#!?§:;+\-%])[A-Za-z\d!?:;@$!%*?&\/$.#%\-]{8,}$/u;
 const roleFormat = /^(user|admin)$/u;
@@ -186,12 +186,27 @@ const recipeSchema = Joi.object({
     tag: Joi.array().items(tagSchema).required()
 });
 
+const loginSchema = Joi.object({
+    email: Joi.string().pattern(emailFormat).required().messages({
+        'string.pattern.base': "Format de l'email non valide ou caractères non autorisés",
+        'string.empty': 'L\'email ne peut pas être vide',
+        'any.required': 'L\'email est manquant'
+    }),
+    password: Joi.string().pattern(passwordFormat).required().messages({
+        'string.pattern.base': "Le mot de passe doit contenir une majuscule, une minuscule, un caractère spécial et au minimum 8 caractères",
+        'string.empty': 'Le champ mot de passe ne peut pas être vide',
+        'any.required': 'le champ mot de passe est manquant'
+    })
+});
+
+
 
 module.exports =  { 
     adminAccountSchema,
     userAccountSchema, 
     categorySchema,
     ingredientSchema,
+    loginSchema,
     messageSchema,
     messageSchemaUser,
     tagSchema,
