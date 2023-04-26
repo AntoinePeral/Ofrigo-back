@@ -20,11 +20,4 @@ ingredientRouter.post("/admin/ingredient", authentification.authenticateToken, v
 ingredientRouter.put("/admin/ingredient/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, validationBody.validateIngredient('body'), ingredient.updateIngredient);
 ingredientRouter.delete("/admin/ingredient/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, ingredient.deleteIngredient);
 
-//Test
-//ingredientRouter.get("/admin/ingredient", ingredient.getAllIngredient);
-//ingredientRouter.get("/admin/ingredient/:id(\\d+)", ingredient.getIngredientById);
-//ingredientRouter.post("/admin/ingredient", validationBody.validateIngredient('body'), ingredient.addIngredient);
-//ingredientRouter.put("/admin/ingredient/:id(\\d+)", validationBody.validateIngredient('body'), ingredient.updateIngredient);
-//ingredientRouter.delete("/admin/ingredient/:id(\\d+)", ingredient.deleteIngredient);
-
 module.exports = ingredientRouter;

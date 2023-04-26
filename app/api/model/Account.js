@@ -49,6 +49,11 @@ class Account extends CoreModel{
         return result.rows[0];
     };
 
+    /**
+     * Add an ingredient to the user stock
+     * @param {int} ingredient_id 
+     * @returns an instance
+     */
     async addIngredient(ingredient_id){
         const query = {
             text: `INSERT INTO account_has_ingredient(account_id, ingredient_id) VALUES ($1, $2) RETURNING *;`,
@@ -65,6 +70,11 @@ class Account extends CoreModel{
         }
     };
     
+    /**
+     * Delete an ingredient to the user stock
+     * @param {int} ingredient_id 
+     * @returns an instance
+     */
     async removeIngredient(ingredient_id){
         const query = {
             text: `DELETE FROM "account_has_ingredient" WHERE "account_id"=$1 AND "ingredient_id"=$2;`,

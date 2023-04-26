@@ -4,13 +4,13 @@
 
 ## <ins>ACCOUNT</ins>
 
-### Public
+### <span style="color:#32fc62"><strong>Public</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Ajouter un compte|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter|<span style="color:gold"><strong>`OK`</strong></span>| 
 
-### User
+### <span style="color:#f0f"><strong>User</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/:me/profile`|<span style="color:green"><strong>`GET`</strong></span>|Afficher les données utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
@@ -19,7 +19,7 @@
 |`/:me/profile/ingredient`|<span style="color:aqua"><strong>`POST`</strong></span>|Ajouter un ingredient au compte utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/:me/profile/ingredient/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un ingredient du compte utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
 
-### Admin
+### <span style="color:gold"><strong>Admin</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/admin/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer un compte admin|<span style="color:gold"><strong>`OK`</strong></span>|
@@ -32,13 +32,13 @@
 
 ## <ins>CATEGORY</ins>
 
-### Public
+### <span style="color:#32fc62"><strong>Public</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/category`|<span style="color:green"><strong>`GET`</strong></span>|Afficher toutes les categories|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/category/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher une categorie|<span style="color:gold"><strong>`OK`</strong></span>|
 
-### Admin
+### <span style="color:gold"><strong>Admin</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/admin/category`|<span style="color:green"><strong>`GET`</strong></span>|Afficher toutes les categories|<span style="color:gold"><strong>`OK`</strong></span>|
@@ -51,19 +51,19 @@
 
 ## <ins>INGREDIENT</ins>
 
-### Public
+### <span style="color:#32fc62"><strong>Public</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/ingredient`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les ingrédients|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/ingredient/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
 
-### User
+### <span style="color:#f0f"><strong>User</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/:me/profile/ingredient`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les ingredients d'un utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/:me/profile/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un ingredient d'un utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
 
-### Admin
+### <span style="color:gold"><strong>Admin</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/admin/ingredient`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les ingrédients|<span style="color:gold"><strong>`OK`</strong></span>|
@@ -76,12 +76,12 @@
 
 ## <ins>MESSAGE</ins>
 
-### Public
+### <span style="color:#32fc62"><strong>Public</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/contact`|<span style="color:aqua"><strong>`POST`</strong></span>|Envoyer un message|<span style="color:gold"><strong>`OK`</strong></span>|
 
-### User
+### <span style="color:#f0f"><strong>User</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/:me/profile/message`|<span style="color:green"><strong>`GET`</strong></span>|Afficher toutes les messages d'un utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
@@ -90,7 +90,7 @@
 |`/:me/profile/message/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un message de l'utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/:me/profile/message/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un message de l'utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
 
-### Admin
+### <span style="color:gold"><strong>Admin</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/admin/message`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les messages|<span style="color:gold"><strong>`OK`</strong></span>|
@@ -103,13 +103,13 @@
 
 ## <ins>RECIPE</ins>
 
-### Public
+### <span style="color:#32fc62"><strong>Public</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/recipe`|<span style="color:green"><strong>`GET`</strong></span>|Afficher toutes les recettes|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/recipe/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher une recette|<span style="color:gold"><strong>`OK`</strong></span>|
 
-### Admin
+### <span style="color:gold"><strong>Admin</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/admin/recipe`|<span style="color:green"><strong>`GET`</strong></span>|Afficher toutes les recettes|<span style="color:gold"><strong>`OK`</strong></span>|
@@ -122,13 +122,13 @@
 
 ## <ins>TAG</ins>
 
-### Public
+### <span style="color:#32fc62"><strong>Public</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/tag`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les tags|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/tag/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un tag|<span style="color:gold"><strong>`OK`</strong></span>|
 
-### Admin
+### <span style="color:gold"><strong>Admin</strong></span>
 |ROUTE|VERB|DESCRIPTION|STATUT|
 |---|---|---|---|
 |`/admin/tag`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les tags|<span style="color:gold"><strong>`OK`</strong></span>|
@@ -144,11 +144,12 @@
 
 |ETAPE|STATUT|
 |---|---|
-Back-office | En cours|
-Création d’une recette | En cours|
-Modification d’une recette | En cours|
-Gestion d'erreurs + Logs d’erreurs | En cours|
+Gestion d'erreurs + Log d’erreurs | En cours|
 Test unitaires| En cours|
+Back-office | En cours|
+Ajout des images ingredient | En cours|
+Fonctionalité : Création d’une recette | En cours|
+Fonctionalité : Modification d’une recette | En cours|
 Fonctionalité : Noter une recette | En attente|
 Fonctionalité : Les membres peuvent créer des recettes | En attente|
 Fonctionalité : Recettes aléatoires | En attente|

@@ -12,7 +12,7 @@ const authentificationModule = {
     const token = authHeader && authHeader.split(' ')[1];
 
     if (!token) {
-      next (new APIError("Autorisation refusée, le token est manquant", 401));
+      next(new APIError("Autorisation refusée, le token est manquant", 401));
     } 
   
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {

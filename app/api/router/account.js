@@ -21,9 +21,4 @@ accountRouter.get("/admin/profile/:id(\\d+)", authentification.authenticateToken
 accountRouter.delete("/admin/profile/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, admin.deleteAccount);
 accountRouter.post("/admin/register", validationBody.validateUserAccount('body'), account.addAdminAccount);
 
-//Test
-//accountRouter.get("/admin/profile", admin.getAllAccount);
-//accountRouter.get("/admin/profile/:id(\\d+)", admin.getAccountById);
-//accountRouter.delete("/admin/profile/:id(\\d+)", admin.deleteAccount);
-
 module.exports = accountRouter;

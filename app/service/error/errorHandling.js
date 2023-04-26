@@ -34,6 +34,7 @@ const errorModule = {
                     break;
             }
         } else {
+            console.log("Je suis ici");
             res.status(err.code).json({message: err.message})
         }
 

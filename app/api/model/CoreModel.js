@@ -106,6 +106,11 @@ class CoreModel{
         }
     };
 
+    /**
+     * General function that allows you to create
+     * @param {object} privateFields 
+     * @returns an instance
+     */
     async add (privateFields = null) {
         const fields = []; 
         const values = [];
@@ -208,8 +213,8 @@ class CoreModel{
     };
 
     /**
-     * Update in database
-     * @param {Object} body 
+     * General function that allows you to update
+     * @returns an instance
      */
     async update () {
         const fields = []; 
@@ -277,9 +282,8 @@ class CoreModel{
     };
 
     /**
-     * Delete in database
-     * @param {int} id 
-     * @returns 
+     * General function that allows you to delete
+     * @returns an instance
      */
     static async delete (id) {
         const query = {
@@ -298,6 +302,11 @@ class CoreModel{
         return response.rowCount;
     };
 
+    /**
+     * Create an admin account
+     * @param {object} privateFields 
+     * @returns 
+     */
     async addAdmin (privateFields = null){
         const fields = []; 
         const values = [];
@@ -324,14 +333,6 @@ class CoreModel{
                     counter++;
                 });
             }
-        }
-        if(privateFields){
-            Object.entries(privateFields).forEach(([key, value]) =>{
-                fields.push(key);
-                values.push(value);
-                parameters.push(`$${counter}`);
-                counter++;
-            });
         }
 
         const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;

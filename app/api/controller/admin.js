@@ -8,6 +8,7 @@ const adminController = {
      * Get all account return json Objects in array
      * @param {*} _ 
      * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
      */
        async getAllAccount (_, res, next){
         const account = await Account.findAll();
@@ -25,6 +26,7 @@ const adminController = {
      * Get one account by his id and return an json object
      * @param {*} req use request to get the params.id
      * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
      */
     async getAccountById (req, res, next){
         const accountId = req.params.id;
@@ -38,7 +40,12 @@ const adminController = {
             next(new APIError("Bad request", 500));
         }
     },
-
+    /**
+     * Delete one account by his id and return an string
+     * @param {*} req use request to get the params.id
+     * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
+     */
     async deleteAccount (req, res, next) {
         const accountId = req.params.id;
         const response = await Account.delete(accountId);

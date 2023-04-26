@@ -8,6 +8,7 @@ const categoryController = {
      * Get all categories return json Objects in array
      * @param {*} _ 
      * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
      */
     async getAllCategory (_, res, next){
         const category = await Category.findAll();
@@ -25,6 +26,7 @@ const categoryController = {
      * Get one category by his id json return Object
      * @param {*} req use request to get the params.id
      * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
      */
     async getCategoryById (req, res, next){
         const categoryId = req.params.id;
@@ -39,6 +41,12 @@ const categoryController = {
         }
     },
 
+    /**
+     * Add a category and return an object
+     * @param {*} req use request to get the params.id
+     * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
+     */
     async addCategory (req, res, next) {
         const categoryBody = req.body;
         const category = new Category(categoryBody);
@@ -54,6 +62,12 @@ const categoryController = {
         }
     },
 
+    /**
+     * Update a category and return an object
+     * @param {*} req req use request to get the params.id
+     * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
+     */
     async updateCategory (req, res, next) {
         const categoryId = req.params.id;
         const categoryBody = req.body;
@@ -76,6 +90,12 @@ const categoryController = {
         }
     },
 
+    /**
+     * Delete one category by his id and return an string
+     * @param {*} req req use request to get the params.id
+     * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
+     */
     async deleteCategory (req, res, next) {
         const categoryId = req.params.id;
         const response = await Category.delete(categoryId);

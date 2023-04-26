@@ -8,6 +8,7 @@ const recipeController = {
      * Get all recipes and return json Objects in array
      * @param {*} _ 
      * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
      */
     async getAllRecipe (_, res, next){
         const recipe = await Recipe.findAll();
@@ -25,6 +26,7 @@ const recipeController = {
      * Get one recipe by his id and return json Object. It contains ingredients, steps, tags and category 
      * @param {*} req use request to get the params.id
      * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
      */
     async getRecipeById (req, res, next){
         const recipeId = req.params.id;
@@ -40,6 +42,12 @@ const recipeController = {
 
     },
 
+        /**
+     * Get one recipe by his id and return json Object. It contains ingredients, steps, tags and category 
+     * @param {*} req use request to get the params.id
+     * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
+     */
     async addRecipe (req, res, next) {
         const recipeBody = req.body;
         const recipe = new Recipe(recipeBody);
@@ -55,6 +63,12 @@ const recipeController = {
         }
     },
 
+    /**
+     * Update a recipe and return an object
+     * @param {*} req use request to get the params.id
+     * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
+     */
     async updateRecipe (req, res, next) {
         const recipeId = req.params.id;
         const recipeBody = req.body;
@@ -78,6 +92,12 @@ const recipeController = {
         }
     },
 
+    /**
+     * Delete one recipe by his id and return an string
+     * @param {*} req use request to get the params.id
+     * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
+     */
     async deleteRecipe (req, res, next) {
         const recipeId = req.params.id;
         const response = await Recipe.delete(recipeId);

@@ -8,6 +8,7 @@ const messageController = {
      * Get all messages return json Objects in array
      * @param {*} _ 
      * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
      */
     async getAllMessage (_, res, next){
         const message = await Message.findAll();
@@ -25,6 +26,7 @@ const messageController = {
      * Get one message by his id and return json Object
      * @param {*} req use request to get the params.id
      * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
      */
     async getMessageById (req, res, next){
         const messageId = req.params.id;
@@ -39,6 +41,12 @@ const messageController = {
         }
     },
 
+    /**
+     * Add a message and return an object
+     * @param {*} req use request to get the body
+     * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
+     */
     async addMessage (req, res, next) {
         const messageBody = req.body;
         const message = new Message(messageBody);
@@ -55,6 +63,12 @@ const messageController = {
         }
     },
 
+    /**
+     * User can add a message and return an object
+     * @param {*} req use request to get the body
+     * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
+     */
     async addMessageUser (req, res, next) {
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
@@ -77,6 +91,12 @@ const messageController = {
         }
     },
 
+    /**
+     * Get all messages from a user and return json Object
+     * @param {*} req use request to get user
+     * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
+     */
     async getUserMessage (req, res, next) {
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
@@ -93,6 +113,12 @@ const messageController = {
         }
     },
 
+    /**
+     * Get one messages from a user and return json Object
+     * @param {*} req use request to get the params.id
+     * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
+     */
     async getUserMessageById (req, res, next) {
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
@@ -110,6 +136,12 @@ const messageController = {
         }
     },
 
+    /**
+     * Update a message and return an object
+     * @param {*} req use request to get the params.id
+     * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
+     */
     async updateMessage (req, res, next) {
         const messageId = req.params.id;
         const messageBody = req.body;
@@ -132,6 +164,12 @@ const messageController = {
         }
     },
 
+    /**
+     * Delete one message by his id and return an string
+     * @param {*} req use request to get the params.id
+     * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
+     */
     async deleteMessage (req, res, next) {
         const messageId = req.params.id;
         const response = await Message.delete(messageId);

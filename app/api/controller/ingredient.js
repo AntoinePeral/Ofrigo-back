@@ -39,6 +39,12 @@ const ingredientController = {
         }
     },
 
+    /**
+     * Get all ingredients of a user account and return json Objects in array
+     * @param {*} req use request to get the params.id
+     * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
+     */
     async getAllIngredientUser (req, res, next){
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
@@ -55,6 +61,12 @@ const ingredientController = {
         }
     },
 
+    /**
+     * Get one ingredients of a user account and return json Objects in array
+     * @param {*} req use request to get the params.id
+     * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
+     */
     async getOneIngredientUser (req, res, next){
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
@@ -72,6 +84,12 @@ const ingredientController = {
         }
     },
 
+    /**
+     * Add a ingredient and return an object
+     * @param {*} req use request to get the params.id
+     * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
+     */
     async addIngredient (req, res, next) {
         const ingredientBody = req.body;
         const ingredient = new Ingredient(ingredientBody);
@@ -87,6 +105,12 @@ const ingredientController = {
         }
     },
 
+    /**
+     * Update a ingredient and return an object
+     * @param {*} req use request to get the params.id
+     * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
+     */
     async updateIngredient (req, res, next) {
         const ingredientId = req.params.id;
         const ingredientBody = req.body;
@@ -110,6 +134,12 @@ const ingredientController = {
         }
     },
 
+    /**
+     * Delete one ingredient by his id and return an string
+     * @param {*} req use request to get the params.id
+     * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
+     */
     async deleteIngredient (req, res, next) {
         const ingredientId = req.params.id;
         const response = await Ingredient.delete(ingredientId);

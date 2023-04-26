@@ -8,6 +8,7 @@ const tagController = {
      * Get all tags and return json Objects in array
      * @param {*} _ 
      * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
      */
     async getAllTag (_, res, next){
         const tag = await Tag.findAll();
@@ -25,6 +26,7 @@ const tagController = {
      * Get one tag by his id and return json Object.
      * @param {*} req use request to get the params.id
      * @param {*} res use to response to the client
+     * @param {*} next use it to return an error
      */
     async getTagById (req, res, next){
         const tagId = req.params.id;
@@ -39,6 +41,12 @@ const tagController = {
         }
     },
 
+    /**
+     * Add a tag and return an object
+     * @param {*} req use request to get the params.id
+     * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
+     */
     async addTag (req, res, next) {
         const tagBody = req.body;
         const tag = new Tag(tagBody);
@@ -54,6 +62,12 @@ const tagController = {
         }
     },
 
+    /**
+     * Update a tag and return an object
+     * @param {*} req req use request to get the params.id
+     * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
+     */
     async updateTag (req, res, next) {
         const tagId = req.params.id;
         const tagBody = req.body;
@@ -76,6 +90,12 @@ const tagController = {
         }
     },
 
+    /**
+     * Delete one tag by his id and return an string
+     * @param {*} req req use request to get the params.id
+     * @param {*} res use it to response to the client
+     * @param {*} next use it to return an error
+     */
     async deleteTag (req, res, next) {
         const tagId = req.params.id;
         const response = await Tag.delete(tagId);

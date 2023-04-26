@@ -1,5 +1,6 @@
-const adminValidator ={
-  isAdmin(req, _, next, body) {
+const adminValidator = {
+
+  isAdmin(req, _, next) {
     if (req.user.role == 'admin') {
       next();
     }
@@ -8,6 +9,6 @@ const adminValidator ={
     }
   }
 
-}
+};
 
 module.exports= adminValidator;

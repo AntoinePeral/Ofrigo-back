@@ -29,6 +29,12 @@ class Recipe extends CoreModel{
         this.tag = obj.tag;
     };
 
+    /**
+     * Add an ingredient to a recipe
+     * @param {int} ingredient_id 
+     * @param {int} quantity 
+     * @returns an instance
+     */
     async addIngredient(ingredient_id, quantity = null){
         const query = {
             text: `INSERT INTO recipe_has_ingredient_with_quantity(recipe_id, ingredient_id, ingredient_quantity) VALUES ($1, $2, $3) RETURNING *;`,
@@ -44,6 +50,12 @@ class Recipe extends CoreModel{
         }
     };
 
+    /**
+     * Update an ingredient to a recipe
+     * @param {int} ingredient_id 
+     * @param {int} quantity 
+     * @returns an instance
+     */
     async updateIngredient(ingredient_id, quantity = null){
         const query = {
             text: `UPDATE recipe_has_ingredient_with_quantity SET ingredient_id=$1, ingredient_quantity=$2 WHERE recipe_id=$3 AND ingredient_id=$4 RETURNING *;`,
@@ -59,6 +71,11 @@ class Recipe extends CoreModel{
         }
     };
 
+    /**
+     * Delete an ingredient to a recipe
+     * @param {int} ingredient_id 
+     * @returns an instance
+     */
     async removeIngredient(ingredient_id){
         const query = {
             text: `DELETE FROM "recipe_has_ingredient_with_quantity" WHERE "recipe_id"=$1 AND "ingredient_id"=$2;`,

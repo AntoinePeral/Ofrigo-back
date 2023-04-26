@@ -16,16 +16,4 @@ recipeRouter.post("/admin/recipe", authentification.authenticateToken, validatio
 recipeRouter.put("/admin/recipe/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, recipe.updateRecipe);
 recipeRouter.delete("/admin/recipe/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, recipe.deleteRecipe);
 
-//Test
-//recipeRouter.get("/admin/recipe", recipe.getAllRecipe);
-//recipeRouter.get("/admin/recipe/:id(\\d+)", recipe.getRecipeById);
-//recipeRouter.post("/admin/recipe", recipe.addRecipe);
-//recipeRouter.put("/admin/recipe/:id(\\d+)", recipe.updateRecipe);
-//recipeRouter.delete("/admin/recipe/:id(\\d+)", recipe.deleteRecipe);
-
-//A créer
-//recipeRouter.post("/recipe/:id(\\d+)/ingredient", recipe.addIngredientToRecipe);
-//recipeRouter.put("/recipe/:id(\\d+)/ingredient", recipe.updateIngredientOfRecipe);
-//recipeRouter.delete("/recipe/:recipeId(\\d+)/ingredient/:ingredientId(\\d+)", recipe.deleteIngredientOfRecipe);
-
 module.exports = recipeRouter;

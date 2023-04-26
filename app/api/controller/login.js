@@ -7,6 +7,12 @@ const authentificationModule = require ("../../service/middleware/authToken")
 
 const loginController = {
 
+  /**
+   * Allows a user to log in
+   * @param {*} req req use request to get the body
+   * @param {*} res use it to response to the client
+   * @param {*} next use it to return an error
+   */
   async signIn(req, res, next) {
     const {email, password} = req.body;
     const account = await Account.findByEmail(email);
@@ -29,30 +35,12 @@ const loginController = {
     }
   },
 
-  async signInAdmin(req, res, next) {
-    const {email, password} = req.body;
-    const account = await Account.findByEmail(email);
-    
-    if(!account) {
-      next(new APIError('Couple login/mot de passe est incorrect.', 401));
-    } 
-    else {
-      const hasMatchingPassword = await bcrypt.compare(password, account.password);
-
-      if(!hasMatchingPassword) {
-        next(new APIError('Couple login/mot de passe est incorrect.', 401));
-      } else if (account.role!=="admin"){
-        next(new APIError(`Vous n'avez pas accès a cette page`, 401));
-      }else{
-        const accessToken = authentificationModule.generateAccessToken(account);
-        res.status(200).json({
-              accessToken,
-              account  
-          });
-      }
-    }
-  },
-
+  /**
+   * Allows a admin to log in
+   * @param {*} req req use request to get the body
+   * @param {*} res use it to response to the client
+   * @param {*} next use it to return an error
+   */
   async signInAdmin(req, res, next) {
     const {email, password} = req.body;
     const account = await Account.findByEmail(email);

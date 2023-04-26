@@ -20,6 +20,11 @@ class Ingredient extends CoreModel{
         this.updated_at = obj.updated_at;
     };
 
+    /**
+     * Get all ingredients at user stock
+     * @param {int} accountId 
+     * @returns an instance
+     */
     static async findAllIngredientUser (accountId){
         const query = {
             text: `SELECT i.* FROM ingredient i
@@ -38,6 +43,12 @@ class Ingredient extends CoreModel{
         }
     };
 
+    /**
+     * Get one ingredients at user stock
+     * @param {int} accountId 
+     * @param {int} ingredientId 
+     * @returns 
+     */
     static async findOneIngredientUser (accountId, ingredientId){
         const query = {
             text: `SELECT i.* FROM ingredient i

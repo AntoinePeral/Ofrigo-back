@@ -21,6 +21,11 @@ class Message extends CoreModel{
         this.updated_at = obj.updated_at;
     };
 
+    /**
+     * Gets all user messages
+     * @param {string} email 
+     * @returns an instance
+     */
     static async findAllMessageUser (email){
         const query = {
             text: `SELECT * FROM message WHERE email=$1`,
@@ -37,6 +42,12 @@ class Message extends CoreModel{
         }
     };
 
+    /**
+     * Gets one user messages
+     * @param {string} email 
+     * @param {int} messageId 
+     * @returns an instance
+     */
     static async findOneMessageUser (email, messageId){
         const query = {
             text: `SELECT * FROM message WHERE email=$1 AND id=$2`,

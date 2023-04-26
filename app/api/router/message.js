@@ -22,11 +22,4 @@ messageRouter.post("/admin/contact", authentification.authenticateToken, validat
 messageRouter.put("/admin/message/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, validationBody.validateMessageUser('body'), message.updateMessage);
 messageRouter.delete("/admin/message/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, message.deleteMessage);
 
-//Test
-//messageRouter.get("/admin/message", message.getAllMessage);
-//messageRouter.get("/admin/message/:id(\\d+)", message.getMessageById);
-//messageRouter.post("/admin/contact", validationBody.validateMessage('body'), message.addMessage);
-//messageRouter.put("/admin/message/:id(\\d+)", validationBody.validateMessage('body'), message.updateMessage);
-//messageRouter.delete("/admin/message/:id(\\d+)", message.deleteMessage);
-
 module.exports = messageRouter;
