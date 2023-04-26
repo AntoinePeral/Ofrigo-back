@@ -99,8 +99,8 @@ class CoreModel{
         try {
             const response = await ofrigo.query(query);
             debug(response.rows[0]);
-
             return new this(response.rows[0]);
+            
         } catch (error) {
             console.log(error);
         }

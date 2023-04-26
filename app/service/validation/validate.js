@@ -35,6 +35,11 @@ const validationModule = {
             }
         };
     },
+    /**
+     * Validate admin account schema 
+     * @param {object} param an object contains in a body send to the back-office 
+     * @returns {APIError} error
+     */
     validateAdminAccount(param){
         return (req, _, next) => {
             const { error } = adminAccountSchema.validate(req[param]);
@@ -49,6 +54,11 @@ const validationModule = {
         };
     },
 
+    /**
+     * Validate category schema 
+     * @param {object} param an object contains in a body send to the back-office 
+     * @returns {APIError} error
+     */
     validateCategory(param){
         return (req, _, next) => {
             const { error } = categorySchema.validate(req[param]);
@@ -63,6 +73,11 @@ const validationModule = {
         };
     },
 
+    /**
+     * Validate ingredient schema 
+     * @param {object} param an object contains in a body send to the back-office 
+     * @returns {APIError} error
+     */
     validateIngredient(param){
         return (req, _, next) => {
             const { error } = ingredientSchema.validate(req[param]);
@@ -77,6 +92,11 @@ const validationModule = {
         };
     },
 
+    /**
+     * Validate message schema (From an non-user)
+     * @param {object} param an object contains in a body send to the back-office 
+     * @returns {APIError} error
+     */
     validateMessage(param){
         return (req, _, next) => {
             const { error } = messageSchema.validate(req[param]);
@@ -91,6 +111,11 @@ const validationModule = {
         };
     },
 
+    /**
+     * Validate user message schema 
+     * @param {object} param an object contains in a body send to the back-office 
+     * @returns {APIError} error
+     */
     validateMessageUser(param){
         return (req, _, next) => {
             const { error } = messageSchemaUser.validate(req[param]);
@@ -105,6 +130,11 @@ const validationModule = {
         };
     },
 
+    /**
+     * Validate tag schema 
+     * @param {object} param an object contains in a body send to the back-office 
+     * @returns {APIError} error
+     */
     validateTag(param){
         return (req, _, next) => {
             const { error } = tagSchema.validate(req[param]);
@@ -119,6 +149,11 @@ const validationModule = {
         };
     },
 
+    /**
+     * Validate step schema 
+     * @param {object} param an object contains in a body send to the back-office 
+     * @returns {APIError} error
+     */
     validateStep(param){
         return (req, _, next) => {
             const { error } = stepSchema.validate(req[param]);
@@ -133,6 +168,11 @@ const validationModule = {
         };
     },
 
+    /**
+     * Validate account has an ingredient schema 
+     * @param {object} param an object contains in a body send to the back-office 
+     * @returns {APIError} error
+     */
     validateAccount_has_ingredientSchema(param){
         return (req, _, next) => {
             const { error } = account_has_ingredientSchema.validate(req[param]);
@@ -149,6 +189,11 @@ const validationModule = {
         };
     },
 
+    /**
+     * Validate recipe has an ingredient with quantity schema 
+     * @param {object} param an object contains in a body send to the back-office 
+     * @returns {APIError} error
+     */
     validateRecipe_has_ingredient_with_quantity(param){
         return (req, _, next) => {
             const { error } = recipe_has_ingredient_with_quantity.validate(req[param]);
@@ -163,6 +208,11 @@ const validationModule = {
         };
     },
 
+    /**
+     * Validate recipe has tag schema 
+     * @param {object} param an object contains in a body send to the back-office 
+     * @returns {APIError} error
+     */
     validateRecipe_has_tag(param){
         return (req, _, next) => {
             const { error } = recipe_has_tag.validate(req[param]);
@@ -176,6 +226,11 @@ const validationModule = {
         };
     },
 
+    /**
+     * Validate recipe schema 
+     * @param {object} param an object contains in a body send to the back-office 
+     * @returns {APIError} error
+     */
     validateRecipe(param){
         return (req, _, next) => {
             const { error } = recipeSchema.validate(req[param]);
@@ -188,6 +243,11 @@ const validationModule = {
             }
         };
     },
+    /**
+     * Validate login schema 
+     * @param {object} param an object contains in a body send to the back-office 
+     * @returns {APIError} error
+     */
     validateLogin(param){
         return (req, _, next) => {
             const { error } = loginSchema.validate(req[param]);

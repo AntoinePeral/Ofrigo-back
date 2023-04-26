@@ -18,7 +18,7 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-           next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -37,7 +37,7 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-            next(new APIError("Bad request", 400));
+            return next(new APIError("Bad request", 400));
         }
     },
 
@@ -59,7 +59,7 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-            next(new APIError("Bad request", 400));
+            return next(new APIError("Bad request", 400));
         }
     },
 
@@ -71,7 +71,7 @@ const messageController = {
      */
     async addMessageUser (req, res, next) {
         if(!req.user.id) {
-            res.status(400).json({error: "User not provided."})
+            return next(new APIError('User not provided', 401));
         }
 
         let messageBody = req.body;
@@ -87,7 +87,7 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-            next(new APIError("Bad request", 400));
+            return next(new APIError("Bad request", 400));
         }
     },
 
@@ -99,7 +99,7 @@ const messageController = {
      */
     async getUserMessage (req, res, next) {
         if(!req.user.id) {
-            res.status(400).json({error: "User not provided."})
+            return next(new APIError('User not provided', 401));
         }
 
         const message = await Message.findAllMessageUser(req.user.email);
@@ -109,7 +109,7 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-           next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -121,7 +121,7 @@ const messageController = {
      */
     async getUserMessageById (req, res, next) {
         if(!req.user.id) {
-            res.status(400).json({error: "User not provided."})
+            return next(new APIError('User not provided', 401));
         }
 
         const messageId = req.params.id;
@@ -132,7 +132,7 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-           next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -160,7 +160,7 @@ const messageController = {
             res.status(200).json(newMessage);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -179,7 +179,7 @@ const messageController = {
             res.status(200).json('Succes');
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
     
