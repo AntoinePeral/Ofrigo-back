@@ -6,9 +6,17 @@ const authentificationModule = require ('../../service/middleware/authToken');
 
 const accountController = {
 
+    /**
+     * Get one account user by his id. His id is provided from the JWT bearer token
+     * @param {object} req use the req to get the id and the token
+     * @param {object} res use to response to the client. Send an JSON object
+     * @param {function} next call the APIError if an error is dectected
+     * @returns {APIError} return an error
+     */
     async getUserAccount(req, res, next) {
         if(!req.user.id) {
-            res.status(400).json({error: "User not provided."})
+            // res.status(400).json({error: "User not provided."})
+            return next(new APIError('User not provided', 401));
         }
 
         const account = await Account.findOne(req.user.id)
@@ -18,12 +26,24 @@ const accountController = {
             res.status(200).json(account);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
+    /**
+     * Register a new account in DB
+     * @param {object} req use it to get the body object which contains the informations of the new account and the new JWT Token
+     * @param {object} res use to response to the client. Send an JSON object
+     * @param {function} next call the APIError if an error is dectected
+     * @returns {APIError} return an error
+     */
     async addAccount (req, res, next) {
         const accountBody = req.body;
+
+        const accountVerified = await Account.findByEmail(accountBody.email)
+        if(accountVerified){
+            return next(new APIError("Le compte existe déjà", 500));
+        }
 
         // Password encrypting
         const saltRounds = 10;
@@ -40,7 +60,7 @@ const accountController = {
             console.log(account);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
 
         const accessToken = authentificationModule.generateAccessToken(account);
@@ -51,6 +71,13 @@ const accountController = {
         });
     },
 
+    /**
+     * Register a new admin account in DB. Role is already defined as admin in this function
+     * @param {object} req use the req to get the body object which contains the informations of the new account and the new JWT token
+     * @param {object} res use to response to the client. Send an JSON object
+     * @param {function} next call the APIError if an error is dectected
+     * @returns {APIError} return an error
+     */
     async addAdminAccount (req, res, next) {
         const accountBody = req.body;
         accountBody.role = "admin";
@@ -69,7 +96,7 @@ const accountController = {
             debug(account);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
 
         const accessToken = authentificationModule.generateAccessToken(account);
@@ -81,15 +108,15 @@ const accountController = {
     },
 
     /**
-     * 
-     * @param {*} req 
-     * @param {*} res 
-     * @param {*} next 
-     * Le MDP doit être indiqué pour valider le schéma --> EN cas d'update du profile
+     * Update informations account using the JWT Token ID. THe password need to be verified to use this function
+     * @param {object} req use the req to get the body object which contains the informations of the updated account
+     * @param {object} res use to response to the client. Send an JSON object
+     * @param {function} next call the APIError if an error is dectected
+     * @returns {APIError} return an error
      */
     async updateAccount (req, res, next) {
         if(!req.user.id) {
-            res.status(400).json({error: "User not provided."})
+            return next(new APIError('User not provided', 401));
         }
 
         const accountBody = req.body;
@@ -108,13 +135,20 @@ const accountController = {
             res.status(200).json(newAccount);
         }
         else{
-            next(new APIError("Bad request", 500));
+           return next(new APIError("Bad request", 500));
         }
     },
 
+    /**
+     * Delete an account using the JWT token id
+     * @param {object} req used to verify if an id is send to the function
+     * @param {object} res used to send a response to the client
+     * @param {function} next call the APIError if an error is dectected
+     * @returns {APIError} error
+     */
     async deleteAccount (req, res, next) {
         if(!req.user.id) {
-            res.status(400).json({error: "User not provided."})
+            return next(new APIError('User not provided', 401));
         }
 
         const response = await Account.delete(req.user.id);
@@ -124,10 +158,17 @@ const accountController = {
             res.status(200).json('Succes');
         }
         else{
-            next(new APIError("Bad request", 500)); 
+            return next(new APIError("Bad request", 500)); 
         }
     },
 
+    /**
+     * Add an ingredient to an account using the id int the JWT token
+     * @param {object} req used to get the JWT token and to identify the user.id
+     * @param {object} res use to response to the client. Send an JSON object
+     * @param {function} next call the APIError if an error is dectected
+     * @returns {APIError} return an error
+     */
     async addIngredientToAccount (req, res, next){
         if(!req.user.id) {
             res.status(400).json({error: "User not provided."})
@@ -164,9 +205,16 @@ const accountController = {
         }
     },
 
+    /**
+     * Delete an ingredient to an account using the id int the JWT token
+     * @param {object} req used to get the JWT token and to identify the user.id
+     * @param {object} res use to response to the client. Send an JSON object
+     * @param {function} next call the APIError if an error is dectected
+     * @returns {APIError} return an error
+     */
     async deleteIngredientToAccount(req, res, next){
         if(!req.user.id) {
-            res.status(400).json({error: "User not provided."})
+            return next(new APIError('User not provided', 401));
         }
         
         const ingredientId = req.params.id;
@@ -193,7 +241,7 @@ const accountController = {
             res.status(200).json(account);
         }
         else{
-            next(new APIError("Bad request", 500)); 
+            return next(new APIError("Bad request", 500)); 
         }
     },
     

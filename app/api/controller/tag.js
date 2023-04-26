@@ -17,7 +17,7 @@ const tagController = {
             res.status(200).json(tag);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -35,7 +35,7 @@ const tagController = {
             res.status(200).json(tag);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -50,7 +50,7 @@ const tagController = {
             res.status(200).json(tag);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -72,7 +72,7 @@ const tagController = {
             res.status(200).json(newTag);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -85,7 +85,7 @@ const tagController = {
             res.status(200).json('Succes');
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
     

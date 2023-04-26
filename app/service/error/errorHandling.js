@@ -6,15 +6,15 @@ const createWriteStream = require('fs').createWriteStream;
 
 const errorModule = {
     /**
-     * Méthode mananging client response
-     * @param {*} err 
-     * @param {*} req 
-     * @param {*} res 
-     * @param {*} next 
+     * Method mananging errors
+     * @param {*} err Errors
+     * @param {object} req Express resquest
+     * @param {object} res Express response. Send a response to the client
+     * @param {function} next Run the next middleware
      */
     async manage(err, req, res, next) {
-
-        // await errorModule.log(err, req.url);
+        console.log('Etape 4.5 JE suis dans le manage error');
+        await errorModule.log(err, req.url);
         if (!err.message) {
             switch (err.code) {
                 case 400:
@@ -34,22 +34,30 @@ const errorModule = {
                     break;
             }
         } else {
-            res.status(err.code).json({message: err.message})
+            console.log('Je suis dans erreur perso MANAGE');
+            return res.status(err.code).json({message: err.message})
         }
 
     },
     /**
-     * Methode managing 404
+     * Method to manage 404 error
      * @param {*} _ 
      * @param {*} __ 
-     * @param {*} next middleware pour indiquer à Express qu'il y a une erreur
+     * @param {function} next Run the next middleware
+     * @return {APIError} error
      */
     _404(_, __, next) {
-        next(new APIError('404 message', 404));
+        return next(new APIError('404 message', 404));
     },
 
+    /**
+     * Log all errors in a text file. If the text file doesn't exist, create it
+     * @param {*} err The error 
+     * @param {*} context the path where the error comes from
+     */
     async log(err, context) {
         debug(err); // <= debug en DEV
+        console.log(context);
 
         // je vais générer des fichiers textes qui vont enregistrer les erreurs // <= log pour la production
         const fileName = new Date().toISOString().slice(0, 10) + ".log";
@@ -77,6 +85,11 @@ const errorModule = {
 
 module.exports = errorModule;
 
+/**
+ * indicates whether a file exists or not
+ * @param {*} path the path to the file
+ * @returns True is exist /false if not
+ */
 async function fileExists (path) {  
     try {
       await fs.access(path)
@@ -84,4 +97,4 @@ async function fileExists (path) {
     } catch {
       return false
     }
-  }
+};

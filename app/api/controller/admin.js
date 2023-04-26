@@ -17,7 +17,7 @@ const adminController = {
             res.status(200).json(account);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -35,7 +35,7 @@ const adminController = {
             res.status(200).json(account);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -48,7 +48,7 @@ const adminController = {
             res.status(200).json('Succes');
         }
         else{
-            next(new APIError("Bad request", 500)); 
+            return next(new APIError("Bad request", 500)); 
         }
     },
 

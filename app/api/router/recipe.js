@@ -24,8 +24,8 @@ recipeRouter.delete("/admin/recipe/:id(\\d+)", authentification.authenticateToke
 //recipeRouter.delete("/admin/recipe/:id(\\d+)", recipe.deleteRecipe);
 
 //A créer
-//recipeRouter.post("/recipe/:id(\\d+)/ingredient", recipe.addIngredientToRecipe);
-//recipeRouter.put("/recipe/:id(\\d+)/ingredient", recipe.updateIngredientOfRecipe);
-//recipeRouter.delete("/recipe/:recipeId(\\d+)/ingredient/:ingredientId(\\d+)", recipe.deleteIngredientOfRecipe);
+// recipeRouter.post("/recipe/:id(\\d+)/ingredient", recipe.addIngredientToRecipe);
+// recipeRouter.put("/recipe/:id(\\d+)/ingredient", recipe.updateIngredientOfRecipe);
+// recipeRouter.delete("/recipe/:recipeId(\\d+)/ingredient/:ingredientId(\\d+)", recipe.deleteIngredientOfRecipe);
 
 module.exports = recipeRouter;

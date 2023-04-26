@@ -17,7 +17,7 @@ const recipeController = {
             res.status(200).json(recipe);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Aucune recette trouvée", 400));
         }
     },
 
@@ -29,13 +29,14 @@ const recipeController = {
     async getRecipeById (req, res, next){
         const recipeId = req.params.id;
         const recipe = await Recipe.findOne(recipeId);
+        console.log('recipe' ,recipe);
 
         if(recipe){
             debug(recipe);
             res.status(200).json(recipe);
         }
         else{
-            next(new APIError("Bad request", 400));
+            return next(new APIError("Aucune recette n'est trouvée", 400));
         }
 
     },
@@ -51,30 +52,49 @@ const recipeController = {
             res.status(200).json(recipe);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
     async updateRecipe (req, res, next) {
         const recipeId = req.params.id;
         const recipeBody = req.body;
-        let recipe = await Recipe.findOne(recipeId);
+        let recipe = await Recipe.findOne(recipeId)
+      
+        for (const value in recipeBody) {
+            recipe[value] = recipeBody[value];
+            console.log(recipe[value])
+        }
+
+        // let keys = []; 
+        // Object.keys(recipeBody).forEach(element => {
+        //     keys.push(element)
+        // });;
+        // console.log(keys);
 
 
         if(recipe){
             debug(recipe);
 
-            for (const key in recipeBody) {
-                recipe[key] = recipeBody[key];
+            for (const value in recipeBody) {
+                recipe[value] = recipeBody[value];
             }
 
             await recipe.update();
+// const test = Tag.update
+//             if (keys.find(element  => element==="ingredient")) {
+//                 const tag = await Tag.update();
+//                 console.log(tag);
+            
+//             }
+
+
             const newRecipe = await Recipe.findOne(recipeId);
             debug(newRecipe);
             res.status(200).json(newRecipe);
         }
         else{
-            next(new APIError("Bad request", 401));
+            return next(new APIError("Erreur sur l'update de la recette", 400));
         }
     },
 
@@ -88,7 +108,7 @@ const recipeController = {
             res.status(200).json('Succes');
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request, aucune recette trouvée", 400));
         }
     },
 
@@ -114,7 +134,7 @@ const recipeController = {
             return res.status(200).json(recipe);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("L'ingrédient est déjà rentré en BDD", 400));
         }
     },
 
@@ -141,7 +161,7 @@ const recipeController = {
             return res.status(200).json(recipe);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("L'ingrédient sélectionné n'est pas enregistré en BDD", 500));
         }
     },
 
@@ -162,10 +182,10 @@ const recipeController = {
 
         if(validation){
             await recipe.removeIngredient(ingredientId);
-            res.status(200).json(recipe);
+            return res.status(200).json(recipe);
         }
         else{
-            next(new APIError("Bad request", 500)); 
+            return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
         }
     }
 

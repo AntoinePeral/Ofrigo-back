@@ -17,7 +17,7 @@ const ingredientController = {
             res.status(200).json(ingredient);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -35,7 +35,7 @@ const ingredientController = {
             res.status(200).json(ingredient);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -51,7 +51,7 @@ const ingredientController = {
             res.status(200).json(ingredient);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -68,7 +68,7 @@ const ingredientController = {
             res.status(200).json(ingredient);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -83,7 +83,7 @@ const ingredientController = {
             res.status(200).json(ingredient);
         }
         else{
-            next(new APIError("L'ingrédient est déjà enregistré dans le profile", 500));
+            return next(new APIError("L'ingrédient est déjà enregistré dans le profile", 500));
         }
     },
 
@@ -106,7 +106,7 @@ const ingredientController = {
             res.status(200).json(newIngredient);
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
 
@@ -119,7 +119,7 @@ const ingredientController = {
             res.status(200).json('Succes');
         }
         else{
-            next(new APIError("Bad request", 500));
+            return next(new APIError("Bad request", 500));
         }
     },
     

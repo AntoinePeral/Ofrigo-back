@@ -70,7 +70,7 @@ class Recipe extends CoreModel{
             response = await ofrigo.query(query);
             debug(response)
         } catch (error) {
-            console.log("Erreur");
+            console.log(error);
         }
 
         return response.rowCount;

@@ -12,13 +12,13 @@ const loginController = {
     const account = await Account.findByEmail(email);
     
     if(!account) {
-      next(new APIError('Couple login/mot de passe est incorrect.', 401));
+      return next(new APIError('Couple login/mot de passe est incorrect.', 401));
     } 
     else {
       const hasMatchingPassword = await bcrypt.compare(password, account.password);
 
       if(!hasMatchingPassword) {
-        next(new APIError('Couple login/mot de passe est incorrect.', 401));
+        return next(new APIError('Couple login/mot de passe est incorrect.', 401));
       } else{
         const accessToken = authentificationModule.generateAccessToken(account);
         res.status(200).json({
@@ -28,45 +28,25 @@ const loginController = {
       }
     }
   },
-  async signInAdmin(req, res, next) {
-    const {email, password} = req.body;
-    const account = await Account.findByEmail(email);
-    
-    if(!account) {
-      next(new APIError('Couple login/mot de passe est incorrect.', 401));
-    } 
-    else {
-      const hasMatchingPassword = await bcrypt.compare(password, account.password);
-
-      if(!hasMatchingPassword) {
-        next(new APIError('Couple login/mot de passe est incorrect.', 401));
-      } else if (account.role!=="admin"){
-        next(new APIError(`Vous n'avez pas accès a cette page`, 401));
-      }else{
-        const accessToken = authentificationModule.generateAccessToken(account);
-        res.status(200).json({
-              accessToken,
-              account  
-          });
-      }
-    }
-  },
 
   async signInAdmin(req, res, next) {
     const {email, password} = req.body;
     const account = await Account.findByEmail(email);
+    console.log(!account);
     
     if(!account) {
-      next(new APIError('Couple login/mot de passe est incorrect.', 401));
+      console.log('je suis dans le !account');
+      return next(new APIError('Couple login/mot de passe est incorrect.', 401));
     }
-    
+    console.log('je suis sorti de erreur');
     const hasMatchingPassword = await bcrypt.compare(password, account.password);
+    console.log("password matching",hasMatchingPassword);
 
     if(!hasMatchingPassword) {
-      next(new APIError('Couple login/mot de passe est incorrect.', 401));
+      return next(new APIError('Couple login/mot de passe est incorrect.', 401));
     }
     if(account.role !== "admin"){
-      next(new APIError('Couple login/mot de passe est incorrect.', 401));
+      return next(new APIError('Couple login/mot de passe est incorrect.', 401));
     }
     else{
       const accessToken = authentificationModule.generateAccessToken(account);

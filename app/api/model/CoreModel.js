@@ -99,8 +99,8 @@ class CoreModel{
         try {
             const response = await ofrigo.query(query);
             debug(response.rows[0]);
-
             return new this(response.rows[0]);
+            
         } catch (error) {
             console.log(error);
         }
@@ -325,14 +325,7 @@ class CoreModel{
                 });
             }
         }
-        if(privateFields){
-            Object.entries(privateFields).forEach(([key, value]) =>{
-                fields.push(key);
-                values.push(value);
-                parameters.push(`$${counter}`);
-                counter++;
-            });
-        }
+
 
         const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;
         let response;
