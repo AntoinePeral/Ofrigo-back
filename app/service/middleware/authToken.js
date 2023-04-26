@@ -19,7 +19,7 @@ const authentificationModule = {
    * @param {*} next Run the next middleware
    * @returns {APIError} error if an error is detected
    */
-  authenticateToken(req, _, next) {
+  authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
     console.log('Etape 1 ON RENTRE DANS LE TOKEN');

@@ -1,2 +1,7 @@
-date;contexte;message
-2023-04-26T11:44:42.385Z;/me/profile/ingredient/3s;404 message
+          date          |      contexte        |     message     
+2023-04-26T12:22:00.359Z: /admin/ingredient/75 --> Bad request
+2023-04-26T12:22:00.626Z: /admin/ingredient/75 --> Bad request
+2023-04-26T12:22:00.918Z: /admin/ingredient/75 --> Bad request
+2023-04-26T12:22:01.288Z: /admin/ingredient/75 --> Bad request
+2023-04-26T12:22:01.585Z: /admin/ingredient/75 --> Bad request
+2023-04-26T12:22:01.972Z: /admin/ingredient/75 --> Bad request

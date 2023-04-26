@@ -62,14 +62,14 @@ const errorModule = {
         // je vais générer des fichiers textes qui vont enregistrer les erreurs // <= log pour la production
         const fileName = new Date().toISOString().slice(0, 10) + ".log";
         const filePath = path.resolve(__dirname, "../log") + "/" + fileName;
-        const fileBody = `${new Date().toISOString()};${context};${err.message}\n`;
+        const fileBody = `${new Date().toISOString()}: ${context} --> ${err.message}\n`;
 
         const isFileExist = await fileExists(filePath);
 
         try {
            // si le fichier n'existe pas
            if (!isFileExist) {
-                await fs.appendFile(filePath,"date;contexte;message\n");
+                await fs.appendFile(filePath,"          date          |      contexte        |     message     \n");
             }
 
             let file = await fs.open(filePath,"a");
