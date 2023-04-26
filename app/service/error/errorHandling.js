@@ -57,7 +57,6 @@ const errorModule = {
      */
     async log(err, context) {
         debug(err); // <= debug en DEV
-        console.log(context);
 
         // je vais générer des fichiers textes qui vont enregistrer les erreurs // <= log pour la production
         const fileName = new Date().toISOString().slice(0, 10) + ".log";
