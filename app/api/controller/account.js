@@ -26,7 +26,7 @@ const accountController = {
             res.status(200).json(account);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("Not found", 404));
         }
     },
 

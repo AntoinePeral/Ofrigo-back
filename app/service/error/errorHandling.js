@@ -13,29 +13,27 @@ const errorModule = {
      * @param {function} next Run the next middleware
      */
     async manage(err, req, res, next) {
-        console.log('Etape 4.5 JE suis dans le manage error');
         await errorModule.log(err, req.url);
         if (!err.message) {
             switch (err.code) {
                 case 400:
-                    res.status(400).json({message:"Bad request"});
+                    return res.status(400).json({message:"Bad request"});
                     break;
                 case 401:
-                    res.status(401).json({message:"Unauthorized"});
+                    return res.status(401).json({message:"Unauthorized"});
                     break;
                 case 404:
-                    res.status(404).json({message:"Not found"});
+                    return res.status(404).json({message:"Not found"});
                     break;
                 case 500:
-                    res.status(500).json({message:'Internal server error'});
+                    return res.status(500).json({message:'Internal server error'});
                     break;
                 default:
-                    res.status(err.code).json({message:"Internal server error"});
+                    return res.status(err.code).json({message:"Internal server error"});
                     break;
             }
         } else {
-            console.log('Je suis dans erreur perso MANAGE');
-            return res.status(err.code).json({message: err.message})
+            return res.status(err.code).json({message: err.message});
         }
 
     },
@@ -57,7 +55,6 @@ const errorModule = {
      */
     async log(err, context) {
         debug(err); // <= debug en DEV
-        console.log(context);
 
         // je vais générer des fichiers textes qui vont enregistrer les erreurs // <= log pour la production
         const fileName = new Date().toISOString().slice(0, 10) + ".log";
