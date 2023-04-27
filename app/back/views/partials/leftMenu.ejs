@@ -1,0 +1,11 @@
+<aside class="leftMenu">
+  <ul>
+      <li class=""><a href="/">Accueil</a></li>
+      <% for(const item of itemsMenu) { %>
+          <li><a href="/admin/<%=item%>"><%= item.charAt(0).toUpperCase()+ item.slice(1) %></a></li>
+      <% } %>
+      <li>
+        <a href="/">Deconnexion</a>
+      </li>
+  </ul>
+</aside>

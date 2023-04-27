@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon/favicon.ico" />
+    <link rel="stylesheet" href=" /css/style.css">
+
+    <title><%= homeName %></title>
+</head>
+<body class="body">
+    <header class="header">
+        <div class="logo">
+            <img src="./picture/O'Frigo.png" alt="">
+            <a class="logo_span" href="#">O'FRIGO</a>
+        </div>
+        <div class="title">
+            <% if (!currentItem) { %>
+                <h1>Dashboard</h1>
+            <%} else{  %>
+                <h1><%= currentItem.charAt(0).toUpperCase()+ currentItem.slice(1) %></h1>
+            <% } %>   
+        </div>
+        <div class="profil">
+            <a href="#">Mon profile</a>
+        </div>
+    </header>
+<%- include('leftMenu') %>
