@@ -4,7 +4,11 @@ const { Message, Ingredient, Recipe, Tag, Category, Account } = require("../../a
 const categoryController = {
 
     async getCategoryPage(req, res){
-        const itemsMenu = [ Account.tableName ,Tag.tableName, Ingredient.tableName, Recipe.tableName, Message.tableName ];       
+        const itemsMenu = [ Account.tableName ,Tag.tableName, Ingredient.tableName, Recipe.tableName, Message.tableName ];    
+        const categoryList = await Category.findAll();   
+    
+ 
+       
         const user = req.session.user
         const token = req.session.token
 
@@ -12,6 +16,7 @@ const categoryController = {
             homeName: "Category",
             itemsMenu,
             currentItem: "category",
+            list: categoryList,
             user,
             token
         });
