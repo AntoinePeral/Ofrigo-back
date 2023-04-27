@@ -11,11 +11,17 @@ const recipeController = {
      * @param {*} next use it to return an error
      */
     async getAllRecipe (_, res, next){
-        const recipe = await Recipe.findAll();
+        const recipes = await Recipe.findAll();
+        /* const recipesToSend = recipes.map(recipe =>{
+            return {
+                ...recipe,
+                picture: `/picture/${picture}`
+            }
+        }); */
 
-        if(recipe){
-            debug(recipe);
-            res.status(200).json(recipe);
+        if(recipes){
+            debug(recipes);
+            res.status(200).json(recipes);
         }
         else{
             return next(new APIError("Aucune recette trouvée", 400));
