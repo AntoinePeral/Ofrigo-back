@@ -3,13 +3,17 @@ const { Message, Ingredient, Recipe, Tag, Category, Account } = require("../../a
 
 const categoryController = {
 
-    async getCategoryPage(_, res){
+    async getCategoryPage(req, res){
         const itemsMenu = [ Account.tableName ,Tag.tableName, Ingredient.tableName, Recipe.tableName, Message.tableName ];       
+        const user = req.session.user
+        const token = req.session.token
 
         res.render("category", {
             homeName: "Category",
             itemsMenu,
-            currentItem: "category"
+            currentItem: "category",
+            user,
+            token
         });
     },
 
