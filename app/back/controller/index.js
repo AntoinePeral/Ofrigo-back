@@ -4,12 +4,16 @@ const recipe = require ("./recipe");
 const category = require ("./category");
 const message = require ("./message");
 const ingredient = require ("./ingredient");
+const loginAdmin = require("./login-admin-controller");
+const account = require("./account")
 
 module.exports = { 
+    account,
     home,
     tag,
     recipe,
     category,
     message,
-    ingredient
+    ingredient,
+    loginAdmin
 };

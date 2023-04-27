@@ -35,6 +35,7 @@ CREATE TABLE category (
 CREATE TABLE ingredient (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     label TEXT NOT NULL,
+    picture TEXT NOT NULL,
     unit measure,
     category_id INTEGER NOT NULL REFERENCES category("id") ON UPDATE CASCADE ON DELETE CASCADE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -44,7 +45,7 @@ CREATE TABLE ingredient (
 CREATE TABLE recipe (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     label TEXT NOT NULL,
-    picture TEXT  NOT NULL,
+    picture TEXT NOT NULL,
     rate NUMERIC,
     difficulty TEXT NOT NULL,
     time TEXT NOT NULL,

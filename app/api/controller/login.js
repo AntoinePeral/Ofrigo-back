@@ -44,15 +44,11 @@ const loginController = {
   async signInAdmin(req, res, next) {
     const {email, password} = req.body;
     const account = await Account.findByEmail(email);
-    console.log(!account);
     
     if(!account) {
-      console.log('je suis dans le !account');
       return next(new APIError('Couple login/mot de passe est incorrect.', 401));
     }
-    console.log('je suis sorti de erreur');
     const hasMatchingPassword = await bcrypt.compare(password, account.password);
-    console.log("password matching",hasMatchingPassword);
 
     if(!hasMatchingPassword) {
       return next(new APIError('Couple login/mot de passe est incorrect.', 401));

@@ -5,6 +5,7 @@ const homeController = {
 
     async getHomePage(_, res){
         const itemsMenu = [ Account.tableName, Message.tableName, Category.tableName, Ingredient.tableName, Recipe.tableName, Tag.tableName ];       
+        
 
         res.render("home", {
             homeName: "Home",

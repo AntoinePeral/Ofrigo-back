@@ -72,6 +72,7 @@ const ingredientSchema = Joi.object({
         'string.empty': 'Le champ label ne peut pas être vide',
         'any.required': 'Le champ label est manquant'
     }),
+    picture: Joi.string().required(),
     unit: Joi.string().pattern(unitFormat).messages({
         'string.pattern.base': "Les unités de mesure ne respecte pas le nombre de caractère (max20) ou caractères non autorisés",
         'string.empty': 'Le champ unités de mesure ne peut pas être vide'
