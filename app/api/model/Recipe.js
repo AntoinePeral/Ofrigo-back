@@ -30,45 +30,69 @@ class Recipe extends CoreModel{
     };
 
     /**
-     * Returns all recipe whit ingredient, step and tag
-     * @returns Return array
+     * Add an ingredient to a recipe
+     * @param {int} ingredient_id 
+     * @param {int} quantity 
+     * @returns an instance
      */
-    static async findAllRecipeWithAll () {
-        const query = `SELECT * FROM getAllRecipe()`;
+    async addIngredient(ingredient_id, quantity = null){
+        const query = {
+            text: `INSERT INTO recipe_has_ingredient_with_quantity(recipe_id, ingredient_id, ingredient_quantity) VALUES ($1, $2, $3) RETURNING *;`,
+            values: [this.id, ingredient_id, quantity]
+        };
+        let response;
 
-        const result = [];
-
-        try {
-            const recipes = await ofrigo.query(query);
-            debug(recipes.rows);
-
-            for (const recipe of recipes.rows) {
-                result.push(new this(recipe)); 
-            }
-        } catch (error) {
+        try{
+            response = await ofrigo.query(query);
+            return response.rows[0];
+        }catch(error){
             console.log(error);
         }
-
-        return result;
     };
 
     /**
-     * Returns one recipe whit ingredient, step and tag
-     * @param {int} id data id
-     * @returns Return object
+     * Update an ingredient to a recipe
+     * @param {int} ingredient_id 
+     * @param {int} quantity 
+     * @returns an instance
      */
-    static async findOneRecipeWithAll (id) {
-        const query = `SELECT * FROM getOneRecipe(${id})`;
+    async updateIngredient(ingredient_id, quantity = null){
+        const query = {
+            text: `UPDATE recipe_has_ingredient_with_quantity SET ingredient_id=$1, ingredient_quantity=$2 WHERE recipe_id=$3 AND ingredient_id=$4 RETURNING *;`,
+            values: [ingredient_id, quantity, this.id, ingredient_id]
+        };
+        let response;
 
-        try {
-            const recipe = await ofrigo.query(query);
-            debug(recipe.rows[0]);
-
-            return new this(recipe.rows[0]);
-        } catch (error) {
+        try{
+            response = await ofrigo.query(query);
+            return response.rows[0];
+        }catch(error){
             console.log(error);
         }
     };
+
+    /**
+     * Delete an ingredient to a recipe
+     * @param {int} ingredient_id 
+     * @returns an instance
+     */
+    async removeIngredient(ingredient_id){
+        const query = {
+            text: `DELETE FROM "recipe_has_ingredient_with_quantity" WHERE "recipe_id"=$1 AND "ingredient_id"=$2;`,
+            values: [this.id, ingredient_id]
+        };
+        let response;
+
+        try {
+            response = await ofrigo.query(query);
+            debug(response)
+        } catch (error) {
+            console.log(error);
+        }
+
+        return response.rowCount;
+    };
+
 };
 
 module.exports = Recipe;

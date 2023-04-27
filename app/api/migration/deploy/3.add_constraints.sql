@@ -3,8 +3,8 @@
 BEGIN;
 -- Create Domain to secure and define type in Database  
 CREATE DOMAIN email_validator as TEXT CHECK ( VALUE ~ '^[\w\-_]+(\.[\w\-_]+)?@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)?\.[a-z]{2,}$');
-CREATE DOMAIN password_validator as TEXT CHECK (VALUE ~ '^(?=.*[a-z])(?=.*[A-Z])(?=.*[#$@!%&*?.])[A-Za-z\d#$@!%&*?.]{8,30}$');
-CREATE DOMAIN lenghtName_validator as TEXT CHECK (VALUE ~ '^[a-zA-Z]{2,100}$');
+-- CREATE DOMAIN password_validator as TEXT CHECK (VALUE ~ '^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&\/$.#!?§:;+\-%])[A-Za-z\d!?:;@$!%*?&\/$.#%\-]{8,}$');
+CREATE DOMAIN lenghtName_validator as TEXT CHECK (VALUE ~ '^[a-zA-Z\u00C0-\u00FF\-\-]{2,100}$');
 CREATE DOMAIN title_validator AS TEXT CHECK (LENGTH(VALUE) <= 100);
 CREATE DOMAIN little_title_validator AS TEXT CHECK (LENGTH(VALUE) <= 50);
 CREATE DOMAIN content_validator AS TEXT CHECK (LENGTH(VALUE) <= 1000);
@@ -15,13 +15,13 @@ CREATE DOMAIN positive_number_or_null AS NUMERIC CHECK (VALUE > 0 OR VALUE IS NU
 
 ALTER TABLE account
   ALTER COLUMN email TYPE email_validator,
-  Alter COLUMN password TYPE password_validator,
+  -- Alter COLUMN password TYPE password_validator,
   ALTER COLUMN last_name TYPE lenghtName_validator,
   ALTER COLUMN first_name TYPE lenghtName_validator;
 
 
 ALTER TABLE message 
-  ALTER COLUMN title TYPE title_validator,
+  ALTER COLUMN label TYPE title_validator,
   ALTER COLUMN content TYPE content_validator,
   ALTER COLUMN email TYPE email_validator;
 

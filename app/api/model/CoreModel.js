@@ -3,17 +3,38 @@ const ofrigo = require("../client/client-db-ofrigo");
 
 class CoreModel{
     id;
-    
+
     constructor (obj) {
-        this.id = obj.id;
-    };
+        if (obj.id) {
+            this.id = obj.id;
+        }
+    }
 
     /**
      * Returns all data from a table
      * @returns Return array
      */
     static async findAll () {
-        const query = `SELECT * FROM "${this.tableName}";`;
+        let query
+        if(this.tableName == "account"){
+            query = `SELECT * FROM getAllAccount();`;
+        }
+        if(this.tableName == "category"){
+            query = `SELECT * FROM getAllCategory();`;
+        }
+        if(this.tableName == "ingredient"){
+            query = `SELECT * FROM getAllIngredient();`;
+        }
+        if(this.tableName == "message"){
+            query = `SELECT * FROM getAllMessage();`;
+        }
+        if(this.tableName == "recipe"){
+            query = `SELECT * FROM getAllRecipe();`;
+        }
+        if(this.tableName == "tag"){
+            query = `SELECT * FROM getAllTag();`;
+        }
+
         const result = [];
         let response;
 
@@ -37,16 +58,294 @@ class CoreModel{
      * @returns Return object
      */
     static async findOne (id) {
-        const query = `SELECT * FROM ${this.tableName} WHERE id=${id};`;
+        let query
+        if(this.tableName == "account"){
+            query = {
+                text: `SELECT * FROM getOneAccount($1);`,
+                values: [id]
+            }
+        }
+        if(this.tableName == "category"){
+            query = {
+                text: `SELECT * FROM getOneCategory($1);`,
+                values: [id]
+            }
+        }
+        if(this.tableName == "ingredient"){
+            query = {
+                text: `SELECT * FROM getOneIngredient($1);`,
+                values: [id]
+            }
+        }
+        if(this.tableName == "message"){
+            query = {
+                text: `SELECT * FROM getOneMessage($1);`,
+                values: [id]
+            }
+        }
+        if(this.tableName == "recipe"){
+            query = {
+                text: `SELECT * FROM getOneRecipe($1)`,
+                values: [id]
+            }
+        }
+        if(this.tableName == "tag"){
+            query = {
+                text: `SELECT * FROM getOneTag($1);`,
+                values: [id]
+            }
+        }
 
         try {
             const response = await ofrigo.query(query);
             debug(response.rows[0]);
-
             return new this(response.rows[0]);
+            
         } catch (error) {
             console.log(error);
         }
+    };
+
+    /**
+     * General function that allows you to create
+     * @param {object} privateFields 
+     * @returns an instance
+     */
+    async add (privateFields = null) {
+        const fields = []; 
+        const values = [];
+        let counter = 1;
+        const parameters = [];
+
+        if(this.constructor.tableName == "account"){
+            Object.entries(this).forEach(([key, value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "role" && key!== "ingredient" && key!== "message"){
+                    fields.push(key);
+                }
+                if(value !== undefined){
+                    values.push(value);
+                    parameters.push(`$${counter}`);
+                    counter++;
+                }
+            });
+    
+            if(privateFields){
+                Object.entries(privateFields).forEach(([key, value]) =>{
+                    fields.push(key);
+                    values.push(value);
+                    parameters.push(`$${counter}`);
+                    counter++;
+                });
+            }
+        }
+        if(this.constructor.tableName == "category"){
+            Object.entries(this).forEach(([key, value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "ingredient"){
+                    fields.push(key);
+                }
+                if(value !== undefined){
+                    values.push(value);
+                    parameters.push(`$${counter}`);
+                    counter++;
+                }
+            });
+        }
+        if(this.constructor.tableName == "ingredient"){
+            Object.entries(this).forEach(([key, value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "category"){
+                    fields.push(key);
+                }
+                if(value !== undefined){
+                    values.push(value);
+                    parameters.push(`$${counter}`);
+                    counter++;
+                }
+            });
+        }
+        if(this.constructor.tableName == "message"){
+            Object.entries(this).forEach(([key, value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "account"){
+                    fields.push(key);
+                }
+                if(value !== undefined){
+                    values.push(value);
+                    parameters.push(`$${counter}`);
+                    counter++;
+                }
+            });
+        }
+        if(this.constructor.tableName == "recipe"){
+            Object.entries(this).forEach(([key, value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "ingredient" && key!== "step" && key!== "tag"){
+                    fields.push(key);
+                }
+                if(value !== undefined){
+                    values.push(value);
+                    parameters.push(`$${counter}`);
+                    counter++;
+                }
+            });
+        }
+        if(this.constructor.tableName == "tag"){
+            Object.entries(this).forEach(([key, value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "recipe"){
+                    fields.push(key);
+                }
+                if(value !== undefined){
+                    values.push(value);
+                    parameters.push(`$${counter}`);
+                    counter++;
+                }
+            });
+        }
+
+        const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;
+        let response;
+        
+        try {
+            response = await ofrigo.query(query, values);
+            debug(response);
+        } catch (error) {
+            console.log(error);
+        }
+
+        return response.rows[0];
+    };
+
+    /**
+     * General function that allows you to update
+     * @returns an instance
+     */
+    async update () {
+        const fields = []; 
+        const values = [];
+        let counter = 1;
+
+        if(this.constructor.tableName == "account"){
+            Object.entries(this).forEach(([key,value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "role" && key!== "ingredient" && key!== "message"){
+                    fields.push(key + "=$" + counter);
+                    values.push(value);
+                    counter++;
+                }
+            });
+        }
+        if(this.constructor.tableName == "category"){
+            Object.entries(this).forEach(([key,value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "ingredient"){
+                    fields.push(key + "=$" + counter);
+                    values.push(value);
+                    counter++;
+                }
+            });
+        }
+        if(this.constructor.tableName == "ingredient"){
+            Object.entries(this).forEach(([key,value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "category"){
+                    fields.push(key + "=$" + counter);
+                    values.push(value);
+                    counter++;
+                }
+            });
+        }
+        if(this.constructor.tableName == "message"){
+            Object.entries(this).forEach(([key,value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "account"){
+                    fields.push(key + "=$" + counter);
+                    values.push(value);
+                    counter++;
+                }
+            });
+        }
+        if(this.constructor.tableName == "recipe"){
+            Object.entries(this).forEach(([key,value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "ingredient" && key!== "step" && key!== "tag"){
+                    fields.push(key + "=$" + counter);
+                    values.push(value);
+                    counter++;
+                }
+            });
+        }
+        if(this.constructor.tableName == "tag"){
+            Object.entries(this).forEach(([key,value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "recipe"){
+                    fields.push(key + "=$" + counter);
+                    values.push(value);
+                    counter++;
+                }
+            });
+        }
+
+        const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}' RETURNING *;`;
+        const response = await ofrigo.query(query, values);
+        return response.rows[0];
+    };
+
+    /**
+     * General function that allows you to delete
+     * @returns an instance
+     */
+    static async delete (id) {
+        const query = {
+            text: `DELETE FROM "${this.tableName}" WHERE "id"=$1;`,
+            values: [id]
+        };
+        let response;
+
+        try {
+            response = await ofrigo.query(query);
+            debug(response)
+        } catch (error) {
+            console.log("Erreur");
+        }
+
+        return response.rowCount;
+    };
+
+    /**
+     * Create an admin account
+     * @param {object} privateFields 
+     * @returns 
+     */
+    async addAdmin (privateFields = null){
+        const fields = []; 
+        const values = [];
+        let counter = 1;
+        const parameters = [];
+
+        if(this.constructor.tableName == "account"){
+            Object.entries(this).forEach(([key, value])=>{
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "ingredient" && key!== "message"){
+                    fields.push(key);
+                }
+                if(value !== undefined){
+                    values.push(value);
+                    parameters.push(`$${counter}`);
+                    counter++;
+                }
+
+            });
+            if(privateFields){
+                Object.entries(privateFields).forEach(([key, value]) =>{
+                    fields.push(key);
+                    values.push(value);
+                    parameters.push(`$${counter}`);
+                    counter++;
+                });
+            }
+        }
+
+        const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;
+        let response;
+        
+        try {
+            response = await ofrigo.query(query, values);
+            debug(response);
+        } catch (error) {
+            console.log(error);
+        }
+        console.log("respons",response);
+        return response.rows[0];
     };
 };
 
