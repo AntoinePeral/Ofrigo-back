@@ -1,3 +1,13 @@
 <%- include('partials/header') %>
-  
+<section class="section">
+  <div class="list_container">
+    <h2>Liste des <%= currentItem %></h2>
+  <ul class="list_columns">
+  <% for (let index = 0; index < list.length; index++) { %>
+    <% const itemList = list[index]%>
+    <li><a href="#" id="itemList" data-id="<%= itemList.id %>"><%= itemList.label%></a></li>
+  <% } %>
+  </ul>  
+  </div>
+  <div class="infos_container">
 <%- include('partials/footer') %>
