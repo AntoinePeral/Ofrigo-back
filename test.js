@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const app = express();
 
 let secretKey = 'ma_cle_secrete';
-console.log('toto');
+
 const payload = { 
   id: 123, 
   firstName: 'Alice',
