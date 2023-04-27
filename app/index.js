@@ -15,7 +15,7 @@ app.use(session({
 
 app.set('view engine', 'ejs');
 app.set('views', 'app/back/views');
-app.use('/public', express.static(path.join(__dirname, 'public')))
+app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(express.static("./app/back/asset"));
 
 app.use(cors());
