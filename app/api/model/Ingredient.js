@@ -4,6 +4,7 @@ const ofrigo = require("../client/client-db-ofrigo");
 class Ingredient extends CoreModel{
     static tableName = 'ingredient';
     label;
+    picture;
     unit;
     category_id;
     category;
@@ -13,6 +14,7 @@ class Ingredient extends CoreModel{
     constructor(obj){
         super(obj);
         this.label = obj.label;
+        this.picture = obj.picture;
         this.unit = obj.unit;
         this.category_id = obj.category_id;
         this.category = obj.category;

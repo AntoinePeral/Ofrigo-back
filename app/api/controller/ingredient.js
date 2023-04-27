@@ -10,11 +10,18 @@ const ingredientController = {
      * @param {*} res use to response to the client
      */
     async getAllIngredient (_, res, next){
-        const ingredient = await Ingredient.findAll();
+        const ingredients = await Ingredient.findAll();
+        const ingredientsToSend = ingredients.map(ingredient =>{
+            return {
+                ...ingredient,
+                picture: `/public/picture/ingredient/${ingredient.picture}`
+            }
+        }); 
+        console.log("test",ingredients);
 
-        if(ingredient){
-            debug(ingredient);
-            res.status(200).json(ingredient);
+        if(ingredientsToSend){
+            debug(ingredientsToSend);
+            res.status(200).json(ingredientsToSend);
         }
         else{
             return next(new APIError("Bad request", 500));
@@ -29,6 +36,13 @@ const ingredientController = {
     async getIngredientById (req, res, next){
         const ingredientId = req.params.id;
         const ingredient = await Ingredient.findOne(ingredientId);
+        // const ingredientToSend = ingredient.map(ingredient =>{
+        //     return {
+        //         ...ingredient,
+        //         picture: `/public/picture/ingredient/${ingredient.picture}`
+        //     }
+        // }); 
+        ingredient.picture = `/public/picture/ingredient/${ingredient.picture}`;
 
         if(ingredient){
             debug(ingredient);

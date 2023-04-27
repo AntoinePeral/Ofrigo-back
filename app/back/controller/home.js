@@ -3,13 +3,17 @@ const { Message, Ingredient, Recipe, Tag, Category, Account } = require("../../a
 
 const homeController = {
 
-    async getHomePage(_, res){
+    async getHomePage(req, res){
         const itemsMenu = [ Account.tableName, Message.tableName, Category.tableName, Ingredient.tableName, Recipe.tableName, Tag.tableName ];       
+        const user = req.session.user
+        const token = req.session.token
 
         res.render("home", {
             homeName: "Home",
             itemsMenu,
-            currentItem: null
+            currentItem: null,
+            user,
+            token
         });
     },
 

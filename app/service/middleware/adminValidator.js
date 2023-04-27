@@ -1,3 +1,5 @@
+const APIError = require ('../error/APIError')
+
 const adminValidator ={
   /**
    * Verify if the user is an admin or not
@@ -6,7 +8,8 @@ const adminValidator ={
    * @param {function} next run the next middleware
    */
   isAdmin(req, _, next) {
-    if (req.user.role == 'admin') {
+// Le ? permet ici d'éviter l'erreur de undefined si l'un des deux rôle l'est
+    if (req.user?.role === 'admin' || req.session?.user?.role==='admin') {
       next();
     }
     else {  
