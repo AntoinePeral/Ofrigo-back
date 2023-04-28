@@ -31,6 +31,7 @@ const loginController = {
       const accessToken = authentificationModule.generateAccessToken(account);
       req.session.user = account;
       req.session.token = accessToken;
+      console.log(req.session.token);
 
 
       console.log(req.session.user.role);

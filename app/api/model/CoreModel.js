@@ -1,4 +1,4 @@
-const debug = require("debug")("activeRecord");
+// const debug = require("debug")("activeRecord");
 const ofrigo = require("../client/client-db-ofrigo");
 
 class CoreModel{
@@ -40,7 +40,7 @@ class CoreModel{
 
         try {
             response = await ofrigo.query(query);
-            debug(response.rows);
+            // debug(response.rows);
 
             for (const row of response.rows) {
                 result.push(new this(row));
@@ -98,7 +98,7 @@ class CoreModel{
 
         try {
             const response = await ofrigo.query(query);
-            debug(response.rows[0]);
+            // debug(response.rows[0]);
             return new this(response.rows[0]);
             
         } catch (error) {
@@ -200,11 +200,14 @@ class CoreModel{
         }
 
         const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;
+        console.log(query);
+        console.log(values);
         let response;
         
         try {
             response = await ofrigo.query(query, values);
-            debug(response);
+            console.log(response);
+            // debug(response);
         } catch (error) {
             console.log(error);
         }
@@ -340,12 +343,37 @@ class CoreModel{
         
         try {
             response = await ofrigo.query(query, values);
-            debug(response);
+            // debug(response);
         } catch (error) {
             console.log(error);
         }
         console.log("respons",response);
         return response.rows[0];
+    };
+
+    static async findTableName(){
+        const query = `SELECT 
+        TABLE_NAME
+        FROM
+        information_schema.tables
+        WHERE TABLE_CATALOG='ofrigo'
+        AND TABLE_SCHEMA='public'`;
+        let response;
+        
+        try{
+            response = await ofrigo.query(query);
+            let tableName = [];
+        
+            for(const name of response.rows){
+                if(name.table_name !== "account_has_ingredient" && name.table_name !== "recipe_has_tag" && name.table_name !== "step" && name.table_name !== "recipe_has_ingredient_with_quantity"){
+                    tableName.push(name.table_name);
+                }
+            }
+    
+            return tableName;
+        }catch(error){
+            console.log(error);
+        }
     };
 };
 

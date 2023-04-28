@@ -1,20 +1,27 @@
 const debug = require("debug")("homeController");
-const { Message, Ingredient, Recipe, Tag, Category, Account } = require("../../api/model");
+const { CoreModel } = require("../../api/model");
 
 const homeController = {
 
-    async getHomePage(req, res){
-        const itemsMenu = [ Account.tableName, Message.tableName, Category.tableName, Ingredient.tableName, Recipe.tableName, Tag.tableName ];       
+    async getHomePage(req, res){     
         const user = req.session.user
         const token = req.session.token
 
         res.render("home", {
             homeName: "Home",
-            itemsMenu,
             currentItem: null,
             user,
             token
         });
+    },
+
+    async leftMenu (_, res, next){
+        try{
+            res.locals.leftMenu = await CoreModel.findTableName();
+            next();
+        }catch(error){
+            console.log(error);
+        }
     },
 
 };

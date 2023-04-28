@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+<section class="section">
+
+  <a href="/admin/category/create">Ajouter une catégorie</a>
+  <div class="list_container">
+    <table>
+      <thead>
+          <tr>
+              <th colspan="2">Liste des <%= currentItem %></th>
+          </tr>
+      </thead>
+      <tbody>
+        <% for (let index = 0; index < list.length; index++) { %>
+          <% const itemList = list[index]%>
+          <tr>
+            <td>
+              <li><a href="/admin/tag/<%= itemList.id%>" data-id="<%= itemList.id %>"><%= itemList.label%></a></li>
+            </td>
+            <td>
+              <a href="/admin/tag/<%= itemList.id %>/delete" data-id="<%= itemList.id %>">Supprimer</button>
+            </td>
+            <td>
+              <a href="/admin/tag/<%= itemList.id%>"  data-id="<%= itemList.id %>">Modifier</button>
+            </td>
+        
+          </tr>
+        <% } %>
+
+      </tbody>
+    </table>
+    
+  </div>
+<%- include('../partials/footer') %>

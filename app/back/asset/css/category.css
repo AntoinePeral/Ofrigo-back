@@ -1,0 +1,56 @@
+/* CSS des infos */
+.infos_container {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.infos_container p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.infos_container p:first-child {
+  font-weight: bold;
+}
+
+.infos_container p:nth-child(odd) {
+  background-color: #e6e6e6;
+}
+
+
+/* CSS Ingrédients */
+.ingredients-container {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.ingredients-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.ingredientCard, .ingredient-actions {
+  width: 20%;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ingredient-label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+.delete-ingredient {
+  cursor: pointer;
+}
