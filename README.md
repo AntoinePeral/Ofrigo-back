@@ -144,13 +144,7 @@
 
 |ETAPE|STATUT|
 |---|---|
-Gestion d'erreurs + Log d’erreurs | En cours|
 Test unitaires| En cours|
 Back-office | En cours|
-Ajout des images ingredient | En cours|
 Fonctionalité : Création d’une recette | En cours|
 Fonctionalité : Modification d’une recette | En cours|
-Fonctionalité : Noter une recette | En attente|
-Fonctionalité : Les membres peuvent créer des recettes | En attente|
-Fonctionalité : Recettes aléatoires | En attente|
-Fonctionalité : Commenter une recette | En attente|

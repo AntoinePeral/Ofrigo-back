@@ -347,6 +347,31 @@ class CoreModel{
         console.log("respons",response);
         return response.rows[0];
     };
+
+    static async findTableName(){
+        const query = `SELECT 
+        TABLE_NAME
+        FROM
+        information_schema.tables
+        WHERE TABLE_CATALOG='ofrigo'
+        AND TABLE_SCHEMA='public'`;
+        let response;
+        
+        try{
+            response = await ofrigo.query(query);
+            let tableName = [];
+        
+            for(const name of response.rows){
+                if(name.table_name !== "account_has_ingredient" && name.table_name !== "recipe_has_tag" && name.table_name !== "step" && name.table_name !== "recipe_has_ingredient_with_quantity"){
+                    tableName.push(name.table_name);
+                }
+            }
+    
+            return tableName;
+        }catch(error){
+            console.log(error);
+        }
+    };
 };
 
 module.exports = CoreModel;
