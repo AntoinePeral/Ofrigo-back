@@ -12,16 +12,16 @@ const recipeController = {
      */
     async getAllRecipe (_, res, next){
         const recipes = await Recipe.findAll();
-        /* const recipesToSend = recipes.map(recipe =>{
+        const recipesToSend = recipes.map(recipe =>{
             return {
                 ...recipe,
-                picture: `/picture/${picture}`
+                picture: `/public/picture/recipe/${recipe.picture}`
             }
-        }); */
+        }); 
 
-        if(recipes){
-            debug(recipes);
-            res.status(200).json(recipes);
+        if(recipesToSend){
+            debug(recipesToSend);
+            res.status(200).json(recipesToSend);
         }
         else{
             return next(new APIError("Aucune recette trouvée", 400));
@@ -37,7 +37,14 @@ const recipeController = {
     async getRecipeById (req, res, next){
         const recipeId = req.params.id;
         const recipe = await Recipe.findOne(recipeId);
-        console.log('recipe' ,recipe);
+        // const recipeToSend = recipe.map(recipe =>{
+        //     return {
+        //         ...recipe,
+        //         picture: `/public/picture/recipe/${recipe.picture}`
+        //     }
+        // }); 
+     
+        recipe.picture= `/public/picture/recipe/${recipe.picture}`;
 
         if(recipe){
             debug(recipe);

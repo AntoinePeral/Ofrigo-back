@@ -305,7 +305,7 @@ $$ LANGUAGE SQL;
 CREATE OR REPLACE FUNCTION getAllIngredient ()
   RETURNS TABLE (
 	id int,
-    label little_title_validator,
+  label little_title_validator,
 	picture text,
 	unit measure,
 	category_id int,

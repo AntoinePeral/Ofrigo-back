@@ -3,9 +3,15 @@ const { CoreModel } = require("../../api/model");
 
 const homeController = {
 
-    async getHomePage(_, res){
+    async getHomePage(req, res){     
+        const user = req.session.user
+        const token = req.session.token
+
         res.render("home", {
             homeName: "Home",
+            currentItem: null,
+            user,
+            token
         });
     },
 

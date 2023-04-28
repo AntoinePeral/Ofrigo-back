@@ -20,7 +20,7 @@
         </div>
         <div class="profil">
             <% if (homeName != 'LoginPage') { %>
-                <a href="#">Mon profile</a>
+                <a href="#"><%=user.last_name%> <%=user.first_name%></a>
             <%} %>
         </div>
     </header>

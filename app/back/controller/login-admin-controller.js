@@ -25,13 +25,17 @@ const loginController = {
       return next(new APIError('Couple login/mot de passe est incorrect.', 401));
     }
     if(account.role !== "admin"){
-      return next(new APIError('Couple login/mot de passe est incorrect.', 401));
+      return next(new APIError('Vous n\'êtes pas autorisé à rentre sur le site', 401));
     }
     else{
       const accessToken = authentificationModule.generateAccessToken(account);
+      req.session.user = account;
       req.session.token = accessToken;
 
-      const itemsMenu = [ Category.tableName, Ingredient.tableName, Message.tableName, Recipe.tableName,  Tag.tableName ];       
+
+      console.log(req.session.user.role);
+
+      // const itemsMenu = [ Category.tableName, Ingredient.tableName, Message.tableName, Recipe.tableName,  Tag.tableName ];       
 
       res.redirect("/admin/home")
       // res.redirect("/admin/home", {
