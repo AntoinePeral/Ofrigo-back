@@ -320,6 +320,7 @@ SELECT *,
 	WHERE i.category_id=c.id
 ) AS category
 FROM ingredient i
+ORDER BY i.id ASC
 $$ LANGUAGE SQL;
 
 -- Function to get on ingredient by his id and return his label, unit, category_id and category.
