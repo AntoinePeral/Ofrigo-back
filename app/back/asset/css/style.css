@@ -179,7 +179,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 4px solid #fb9032;
     height: 5vh;
     position: absolute;
     bottom: 0;
