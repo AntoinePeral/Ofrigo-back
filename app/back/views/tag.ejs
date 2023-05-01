@@ -38,7 +38,7 @@
                 <tbody class="bottom">
 
                     <% for(const recipe of tag.recipe) { %>
-                        <tr><td><%= recipe.id %></td><td><img class="picture-ingredient" src="http://localhost:3000/public/picture/recipe/<%= recipe.picture %>" alt="<%= recipe.picture %>"></td><td><a href="/admin/recipe/<%= recipe.id %>"><%= recipe.label %></a></td><td><%= recipe.created_at %></td><td><%= recipe.updated_at %></td><td><form action="/admin/tag/<%= tag.id %>/recipe/<%= recipe.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+                        <tr><td><%= recipe.id %></td><td><img class="picture-ingredient" src="http://kevin-lienard-server.eddi.cloud/public/picture/recipe/<%= recipe.picture %>" alt="<%= recipe.picture %>"></td><td><a href="/admin/recipe/<%= recipe.id %>"><%= recipe.label %></a></td><td><%= recipe.created_at %></td><td><%= recipe.updated_at %></td><td><form action="/admin/tag/<%= tag.id %>/recipe/<%= recipe.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
                     <% } %>
 
                 </tbody>
