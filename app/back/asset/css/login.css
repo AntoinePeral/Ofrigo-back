@@ -33,6 +33,7 @@ form input {
 }
 
 .connexion:hover {
+    cursor: pointer;
     border: 3px solid #eba81a;
     transition: 0.3s ease-in-out;
 }
