@@ -1,0 +1,301 @@
+          date          |      contexte        |     message     
+2023-05-01T09:44:46.322Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T09:47:54.859Z: /admin/login --> Vous n'êtes pas autorisé à accéder à cette page
+2023-05-01T09:47:54.960Z: /images/icons/gear.png --> 404 message
+2023-05-01T09:49:15.912Z: /admin/login --> Cannot read properties of undefined (reading 'role')
+2023-05-01T09:57:22.893Z: /login --> 404 message
+2023-05-01T09:57:23.007Z: /images/icons/gear.png --> 404 message
+2023-05-01T09:57:29.890Z: /login --> 404 message
+2023-05-01T09:57:29.952Z: /images/icons/gear.png --> 404 message
+2023-05-01T09:59:41.828Z: /images/icons/gear.png --> 404 message
+2023-05-01T09:59:55.432Z: /login --> 404 message
+2023-05-01T09:59:55.509Z: /images/icons/gear.png --> 404 message
+2023-05-01T10:03:31.564Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:05:11.649Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:05:24.766Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:06:38.167Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:07:09.181Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:07:41.746Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:10:43.039Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:12:20.447Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:14:11.308Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:14:54.112Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:18:33.585Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:19:10.264Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:19:44.749Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:21:16.602Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:21:39.480Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:22:12.920Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:24:56.380Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T10:26:07.341Z: /admin/login --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/login.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:9
+    7|     <link rel="icon" href="/picture/favicon/favicon.ico" />
+    8|     <link rel="stylesheet" href=" /css/style.css">
+ >> 9|     <link rel="stylesheet" href=<%= css %>>
+    10| 
+    11|     <title><%= homeName %></title>
+    12| </head>
+
+css is not defined
+2023-05-01T13:37:22.012Z: /admin/recipe/1/step/10 --> 404 message
+2023-05-01T13:37:22.103Z: /images/icons/gear.png --> 404 message
+2023-05-01T13:41:50.853Z: /me/profile/contact --> Le token est érroné
+2023-05-01T13:57:11.912Z: /contact --> Unexpected token 
+ in JSON at position 272
