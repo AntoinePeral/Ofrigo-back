@@ -128,12 +128,12 @@ a {
     display: flex;
     justify-content: space-evenly;
     margin-top: 2vh;
-    width: 100%;
 }
 
 .icones-category {
     width: 35px;
     padding: 5px;
+    margin-left: 1vw;
 }
 
 .icones-category img {

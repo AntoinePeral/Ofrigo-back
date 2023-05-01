@@ -148,14 +148,14 @@ a {
 
 .update-delete {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-top: 2vh;
-    width: 100%;
 }
 
 .icones-recipe {
     width: 35px;
     padding: 5px;
+    margin-left: 1vw;
 }
 
 .icones-recipe img {
