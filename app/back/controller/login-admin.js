@@ -17,7 +17,7 @@ const loginController = {
 
     if(!email || !password){
       return res.render("login", {
-        errorMessage: "Veuillez renseigner tous les champs",
+        errorMessage: "Please complete all fields",
         homeName: "Login",
         css: "/css/login.css",
       });
@@ -27,7 +27,7 @@ const loginController = {
 
     if(!account){
       return res.render("login", {
-        errorMessage: "Email ou mot de passe incorrect",
+        errorMessage: "Incorrect email or password",
         homeName: "Login",
         css: "/css/login.css",
       });
@@ -37,7 +37,7 @@ const loginController = {
 
     if(!hasMatchingPassword){
       return res.render("login", { 
-        errorMessage: "Email ou mot de passe incorrect",
+        errorMessage: "Incorrect email or password",
         homeName: "Login",
         css: "/css/login.css",
       });
