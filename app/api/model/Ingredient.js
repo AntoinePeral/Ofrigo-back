@@ -70,6 +70,32 @@ class Ingredient extends CoreModel{
         }
     };
 
+    static async findAllIngredientCategory(category_id) {
+        const query = {
+            text: `SELECT * FROM ingredient WHERE category_id=$1;`,
+            values: [category_id]
+        };
+        const result = [];
+        let response;
+
+        try{
+            response = await ofrigo.query(query);
+
+            if(response.rowCount > 0){
+                for (const row of response.rows) {
+                    result.push(new this(row));
+                }
+            }
+            else{
+                return new this(response.rows[0])
+            }
+            
+            return result;
+        }catch(error){
+            console.log(error);
+        }
+    };
+
 };
 
 module.exports = Ingredient;

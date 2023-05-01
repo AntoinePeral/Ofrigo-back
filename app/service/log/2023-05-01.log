@@ -299,3 +299,15 @@ css is not defined
 2023-05-01T13:41:50.853Z: /me/profile/contact --> Le token est érroné
 2023-05-01T13:57:11.912Z: /contact --> Unexpected token 
  in JSON at position 272
+2023-05-01T15:13:41.572Z: /admin/category/delete/1 --> Not found
+2023-05-01T15:13:41.680Z: /images/icons/gear.png --> 404 message
+2023-05-01T15:14:20.166Z: /admin/category/delete/1 --> Not found
+2023-05-01T15:14:20.226Z: /images/icons/gear.png --> 404 message
+2023-05-01T15:15:08.237Z: /admin/category/delete/1 --> Not found
+2023-05-01T15:15:08.306Z: /images/icons/gear.png --> 404 message
+2023-05-01T15:15:36.279Z: /admin/category/delete/1 --> Not found
+2023-05-01T15:15:36.344Z: /images/icons/gear.png --> 404 message
+2023-05-01T15:16:00.122Z: /admin/category/delete/1 --> Not found
+2023-05-01T15:16:00.211Z: /images/icons/gear.png --> 404 message
+2023-05-01T15:22:58.282Z: /admin/category/delete/1 --> Not found
+2023-05-01T15:22:58.350Z: /images/icons/gear.png --> 404 message

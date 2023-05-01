@@ -51,6 +51,13 @@ const categoryController = {
 
     async deleteCategory (req, res, next) {
         const categoryId = req.params.id;
+        const ingredients = await Ingredient.findAllIngredientCategory(categoryId);
+
+        for(const ingredient of ingredients){
+            ingredient.category_id = null;
+            await ingredient.update();
+        }
+
         const response = await Category.delete(categoryId);
 
         if(response){

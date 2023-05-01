@@ -279,9 +279,6 @@ class CoreModel{
 
         const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}' RETURNING *;`;
         const response = await ofrigo.query(query, values);
-        console.log(query);
-        console.log(values);
-        console.log(response.rows[0]);
 
         return response.rows[0];
     };
@@ -299,12 +296,11 @@ class CoreModel{
 
         try {
             response = await ofrigo.query(query);
-            debug(response)
+            debug(response);
+            return response.rowCount;
         } catch (error) {
-            console.log("Erreur");
+            console.log(error);
         }
-
-        return response.rowCount;
     };
 
     /**
@@ -349,7 +345,7 @@ class CoreModel{
         } catch (error) {
             console.log(error);
         }
-        console.log("respons",response);
+
         return response.rows[0];
     };
 
@@ -377,6 +373,7 @@ class CoreModel{
             console.log(error);
         }
     };
+
 };
 
 module.exports = CoreModel;
