@@ -13,6 +13,6 @@ accountRouter.post("/admin/account/delete/:id(\\d+)", /*authentification.authent
 accountRouter.post("/admin/register", /*validationBody.validateUserAccount('body')*/ adminAccount.addAdminAccount);
 accountRouter.post('/admin/account/:accountId/ingredient/:ingredientId(\\d+)', /*authentification.authenticateToken*/ isAdmin, account.deleteIngredientToAccount);
 accountRouter.post('/admin/account/:accountId/message/:messageId(\\d+)', /*authentification.authenticateToken*/ isAdmin, account.deleteMessageToAccount);
-accountRouter.get("/admin/:name", /*authentification.authenticateToken, validationRole.isAdmin*/isAdmin, home.menu, account.getAccountPage);
+accountRouter.get("/admin/:name", /*authentification.authenticateToken, validationRole.isAdmin*/isAdmin, home.menu, account.getAdminPage);
 
 module.exports = accountRouter;

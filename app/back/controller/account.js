@@ -27,14 +27,8 @@ const accountController = {
 
     async getAccountPage (req, res, next) {
         const accountId = req.params.id;
-        let account;
+        const account = await Account.findOne(accountId);
 
-        if(accountId){
-            account = await Account.findOne(accountId);
-        }
-        if(req.session.user){
-            account = await Account.findOne(req.session.user.id);
-        }
         if(account){
             account.created_at = dayjs(account.created_at).format('DD-MM-YYYY HH:mm:ss');
             account.updated_at = dayjs(account.updated_at).format('DD-MM-YYYY HH:mm:ss');
@@ -51,6 +45,41 @@ const accountController = {
                     ingredient.updated_at = dayjs(ingredient.updated_at).format('DD-MM-YYYY HH:mm:ss');
                 }
             }
+
+            console.log(account);
+
+            res.render("account", {
+                homeName: "Account",
+                account,
+                css: "/css/account.css",
+            });
+        }
+        else{
+            return next(new APIError("Not found", 404));
+        }
+    },
+
+    async getAdminPage (req, res, next) {
+        const account = await Account.findOne(req.session.user.id);
+
+        if(account){
+            account.created_at = dayjs(account.created_at).format('DD-MM-YYYY HH:mm:ss');
+            account.updated_at = dayjs(account.updated_at).format('DD-MM-YYYY HH:mm:ss');
+    
+            if(account.message){
+                for(const message of account.message){
+                    message.created_at = dayjs(message.created_at).format('DD-MM-YYYY HH:mm:ss');
+                    message.updated_at = dayjs(message.updated_at).format('DD-MM-YYYY HH:mm:ss');
+                }
+            }
+            if(account.ingredient){
+                for(const ingredient of account.ingredient){
+                    ingredient.created_at = dayjs(ingredient.created_at).format('DD-MM-YYYY HH:mm:ss');
+                    ingredient.updated_at = dayjs(ingredient.updated_at).format('DD-MM-YYYY HH:mm:ss');
+                }
+            }
+
+            console.log(account);
 
             res.render("account", {
                 homeName: "Account",
