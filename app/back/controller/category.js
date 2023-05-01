@@ -1,7 +1,7 @@
 const debug = require("debug")("tagController");
 const dayjs = require('dayjs');
 const APIError = require('../../service/error/APIError');
-const { Category } = require("../../api/model");
+const { Category, Ingredient } = require("../../api/model");
 
 const categoryController = {
 
@@ -49,11 +49,32 @@ const categoryController = {
         }
     },
 
-    async deleteCategory (req, res) {
+    async deleteCategory (req, res, next) {
         const categoryId = req.params.id;
-        await Category.delete(categoryId);
+        const response = await Category.delete(categoryId);
 
-        res.redirect("/admin/category");
+        if(response){
+            res.redirect("/admin/category");
+        }
+        else{
+            return next(new APIError("Not found", 404));
+        }
+    },
+
+    async removeIngredientFromCategory (req, res, next) {
+        const { categoryId, ingredientId } = req.params;
+        const category = await Category.findOne(categoryId);
+        const ingredient = await Ingredient.findOne(ingredientId);
+
+        if(ingredient && category){
+            ingredient.category_id = null;
+            await ingredient.update();
+
+            res.redirect(`/admin/category/${categoryId}`);
+        }
+        else{
+            return next(new APIError("Not found", 404));
+        }
     },
 
 };

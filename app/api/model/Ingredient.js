@@ -69,6 +69,7 @@ class Ingredient extends CoreModel{
             console.log(error);
         }
     };
+
 };
 
 module.exports = Ingredient;

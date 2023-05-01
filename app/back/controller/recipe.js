@@ -1,7 +1,7 @@
 const debug = require("debug")("tagController");
 const dayjs = require('dayjs');
 const APIError = require('../../service/error/APIError');
-const { Recipe } = require("../../api/model");
+const { Recipe, Ingredient, Tag, Step } = require("../../api/model");
 
 const recipeController = {
 
@@ -65,9 +65,73 @@ const recipeController = {
 
     async deleteRecipe (req, res) {
         const recipeId = req.params.id;
-        await Recipe.delete(recipeId);
+        const response = await Recipe.delete(recipeId);
+        
+        if(response){
+            res.redirect("/admin/recipe");
+        }
+        else{
+            return next(new APIError("Not found", 404));
+        }
+    },
 
-        res.redirect("/admin/recipe");
+    async removeIngredientFromRecipe (req, res, next) {
+        const { recipeId, ingredientId } = req.params;
+        const recipe = await Recipe.findOne(recipeId);
+        const ingredient = await Ingredient.findOne(ingredientId);
+
+        if(recipe && ingredient){
+            const response = await Recipe.deleteIngredientFromRecipe(recipeId, ingredientId);
+
+            if(response){
+                res.redirect(`/admin/recipe/${recipeId}`);
+            }
+            else{
+                return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
+            }
+        }
+        else{
+            return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
+        }
+    },
+
+    async removeStepFromRecipe (req, res, next) {
+        const { recipeId, stepId } = req.params;
+        const recipe = await Recipe.findOne(recipeId);
+
+        if(recipe){
+            const response = await Step.deleteStepFromRecipe(stepId);
+
+            if(response){
+                res.redirect(`/admin/recipe/${recipeId}`);
+            }
+            else{
+                return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
+            }
+        }
+        else{
+            return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
+        }
+    },
+
+    async removeTagFromRecipe (req, res, next) {
+        const { recipeId, tagId } = req.params;
+        const recipe = await Recipe.findOne(recipeId);
+        const tag = await Tag.findOne(tagId);
+
+        if(recipe && tag){
+            const response = await Recipe.deleteTagFromRecipe(recipeId, tagId);
+
+            if(response){
+                res.redirect(`/admin/recipe/${recipeId}`);
+            }
+            else{
+                return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
+            }
+        }
+        else{
+            return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
+        }
     },
 
 };

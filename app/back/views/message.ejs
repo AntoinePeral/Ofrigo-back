@@ -4,17 +4,22 @@
 
     <h3><%= homeName %></h3>
 
-    <div class="message">
+    <div class="info">
         <ul>
             <li><strong>Id : </strong><%= message.id %></li>
+            <li><strong>Email : </strong><%= message.email %></li>
+            <li><strong>Label : </strong><%= message.label %></li>
             <li><strong>Created at : </strong><%= message.created_at %></li>
             <li><strong>Updated at : </strong><%= message.updated_at %></li>
-            <% if(message.email) { %>
-                <li><strong>Email : </strong><%= message.email %></li>
-            <% } %>
-            <li><strong>Label : </strong><%= message.label %></li>
-            <li><strong>Content : </strong><%= message.content %></li>
         </ul>
+        <div class="update-delete">
+            <a class="icones-message" href="#"><img src="/picture/icones/2.png" alt="Update"></a>
+            <form action="/admin/message/delete/<%= message.id %>" method="post">
+            <input class="icones-message" type="image" src="/picture/icones/1.png"></form>
+        </div>
+    </div>
+    <div class="content">
+        <p><%= message.content %></p>
     </div>
 
 </section>

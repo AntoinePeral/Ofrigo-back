@@ -2,8 +2,8 @@ const { Router } = require("express");
 const homeRouter = Router();
 const { home } = require("../controller");
 const validationBody = require("../../service/validation/validate");
-const validationRole = require("../../service/middleware/adminValidator");
+const { isAdmin } = require("../../service/middleware");
 
-homeRouter.get("/admin/home", /* validationRole.isAdmin, */ home.menu, home.getHomePage);
+homeRouter.get("/admin/home", isAdmin, home.menu, home.getHomePage);
 
 module.exports = homeRouter;

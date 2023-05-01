@@ -3,6 +3,7 @@ const cors = require("cors");
 const app = express();
 const path = require('path');
 const errorModule = require("./service/error/errorHandling");
+const middlewares = require("./service/middleware");
 const { account, login, category, ingredient, recipe, message, tag } = require("./api/router");
 const { loginAdmin, homeRouter, categoryRouter, ingredientRouter, messageRouter, tagRouter, accountRouter, recipeRouter } = require("./back/router");
 const session = require('express-session');
@@ -34,15 +35,19 @@ app.use(
   recipe, 
   message, 
   tag, 
+);
+app.use(middlewares.setupSession);
+app.use(middlewares.addUserToLocals);
+app.use(
   loginAdmin, 
   homeRouter, 
   categoryRouter, 
   ingredientRouter, 
   messageRouter, 
   tagRouter,
+  recipeRouter,
   accountRouter,
-  recipeRouter
-);
+)
 
 app.use(errorModule._404);
 app.use(errorModule.manage);

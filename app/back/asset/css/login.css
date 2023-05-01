@@ -36,3 +36,12 @@ form input {
     border: 3px solid #eba81a;
     transition: 0.5s ease-in-out;
 }
+
+.error {
+    background-color: red;
+    color: white;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

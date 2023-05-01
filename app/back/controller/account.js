@@ -27,8 +27,14 @@ const accountController = {
 
     async getAccountPage (req, res, next) {
         const accountId = req.params.id;
-        const account = await Account.findOne(accountId);
+        let account;
 
+        if(accountId){
+            account = await Account.findOne(accountId);
+        }
+        if(req.session.user){
+            account = await Account.findOne(req.session.user.id);
+        }
         if(account){
             account.created_at = dayjs(account.created_at).format('DD-MM-YYYY HH:mm:ss');
             account.updated_at = dayjs(account.updated_at).format('DD-MM-YYYY HH:mm:ss');
@@ -57,31 +63,56 @@ const accountController = {
         }
     },
 
-    async deleteAccount (req, res) {
+    async deleteAccount (req, res, next) {
         const accountId = req.params.id;
-        await Account.delete(accountId);
+        const response = await Account.delete(accountId);
 
-        res.redirect("/admin/account");
+        if(response){
+            res.redirect("/admin/account");
+        }
+        else{
+            return next(new APIError("Not found", 404));
+        }
     },
 
-    async deleteMessageToAccount (req, res){
+    async deleteMessageToAccount (req, res, next){
         const accountId = req.params.accountId;
         const messageId = req.params.messageId;
-
         const account = await Account.findOne(accountId);
 
-        await Account.removeMessageAdmin(account.email, messageId);
+        if(account){
+            const response = await Account.removeMessageAdmin(account.email, messageId);
 
-        res.redirect(`/admin/account/${accountId}`);
+            if(response){
+                res.redirect(`/admin/account/${accountId}`);
+            }
+            else{
+                return next(new APIError("Not found", 404));
+            }
+        }
+        else{
+            return next(new APIError("Not found", 404));
+        }
     },
 
-    async deleteIngredientToAccount (req, res){
+    async deleteIngredientToAccount (req, res, next){
         const accountId = req.params.accountId;
         const ingredientId = req.params.ingredientId;
+        const account = await Account.findOne(accountId);
 
-        await Account.removeIngredientAdmin(accountId, ingredientId);
+        if(account){
+            const response = await Account.removeIngredientAdmin(accountId, ingredientId);
 
-        res.redirect(`/admin/account/${accountId}`);
+            if(response){
+                res.redirect(`/admin/account/${accountId}`);
+            }
+            else{
+                return next(new APIError("Not found", 404));
+            }
+        }
+        else{
+            return next(new APIError("Not found", 404));
+        }
     },
 
 };
