@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+
+<section class="section">
+
+    <h3><%= homeName %></h3>
+
+    <div class="ingredient">
+
+        <img class="picture-ingredient" src="http://localhost:3000/public/picture/ingredient/<%= ingredient.picture %>" alt="<%= ingredient.picture %>">
+
+        <div class="ingredient-detail">
+            <ul>
+                <li><strong>Id : </strong><%= ingredient.id %></li>
+                <li><strong>Label : </strong><%= ingredient.label %></li>
+                <% if(ingredient.unit != null) { %>
+                <li><strong>Unit : </strong><%= ingredient.unit %></li>
+                <% } %>
+                <li><strong>Category: </strong><%= ingredient.category[0].label %></li>
+                <li><strong>Created at : </strong><%= ingredient.created_at %></li>
+                <li><strong>Updated at : </strong><%= ingredient.updated_at %></li>
+            </ul>
+            <div class="update-delete">
+                <a class="icones" href="#"><img src="/picture/icones/2.png" alt="Update"></a>
+                <form action="/admin/ingredient/delete/<%= ingredient.id %>" method="post">
+                <input class="icones" type="image" src="/picture/icones/1.png"></form>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<%- include('partials/footer') %>

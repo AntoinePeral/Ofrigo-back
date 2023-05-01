@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const path = require('path')
+const path = require('path');
 const errorModule = require("./service/error/errorHandling");
 const { account, login, category, ingredient, recipe, message, tag } = require("./api/router");
-const { loginAdmin, homeRouter, categoryRouter } = require("./back/router");
+const { loginAdmin, homeRouter, categoryRouter, ingredientRouter, messageRouter, tagRouter, accountRouter, recipeRouter } = require("./back/router");
 const session = require('express-session');
 
 app.use(session({
@@ -26,8 +26,25 @@ app.get("/", (_,res)=>{
     res.send("O'Frigo");
 });
 
-app.use(account, login, category, ingredient, recipe, message, tag, loginAdmin, homeRouter,categoryRouter);
+app.use(
+  account,
+  login, 
+  category, 
+  ingredient, 
+  recipe, 
+  message, 
+  tag, 
+  loginAdmin, 
+  homeRouter, 
+  categoryRouter, 
+  ingredientRouter, 
+  messageRouter, 
+  tagRouter,
+  accountRouter,
+  recipeRouter
+);
+
 app.use(errorModule._404);
-// app.use(errorModule.manage);
+app.use(errorModule.manage);
 
 module.exports = app;

@@ -92,6 +92,42 @@ class Account extends CoreModel{
         return response.rowCount;
     };
 
+    static async removeIngredientAdmin(account_id, ingredient_id){
+        const query = {
+            text: `DELETE FROM "account_has_ingredient" WHERE "account_id"=$1 AND "ingredient_id"=$2;`,
+            values: [account_id, ingredient_id]
+        };
+        let response;
+
+        try {
+            response = await ofrigo.query(query);
+            debug(response)
+        } catch (error) {
+            console.log(error);
+        }
+
+        return response.rowCount;
+    };
+
+    static async removeMessageAdmin(account_email, message_id){
+        const query = {
+            text: `DELETE FROM message
+            WHERE message.email=$1
+            AND message.id=$2;`,
+            values: [account_email, message_id]
+        };
+        let response;
+
+        try {
+            response = await ofrigo.query(query);
+            debug(response)
+        } catch (error) {
+            console.log(error);
+        }
+
+        return response.rowCount;
+    };
+
 };
 
 module.exports = Account;

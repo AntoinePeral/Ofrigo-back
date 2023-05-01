@@ -58,7 +58,8 @@ class CoreModel{
      * @returns Return object
      */
     static async findOne (id) {
-        let query
+        let query;
+
         if(this.tableName == "account"){
             query = {
                 text: `SELECT * FROM getOneAccount($1);`,

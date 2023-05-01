@@ -37,13 +37,6 @@ const recipeController = {
     async getRecipeById (req, res, next){
         const recipeId = req.params.id;
         const recipe = await Recipe.findOne(recipeId);
-        // const recipeToSend = recipe.map(recipe =>{
-        //     return {
-        //         ...recipe,
-        //         picture: `/public/picture/recipe/${recipe.picture}`
-        //     }
-        // }); 
-     
         recipe.picture= `/public/picture/recipe/${recipe.picture}`;
 
         if(recipe){

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/picture/favicon/favicon.ico" />
+    <link rel="stylesheet" href=" /css/style.css">
+    <link rel="stylesheet" href=<%= css %>>
+
+    <title><%= homeName %></title>
+</head>
+<body class="body">
+    <header class="header">
+        <div class="header-logo-profile">
+            <div class="logo-name">
+                <a href="/"><img src="/picture/logo/O'Frigo3.png" alt=""></a>
+                <a class="logo-span" href="/">O'FRIGO</a>
+                <span>DASHBOARD</span>
+            </div>
+            <div class="profil">
+                <% if (homeName != 'Login') { %>
+                    <a href="/admin/profile">My profile</a>
+                <%} %>
+            </div>
+        </div>
+        <div class="menu">
+            <% if(homeName != 'Login') { %>
+                <%- include('menu') %>
+            <% } %>
+        </div>
+
+    </header>
