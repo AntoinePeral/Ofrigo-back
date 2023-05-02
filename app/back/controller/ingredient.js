@@ -86,9 +86,6 @@ const ingredientController = {
 
     async addIngredient (req, res) {
         const ingredientBody = req.body;
-
-        console.log("--------------------------------------------------",ingredientBody);
-
         let ingredient = new Ingredient(ingredientBody);
 
         console.log(ingredient);
@@ -103,13 +100,6 @@ const ingredientController = {
     async updateIngredient (req, res) {
         const ingredientBody = req.body;
         const ingredientId = req.params.id;
-
-        console.log("--------------------------------------------------",ingredientBody);
-        const test = {
-            value: null
-        };
-
-        console.log(test);
 
         if(ingredientBody.category_id == ''){
             ingredientBody.category_id = null;
