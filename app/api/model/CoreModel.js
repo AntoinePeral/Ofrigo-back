@@ -1,7 +1,7 @@
 const debug = require("debug")("activeRecord");
 const ofrigo = require("../client/client-db-ofrigo");
 
-class CoreModel{
+class CoreModel {
     id;
 
     constructor (obj) {
@@ -210,11 +210,6 @@ class CoreModel{
 
         const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;
 
-        console.log(fields);
-        console.log(values);
-        console.log(parameters);
-        console.log(counter);
-
         let response;
         
         try {
@@ -235,6 +230,7 @@ class CoreModel{
         const fields = []; 
         const values = [];
         let counter = 1;
+        //let date = new Date.now();
 
         if(this.constructor.tableName == "account"){
             Object.entries(this).forEach(([key,value])=>{
@@ -295,27 +291,15 @@ class CoreModel{
                     values.push(value);
                     counter++;
                 }
+                if(key == "updated_at"){
+                    fields.push(key + "=$" + counter);
+                    values.push(value);
+                    console.log(key);
+                    console.log(value);
+                    counter++;
+                }
             });
         }
-
-        // TEST
-        /* if(this.constructor.tableName == "tag"){
-            Object.entries(this).forEach(([key, value])=>{
-                if(key !== "id" && key !== "created_at" && key!== "recipe"){
-                    if(key == "updated_at" || value == ""){
-                        fields.push(key + "=$" + counter);
-                        value = new Date.now();
-                        values.push(value);
-                        counter++;
-                        console.log("HELLO");
-                    }
-                    else{
-                        fields.push(key + "=$" + counter);
-                        values.push(value);
-                        counter++;
-                    }
-                }
-            }); */
 
         const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}' RETURNING *;`;
         console.log(query);

@@ -113,6 +113,10 @@ const tagController = {
         const tagBody = req.body;
         const tagId = req.params.id;
 
+/*         if(tagBody.updated_at == ""){
+            tagBody.updated_at = `"${new Date.now()}"`;
+        } */
+
         let tag = await Tag.findOne(tagId);
 
         Object.entries(tagBody).forEach(([key, value]) => {
