@@ -35,7 +35,7 @@ CREATE TABLE category (
 CREATE TABLE ingredient (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     label TEXT NOT NULL,
-    picture TEXT NOT NULL,
+    picture TEXT,
     unit measure,
     category_id INTEGER REFERENCES category("id"),
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -45,7 +45,7 @@ CREATE TABLE ingredient (
 CREATE TABLE recipe (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     label TEXT NOT NULL,
-    picture TEXT NOT NULL,
+    picture TEXT,
     rate NUMERIC,
     difficulty TEXT NOT NULL,
     time TEXT NOT NULL,

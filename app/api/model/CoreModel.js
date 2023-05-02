@@ -153,10 +153,16 @@ class CoreModel{
         }
         if(this.constructor.tableName == "ingredient"){
             Object.entries(this).forEach(([key, value])=>{
-                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "category"){
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "category" && key != "picture"){
                     fields.push(key);
                 }
                 if(value !== undefined){
+                    if(value == ''){
+                        value = null;
+                        values.push(value);
+                        parameters.push(`$${counter}`);
+                        counter++;
+                    }
                     values.push(value);
                     parameters.push(`$${counter}`);
                     counter++;
@@ -217,19 +223,26 @@ class CoreModel{
      * General function that allows you to update
      * @returns an instance
      */
-    async update () {
+    async update (privateFields = null) {
         const fields = []; 
         const values = [];
         let counter = 1;
 
         if(this.constructor.tableName == "account"){
             Object.entries(this).forEach(([key,value])=>{
-                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "role" && key!== "ingredient" && key!== "message"){
+                if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "ingredient" && key!== "message"){
                     fields.push(key + "=$" + counter);
                     values.push(value);
                     counter++;
                 }
             });
+            if(privateFields){
+                Object.entries(privateFields).forEach(([key, value]) =>{
+                    fields.push(key + "=$" + counter);
+                    values.push(value);
+                    counter++;
+                });
+            }
         }
         if(this.constructor.tableName == "category"){
             Object.entries(this).forEach(([key,value])=>{
@@ -278,6 +291,7 @@ class CoreModel{
         }
 
         const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}' RETURNING *;`;
+        console.log(query);
         const response = await ofrigo.query(query, values);
 
         return response.rows[0];
@@ -369,6 +383,17 @@ class CoreModel{
             }
     
             return tableName;
+        }catch(error){
+            console.log(error);
+        }
+    };
+
+    static async findMeasure () {
+        const query = `SELECT unnest(enum_range(NULL::measure)) AS label;`
+
+        try{
+            const response = await ofrigo.query(query);
+            return response.rows;
         }catch(error){
             console.log(error);
         }

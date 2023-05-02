@@ -1,0 +1,71 @@
+<%- include('partials/header') %>
+
+<section class="section">
+
+    <h3><%= homeName %></h3>
+
+    <% if(errorMessage) { %>
+        <div class="error">
+            <p><%= errorMessage %></p>
+        </div>
+    <% } %>
+
+    <% if(account) { %>
+
+        <div class="account">
+
+            <form action="/admin/account/update/<%= account.id %>" method="POST">
+
+                <select name="role">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+    
+                <div class="first-last_name">
+                    <input type="text" name="first_name" value="<%= account.first_name %>" placeholder="First name">
+    
+                    <input type="text" name="last_name" value="<%= account.last_name %>" placeholder="Last name">
+                </div>
+    
+                <input type="email" name="email" value="<%= account.email %>" placeholder="Email">
+    
+                <input type="password" name="password" placeholder="Password">
+    
+                <input type="password" name="confirm_password" placeholder="Confirm password">
+    
+                <input class="create_account" type="submit" value="Valider">
+            </form>
+        </div>
+
+    <% } else { %>
+
+    <div class="account">
+
+        <form action="/admin/register" method="POST">
+
+            <select name="role">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <div class="first-last_name">
+                <input type="text" name="first_name" placeholder="First name">
+
+                <input type="text" name="last_name" placeholder="Last name">
+            </div>
+
+            <input type="email" name="email" placeholder="Email">
+
+            <input type="password" name="password" placeholder="Password">
+
+            <input type="password" name="confirm_password" placeholder="Confirm password">
+
+            <input class="create_account" type="submit" value="Valider">
+        </form>
+    </div>
+
+    <% } %>
+
+</section>
+
+<%- include('partials/footer') %>

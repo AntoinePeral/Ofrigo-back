@@ -24,9 +24,11 @@
 |---|---|---|---|
 |`/admin/register`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer un compte admin|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/login`|<span style="color:aqua"><strong>`POST`</strong></span>|Se connecter en tant qu'admin|<span style="color:gold"><strong>`OK`</strong></span>|
-|`/admin/profile`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les comptes utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
-|`/admin/profile/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un compte utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
-|`/admin/profile/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un compte utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/account`|<span style="color:green"><strong>`GET`</strong></span>|Afficher tous les comptes utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/account/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un compte utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/account/delete/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un compte utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/account/:accountId/ingredient/:ingredientId`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un ingredient d'un compte utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/account/:accountId/message/:messageId`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un message d'un compte utilisateur|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ---------------------------
 
@@ -45,7 +47,8 @@
 |`/admin/category/:id`| <span style="color:green"><strong>`GET`</strong></span>|Afficher une categorie|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/category`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer une categorie|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/category/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier une categorie|<span style="color:gold"><strong>`OK`</strong></span>|
-|`/admin/category/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer une categorie |<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/category/delete/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer une categorie |<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/category/:categoryId/ingredient/:ingredientId`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un ingredient d'une categorie |<span style="color:gold"><strong>`OK`</strong></span>|
 
 ---------------------------
 
@@ -70,7 +73,7 @@
 |`/admin/ingredient/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/ingredient`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/ingredient/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
-|`/admin/ingredient/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/ingredient/delete/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un ingrédient|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ---------------------------
 
@@ -97,7 +100,7 @@
 |`/admin/message/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un message|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/contact`|<span style="color:aqua"><strong>`POST`</strong></span>|Envoyer un message en tant qu'admin|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/message/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un message d'un admin|<span style="color:gold"><strong>`OK`</strong></span>|
-|`/admin/message/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un message de l'admin|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/message/delete/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un message de l'admin|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ---------------------------
 
@@ -116,7 +119,10 @@
 |`/admin/recipe/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher une recette|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/recipe`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer une recette|<strong>`WAITING FOR TEST`</strong>|
 |`/admin/recipe/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier une recette|<strong>`WAITING FOR TEST`</strong>|
-|`/admin/recipe/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer une recette|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/recipe/delete/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer une recette|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/recipe/:recipeId/ingredient/:ingredientId`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un ingredient d'une recette|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/recipe/:recipeId/tag/:tagId`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un tag d'une recette|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/recipe/:recipeId/step/:stepId`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer une étape d'une recette|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ---------------------------
 
@@ -135,7 +141,8 @@
 |`/admin/tag/:id`|<span style="color:green"><strong>`GET`</strong></span>|Afficher un tag|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/tag`|<span style="color:aqua"><strong>`POST`</strong></span>|Créer un tag|<span style="color:gold"><strong>`OK`</strong></span>|
 |`/admin/tag/:id`|<span style="color:orange"><strong>`PUT`</strong></span>|Modifier un tag|<span style="color:gold"><strong>`OK`</strong></span>|
-|`/admin/tag/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un tag|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/tag/delete/:id`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer un tag|<span style="color:gold"><strong>`OK`</strong></span>|
+|`/admin/tag/:tagId/recipe/:recipeId`|<span style="color:red"><strong>`DELETE`</strong></span>|Supprimer une recette d'un tag|<span style="color:gold"><strong>`OK`</strong></span>|
 
 ---------------------------
 

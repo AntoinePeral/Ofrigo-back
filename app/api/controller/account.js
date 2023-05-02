@@ -72,42 +72,6 @@ const accountController = {
     },
 
     /**
-     * Register a new admin account in DB. Role is already defined as admin in this function
-     * @param {object} req use the req to get the body object which contains the informations of the new account and the new JWT token
-     * @param {object} res use to response to the client. Send an JSON object
-     * @param {function} next call the APIError if an error is dectected
-     * @returns {APIError} return an error
-     */
-    async addAdminAccount (req, res, next) {
-        const accountBody = req.body;
-        accountBody.role = "admin";
-
-        // Password encrypting
-        const saltRounds = 10;
-        const salt = await bcrypt.genSalt(saltRounds);
-        const hashedPassword = await bcrypt.hash(accountBody.password, salt);
-        debug(hashedPassword);
-
-        let account = new Account(accountBody);
-
-        if(account){
-            debug(account);
-            account = await account.addAdmin({'password': hashedPassword});
-            debug(account);
-        }
-        else{
-            return next(new APIError("Bad request", 500));
-        }
-
-        const accessToken = authentificationModule.generateAccessToken(account);
-        
-        return res.status(200).json({
-            accessToken,
-            account
-        });
-    },
-
-    /**
      * Update informations account using the JWT Token ID. THe password need to be verified to use this function
      * @param {object} req use the req to get the body object which contains the informations of the updated account
      * @param {object} res use to response to the client. Send an JSON object

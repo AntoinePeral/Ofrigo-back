@@ -5,8 +5,8 @@
     <h3><%= homeName %></h3>
 
     <div class="add">
-        <a class="add-icone" href="#"><img src="/picture/icones/3.png" alt="Add"></a>
-        <span><a href="#">Add  <%= homeName.toLowerCase() %></a></span>
+        <a class="add-icone" href="/admin/category/create"><img src="/picture/icones/3.png" alt="Add"></a>
+        <span><a href="/admin/category/create">Add  <%= homeName.toLowerCase() %></a></span>
     </div>
 
     <table>
@@ -22,7 +22,7 @@
         </thead>
         <tbody class="bottom">
             <% for(const categorie of categories) { %>
-                <tr><td><%= categorie.id %></td><td><a href="/admin/category/<%= categorie.id %>"><%= categorie.label %></a></td><td><%= categorie.created_at %></td><td><%= categorie.updated_at %></td><td><a class="icones" href="#"><img src="/picture/icones/2.png" alt="Update"></a></td><td><form action="/admin/category/delete/<%= categorie.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+                <tr><td><%= categorie.id %></td><td><a href="/admin/category/<%= categorie.id %>"><%= categorie.label %></a></td><td><%= categorie.created_at %></td><td><%= categorie.updated_at %></td><td><a class="icones" href="/admin/category/update/<%= categorie.id %>"><img src="/picture/icones/2.png" alt="Update"></a></td><td><form action="/admin/category/delete/<%= categorie.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
             <% } %>
         </tbody>
     </table>

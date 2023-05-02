@@ -1,0 +1,47 @@
+          date          |      contexte        |     message     
+2023-05-02T09:04:52.848Z: /admin/register --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/account-cu.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:29
+    27|         <div class="menu">
+    28|             <% if(homeName != 'Login') { %>
+ >> 29|                 <%- include('menu') %>
+    30|             <% } %>
+    31|         </div>
+    32| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/menu.ejs:6
+    4|         <a href="/admin/home">Home</a>
+    5|       </li>
+ >> 6|       <% for(const name of menu) { %>
+    7|           <li>
+    8|             <a href="/admin/<%= name %>"><%= name.charAt(0).toUpperCase() + name.slice(1); %></a>
+    9|           </li>
+
+menu is not defined
+2023-05-02T09:05:46.187Z: /admin/register --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/account-cu.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:29
+    27|         <div class="menu">
+    28|             <% if(homeName != 'Login') { %>
+ >> 29|                 <%- include('menu') %>
+    30|             <% } %>
+    31|         </div>
+    32| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/menu.ejs:6
+    4|         <a href="/admin/home">Home</a>
+    5|       </li>
+ >> 6|       <% for(const name of menu) { %>
+    7|           <li>
+    8|             <a href="/admin/<%= name %>"><%= name.charAt(0).toUpperCase() + name.slice(1); %></a>
+    9|           </li>
+
+menu is not defined
