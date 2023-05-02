@@ -163,9 +163,11 @@ class CoreModel{
                         parameters.push(`$${counter}`);
                         counter++;
                     }
-                    values.push(value);
-                    parameters.push(`$${counter}`);
-                    counter++;
+                    else{
+                        values.push(value);
+                        parameters.push(`$${counter}`);
+                        counter++;
+                    }
                 }
             });
         }
@@ -207,6 +209,12 @@ class CoreModel{
         }
 
         const query = `INSERT INTO ${this.constructor.tableName} (${fields.join()}) VALUES (${parameters.join()}) RETURNING *`;
+
+        console.log(fields);
+        console.log(values);
+        console.log(parameters);
+        console.log(counter);
+
         let response;
         
         try {

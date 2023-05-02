@@ -177,7 +177,6 @@ const accountController = {
      */
     async addAdminAccount (req, res) {
         const accountBody = req.body;
-        //accountBody.role = "admin";
 
         // Password encrypting
         const saltRounds = 10;
@@ -197,7 +196,6 @@ const accountController = {
     async updateAccount (req, res) {
         const accountBody = req.body;
         const accountId = req.params.id;
-        //accountBody.role = "admin";
 
         let account = await Account.findOne(accountId);
 
