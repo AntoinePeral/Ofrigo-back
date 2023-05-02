@@ -88,8 +88,6 @@ const ingredientController = {
         const ingredientBody = req.body;
         let ingredient = new Ingredient(ingredientBody);
 
-        console.log(ingredient);
-
         debug(ingredient);
         ingredient = await ingredient.add();
         debug(ingredient);
