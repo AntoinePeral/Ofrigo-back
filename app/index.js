@@ -49,7 +49,7 @@ app.use(
   accountRouter,
 );
 
-//app.use(errorModule._404);
-//app.use(errorModule.manage);
+app.use(errorModule._404);
+app.use(errorModule.manage);
 
 module.exports = app;

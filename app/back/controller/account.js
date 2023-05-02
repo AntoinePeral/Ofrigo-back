@@ -62,9 +62,11 @@ const accountController = {
     },
 
     async getAdminPage (req, res, next) {
+        const name = req.params.name;
         const account = await Account.findOne(req.session.user.id);
 
-        if(account){
+        console.log(name);
+        if(account && name == account.first_name+ '-' + account.last_name){
             account.created_at = dayjs(account.created_at).format('DD-MM-YYYY HH:mm:ss');
             account.updated_at = dayjs(account.updated_at).format('DD-MM-YYYY HH:mm:ss');
     
@@ -80,8 +82,6 @@ const accountController = {
                     ingredient.updated_at = dayjs(ingredient.updated_at).format('DD-MM-YYYY HH:mm:ss');
                 }
             }
-
-            console.log(account);
 
             res.render("account", {
                 homeName: "Account",

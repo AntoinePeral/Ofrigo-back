@@ -45,3 +45,13 @@ menu is not defined
     9|           </li>
 
 menu is not defined
+2023-05-02T23:29:48.366Z: /admin/home/4 --> 404 message
+2023-05-02T23:29:48.449Z: /images/icons/gear.png --> 404 message
+2023-05-02T23:37:49.518Z: /admin/jgvhvhk, --> Not found
+2023-05-02T23:37:49.612Z: /images/icons/gear.png --> 404 message
+2023-05-02T23:38:00.875Z: /admin/test --> Not found
+2023-05-02T23:38:00.937Z: /images/icons/gear.png --> 404 message
+2023-05-02T23:38:03.665Z: /admin --> 404 message
+2023-05-02T23:38:03.730Z: /images/icons/gear.png --> 404 message
+2023-05-02T23:38:25.151Z: /admin/Kevin-Liena --> Not found
+2023-05-02T23:38:25.223Z: /images/icons/gear.png --> 404 message
