@@ -12,8 +12,8 @@ accountRouter.get("/admin/register", home.menu, account.getAddAdminAccountPage);
 accountRouter.post("/admin/register", home.menu, validationBody.validateAdminAccount('body'), account.addAdminAccount);
 accountRouter.get("/admin/account/update/:id(\\d+)", home.menu, account.getAddAdminAccountPage);
 accountRouter.post("/admin/account/update/:id(\\d+)", home.menu, validationBody.validateAdminAccount('body'), account.updateAccount);
-accountRouter.post('/admin/account/:accountId/ingredient/:ingredientId(\\d+)', isAdmin, account.deleteIngredientToAccount);
-accountRouter.post('/admin/account/:accountId/message/:messageId(\\d+)', isAdmin, account.deleteMessageToAccount);
+accountRouter.post('/admin/account/:accountId(\\d+)/ingredient/:ingredientId(\\d+)', isAdmin, account.deleteIngredientToAccount);
+accountRouter.post('/admin/account/:accountId(\\d+)/message/:messageId(\\d+)', isAdmin, account.deleteMessageToAccount);
 accountRouter.get("/admin/:name", isAdmin, home.menu, account.getAdminPage);
 
 module.exports = accountRouter;
