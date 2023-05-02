@@ -53,9 +53,17 @@ const categoryController = {
         const categoryId = req.params.id;
         const ingredients = await Ingredient.findAllIngredientCategory(categoryId);
 
-        for(const ingredient of ingredients){
-            ingredient.category_id = null;
-            await ingredient.update();
+        if(ingredients){
+            if(ingredients.length){
+                for(const ingredient of ingredients){
+                    ingredient.category_id = null;
+                    await ingredient.update();
+                }
+            }
+            else{
+                ingredients.category_id = null;
+            }
+
         }
 
         const response = await Category.delete(categoryId);
