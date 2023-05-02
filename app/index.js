@@ -47,7 +47,7 @@ app.use(
   tagRouter,
   recipeRouter,
   accountRouter,
-)
+);
 
 //app.use(errorModule._404);
 //app.use(errorModule.manage);
