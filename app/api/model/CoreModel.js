@@ -298,8 +298,29 @@ class CoreModel{
             });
         }
 
+        // TEST
+        /* if(this.constructor.tableName == "tag"){
+            Object.entries(this).forEach(([key, value])=>{
+                if(key !== "id" && key !== "created_at" && key!== "recipe"){
+                    if(key == "updated_at" || value == ""){
+                        fields.push(key + "=$" + counter);
+                        value = new Date.now();
+                        values.push(value);
+                        counter++;
+                        console.log("HELLO");
+                    }
+                    else{
+                        fields.push(key + "=$" + counter);
+                        values.push(value);
+                        counter++;
+                    }
+                }
+            }); */
+
         const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}' RETURNING *;`;
         console.log(query);
+        console.log(fields);
+        console.log(values);
         const response = await ofrigo.query(query, values);
 
         return response.rows[0];
