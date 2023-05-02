@@ -37,7 +37,7 @@ CREATE TABLE ingredient (
     label TEXT NOT NULL,
     picture TEXT NOT NULL,
     unit measure,
-    category_id INTEGER NOT NULL REFERENCES category("id") ON UPDATE CASCADE ON DELETE CASCADE,
+    category_id INTEGER REFERENCES category("id") ON UPDATE CASCADE ON DELETE CASCADE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );

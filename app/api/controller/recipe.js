@@ -37,13 +37,6 @@ const recipeController = {
     async getRecipeById (req, res, next){
         const recipeId = req.params.id;
         const recipe = await Recipe.findOne(recipeId);
-        // const recipeToSend = recipe.map(recipe =>{
-        //     return {
-        //         ...recipe,
-        //         picture: `/public/picture/recipe/${recipe.picture}`
-        //     }
-        // }); 
-     
         recipe.picture= `/public/picture/recipe/${recipe.picture}`;
 
         if(recipe){
@@ -93,12 +86,6 @@ const recipeController = {
             console.log(recipe[value])
         }
 
-        // let keys = []; 
-        // Object.keys(recipeBody).forEach(element => {
-        //     keys.push(element)
-        // });;
-        // console.log(keys);
-
 
         if(recipe){
             debug(recipe);
@@ -108,12 +95,6 @@ const recipeController = {
             }
 
             await recipe.update();
-// const test = Tag.update
-//             if (keys.find(element  => element==="ingredient")) {
-//                 const tag = await Tag.update();
-//                 console.log(tag);
-            
-//             }
 
 
             const newRecipe = await Recipe.findOne(recipeId);

@@ -1,0 +1,98 @@
+          date          |      contexte        |     message     
+2023-05-01T08:42:39.302Z: /favicon.ico --> 404 message
+2023-05-01T08:42:57.383Z: /admin --> 404 message
+2023-05-01T09:14:42.594Z: /admin/home --> /var/www/html/Ohm/apotheose/projet-06-o-frigo-back/app/back/views/home.ejs:5
+    3| <section class="section">
+    4| 
+ >> 5|   <% if(account.message) { %>
+    6| 
+    7|     <div class="message">
+    8|         <h3>Message </h3>
+
+account is not defined
+2023-05-01T09:16:05.652Z: /admin/home --> /var/www/html/Ohm/apotheose/projet-06-o-frigo-back/app/back/views/home.ejs:6
+    4| 
+    5|   
+ >> 6|   <% if(account.message) { %>
+    7| 
+    8|     <div class="message">
+    9|         <h3>Message </h3>
+
+account is not defined
+2023-05-01T09:20:36.835Z: /admin/home --> /var/www/html/Ohm/apotheose/projet-06-o-frigo-back/app/back/views/home.ejs:23
+    21|                 
+    22|                 <% for(const message of messages) { %>
+ >> 23|                     <tr><td><%= message.id %></td><td><a href="/admin/message/<%= message.id %>"><%= message.label %></a></td><td><%= message.created_at %></td><td><%= message.updated_at %></td><td><form action="/admin/account/<%= account.id %>/message/<%= message.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+    24|                 <% } %>
+    25| 
+    26|             </tbody>
+
+account is not defined
+2023-05-01T09:21:51.148Z: /admin/home --> /var/www/html/Ohm/apotheose/projet-06-o-frigo-back/app/back/views/home.ejs:23
+    21|                 
+    22|                 <% for(const message of messages) { %>
+ >> 23|                     <tr><td><%= message.id %></td><td><a href="/admin/message/<%= message.id %>"><%= message.label %></a></td><td><%= message.created_at %></td><td><%= message.updated_at %></td><td><form action="/admin/account/<%= account.id %>/message/<%= message.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+    24|                 <% } %>
+    25| 
+    26|             </tbody>
+
+account is not defined
+2023-05-01T09:22:28.318Z: /admin/home --> /var/www/html/Ohm/apotheose/projet-06-o-frigo-back/app/back/views/home.ejs:23
+    21|                 
+    22|                 <% for(const message of messages) { %>
+ >> 23|                     <tr><td><%= message.id %></td><td><a href="/admin/message/<%= message.id %>"><%= message.label %></a></td><td><%= message.created_at %></td><td><%= message.updated_at %></td><td><form action="/admin/account/<%= account.id %>/message/<%= message.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+    24|                 <% } %>
+    25| 
+    26|             </tbody>
+
+account is not defined
+2023-05-01T09:22:35.457Z: /admin/home --> /var/www/html/Ohm/apotheose/projet-06-o-frigo-back/app/back/views/home.ejs:23
+    21|                 
+    22|                 <% for(const message of messages) { %>
+ >> 23|                     <tr><td><%= message.id %></td><td><a href="/admin/message/<%= message.id %>"><%= message.label %></a></td><td><%= message.created_at %></td><td><%= message.updated_at %></td><td><form action="/admin/account/<%= account.id %>/message/<%= message.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+    24|                 <% } %>
+    25| 
+    26|             </tbody>
+
+account is not defined
+2023-05-01T09:28:38.598Z: /public/picture/recipe/app/api/picture/recipe/Cake-banane-chocolat.jpg --> 404 message
+2023-05-01T09:28:38.599Z: /public/picture/recipe/app/api/picture/recipe/Crepes.jpg --> 404 message
+2023-05-01T09:28:38.600Z: /public/picture/recipe/app/api/picture/recipe/Bowl-cake-moelleux-chocolat-noisettes.jpg --> 404 message
+2023-05-01T09:28:38.601Z: /public/picture/recipe/app/api/picture/recipe/Quiche-Lorraine.jpg --> 404 message
+2023-05-01T09:28:38.606Z: /public/picture/recipe/app/api/picture/recipe/Filet-de-bar-en-cro%C3%BBte.jpg --> 404 message
+2023-05-01T09:28:38.622Z: /public/picture/recipe/app/api/picture/recipe/Curry-de-l%C3%A9gume-v%C3%A9g%C3%A9tarien.jpg --> 404 message
+2023-05-01T09:28:38.646Z: /public/picture/recipe/app/api/picture/recipe/Soupe-potimarron.jpg --> 404 message
+2023-05-01T09:28:38.645Z: /public/picture/recipe/app/api/picture/recipe/Burger-veg%C3%A9tarien.jpg --> 404 message
+2023-05-01T09:28:38.646Z: /public/picture/recipe/app/api/picture/recipe/Paella-fruit-de-mer-chorizo.jpg --> 404 message
+2023-05-01T09:28:38.646Z: /public/picture/recipe/app/api/picture/recipe/Salade-melon-feta.jpg --> 404 message
+2023-05-01T09:28:38.647Z: /public/picture/recipe/app/api/picture/recipe/Wesh-traditionnel.jpg --> 404 message
+2023-05-01T09:28:38.647Z: /public/picture/recipe/app/api/picture/recipe/Creme-dessert.jpg --> 404 message
+2023-05-01T09:28:38.669Z: /public/picture/recipe/app/api/picture/recipe/Pancake.jpg --> 404 message
+2023-05-01T09:28:38.672Z: /public/picture/recipe/app/api/picture/recipe/Roul%C3%A9-jambon.jpg --> 404 message
+2023-05-01T09:56:35.960Z: /admin/home --> /var/www/html/Ohm/apotheose/projet-06-o-frigo-back/app/back/views/home.ejs:131
+    129|           </thead>
+    130|           <tbody class="bottom">
+ >> 131|             <% for (let i = startIndex; i < endIndex; i++) { %>
+    132|               <% const message = messages[i]; %>
+    133|               <tr>
+    134|                 <td><%= message.id %></td>
+
+startIndex is not defined
+2023-05-01T09:57:19.771Z: /admin/home --> /var/www/html/Ohm/apotheose/projet-06-o-frigo-back/app/back/views/home.ejs:134
+    132|               <% const message = messages[i]; %>
+    133|               <tr>
+ >> 134|                 <td><%= message.id %></td>
+    135|                 <td><a href="/admin/message/<%= message.id %>"><%= message.label %></a></td>
+    136|               </tr>
+    137|             <% } %>
+
+Cannot read properties of undefined (reading 'id')
+2023-05-01T09:59:18.854Z: /admin/home --> /var/www/html/Ohm/apotheose/projet-06-o-frigo-back/app/back/views/home.ejs:134
+    132|               <% const message = messages[i]; %>
+    133|               <tr>
+ >> 134|                 <td><%= message.id %></td>
+    135|                 <td><a href="/admin/message/<%= message.id %>"><%= message.label %></a></td>
+    136|               </tr>
+    137|             <% } %>
+
+Cannot read properties of undefined (reading 'id')

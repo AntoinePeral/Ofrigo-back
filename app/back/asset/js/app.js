@@ -1,84 +1,51 @@
 const app = {
-  init: function () {
+  init: function (req, res, ingredients) {
     console.log('app.init');
-    const addIngredientBtn = document.querySelector(".ingredient-add-btn");
-    const ingredientsList = document.querySelector(".ingredients-list");
-    const ingredientSelect = document.querySelector('.ingredient-select');
+    const itemsPerPage = 10;
+    let currentPage = 1;
 
-    console.log(ingredientSelect);
- 
-    const allIngredients = [];
-    for (let i = 0; i < ingredientSelect.options.length; i++) {
-      const optionValue = ingredientSelect.options[i].value;
-      const optionText = ingredientSelect.options[i].text;
-      const optionPicture = ingredientSelect.options[i].dataset.picture;
-      const optionUnit = ingredientSelect.options[i].dataset.unit;
-      const optionCategory = ingredientSelect.options[i].dataset.categoryId;
-      allIngredients.push({id: optionValue, label: optionText, picture: optionPicture, unit: optionUnit, category_id: optionCategory});
-    }
-    console.log(allIngredients);
-
-    function addIngredientToList(ingredient) {
-      const div = document.createElement("div");
-      const name = document.createElement("h3");
-      const deleteBtn = document.createElement("button");
-      const inputId = document.createElement("input");
-      const inputLabel = document.createElement("input");
-      const inputUnit = document.createElement("input");
-    
-      div.classList.add("ingredientCard");
-      name.classList.add("ingredient-label");
-      deleteBtn.classList.add("delete-ingredient");
-    
-      name.textContent = ingredient.label;
-      deleteBtn.dataset.id = ingredient.id;
-      deleteBtn.textContent = "Supprimer";
-    
-      inputId.type = "hidden";
-      inputId.name = "id";
-      inputId.value = ingredient.id;
-    
-      inputLabel.type = "hidden";
-      inputLabel.name = "label";
-      inputLabel.value = ingredient.label;
-    
-      inputUnit.type = "hidden";
-      inputUnit.name = "unit";
-      inputUnit.value = ingredient.unit;
-    
-      div.appendChild(name);
-      div.appendChild(inputId);
-      div.appendChild(inputLabel);
-      div.appendChild(inputUnit);
-      div.appendChild(deleteBtn);
-    
-      ingredientsList.appendChild(div);
-    }
-    
-
-    function handleAddIngredient(event) {
-      event.preventDefault()
-      const ingredientId = ingredientSelect.value;
-      const ingredient = allIngredients.find(ingredient => ingredient.id === ingredientId);
-
-      console.log(ingredient);
-      
-
-      const ingredientsListItems = ingredientsList.querySelectorAll('.ingredient-label');
-      const alreadyAdded = Array.from(ingredientsListItems).some(item => item.textContent === ingredient.label);
-      console.log(alreadyAdded);
-
-      if (!alreadyAdded && ingredient) {
-        addIngredientToList(ingredient);
+    const renderTable = () => {
+      const table = document.querySelector(".ingredient table tbody.bottom");
+      table.innerHTML = "";
+      const ingredientsSlice = ingredients.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+      for (const ingredient of ingredientsSlice) {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${ingredient.id}</td><td><img class="picture-ingredient" src="http://localhost:3000/public/picture/ingredient/${ingredient.picture}" alt="${ingredient.picture}"></td><td><a href="/admin/ingredient/${ingredient.id}">${ingredient.label}</a></td>`;
+        table.appendChild(row);
       }
-    }
-    
+    };
 
+    const renderPagination = () => {
+      const pagination = document.querySelector(".pagination");
+      pagination.innerHTML = "";
+      const pageCount = Math.ceil(ingredients.length / itemsPerPage);
+      for (let i = 1; i <= pageCount; i++) {
+        const button = document.createElement("button");
+        button.innerText = i;
+        if (i === currentPage) {
+          button.classList.add("active");
+        }
+        pagination.appendChild(button);
+      }
+      pagination.addEventListener("click", (event) => {
+        if (event.target.tagName === "BUTTON") {
+          currentPage = parseInt(event.target.innerText);
+          renderTable();
+          const activeButton = pagination.querySelector(".active");
+          if (activeButton) {
+            activeButton.classList.remove("active");
+          }
+          event.target.classList.add("active");
+        }
+      });
+    };
 
-    
-
-    addIngredientBtn.addEventListener("click", handleAddIngredient);
-  }
+    renderTable();
+    renderPagination();
+  },
 };
 
-document.addEventListener("DOMContentLoaded", app.init);
+document.addEventListener("DOMContentLoaded", (req, res) => {
+  const ingredients = res.locals.ingredients ;
+  app.init({ locals: JSON.stringify({ingredients: ingredients}) }, null, ingredients);
+});

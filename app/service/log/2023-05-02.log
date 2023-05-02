@@ -1,0 +1,12 @@
+          date          |      contexte        |     message     
+2023-05-02T07:18:16.752Z: /favicon.ico --> 404 message
+2023-05-02T07:18:23.115Z: /admin/home --> /var/www/html/Ohm/apotheose/projet-06-o-frigo-back/app/back/views/home.ejs:91
+    89|   </thead>
+    90|   <tbody class="bottom">
+ >> 91|       <% for(const ingredient of ingredientsSlice) { %>
+    92|           <tr><td><%= ingredient.id %></td><td><img class="picture-ingredient" src="http://localhost:3000/public/picture/ingredient/<%= ingredient.picture %>" alt="<%= ingredient.picture %>"></td><td><a href="/admin/ingredient/<%= ingredient.id %>"><%= ingredient.label %></a></td>
+    93|       <% } %>
+    94|   </tbody>
+
+ingredientsSlice is not defined
+2023-05-02T07:43:31.095Z: /css/home.css --> 404 message

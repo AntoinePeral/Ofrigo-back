@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+
+<section class="section">
+
+    <h3><%= homeName %></h3>
+
+    <div class="category">
+
+        <ul>
+            <li><strong>Id : </strong><%= category.id %></li>
+            <li><strong>Label : </strong><%= category.label %></li>
+            <li><strong>Created at : </strong><%= category.created_at %></li>
+            <li><strong>Updated at : </strong><%= category.updated_at %></li>
+        </ul>
+        <div class="update-delete">
+            <a class="icones-category" href="#"><img src="/picture/icones/2.png" alt="Update"></a>
+            <form action="/admin/category/delete/<%= category.id %>" method="post">
+            <input class="icones-category" type="image" src="/picture/icones/1.png"></form>
+        </div>
+
+    </div>
+
+    <% if(category.ingredient) { %>
+
+        <div class="ingredient">
+            <h3>Ingredient</h3>
+            <table>
+                <thead>
+                    <tr class="top">
+                        <th>Id</th>
+                        <th>Picture</th>
+                        <th>Label</th>
+                        <th>Created at</th>
+                        <th>Updated at</th>
+                    </tr>
+                </thead>
+                <tbody class="bottom">
+
+                    <% for(const ingredient of category.ingredient) { %>
+                        <tr><td><%= ingredient.id %></td><td><img class="picture-ingredient" src="http://localhost:3000/public/picture/ingredient/<%= ingredient.picture %>" alt="<%= ingredient.picture %>"></td><td><a href="/admin/ingredient/<%= ingredient.id %>"><%= ingredient.label %></a></td><td><%= ingredient.created_at %></td><td><%= ingredient.updated_at %></td></tr>
+                    <% } %>
+
+                </tbody>
+            </table>
+        </div>
+
+    <% } %>
+
+</section>
+
+<%- include('partials/footer') %>

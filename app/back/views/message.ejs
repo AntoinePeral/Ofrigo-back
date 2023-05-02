@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+
+<section class="section">
+
+    <h3><%= homeName %></h3>
+
+    <div class="message">
+        <ul>
+            <li><strong>Id : </strong><%= message.id %></li>
+            <li><strong>Created at : </strong><%= message.created_at %></li>
+            <li><strong>Updated at : </strong><%= message.updated_at %></li>
+            <% if(message.email) { %>
+                <li><strong>Email : </strong><%= message.email %></li>
+            <% } %>
+            <li><strong>Label : </strong><%= message.label %></li>
+            <li><strong>Content : </strong><%= message.content %></li>
+        </ul>
+    </div>
+
+</section>
+
+<%- include('partials/footer') %>
