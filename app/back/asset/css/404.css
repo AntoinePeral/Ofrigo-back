@@ -1,4 +1,5 @@
 .not_found {
-    max-width: 50%;
+    min-width: 25vw;
+    max-width: 40vw;
     margin: auto;
 }
