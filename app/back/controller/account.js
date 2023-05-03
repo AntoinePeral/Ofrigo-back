@@ -176,20 +176,31 @@ const accountController = {
      */
     async addAdminAccount (req, res) {
         const accountBody = req.body;
+        const validateAccount = await Account.findByEmail(accountBody.email);
 
-        // Password encrypting
-        const saltRounds = 10;
-        const salt = await bcrypt.genSalt(saltRounds);
-        const hashedPassword = await bcrypt.hash(accountBody.password, salt);
-        debug(hashedPassword);
+        if(validateAccount){
+            res.render("account-cu", {
+                homeName: "Account",
+                css: "/css/account-cu.css",
+                errorMessage: "Ce compte existe dèjà",
+                account: null
+            });
+        }
+        else{
+            // Password encrypting
+            const saltRounds = 10;
+            const salt = await bcrypt.genSalt(saltRounds);
+            const hashedPassword = await bcrypt.hash(accountBody.password, salt);
+            debug(hashedPassword);
 
-        let account = new Account(accountBody);
+            let account = new Account(accountBody);
 
-        debug(account);
-        account = await account.addAdmin({'password': hashedPassword});
-        debug(account);
-        
-        res.redirect("/admin/account");
+            debug(account);
+            account = await account.addAdmin({'password': hashedPassword});
+            debug(account);
+            
+            res.redirect("/admin/account");
+        }
     },
 
     async updateAccount (req, res) {
