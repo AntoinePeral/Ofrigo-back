@@ -76,10 +76,10 @@ class Recipe extends CoreModel{
      * @param {int} ingredient_id 
      * @returns an instance
      */
-    async removeIngredient(ingredient_id){
+    static async deleteIngredientFromRecipe(recipe_id, ingredient_id){
         const query = {
             text: `DELETE FROM "recipe_has_ingredient_with_quantity" WHERE "recipe_id"=$1 AND "ingredient_id"=$2;`,
-            values: [this.id, ingredient_id]
+            values: [recipe_id, ingredient_id]
         };
         let response;
 
@@ -91,6 +91,21 @@ class Recipe extends CoreModel{
         }
 
         return response.rowCount;
+    };
+
+    static async deleteTagFromRecipe (recipe_id, tag_id){
+        const query = {
+            text: `DELETE FROM recipe_has_tag WHERE recipe_id=$1 AND tag_id=$2;`,
+            values: [recipe_id, tag_id]
+        };
+        let response;
+
+        try{
+            response = await ofrigo.query(query);
+            return response.rowCount;
+        }catch(error){
+            console.log(error);
+        }
     };
 
 };

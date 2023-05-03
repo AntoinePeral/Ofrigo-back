@@ -44,11 +44,16 @@ const messageController = {
         }
     },
 
-    async deleteMessage (req, res) {
+    async deleteMessage (req, res, next) {
         const messageId = req.params.id;
-        await Message.delete(messageId);
+        const response = await Message.delete(messageId);
 
-        res.redirect("/admin/message");
+        if(response){
+            res.redirect("/admin/message");
+        }
+        else{
+            return next(new APIError("Not found", 404));
+        }
     },
 
 };

@@ -66,11 +66,9 @@
                 </thead>
                 <tbody class="bottom">
 
-                    <% if(account.ingredient.length == 0) { %>
-                        <tr><td><%= ingredient.id %></td><td><img class="picture-ingredient" src="http://localhost:3000/public/picture/ingredient/<%= ingredient.picture %>" alt="<%= ingredient.picture %>"></td><td><a href="/admin/ingredient/<%= ingredient.id %>"><%= ingredient.label %></a></td><td><%= ingredient.created_at %></td><td><%= ingredient.updated_at %></td><td><form action="/admin/account/<%= account.id %>/ingredient/<%= ingredient.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
-                    <% } else { %>
+                    <% if(account.ingredient) { %>
                         <% for(const ingredient of account.ingredient) { %>
-                            <tr><td><%= ingredient.id %></td><td><img class="picture-ingredient" src="http://localhost:3000/public/picture/ingredient/<%= ingredient.picture %>" alt="<%= ingredient.picture %>"></td><td><a href="/admin/ingredient/<%= ingredient.id %>"><%= ingredient.label %></a></td><td><%= ingredient.created_at %></td><td><%= ingredient.updated_at %></td><td><form action="/admin/account/<%= account.id %>/ingredient/<%= ingredient.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+                            <tr><td><%= ingredient.id %></td><td><img class="picture-ingredient" src="http://kevin-lienard-server.eddi.cloud/public/picture/ingredient/<%= ingredient.picture %>" alt="<%= ingredient.picture %>"></td><td><a href="/admin/ingredient/<%= ingredient.id %>"><%= ingredient.label %></a></td><td><%= ingredient.created_at %></td><td><%= ingredient.updated_at %></td><td><form action="/admin/account/<%= account.id %>/ingredient/<%= ingredient.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
                         <% } %>
                     <% } %>
 

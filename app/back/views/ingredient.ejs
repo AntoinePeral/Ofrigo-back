@@ -6,7 +6,7 @@
 
     <div class="ingredient">
 
-        <img class="picture-ingredient" src="http://localhost:3000/public/picture/ingredient/<%= ingredient.picture %>" alt="<%= ingredient.picture %>">
+        <img class="picture-ingredient" src="http://kevin-lienard-server.eddi.cloud/public/picture/ingredient/<%= ingredient.picture %>" alt="<%= ingredient.picture %>">
 
         <div class="ingredient-detail">
             <ul>
@@ -20,9 +20,9 @@
                 <li><strong>Updated at : </strong><%= ingredient.updated_at %></li>
             </ul>
             <div class="update-delete">
-                <a class="icones" href="#"><img src="/picture/icones/2.png" alt="Update"></a>
+                <a class="icones-ingredient" href="#"><img src="/picture/icones/2.png" alt="Update"></a>
                 <form action="/admin/ingredient/delete/<%= ingredient.id %>" method="post">
-                <input class="icones" type="image" src="/picture/icones/1.png"></form>
+                <input class="icones-ingredient" type="image" src="/picture/icones/1.png"></form>
             </div>
         </div>
 

@@ -18,11 +18,11 @@
                 <a class="logo-span" href="/">O'FRIGO</a>
                 <span>DASHBOARD</span>
             </div>
-            <div class="profil">
-                <% if (homeName != 'Login') { %>
-                    <a href="/admin/profile">My profile</a>
-                <%} %>
-            </div>
+            <% if(locals.userLogin) {%>
+                <div class="profil">
+                    <a href="/admin/<%= locals.userLogin.first_name+"-"+locals.userLogin.last_name %>"><%=locals.userLogin.first_name + ' ' + locals.userLogin.last_name %></a>
+                </div>
+            <% } %>
         </div>
         <div class="menu">
             <% if(homeName != 'Login') { %>

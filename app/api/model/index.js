@@ -5,7 +5,7 @@ const Ingredient = require("./Ingredient");
 const Message = require("./Message");
 //const Quantity = require("./Quantity");
 const Recipe = require("./Recipe");
-//const Step = require("./Step");
+const Step = require("./Step");
 const Tag = require("./Tag");
 
 module.exports = { 
@@ -16,6 +16,6 @@ module.exports = {
     Message,
     //Quantity,
     Recipe,
-    //Step,
+    Step,
     Tag
 };

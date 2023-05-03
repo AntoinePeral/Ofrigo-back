@@ -3,7 +3,6 @@ const accountRouter = Router();
 const { account, admin } = require("../controller");
 const validationBody = require("../../service/validation/validate");
 const authentification = require('../../service/middleware/authToken');
-const validationRole = require("../../service/middleware/adminValidator");
 
 //Public
 accountRouter.post("/register", validationBody.validateUserAccount('body'), account.addAccount);

@@ -13,34 +13,52 @@ const loginController = {
    * @param {*} next use it to return an error
    */
   async signIn(req, res, next) {
-    const {email, password} = req.body;
-    const account = await Account.findByEmail(email);
-    
-    if(!account) {
-      return next(new APIError('Couple login/mot de passe est incorrect.', 401));
+    const { email, password } = req.body;
+
+    if(!email || !password){
+      return res.render("login", {
+        errorMessage: "Please complete all fields",
+        homeName: "Login",
+        css: "/css/login.css",
+      });
     }
+
+    const account = await Account.findByEmail(email);
+
+    if(!account){
+      return res.render("login", {
+        errorMessage: "Incorrect email or password",
+        homeName: "Login",
+        css: "/css/login.css",
+      });
+    }
+
     const hasMatchingPassword = await bcrypt.compare(password, account.password);
 
-    if(!hasMatchingPassword) {
-      return next(new APIError('Couple login/mot de passe est incorrect.', 401));
-    }
-    if(account.role !== "admin"){
-      return next(new APIError('Vous n\'êtes pas autorisé à rentre sur le site', 401));
+    if(!hasMatchingPassword){
+      return res.render("login", { 
+        errorMessage: "Incorrect email or password",
+        homeName: "Login",
+        css: "/css/login.css",
+      });
     }
     else{
-      const accessToken = authentificationModule.generateAccessToken(account);
-      req.session.user = account;
-      req.session.token = accessToken;     
-
+      req.session.userId = account.id;  
       res.redirect("/admin/home");
     }
   },
 
-  async loginAdmin (_, res, next) {
+  loginAdmin (_, res, next) {
     res.render("login", {
       homeName: "Login",
       css: "/css/login.css",
+      errorMessage: null
     });
+  },
+
+  logOut: (req, res) => {
+    req.session.userId = null;
+    res.redirect('/admin/login');
   },
 
 };

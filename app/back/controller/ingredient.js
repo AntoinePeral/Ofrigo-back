@@ -44,11 +44,16 @@ const ingredientController = {
         }
     },
 
-    async deleteIngredient (req, res) {
+    async deleteIngredient (req, res, next) {
         const ingredientId = req.params.id;
-        await Ingredient.delete(ingredientId);
+        const response = await Ingredient.delete(ingredientId);
 
-        res.redirect("/admin/ingredient");
+        if(response){
+            res.redirect("/admin/ingredient");
+        }
+        else{
+            return next(new APIError("Not found", 404));
+        }
     },
 
 };

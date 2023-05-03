@@ -1,4 +1,4 @@
-// const debug = require("debug")("activeRecord");
+const debug = require("debug")("activeRecord");
 const ofrigo = require("../client/client-db-ofrigo");
 
 class CoreModel{
@@ -282,6 +282,7 @@ class CoreModel{
 
         const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}' RETURNING *;`;
         const response = await ofrigo.query(query, values);
+
         return response.rows[0];
     };
 
@@ -298,12 +299,11 @@ class CoreModel{
 
         try {
             response = await ofrigo.query(query);
-            debug(response)
+            debug(response);
+            return response.rowCount;
         } catch (error) {
-            console.log("Erreur");
+            console.log(error);
         }
-
-        return response.rowCount;
     };
 
     /**
@@ -348,7 +348,7 @@ class CoreModel{
         } catch (error) {
             console.log(error);
         }
-        console.log("respons",response);
+
         return response.rows[0];
     };
 
@@ -376,6 +376,7 @@ class CoreModel{
             console.log(error);
         }
     };
+
 };
 
 module.exports = CoreModel;
