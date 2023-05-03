@@ -161,3 +161,9 @@ a {
 .icones-recipe img {
     width: 35px;
 }
+
+/* TEST */
+td {
+    min-width: 25px;
+    max-width: 15vw;
+}

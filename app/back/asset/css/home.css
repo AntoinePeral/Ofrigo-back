@@ -103,3 +103,9 @@ th {
 /* strong {
     margin: 5px;
 } */
+
+/* TEST */
+td {
+    min-width: 25px;
+    max-width: 15vw;
+}
