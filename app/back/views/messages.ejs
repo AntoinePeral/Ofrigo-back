@@ -5,10 +5,10 @@
     <h3><%= homeName %></h3>
 
     <div class="add">
-        <a class="add-icone" href="#"><img src="/picture/icones/3.png" alt="Add"></a>
-        <span><a href="#">Add  <%= homeName.toLowerCase() %></a></span>
+        <a class="add-icone" href="/admin/message/create"><img src="/picture/icones/3.png" alt="Add"></a>
+        <span><a href="/admin/message/create">Add  <%= homeName.toLowerCase() %></a></span>
     </div>
-
+    
     <table>
         <thead>
             <tr class="top">
@@ -17,12 +17,22 @@
                 <th>Email</th>
                 <th>Created at</th>
                 <th>Updated at</th>
+                <th>Answer</th>
+                <th>Update</th>
                 <th>Delete</th>
             </tr>
         </thead>
         <tbody class="bottom">
             <% for(const message of messages) { %>
-                <tr><td><%= message.id %></td><td><a href="/admin/message/<%= message.id %>"><%= message.label %></a></td><td><%= message.email %></td><td><%= message.created_at %></td><td><%= message.updated_at %></td><td><form action="/admin/message/delete/<%= message.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+                <tr>
+                    <% if(locals.userLogin.email === message.email) { %> 
+                        <tr><td><%= message.id %></td><td><a href="/admin/message/<%= message.id %>"><%= message.label %></a></td><td><%= message.email %></td><td><%= message.created_at %></td><td><%= message.updated_at %></td><td><img class="icones-stop" src="/picture/icones/4.png" alt="Denied"></a></td><td><a class="icones" href="/admin/message/update/<%= message.id %>"><img src="/picture/icones/2.png" alt="Update"></a></td><td><form action="/admin/message/delete/<%= message.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+                    </tr>
+                    <% } else { %>
+                        <tr><td><%= message.id %></td><td><a href="/admin/message/<%= message.id %>"><%= message.label %></a></td><td><%= message.email %></td><td><%= message.created_at %></td><td><%= message.updated_at %></td><td><a href="mailto:<%= message.email %>"><img class="icones-answer" src="/picture/icones/5.png" alt="answer"></a></td><td><img class="icones-stop" src="/picture/icones/4.png" alt="answer"></a></td><td><form action="/admin/message/delete/<%= message.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+                    </tr>
+                    <% } %>
+
             <% } %>
         </tbody>
     </table>

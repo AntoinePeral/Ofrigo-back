@@ -1,17 +1,3 @@
-/* .account form {
-    display: flex;
-    flex-direction: column;
-}
-
-.error {
-    background-color: red;
-    color: white;
-    height: 5vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
 .section {
     width: 25vw;
 }
@@ -63,6 +49,33 @@ form input {
     border-right: none;
     transition: 0.3s ease-in-out;
 }
+
+/* .create_account {
+    display: block;
+    width: 150px;
+    margin: 15px auto 0 auto;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: white;
+    padding: 10px;
+    background: #35373B;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 5px #ffbd44;
+}
+
+.create_account:hover {
+    box-shadow: 0 3px #ffbd44;
+    top: 3px;
+}
+
+.create_account:active {
+    box-shadow: 0 0 #ffbd44;
+    top: 5px;
+} */
 
 .error {
     background-color: red;

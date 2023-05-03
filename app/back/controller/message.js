@@ -40,7 +40,7 @@ const messageController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
@@ -54,6 +54,56 @@ const messageController = {
         else{
             return next(new APIError("Not found", 404));
         }
+    },
+
+    async getCreateMessagePage (req, res) {
+        const messageId = req.params.id;
+        const message = await Message.findOne(messageId);
+
+        if(message){
+            res.render("message-cu", {
+                homeName: "Message",
+                css: "/css/message-cu.css",
+                errorMessage: null,
+                message
+            });
+        }
+        else{
+            res.render("message-cu", {
+                homeName: "Message",
+                css: "/css/message-cu.css",
+                errorMessage: null,
+                message: null
+            });
+        }
+    },
+
+    async addMessage (req, res) {
+        const messageBody = req.body;
+        let message = new Message(messageBody);
+
+        console.log("--------------",message);
+
+        debug(message);
+        message = await message.add();
+        debug(message);
+        
+        res.redirect("/admin/message");
+    },
+
+    async updateMessage (req, res) {
+        const messageBody = req.body;
+        const messageId = req.params.id;
+
+        let message = await Message.findOne(messageId);
+
+        Object.entries(messageBody).forEach(([key, value]) => {
+            message[key] = value;
+        });
+
+        await message.update();
+        
+        res.redirect("/admin/message");
     },
 
 };

@@ -19,7 +19,7 @@
                 <li><strong>Updated at : </strong><%= recipe.updated_at %></li>
             </ul>
             <div class="update-delete">
-                <a class="icones-recipe" href="#"><img src="/picture/icones/2.png" alt="Update"></a>
+                <a class="icones-recipe" href="/admin/recipe/update/<%= recipe.id %>"><img src="/picture/icones/2.png" alt="Update"></a>
                 <form action="/admin/recipe/delete/<%= recipe.id %>" method="post">
                 <input class="icones-recipe" type="image" src="/picture/icones/1.png"></form>
             </div>

@@ -40,7 +40,7 @@ const ingredientController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 

@@ -59,7 +59,7 @@ const recipeController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
@@ -132,6 +132,54 @@ const recipeController = {
         else{
             return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
         }
+    },
+
+    async getCreateRecipePage (req, res) {
+        const recipeId = req.params.id;
+        const recipe = await Recipe.findOne(recipeId);
+
+        if(recipe){
+            res.render("recipe-cu", {
+                homeName: "recipe",
+                css: "/css/recipe-cu.css",
+                errorMessage: null,
+                recipe
+            });
+        }
+        else{
+            res.render("recipe-cu", {
+                homeName: "recipe",
+                css: "/css/recipe-cu.css",
+                errorMessage: null,
+                recipe: null
+            });
+        }
+    },
+
+    async addRecipe (req, res) {
+        const recipeBody = req.body;
+        let recipe = new Recipe(recipeBody);
+
+        debug(recipe);
+        recipe = await recipe.add();
+        debug(recipe);
+        
+        res.redirect("/admin/recipe");
+    },
+
+    async updateRecipe (req, res) {
+        const recipeBody = req.body;
+        const recipeId = req.params.id;
+
+        let recipe = await Recipe.findOne(recipeId);
+
+        Object.entries(recipeBody).forEach(([key, value]) => {
+            recipe[key] = value;
+        });
+
+        await recipe.update();
+        
+        res.redirect("/admin/recipe");
     },
 
 };

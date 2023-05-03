@@ -166,7 +166,8 @@ const validationModule = {
                 res.render('message-cu', {
                     errorMessage: error,
                     css: "/css/message-cu.css",
-                    homeName: "Message"
+                    homeName: "Message",
+                    message: null
                 })
             }
             else{

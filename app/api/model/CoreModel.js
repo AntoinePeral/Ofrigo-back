@@ -255,12 +255,24 @@ class CoreModel {
                     values.push(value);
                     counter++;
                 }
+                if(key == "updated_at"){
+                    fields.push(key + "=$" + counter);
+                    value = 'now()';
+                    values.push(value);
+                    counter++;
+                }
             });
         }
         if(this.constructor.tableName == "ingredient"){
             Object.entries(this).forEach(([key,value])=>{
                 if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "category"){
                     fields.push(key + "=$" + counter);
+                    values.push(value);
+                    counter++;
+                }
+                if(key == "updated_at"){
+                    fields.push(key + "=$" + counter);
+                    value = 'now()';
                     values.push(value);
                     counter++;
                 }
@@ -273,12 +285,24 @@ class CoreModel {
                     values.push(value);
                     counter++;
                 }
+                if(key == "updated_at"){
+                    fields.push(key + "=$" + counter);
+                    value = 'now()';
+                    values.push(value);
+                    counter++;
+                }
             });
         }
         if(this.constructor.tableName == "recipe"){
             Object.entries(this).forEach(([key,value])=>{
                 if(key !== "id" && key !== "created_at" && key !== "updated_at" && key!== "ingredient" && key!== "step" && key!== "tag"){
                     fields.push(key + "=$" + counter);
+                    values.push(value);
+                    counter++;
+                }
+                if(key == "updated_at"){
+                    fields.push(key + "=$" + counter);
+                    value = 'now()';
                     values.push(value);
                     counter++;
                 }
@@ -293,9 +317,8 @@ class CoreModel {
                 }
                 if(key == "updated_at"){
                     fields.push(key + "=$" + counter);
+                    value = 'now()';
                     values.push(value);
-                    console.log(key);
-                    console.log(value);
                     counter++;
                 }
             });

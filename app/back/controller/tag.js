@@ -47,7 +47,7 @@ const tagController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
@@ -112,10 +112,6 @@ const tagController = {
     async updateTag (req, res) {
         const tagBody = req.body;
         const tagId = req.params.id;
-
-/*         if(tagBody.updated_at == ""){
-            tagBody.updated_at = `"${new Date.now()}"`;
-        } */
 
         let tag = await Tag.findOne(tagId);
 

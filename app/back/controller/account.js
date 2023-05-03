@@ -57,7 +57,7 @@ const accountController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
@@ -65,7 +65,6 @@ const accountController = {
         const name = req.params.name;
         const account = await Account.findOne(req.session.user.id);
 
-        console.log(name);
         if(account && name == account.first_name+ '-' + account.last_name){
             account.created_at = dayjs(account.created_at).format('DD-MM-YYYY HH:mm:ss');
             account.updated_at = dayjs(account.updated_at).format('DD-MM-YYYY HH:mm:ss');
@@ -90,7 +89,7 @@ const accountController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 

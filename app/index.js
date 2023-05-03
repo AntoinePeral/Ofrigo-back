@@ -6,6 +6,7 @@ const errorModule = require("./service/error/errorHandling");
 const middlewares = require("./service/middleware");
 const { account, login, category, ingredient, recipe, message, tag } = require("./api/router");
 const { loginAdmin, homeRouter, categoryRouter, ingredientRouter, messageRouter, tagRouter, accountRouter, recipeRouter } = require("./back/router");
+const {  home } = require("./back/controller");
 const session = require('express-session');
 
 app.use(session({
@@ -49,7 +50,7 @@ app.use(
   accountRouter,
 );
 
-app.use(errorModule._404);
+app.use(home.menu, errorModule._404);
 app.use(errorModule.manage);
 
 module.exports = app;

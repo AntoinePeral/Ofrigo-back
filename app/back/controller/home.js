@@ -1,17 +1,13 @@
 const debug = require("debug")("homeController");
-const { CoreModel, Ingredient } = require("../../api/model");
+const { CoreModel } = require("../../api/model");
 
 const homeController = {
 
     async getHomePage(req, res){     
-        const user = req.session.user
-        const token = req.session.token
 
         res.render("home", {
             homeName: "Home",
-            user,
-            token,
-            css: ''
+            css: '/css/home.css'
         });
     },
 

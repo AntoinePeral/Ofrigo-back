@@ -162,7 +162,7 @@ const accountController = {
         if(validation){
             await account.addIngredient(ingredient_id);
             account = await Account.findOne(req.user.id);
-            return  res.status(200).json(account);
+            return res.status(200).json(account);
         }
         else{
             next(new APIError("Bad request", 500)); 

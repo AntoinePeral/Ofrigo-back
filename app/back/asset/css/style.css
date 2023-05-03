@@ -120,11 +120,13 @@ body {
     padding: 0 20px;
 }
 
-.nav a:hover, nav li:hover {
-    transition: 0.2s ease-in-out;
-    /* background-color: #35373B; */
-    background: linear-gradient(to top, #35373B, #676a72);
+.nav a:hover {
     color: white;
+}
+
+nav li:hover {
+    transition: 0.2s ease-in-out;
+    background: linear-gradient(to top, #35373B, #676a72);
 }
 
 /*========== SECTION ==========*/
