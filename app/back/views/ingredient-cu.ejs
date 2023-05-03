@@ -11,41 +11,36 @@
     <% } %>
 
     <% if(ingredient) { %>
-
         <div class="ingredient">
-
-            <form action="/admin/ingredient/update/<%= ingredient.id %>" method="POST">
-
+            <form action="/admin/ingredient/create" method="POST">
                 <input type="text" name="label" value="<%= ingredient.label %>" placeholder="Label">
-    
-                <label for="unit">Unit</label>
-                <select name="unit">
-                    <% for(const measure of measures) { %>
-                        <option value="<%= measure.label %>"><%= measure.label %></option>
-                    <% } %>
-                </select>
-
-                <label for="category_id">Category</label>
-                <select name="category_id">
-                    <option value="">Aucune</option>
-                    <% for(const categorie of categories) { %>
-                        <option value="<%= categorie.id %>"><%= categorie.label %></option>
-                    <% } %>
-                </select>
+                <div class="unit-category">
+                    <div class="option">
+                        <label for="unit">Unit</label>
+                        <select name="unit">
+                            <% for(const measure of measures) { %>
+                                <option value="<%= measure.label %>"><%= measure.label %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="option">
+                        <label for="category_id">Category</label>
+                        <select name="category_id">
+                            <option value="">Aucune</option>
+                            <% for(const categorie of categories) { %>
+                                <option value="<%= categorie.id %>"><%= categorie.label %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                </div>
                 
                 <input class="create_ingredient" type="submit" value="Valider">
-
             </form>
         </div>
-
     <% } else { %>
-
     <div class="ingredient">
-
         <form action="/admin/ingredient/create" method="POST">
-
             <input type="text" name="label" placeholder="Label">
-
             <div class="unit-category">
                 <div class="option">
                     <label for="unit">Unit</label>
@@ -55,7 +50,6 @@
                         <% } %>
                     </select>
                 </div>
-
                 <div class="option">
                     <label for="category_id">Category</label>
                     <select name="category_id">
@@ -65,14 +59,11 @@
                         <% } %>
                     </select>
                 </div>
-
             </div>
             
             <input class="create_ingredient" type="submit" value="Valider">
-
         </form>
     </div>
-
     <% } %>
 
 </section>
