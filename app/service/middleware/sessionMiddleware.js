@@ -18,9 +18,6 @@ async function addUserToLocals(req, res, next) {
 
     req.session.user = user;
     res.locals.userLogin = user;
-
-    console.log("locals",res.locals.userLogin);
-    // console.log("locals2 avec req",req.locals.userLogin.email);
     
     next();
 }
