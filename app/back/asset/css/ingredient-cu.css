@@ -41,6 +41,7 @@ form label {
 .option label {
     margin-bottom: 10px;
     text-align: center;
+    padding: 3px;
 }
 
 .create_ingredient {
