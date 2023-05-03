@@ -35,7 +35,7 @@ body {
     display: flex;
     justify-content: space-between;
     /* background-color: #35373B; */
-    background: linear-gradient(to top, #35373B, #676a72);
+    background: linear-gradient(to top, #35373B 20%, #676a72);
 }
 
 .logo-name {
