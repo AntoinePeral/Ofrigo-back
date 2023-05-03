@@ -25,7 +25,7 @@
             <% } %>
         </div>
         <div class="menu">
-            <% if(homeName != 'Login') { %>
+            <% if(locals.userLogin && homeName != 'Login') { %>
                 <%- include('menu') %>
             <% } %>
         </div>

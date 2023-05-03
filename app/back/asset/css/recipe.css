@@ -1,6 +1,6 @@
-.section {
+/* .section {
     width: 80vw;
-}
+} */
 
 .recipe {
     display: flex;
@@ -80,7 +80,6 @@ tr, td {
 caption {
     color: white; 
     text-transform: uppercase;
-    font-weight: bolder;
     font-size: 1.3rem;
     margin: 0 auto 5vh auto;
     border-top: 2px solid rgb(75, 75, 75);

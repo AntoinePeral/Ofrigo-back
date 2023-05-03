@@ -5,8 +5,8 @@
     <h3><%= homeName %></h3>
 
     <div class="add">
-        <a class="add-icone" href="#"><img src="/picture/icones/3.png" alt="Add"></a>
-        <span><a href="#">Add  <%= homeName.toLowerCase() %></a></span>
+        <a class="add-icone" href="/admin/tag/create"><img src="/picture/icones/3.png" alt="Add"></a>
+        <span><a href="/admin/tag/create">Add  <%= homeName.toLowerCase() %></a></span>
     </div>
 
     <table>
@@ -22,7 +22,7 @@
         </thead>
         <tbody class="bottom">
             <% for(const tag of tags) { %>
-                <tr><td><%= tag.id %></td><td><a href="/admin/tag/<%= tag.id %>"><%= tag.label %></a></td><td><%= tag.created_at %></td><td><%= tag.updated_at %></td><td><a class="icones" href="#"><img src="/picture/icones/2.png" alt="Update"></a></td><td><form action="/admin/tag/delete/<%= tag.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+                <tr><td><%= tag.id %></td><td><a href="/admin/tag/<%= tag.id %>"><%= tag.label %></a></td><td><%= tag.created_at %></td><td><%= tag.updated_at %></td><td><a class="icones" href="/admin/tag/update/<%= tag.id %>"><img src="/picture/icones/2.png" alt="Update"></a></td><td><form action="/admin/tag/delete/<%= tag.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
             <% } %>
         </tbody>
     </table>

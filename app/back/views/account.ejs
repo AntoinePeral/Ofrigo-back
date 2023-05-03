@@ -16,7 +16,7 @@
             <li><strong>Updated at : </strong><%= account.updated_at %></li>
         </ul>
         <div class="update-delete">
-            <a class="icones-account" href="#"><img src="/picture/icones/2.png" alt="Update"></a>
+            <a class="icones-account" href="/admin/account/update/<%= account.id %>"><img src="/picture/icones/2.png" alt="Update"></a>
             <form action="/admin/account/delete/<%= account.id %>" method="post">
             <input class="icones-account" type="image" src="/picture/icones/1.png"></form>
         </div>

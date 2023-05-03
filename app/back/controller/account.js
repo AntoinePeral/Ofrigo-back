@@ -1,7 +1,9 @@
 const debug = require("debug")("tagController");
 const dayjs = require('dayjs');
+const bcrypt = require('bcrypt');
 const APIError = require('../../service/error/APIError');
 const { Account } = require("../../api/model");
+const { locale } = require("dayjs");
 
 const accountController = {
 
@@ -55,14 +57,15 @@ const accountController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
     async getAdminPage (req, res, next) {
+        const name = req.params.name;
         const account = await Account.findOne(req.session.user.id);
 
-        if(account){
+        if(account && name == account.first_name+ '-' + account.last_name){
             account.created_at = dayjs(account.created_at).format('DD-MM-YYYY HH:mm:ss');
             account.updated_at = dayjs(account.updated_at).format('DD-MM-YYYY HH:mm:ss');
     
@@ -79,8 +82,6 @@ const accountController = {
                 }
             }
 
-            console.log(account);
-
             res.render("account", {
                 homeName: "Account",
                 account,
@@ -88,7 +89,7 @@ const accountController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
@@ -141,6 +142,86 @@ const accountController = {
         }
         else{
             return next(new APIError("Not found", 404));
+        }
+    },
+
+    async getAddAdminAccountPage (req, res) {
+        const accoutId = req.params.id;
+        const account = await Account.findOne(accoutId);
+
+        if(account){
+            res.render("account-cu", {
+                homeName: "Account",
+                css: "/css/account-cu.css",
+                errorMessage: null,
+                account
+            });
+        }
+        else{
+            res.render("account-cu", {
+                homeName: "Account",
+                css: "/css/account-cu.css",
+                errorMessage: null,
+                account: null
+            });
+        }
+    },
+
+    /**
+     * Register a new admin account in DB. Role is already defined as admin in this function
+     * @param {object} req use the req to get the body object which contains the informations of the new account and the new JWT token
+     * @param {object} res use to response to the client. Send an JSON object
+     * @param {function} next call the APIError if an error is dectected
+     * @returns {APIError} return an error
+     */
+    async addAdminAccount (req, res) {
+        const accountBody = req.body;
+
+        // Password encrypting
+        const saltRounds = 10;
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hashedPassword = await bcrypt.hash(accountBody.password, salt);
+        debug(hashedPassword);
+
+        let account = new Account(accountBody);
+
+        debug(account);
+        account = await account.addAdmin({'password': hashedPassword});
+        debug(account);
+        
+        res.redirect("/admin/account");
+    },
+
+    async updateAccount (req, res) {
+        const accountBody = req.body;
+        const accountId = req.params.id;
+
+        let account = await Account.findOne(accountId);
+
+        if(accountBody.password == accountBody.confirm_password){
+            Object.entries(accountBody).forEach(([key, value]) => {
+                if(key != "confirm_password"){
+                    account[key] = value;
+                }
+            });
+    
+            // Password encrypting
+            const saltRounds = 10;
+            const salt = await bcrypt.genSalt(saltRounds);
+            const hashedPassword = await bcrypt.hash(accountBody.password, salt);
+            debug(hashedPassword);
+    
+            await account.update({'password': hashedPassword});
+            
+            res.redirect("/admin/account");
+        }
+        else{
+            res.render("account-cu", {
+                homeName: "Account",
+                css: "/css/account-cu.css",
+                errorMessage: "Password incorrect",
+                account
+            });
         }
     },
 

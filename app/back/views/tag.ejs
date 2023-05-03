@@ -13,7 +13,7 @@
             <li><strong>Updated at : </strong><%= tag.updated_at %></li>
         </ul>
         <div class="update-delete">
-            <a class="icones-tag" href="#"><img src="/picture/icones/2.png" alt="Update"></a>
+            <a class="icones-tag" href="/admin/tag/update/<%= tag.id %>"><img src="/picture/icones/2.png" alt="Update"></a>
             <form action="/admin/tag/delete/<%= tag.id %>" method="post">
             <input class="icones-tag" type="image" src="/picture/icones/1.png"></form>
         </div>

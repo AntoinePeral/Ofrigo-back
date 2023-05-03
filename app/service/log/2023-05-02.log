@@ -1,25 +1,59 @@
           date          |      contexte        |     message     
-2023-05-02T07:18:16.752Z: /favicon.ico --> 404 message
-2023-05-02T07:18:23.115Z: /admin/home --> /var/www/html/Ohm/apotheose/projet-06-o-frigo-back/app/back/views/home.ejs:91
-    89|   </thead>
-    90|   <tbody class="bottom">
- >> 91|       <% for(const ingredient of ingredientsSlice) { %>
-    92|           <tr><td><%= ingredient.id %></td><td><img class="picture-ingredient" src="http://localhost:3000/public/picture/ingredient/<%= ingredient.picture %>" alt="<%= ingredient.picture %>"></td><td><a href="/admin/ingredient/<%= ingredient.id %>"><%= ingredient.label %></a></td>
-    93|       <% } %>
-    94|   </tbody>
+2023-05-02T09:04:52.848Z: /admin/register --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/account-cu.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
 
-ingredientsSlice is not defined
-2023-05-02T07:43:31.095Z: /css/home.css --> 404 message
-2023-05-02T08:29:31.219Z: /admin/ingredient/delete/1 --> Not found
-2023-05-02T08:30:06.941Z: /admin/ingredient/delete/2 --> Not found
-2023-05-02T08:33:09.874Z: /js/app.js --> 404 message
-2023-05-02T08:42:02.182Z: /js/app.js --> 404 message
-2023-05-02T08:42:03.020Z: /js/app.js --> 404 message
-2023-05-02T08:42:03.842Z: /js/app.js --> 404 message
-2023-05-02T08:42:04.938Z: /js/app.js --> 404 message
-2023-05-02T08:44:37.931Z: /js/app.js --> 404 message
-2023-05-02T08:45:24.554Z: /js/app.js --> 404 message
-2023-05-02T08:45:46.124Z: /admin/category/20 --> Not found
-2023-05-02T08:45:53.364Z: /js/app.js --> 404 message
-2023-05-02T08:46:09.182Z: /js/app.js --> 404 message
-2023-05-02T08:46:48.006Z: /js/app.js --> 404 message
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:29
+    27|         <div class="menu">
+    28|             <% if(homeName != 'Login') { %>
+ >> 29|                 <%- include('menu') %>
+    30|             <% } %>
+    31|         </div>
+    32| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/menu.ejs:6
+    4|         <a href="/admin/home">Home</a>
+    5|       </li>
+ >> 6|       <% for(const name of menu) { %>
+    7|           <li>
+    8|             <a href="/admin/<%= name %>"><%= name.charAt(0).toUpperCase() + name.slice(1); %></a>
+    9|           </li>
+
+menu is not defined
+2023-05-02T09:05:46.187Z: /admin/register --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/account-cu.ejs:1
+ >> 1| <%- include('partials/header') %>
+    2| 
+    3| <section class="section">
+    4| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/header.ejs:29
+    27|         <div class="menu">
+    28|             <% if(homeName != 'Login') { %>
+ >> 29|                 <%- include('menu') %>
+    30|             <% } %>
+    31|         </div>
+    32| 
+
+/var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/partials/menu.ejs:6
+    4|         <a href="/admin/home">Home</a>
+    5|       </li>
+ >> 6|       <% for(const name of menu) { %>
+    7|           <li>
+    8|             <a href="/admin/<%= name %>"><%= name.charAt(0).toUpperCase() + name.slice(1); %></a>
+    9|           </li>
+
+menu is not defined
+2023-05-02T23:29:48.366Z: /admin/home/4 --> 404 message
+2023-05-02T23:29:48.449Z: /images/icons/gear.png --> 404 message
+2023-05-02T23:37:49.518Z: /admin/jgvhvhk, --> Not found
+2023-05-02T23:37:49.612Z: /images/icons/gear.png --> 404 message
+2023-05-02T23:38:00.875Z: /admin/test --> Not found
+2023-05-02T23:38:00.937Z: /images/icons/gear.png --> 404 message
+2023-05-02T23:38:03.665Z: /admin --> 404 message
+2023-05-02T23:38:03.730Z: /images/icons/gear.png --> 404 message
+2023-05-02T23:38:25.151Z: /admin/Kevin-Liena --> Not found
+2023-05-02T23:38:25.223Z: /images/icons/gear.png --> 404 message
+2023-05-02T23:44:33.362Z: /admin/ --> 404 message
+2023-05-02T23:44:33.429Z: /images/icons/gear.png --> 404 message

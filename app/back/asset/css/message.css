@@ -49,3 +49,8 @@
 .icones-message img {
     width: 35px;
 }
+
+.icones-answer img {
+    padding-top: 3px;
+    width: 30px;
+}

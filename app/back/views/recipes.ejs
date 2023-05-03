@@ -5,8 +5,8 @@
     <h3><%= homeName %></h3>
 
     <div class="add">
-        <a class="add-icone" href="#"><img src="/picture/icones/3.png" alt="Add"></a>
-        <span><a href="#">Add  <%= homeName.toLowerCase() %></a></span>
+        <a class="add-icone" href="/admin/recipe/create"><img src="/picture/icones/3.png" alt="Add"></a>
+        <span><a href="/admin/recipe/create">Add  <%= homeName.toLowerCase() %></a></span>
     </div>
 
     <table>
@@ -23,7 +23,7 @@
         </thead>
         <tbody class="bottom">
             <% for(const recipe of recipes) { %>
-                <tr><td><%= recipe.id %></td><td><img class="picture-ingredient" src="http://kevin-lienard-server.eddi.cloud/public/picture/recipe/<%= recipe.picture %>" alt="<%= recipe.picture %>"></td><td><a href="/admin/recipe/<%= recipe.id %>"><%= recipe.label %></a></td><td><%= recipe.created_at %></td><td><%= recipe.updated_at %></td><td><a class="icones" href="#"><img src="/picture/icones/2.png" alt="Update"></a></td><td><form action="/admin/recipe/delete/<%= recipe.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+                <tr><td><%= recipe.id %></td><td><img class="picture-ingredient" src="http://kevin-lienard-server.eddi.cloud/public/picture/recipe/<%= recipe.picture %>" alt="<%= recipe.picture %>"></td><td><a href="/admin/recipe/<%= recipe.id %>"><%= recipe.label %></a></td><td><%= recipe.created_at %></td><td><%= recipe.updated_at %></td><td><a class="icones" href="/admin/recipe/update/<%= recipe.id %>"><img src="/picture/icones/2.png" alt="Update"></a></td><td><form action="/admin/recipe/delete/<%= recipe.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
             <% } %>
         </tbody>
     </table>

@@ -1,7 +1,7 @@
 const debug = require("debug")("tagController");
 const dayjs = require('dayjs');
 const APIError = require('../../service/error/APIError');
-const { Ingredient } = require("../../api/model");
+const { Ingredient, Category, CoreModel } = require("../../api/model");
 
 const ingredientController = {
 
@@ -40,7 +40,7 @@ const ingredientController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
@@ -54,6 +54,64 @@ const ingredientController = {
         else{
             return next(new APIError("Not found", 404));
         }
+    },
+
+    async getCreateIngredientPage (req, res) {
+        const ingredientId = req.params.id;
+        const ingredient = await Ingredient.findOne(ingredientId);
+        const categories = await Category.findAll();
+        const measures = await CoreModel.findMeasure();
+
+        if(ingredient){
+            res.render("ingredient-cu", {
+                homeName: "Ingredient",
+                css: "/css/ingredient-cu.css",
+                errorMessage: null,
+                ingredient,
+                categories,
+                measures
+            });
+        }
+        else{
+            res.render("ingredient-cu", {
+                homeName: "Ingredient",
+                css: "/css/ingredient-cu.css",
+                errorMessage: null,
+                ingredient: null,
+                categories,
+                measures
+            });
+        }
+    },
+
+    async addIngredient (req, res) {
+        const ingredientBody = req.body;
+        let ingredient = new Ingredient(ingredientBody);
+
+        debug(ingredient);
+        ingredient = await ingredient.add();
+        debug(ingredient);
+        
+        res.redirect("/admin/ingredient");
+    },
+
+    async updateIngredient (req, res) {
+        const ingredientBody = req.body;
+        const ingredientId = req.params.id;
+
+        if(ingredientBody.category_id == ''){
+            ingredientBody.category_id = null;
+        }
+
+        let ingredient = await Ingredient.findOne(ingredientId);
+
+        Object.entries(ingredientBody).forEach(([key, value]) => {
+            ingredient[key] = value;
+        });
+
+        await ingredient.update();
+        
+        res.redirect("/admin/ingredient");
     },
 
 };

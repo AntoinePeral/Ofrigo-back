@@ -45,7 +45,7 @@ const categoryController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
@@ -53,9 +53,17 @@ const categoryController = {
         const categoryId = req.params.id;
         const ingredients = await Ingredient.findAllIngredientCategory(categoryId);
 
-        for(const ingredient of ingredients){
-            ingredient.category_id = null;
-            await ingredient.update();
+        if(ingredients){
+            if(ingredients.length){
+                for(const ingredient of ingredients){
+                    ingredient.category_id = null;
+                    await ingredient.update();
+                }
+            }
+            else{
+                ingredients.category_id = null;
+            }
+
         }
 
         const response = await Category.delete(categoryId);
@@ -82,6 +90,54 @@ const categoryController = {
         else{
             return next(new APIError("Not found", 404));
         }
+    },
+
+    async getCreateCategoryPage (req, res) {
+        const categoryId = req.params.id;
+        const category = await Category.findOne(categoryId);
+
+        if(category){
+            res.render("categorie-cu", {
+                homeName: "Category",
+                css: "/css/categorie-cu.css",
+                errorMessage: null,
+                category
+            });
+        }
+        else{
+            res.render("categorie-cu", {
+                homeName: "Category",
+                css: "/css/categorie-cu.css",
+                errorMessage: null,
+                category: null
+            });
+        }
+    },
+
+    async addCategory (req, res) {
+        const categoryBody = req.body;
+        let category = new Category(categoryBody);
+
+        debug(category);
+        category = await category.add();
+        debug(category);
+        
+        res.redirect("/admin/category");
+    },
+
+    async updateCategory (req, res) {
+        const categoryBody = req.body;
+        const categoryId = req.params.id;
+
+        let category = await Category.findOne(categoryId);
+
+        Object.entries(categoryBody).forEach(([key, value]) => {
+            category[key] = value;
+        });
+
+        await category.update();
+        
+        res.redirect("/admin/category");
     },
 
 };

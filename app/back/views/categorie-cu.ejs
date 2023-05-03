@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+
+<section class="section">
+
+    <h3><%= homeName %></h3>
+
+    <% if(errorMessage) { %>
+        <div class="error">
+            <p><%= errorMessage %></p>
+        </div>
+    <% } %>
+
+    <% if(category) { %>
+
+        <div class="category">
+
+            <form action="/admin/category/update/<%= category.id %>" method="POST">
+    
+                <input type="text" name="label" value="<%= category.label %>" placeholder="Label">
+    
+                <input class="create_category" type="submit" value="Valider">
+
+            </form>
+        </div>
+
+    <% } else { %>
+
+    <div class="category">
+
+        <form action="/admin/category/create" method="POST">
+
+            <input type="text" name="label" placeholder="Label">
+    
+            <input class="create_category" type="submit" value="Valider">
+
+        </form>
+    </div>
+
+    <% } %>
+
+</section>
+
+<%- include('partials/footer') %>

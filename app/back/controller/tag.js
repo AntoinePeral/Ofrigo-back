@@ -47,7 +47,7 @@ const tagController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
@@ -76,6 +76,53 @@ const tagController = {
         }
     },
 
+    async getCreateTagPage (req, res) {
+        const tagId = req.params.id;
+        const tag = await Tag.findOne(tagId);
+
+        if(tag){
+            res.render("tag-cu", {
+                homeName: "Tag",
+                css: "/css/tag-cu.css",
+                errorMessage: null,
+                tag
+            });
+        }
+        else{
+            res.render("tag-cu", {
+                homeName: "Tag",
+                css: "/css/tag-cu.css",
+                errorMessage: null,
+                tag: null
+            });
+        }
+    },
+
+    async addTag (req, res) {
+        const tagBody = req.body;
+        let tag = new Tag(tagBody);
+
+        debug(tag);
+        tag = await tag.add();
+        debug(tag);
+        
+        res.redirect("/admin/tag");
+    },
+
+    async updateTag (req, res) {
+        const tagBody = req.body;
+        const tagId = req.params.id;
+
+        let tag = await Tag.findOne(tagId);
+
+        Object.entries(tagBody).forEach(([key, value]) => {
+            tag[key] = value;
+        });
+
+        await tag.update();
+        
+        res.redirect("/admin/tag");
+    },
 };
 
 module.exports = tagController;

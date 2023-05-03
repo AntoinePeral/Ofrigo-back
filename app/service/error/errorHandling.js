@@ -44,8 +44,12 @@ const errorModule = {
      * @param {function} next Run the next middleware
      * @return {APIError} error
      */
-    _404(_, __, next) {
-        return next(new APIError('404 message', 404));
+    _404(_, res, next) {
+        // return next(new APIError('404 message', 404));
+        res.status(404).render('404', {
+            css: '/css/404.css',
+            homeName: "404"
+        });
     },
 
     /**

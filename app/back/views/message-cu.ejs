@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+
+<section class="section">
+
+    <h3><%= homeName %></h3>
+
+    <% if(errorMessage) { %>
+        <div class="error">
+            <p><%= errorMessage %></p>
+        </div>
+    <% } %>
+
+    <% if(message) { %>
+
+        <div class="message">
+
+            <form action="/admin/message/update/<%= message.id %>" method="POST">
+    
+                <input type="text" name="label" value="<%= message.label %>" placeholder="Label">
+
+                <textarea name="content" cols="30" rows="10" minlength="10" maxlength="20"><%= message.content %></textarea>
+
+                <input type="text" name="email" value="<%= message.email %>" placeholder="Email" hidden>
+
+                <input class="create_message" type="submit" value="Valider">
+
+            </form>
+        </div>
+
+    <% } else { %>
+
+    <div class="message">
+
+        <form action="/admin/message/create" method="POST">
+
+            <input type="text" name="label" placeholder="Label">
+
+            <textarea name="content" cols="" rows=""></textarea>
+
+            <input type="text" name="email" value="<%= locals.userLogin.email %>" placeholder="Email" hidden>
+    
+            <input class="create_message" type="submit" value="Valider">
+
+        </form>
+    </div>
+
+    <% } %>
+
+</section>
+
+<%- include('partials/footer') %>
