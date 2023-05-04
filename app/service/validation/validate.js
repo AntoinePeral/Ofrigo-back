@@ -397,7 +397,6 @@ const validationModule = {
                 next(new APIError(error.message, 400));
             }
             else{
-
                 next();
             }
         };
@@ -412,7 +411,7 @@ const validationModule = {
                     errorMessage: error,
                     css: "/css/login.css",
                     homeName: "Login"
-                })
+                });
             }
             else{
                 next();

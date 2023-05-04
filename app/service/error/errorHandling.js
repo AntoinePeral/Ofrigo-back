@@ -11,7 +11,7 @@ const errorModule = {
      * @param {object} req  Express req -Express resquest
      * @param {object} res Express response. Send a response to the client
      */
-    async manage(err, req, res) {
+    async manage(err, req, res, next) {
         await errorModule.log(err, req.url);
         if (!err.message) {
             switch (err.code) {
