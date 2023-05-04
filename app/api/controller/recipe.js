@@ -7,8 +7,9 @@ const recipeController = {
     /**
      * Get all recipes and return json Objects in array
      * @param {*} _ 
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async getAllRecipe (_, res, next){
         const recipes = await Recipe.findAll();
@@ -30,9 +31,10 @@ const recipeController = {
 
     /**
      * Get one recipe by his id and return json Object. It contains ingredients, steps, tags and category 
-     * @param {*} req use request to get the params.id
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async getRecipeById (req, res, next){
         const recipeId = req.params.id;
@@ -51,9 +53,10 @@ const recipeController = {
 
         /**
      * Get one recipe by his id and return json Object. It contains ingredients, steps, tags and category 
-     * @param {*} req use request to get the params.id
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async addRecipe (req, res, next) {
         const recipeBody = req.body;
@@ -66,15 +69,16 @@ const recipeController = {
             res.status(200).json(recipe);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("L'ajout d'une recette a échoué", 400));
         }
     },
 
     /**
      * Update a recipe and return an object
-     * @param {*} req use request to get the params.id
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async updateRecipe (req, res, next) {
         const recipeId = req.params.id;
@@ -83,7 +87,6 @@ const recipeController = {
       
         for (const value in recipeBody) {
             recipe[value] = recipeBody[value];
-            console.log(recipe[value])
         }
 
 
@@ -102,15 +105,16 @@ const recipeController = {
             res.status(200).json(newRecipe);
         }
         else{
-            return next(new APIError("Erreur sur l'update de la recette", 400));
+            return next(new APIError("La modification de la recette a échoué ", 400));
         }
     },
 
     /**
      * Delete one recipe by his id and return an string
-     * @param {*} req use request to get the params.id
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async deleteRecipe (req, res, next) {
         const recipeId = req.params.id;
@@ -122,10 +126,18 @@ const recipeController = {
             res.status(200).json('Succes');
         }
         else{
-            return next(new APIError("Bad request, aucune recette trouvée", 400));
+            return next(new APIError("La suppression de la recette a échoué", 400));
         }
     },
 
+    /**
+     * Add an ingredient to a recipe
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {object} return an json recipe
+     * @returns {APIError} return error
+     */
     async addIngredientToRecipe (req, res, next) {
         const recipeId = req.params.id;
         const { ingredient_id, ingredient_quantity } = req.body;
@@ -148,14 +160,21 @@ const recipeController = {
             return res.status(200).json(recipe);
         }
         else{
-            return next(new APIError("L'ingrédient est déjà rentré en BDD", 400));
+            return next(new APIError("L'ingrédient est existe déjà en base de donnée", 400));
         }
     },
 
+    /**
+     * Modify an ingredient of a recipe
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {object} return an json recipe
+     * @returns {APIError} return error
+     */
     async updateIngredientOfRecipe (req, res, next) {
         const recipeId = req.params.id;
         const { ingredient_id, ingredient_quantity } = req.body;
-        console.log(req.body);
         let recipe = await Recipe.findOne(recipeId);
         const ingredient = await Ingredient.findOne(ingredient_id);
         let validation;
@@ -175,10 +194,18 @@ const recipeController = {
             return res.status(200).json(recipe);
         }
         else{
-            return next(new APIError("L'ingrédient sélectionné n'est pas enregistré en BDD", 500));
+            return next(new APIError("L'ingrédient sélectionné n'est pas enregistré en base de donnée", 500));
         }
     },
 
+    /**
+     * Delete an ingredient of a recipe
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {object} return an json recipe
+     * @returns {APIError} return error
+     */
     async deleteIngredientOfRecipe (req, res, next) {
         const { recipeId, ingredientId } = req.params;
         let recipe = await Recipe.findOne(recipeId);
@@ -199,7 +226,7 @@ const recipeController = {
             return res.status(200).json(recipe);
         }
         else{
-            return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
+            return next(new APIError("La suppression de l'ingrédient a échoué", 400)); 
         }
     }
 

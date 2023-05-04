@@ -4,8 +4,8 @@ const nameFormat = /^[a-zA-Z\u00C0-\u00FF-\-_]{2,100}$/u;
 const emailFormat = /^[\w\-_]+(\.[\w\-_]+)?@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)?\.[a-z]{2,}$/u;
 const passwordFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&\/$.#!?§:;+\-%])[A-Za-z\d!?:;@$!%*?&\/$.#%\-]{8,}$/u;
 const roleFormat = /^(user|admin)$/u;
-const titleFormat = /^[a-zA-Z0-9\s_,.!-]{2,100}$/u;
-const littleTitleFormat = /^[a-zA-Z0-9\s_,.!-]{2,50}$/u;
+const titleFormat = /^[a-zA-Z0-9\s_,.!-'"?]{2,100}$/u;
+const littleTitleFormat = /^[a-zA-Z0-9\s_,.!-'"?]{2,50}$/u;
 const unitFormat = /^[a-z.à-ÿ]{1,20}$/u;
 
 const adminAccountSchema = Joi.object({
@@ -80,8 +80,8 @@ const ingredientSchema = Joi.object({
     }),
     // picture: Joi.string().required(),
     unit: Joi.string().pattern(unitFormat).messages({
-        'string.pattern.base': "Les unités de mesure ne respecte pas le nombre de caractère (max20) ou caractères non autorisés",
-        'string.empty': 'Le champ unités de mesure ne peut pas être vide'
+        'string.pattern.base': "Les unités de mesure ne respecte pas le nombre de caractère (max20) ou caractères non autorisés"
+        // 'string.empty': 'Le champ unités de mesure ne peut pas être vide'
     }),
     category_id: Joi.number().allow(null, '').messages({
         'any.empty': 'Le champ catégorie ne peut pas être vide',
@@ -151,7 +151,7 @@ const stepSchema = Joi.object({
 const account_has_ingredientSchema = Joi.object({
     ingredient_id: Joi.number().min(1).required().messages({
         'number.empty': 'Un ingrédient doit être sélectionné',
-        'any.required': 'Pour ajouter un utilisateur un ingrédient est requis'
+        'any.required': 'Un ingrédient est requis'
     }),
 });
 

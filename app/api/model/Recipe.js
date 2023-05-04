@@ -93,6 +93,12 @@ class Recipe extends CoreModel{
         return response.rowCount;
     };
 
+    /**
+     * Delete a tag from a recipe
+     * @param {*} recipe_id 
+     * @param {*} tag_id 
+     * @returns returns a validation of the deletion
+     */
     static async deleteTagFromRecipe (recipe_id, tag_id){
         const query = {
             text: `DELETE FROM recipe_has_tag WHERE recipe_id=$1 AND tag_id=$2;`,

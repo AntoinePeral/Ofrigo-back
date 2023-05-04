@@ -7,12 +7,11 @@ const authentificationModule = require ("../../service/middleware/authToken")
 const loginController = {
 
   /**
-   * Allows a admin to log in
-   * @param {*} req req use request to get the body
-   * @param {*} res use it to response to the client
-   * @param {*} next use it to return an error
+   * Render the sign in page - Allows a admin to log in
+   * @param {object} req  Express req -req use request to get the body
+   * @param {object} res Express response
    */
-  async signIn(req, res, next) {
+  async signIn(req, res) {
     const { email, password } = req.body;
 
     if(!email || !password){
@@ -48,7 +47,12 @@ const loginController = {
     }
   },
 
-  loginAdmin (_, res, next) {
+  /**
+   * Render the login admin page
+   * @param {*} _ 
+   * @param {res} res  Express response 
+   */
+  loginAdmin (_, res) {
     res.render("login", {
       homeName: "Login",
       css: "/css/login.css",
@@ -56,6 +60,11 @@ const loginController = {
     });
   },
 
+  /**
+   * Logout the admin
+   * @param {req} req Express request
+   * @param {res} res  Express response 
+   */
   logOut: (req, res) => {
     req.session.userId = null;
     res.redirect('/admin/login');

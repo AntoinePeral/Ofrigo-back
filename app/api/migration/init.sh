@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Drop, DB and User, then create DB and User. Then initialize sqitch, add sqitch versions and call sqitch deploy
 export PGUSER=postgres
 
 dropdb ofrigo

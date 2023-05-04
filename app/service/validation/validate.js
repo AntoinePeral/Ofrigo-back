@@ -19,16 +19,17 @@ const {
 const validationModule = {
 
     /**
-     * Validate schema user
-     * @param {*} param 
-     * @returns 
+     * Validate the user account schema in order to create it
+     * @param {*} param the body enter in the form
+     * @param {req} req Express' request
+     * @param {next} next call the next middleware
+     * @returns {APIError} error
      */
     validateUserAccount(param){
-        return (req, res, next) => {
+        return (req, next) => {
             const { error } = userAccountSchema.validate(req[param]);
             
             if (error) {
-                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else{
@@ -46,7 +47,6 @@ const validationModule = {
             const { error } = adminAccountSchema.validate(req[param]);
 
             if (error) {
-                console.log(error.message);
                 res.render('account-cu', {
                     errorMessage: error,
                     css: "/css/account-cu.css",
@@ -55,7 +55,6 @@ const validationModule = {
                 })
             }
             else{
-                console.log("je suis dans le next du validate body");
                 next();
             }
         };
@@ -71,7 +70,6 @@ const validationModule = {
             const { error } = categorySchema.validate(req[param]);
 
             if (error) {
-                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else{
@@ -108,7 +106,6 @@ const validationModule = {
             const { error } = ingredientSchema.validate(req[param]);
 
             if (error) {
-                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else{
@@ -149,7 +146,6 @@ const validationModule = {
             const { error } = messageSchema.validate(req[param]);
 
             if (error) {
-                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else{
@@ -187,7 +183,6 @@ const validationModule = {
             const { error } = messageSchemaUser.validate(req[param]);
 
             if (error) {
-                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else{
@@ -206,7 +201,6 @@ const validationModule = {
             const { error } = tagSchema.validate(req[param]);
 
             if (error) {
-                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else{
@@ -243,7 +237,6 @@ const validationModule = {
             const { error } = stepSchema.validate(req[param]);
 
             if (error) {
-                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else{
@@ -278,8 +271,7 @@ const validationModule = {
         return (req, res, next) => {
             const { error } = account_has_ingredientSchema.validate(req[param]);
 
-            if (error) {recipeSchema
-                console.log(error.message);
+            if (error) {
                 next(new APIError(error.message, 400));
             }
             else{
@@ -315,7 +307,6 @@ const validationModule = {
             const { error } = recipe_has_ingredient_with_quantity.validate(req[param]);
 
             if (error) {
-                console.log(error.message);
                 next(new APIError(error.message, 400));
             }
             else{

@@ -13,6 +13,11 @@ class Step extends CoreModel{
         this.content = obj.content;
     };
 
+    /**
+     * Delete a step from a recipe
+     * @param {*} step_id 
+     * @returns a validation of the deletion
+     */
     static async deleteStepFromRecipe (step_id){
         const query = {
             text: `DELETE FROM step WHERE id=$1;`,

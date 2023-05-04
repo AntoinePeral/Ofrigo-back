@@ -5,6 +5,12 @@ const { Tag, Recipe } = require("../../api/model");
 
 const tagController = {
 
+    /**
+     * Render a list of all tags
+     * @param {*} _ 
+     * @param {res} res  Express response 
+     * @param {function} next call the next middleware (404)
+     */
     async getAllTagPage(_, res, next){
         const tags = await Tag.findAll(); 
 
@@ -21,10 +27,16 @@ const tagController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
+    /**
+     * Render a single detail tag page
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     * @param {function} next call the next middleware (404)
+     */
     async getTagPage (req, res, next) {
         const tagId = req.params.id;
         const tag = await Tag.findOne(tagId);
@@ -51,6 +63,13 @@ const tagController = {
         }
     },
 
+    /**
+     * Delete a tag as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     * @param {function} next 
+     * @returns {APIError} error
+     */
     async deleteTag (req, res, next) {
         const tagId = req.params.id;
         const response = await Tag.delete(tagId);
@@ -59,10 +78,16 @@ const tagController = {
             res.redirect("/admin/tag");
         }
         else{
-            return next(new APIError("Not found", 404));
+            return next(new APIError("La suppression d'un tag a échoué", 400));
         }
     },
 
+    /**
+     * Remove a recipe from a tag as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     * @param {function} next call the next middleware (404)
+     */
     async removeRecipeFromTag (req, res, next) {
         const tagId = req.params.tagId;
         const recipeId = req.params.recipeId;
@@ -72,10 +97,15 @@ const tagController = {
             res.redirect(`/admin/tag/${tagId}`);
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
+    /**
+     * Render the create/update page 
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async getCreateTagPage (req, res) {
         const tagId = req.params.id;
         const tag = await Tag.findOne(tagId);
@@ -98,6 +128,11 @@ const tagController = {
         }
     },
 
+    /**
+     * Add a tag as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async addTag (req, res) {
         const tagBody = req.body;
         let tag = new Tag(tagBody);
@@ -109,6 +144,11 @@ const tagController = {
         res.redirect("/admin/tag");
     },
 
+    /**
+     * Update a tag as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async updateTag (req, res) {
         const tagBody = req.body;
         const tagId = req.params.id;

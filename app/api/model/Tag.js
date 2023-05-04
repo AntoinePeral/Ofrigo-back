@@ -17,6 +17,12 @@ class Tag extends CoreModel{
         this.updated_at = obj.updated_at;
     };
 
+    /**
+     * delete a recipe from a tag
+     * @param {*} tag_id 
+     * @param {*} recipe_id 
+     * @returns a validation of the deletion
+     */
     static async deleteRecipeFromTag (tag_id, recipe_id) {
         const query = {
             text: `DELETE FROM recipe_has_tag WHERE tag_id=$1 AND recipe_id=$2;`,

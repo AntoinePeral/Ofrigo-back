@@ -5,6 +5,12 @@ const { Ingredient, Category, CoreModel } = require("../../api/model");
 
 const ingredientController = {
 
+    /**
+     * Render a list of all ingredients
+     * @param {*} _ 
+     * @param {res} res  Express response 
+     * @param {function} next call the next middleware (404)
+     */
     async getAllIngredientPage (_, res, next) {
         const ingredients = await Ingredient.findAll();
 
@@ -21,10 +27,16 @@ const ingredientController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
+    /**
+     * Render a detail ingredient page
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     * @param {function} next call the next middleware (404)
+     */
     async getIngredientPage (req, res, next) {
         const ingredientId = req.params.id;
         const ingredient = await Ingredient.findOne(ingredientId);
@@ -44,6 +56,13 @@ const ingredientController = {
         }
     },
 
+    /**
+     * Delete an ingredient as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     * @param {function} next
+     * @returns {APIError} error
+     */
     async deleteIngredient (req, res, next) {
         const ingredientId = req.params.id;
         const response = await Ingredient.delete(ingredientId);
@@ -52,10 +71,15 @@ const ingredientController = {
             res.redirect("/admin/ingredient");
         }
         else{
-            return next(new APIError("Not found", 404));
+            return next(new APIError("La suppression de l'ingrédient a échoué", 400));
         }
     },
 
+    /**
+     * Render a create/update ingredient page
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async getCreateIngredientPage (req, res) {
         const ingredientId = req.params.id;
         const ingredient = await Ingredient.findOne(ingredientId);
@@ -84,6 +108,11 @@ const ingredientController = {
         }
     },
 
+    /**
+     * Add ingredient as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async addIngredient (req, res) {
         const ingredientBody = req.body;
         let ingredient = new Ingredient(ingredientBody);
@@ -95,6 +124,11 @@ const ingredientController = {
         res.redirect("/admin/ingredient");
     },
 
+    /**
+     * Update an ingredient as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async updateIngredient (req, res) {
         const ingredientBody = req.body;
         const ingredientId = req.params.id;

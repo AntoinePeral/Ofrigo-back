@@ -5,6 +5,12 @@ const { Recipe, Ingredient, Tag, Step } = require("../../api/model");
 
 const recipeController = {
 
+    /**
+     * Render a list of all recipes
+     * @param {*} _ 
+     * @param {res} res  Express response 
+     * @param {function} next call the next middleware (404)
+     */
     async getAllRecipePage(_, res, next){
         const recipes = await Recipe.findAll();
 
@@ -21,10 +27,16 @@ const recipeController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
+    /**
+     * Render a single recipe detail page
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     * @param {function} next call the next middleware (404)
+     */
     async getRecipePage (req, res, next) {
         const recipeId = req.params.id;
         const recipe = await Recipe.findOne(recipeId);
@@ -63,6 +75,11 @@ const recipeController = {
         }
     },
 
+    /**
+     * Delete a recipe as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async deleteRecipe (req, res) {
         const recipeId = req.params.id;
         const response = await Recipe.delete(recipeId);
@@ -71,10 +88,17 @@ const recipeController = {
             res.redirect("/admin/recipe");
         }
         else{
-            return next(new APIError("Not found", 404));
+             next();
         }
     },
 
+    /**
+     * Remove an ingredient from a recipe
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     * @param {function} next 
+     * @returns {APIError} error
+     */
     async removeIngredientFromRecipe (req, res, next) {
         const { recipeId, ingredientId } = req.params;
         const recipe = await Recipe.findOne(recipeId);
@@ -87,7 +111,7 @@ const recipeController = {
                 res.redirect(`/admin/recipe/${recipeId}`);
             }
             else{
-                return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
+                return next(new APIError("la suppression d'un ingrédient a échoué", 400)); 
             }
         }
         else{
@@ -95,6 +119,13 @@ const recipeController = {
         }
     },
 
+    /**
+     * Remove a step from a recipe
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     * @param {function} next 
+     * @returns {APIError} error
+     */
     async removeStepFromRecipe (req, res, next) {
         const { recipeId, stepId } = req.params;
         const recipe = await Recipe.findOne(recipeId);
@@ -106,14 +137,21 @@ const recipeController = {
                 res.redirect(`/admin/recipe/${recipeId}`);
             }
             else{
-                return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
+                return next(new APIError("La suppression d'une étape a échoué", 400)); 
             }
         }
         else{
-            return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
+            return next(new APIError("Aucune étape n'est sélectionnée", 400)); 
         }
     },
 
+    /**
+     * Remove a tag from a recipe
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     * @param {function} next 
+     * @returns {APIError} error
+     */
     async removeTagFromRecipe (req, res, next) {
         const { recipeId, tagId } = req.params;
         const recipe = await Recipe.findOne(recipeId);
@@ -126,14 +164,19 @@ const recipeController = {
                 res.redirect(`/admin/recipe/${recipeId}`);
             }
             else{
-                return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
+                return next(new APIError("La suppression d'un tag a échoué", 400)); 
             }
         }
         else{
-            return next(new APIError("Aucun ingrédient n'est sélectionné", 400)); 
+            return next(new APIError("Aucun tag n'est sélectionné", 400)); 
         }
     },
 
+    /**
+     * Render the create/update page 
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async getCreateRecipePage (req, res) {
         const recipeId = req.params.id;
         const recipe = await Recipe.findOne(recipeId);
@@ -156,6 +199,11 @@ const recipeController = {
         }
     },
 
+    /**
+     * Add a recipe as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async addRecipe (req, res) {
         const recipeBody = req.body;
         let recipe = new Recipe(recipeBody);
@@ -167,6 +215,11 @@ const recipeController = {
         res.redirect("/admin/recipe");
     },
 
+    /**
+     * Update a recipe as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async updateRecipe (req, res) {
         const recipeBody = req.body;
         const recipeId = req.params.id;

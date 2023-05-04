@@ -7,8 +7,9 @@ const tagController = {
     /**
      * Get all tags and return json Objects in array
      * @param {*} _ 
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async getAllTag (_, res, next){
         const tag = await Tag.findAll();
@@ -18,15 +19,16 @@ const tagController = {
             res.status(200).json(tag);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("Aucun tag n'a été trouvé", 400 ));
         }
     },
 
     /**
      * Get one tag by his id and return json Object.
-     * @param {*} req use request to get the params.id
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async getTagById (req, res, next){
         const tagId = req.params.id;
@@ -37,15 +39,16 @@ const tagController = {
             res.status(200).json(tag);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("Aucun tag n'a été trouvé", 400 ));
         }
     },
 
     /**
      * Add a tag and return an object
-     * @param {*} req use request to get the params.id
-     * @param {*} res use it to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async addTag (req, res, next) {
         const tagBody = req.body;
@@ -58,15 +61,16 @@ const tagController = {
             res.status(200).json(tag);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("L'ajout d'un tag a échoué", 400 ));
         }
     },
 
     /**
      * Update a tag and return an object
-     * @param {*} req req use request to get the params.id
-     * @param {*} res use it to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -req use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async updateTag (req, res, next) {
         const tagId = req.params.id;
@@ -86,15 +90,16 @@ const tagController = {
             res.status(200).json(newTag);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("La modification d'un tag a échoué", 400 ));
         }
     },
 
     /**
      * Delete one tag by his id and return an string
-     * @param {*} req req use request to get the params.id
-     * @param {*} res use it to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -req use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async deleteTag (req, res, next) {
         const tagId = req.params.id;
@@ -105,7 +110,7 @@ const tagController = {
             res.status(200).json('Succes');
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("La suppression d'un tag a échoué", 500));
         }
     },
     

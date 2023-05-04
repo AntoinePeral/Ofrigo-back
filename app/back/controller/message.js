@@ -5,6 +5,12 @@ const { Message } = require("../../api/model");
 
 const messageController = {
 
+    /**
+     * Render the list of all messages
+     * @param {*} _ 
+     * @param {res} res  Express response 
+     * @param {function} next call the next middleware (404)
+     */
     async getAllMessagePage(_, res, next){
         const messages = await Message.findAll();
 
@@ -21,10 +27,16 @@ const messageController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
+    /**
+     * Render a detail message page
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     * @param {function} next call the next middleware (404)
+     */
     async getMessagePage(req, res, next){
         const messageId = req.params.id;
         const message = await Message.findOne(messageId);
@@ -44,6 +56,13 @@ const messageController = {
         }
     },
 
+    /**
+     * Delete a message as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     * @param {function} next 
+     * @returns {APIError} error
+     */
     async deleteMessage (req, res, next) {
         const messageId = req.params.id;
         const response = await Message.delete(messageId);
@@ -52,10 +71,15 @@ const messageController = {
             res.redirect("/admin/message");
         }
         else{
-            return next(new APIError("Not found", 404));
+            return next(new APIError("La suppression du message a échoué", 400));
         }
     },
 
+    /**
+     * Render the create/update page 
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async getCreateMessagePage (req, res) {
         const messageId = req.params.id;
         const message = await Message.findOne(messageId);
@@ -78,11 +102,14 @@ const messageController = {
         }
     },
 
+    /**
+     * Send a message as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async addMessage (req, res) {
         const messageBody = req.body;
         let message = new Message(messageBody);
-
-        console.log("--------------",message);
 
         debug(message);
         message = await message.add();
@@ -91,6 +118,11 @@ const messageController = {
         res.redirect("/admin/message");
     },
 
+    /**
+     * Update a message as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response 
+     */
     async updateMessage (req, res) {
         const messageBody = req.body;
         const messageId = req.params.id;

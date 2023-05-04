@@ -49,7 +49,7 @@ class Ingredient extends CoreModel{
      * Get one ingredients at user stock
      * @param {int} accountId 
      * @param {int} ingredientId 
-     * @returns 
+     * @returns an instance
      */
     static async findOneIngredientUser (accountId, ingredientId){
         const query = {
@@ -70,6 +70,11 @@ class Ingredient extends CoreModel{
         }
     };
 
+    /**
+     * Find all ingredient from a category
+     * @param {*} category_id 
+     * @returns an array of objects
+     */
     static async findAllIngredientCategory(category_id) {
         const query = {
             text: `SELECT * FROM ingredient WHERE category_id=$1;`,

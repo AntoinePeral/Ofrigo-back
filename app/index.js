@@ -51,6 +51,6 @@ app.use(
 );
 
 app.use(home.menu, errorModule._404);
-app.use(errorModule.manage);
+// app.use(errorModule.manage);
 
 module.exports = app;

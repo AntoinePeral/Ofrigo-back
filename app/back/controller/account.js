@@ -7,6 +7,12 @@ const { locale } = require("dayjs");
 
 const accountController = {
 
+    /**
+     * Render list of all accounts
+     * @param {*} _ 
+     * @param {res} res Express response
+     * @param {function} next call the next middleware (404)
+     */
     async getAllAccountPage (_, res, next) {
         const accounts = await Account.findAll();    
 
@@ -23,10 +29,16 @@ const accountController = {
             });
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
+    /**
+     * Render a single account profile page
+     * @param {req} req Express request
+     * @param {res} res  Express response
+     * @param {function} next call the next middleware (404)
+     */
     async getAccountPage (req, res, next) {
         const accountId = req.params.id;
         const account = await Account.findOne(accountId);
@@ -48,8 +60,6 @@ const accountController = {
                 }
             }
 
-            console.log(account);
-
             res.render("account", {
                 homeName: "Account",
                 account,
@@ -61,6 +71,12 @@ const accountController = {
         }
     },
 
+    /**
+     * Render an admin profile page
+     * @param {req} req Express request
+     * @param {res} res  Express response
+     * @param {function} next call the next middleware (404)
+     */
     async getAdminPage (req, res, next) {
         const name = req.params.name;
         const account = await Account.findOne(req.session.user.id);
@@ -93,6 +109,12 @@ const accountController = {
         }
     },
 
+    /**
+     * Delete an existing account
+     * @param {req} req Express request
+     * @param {res} res  Express response
+     *  @param {function} next call the next middleware (404)
+     */
     async deleteAccount (req, res, next) {
         const accountId = req.params.id;
         const response = await Account.delete(accountId);
@@ -101,10 +123,17 @@ const accountController = {
             res.redirect("/admin/account");
         }
         else{
-            return next(new APIError("Not found", 404));
+            next();
         }
     },
 
+    /**
+     * Delete a message from an account
+     * @param {req} req Express request
+     * @param {res} res  Express response
+     * @param {function} next call the next middleware (404)
+     * @returns {APIError} error
+     */
     async deleteMessageToAccount (req, res, next){
         const accountId = req.params.accountId;
         const messageId = req.params.messageId;
@@ -117,14 +146,21 @@ const accountController = {
                 res.redirect(`/admin/account/${accountId}`);
             }
             else{
-                return next(new APIError("Not found", 404));
+                next();
             }
         }
         else{
-            return next(new APIError("Not found", 404));
+            return next(new APIError("La suppression d'un message a échoué", 400));
         }
     },
 
+    /**
+     * Delete an ingredient from an account
+     * @param {req} req Express request
+     * @param {res} res  Express response
+     * @param {function} next call the next middleware (404)
+     * @returns {APIError} error
+     */
     async deleteIngredientToAccount (req, res, next){
         const accountId = req.params.accountId;
         const ingredientId = req.params.ingredientId;
@@ -137,14 +173,18 @@ const accountController = {
                 res.redirect(`/admin/account/${accountId}`);
             }
             else{
-                return next(new APIError("Not found", 404));
+                next();
             }
         }
         else{
-            return next(new APIError("Not found", 404));
+            return next(new APIError("La suppression d'un ingrédient a échoué", 400));
         }
     },
-
+    /**
+     * Render a page to create/update account as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response
+     */
     async getAddAdminAccountPage (req, res) {
         const accoutId = req.params.id;
         const account = await Account.findOne(accoutId);
@@ -168,11 +208,9 @@ const accountController = {
     },
 
     /**
-     * Register a new admin account in DB. Role is already defined as admin in this function
-     * @param {object} req use the req to get the body object which contains the informations of the new account and the new JWT token
-     * @param {object} res use to response to the client. Send an JSON object
-     * @param {function} next call the APIError if an error is dectected
-     * @returns {APIError} return an error
+     * Register a new account as admin in DB.
+     * @param {object} req  Express req -use the req to get the body object which contains the informations of the new account
+     * @param {object} res Express res -use to response to the client. Send an JSON object
      */
     async addAdminAccount (req, res) {
         const accountBody = req.body;
@@ -203,6 +241,11 @@ const accountController = {
         }
     },
 
+    /**
+     * Update an account as admin
+     * @param {req} req Express request
+     * @param {res} res  Express response
+     */
     async updateAccount (req, res) {
         const accountBody = req.body;
         const accountId = req.params.id;

@@ -7,8 +7,9 @@ const categoryController = {
     /**
      * Get all categories return json Objects in array
      * @param {*} _ 
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async getAllCategory (_, res, next){
         const category = await Category.findAll();
@@ -18,15 +19,16 @@ const categoryController = {
             res.status(200).json(category);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("Aucune catégorie n'a été trouvée", 400));
         }
     },
 
     /**
      * Get one category by his id json return Object
-     * @param {*} req use request to get the params.id
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async getCategoryById (req, res, next){
         const categoryId = req.params.id;
@@ -37,15 +39,16 @@ const categoryController = {
             res.status(200).json(category);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("Aucune catégorie n'a été trouvé", 400));
         }
     },
 
     /**
      * Add a category and return an object
-     * @param {*} req use request to get the params.id
-     * @param {*} res use it to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async addCategory (req, res, next) {
         const categoryBody = req.body;
@@ -58,15 +61,16 @@ const categoryController = {
             res.status(200).json(category);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("Erreur lors de la création d'une catégorie", 400));
         }
     },
 
     /**
      * Update a category and return an object
-     * @param {*} req req use request to get the params.id
-     * @param {*} res use it to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -req use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async updateCategory (req, res, next) {
         const categoryId = req.params.id;
@@ -86,15 +90,16 @@ const categoryController = {
             res.status(200).json(newCategory);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("Erreur lors de la mise à jour de la catégorie", 400));
         }
     },
 
     /**
      * Delete one category by his id and return an string
-     * @param {*} req req use request to get the params.id
-     * @param {*} res use it to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -req use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async deleteCategory (req, res, next) {
         const categoryId = req.params.id;
@@ -105,7 +110,7 @@ const categoryController = {
             res.status(200).json('Succes');
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("La catégorie n'a pas pu être supprimé", 400));
         }
     },
     

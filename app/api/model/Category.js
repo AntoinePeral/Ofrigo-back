@@ -16,6 +16,9 @@ class Category extends CoreModel{
         this.updated_at = obj.updated_at;
     };
 
+    /**
+     * Add an ingredient into a category
+     */
     // async addIngredientIntoCategory(label, ingredient){
     //     const query = {
     //         text: `INSERT INTO category (label, ingredient) VALUES ($1, $2) RETURNING *;`,

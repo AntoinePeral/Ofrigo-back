@@ -14,9 +14,9 @@ const authentificationModule = {
 
   /**
    * Verify if the JWT token is valid
-   * @param {*} req used to get the headers and the token JWT
+   * @param {object} req  Express req -used to get the headers and the token JWT
    * @param {*} _ 
-   * @param {*} next Run the next middleware
+   * @param {function} next Run the next middleware
    * @returns {APIError} error if an error is detected
    */
   authenticateToken(req, res, next) {

@@ -214,8 +214,7 @@ class CoreModel {
         
         try {
             response = await ofrigo.query(query, values);
-            console.log(response);
-            // debug(response);
+            debug(response);
         } catch (error) {
             console.log(error);
         }
@@ -225,6 +224,7 @@ class CoreModel {
 
     /**
      * General function that allows you to update
+     * @param {object} privateFields 
      * @returns an instance
      */
     async update (privateFields = null) {
@@ -326,16 +326,14 @@ class CoreModel {
         }
 
         const query = `UPDATE ${this.constructor.tableName} SET ${fields.join()} WHERE id='${this.id}' RETURNING *;`;
-        console.log(query);
-        console.log(fields);
-        console.log(values);
         const response = await ofrigo.query(query, values);
 
         return response.rows[0];
     };
 
     /**
-     * General function that allows you to delete
+     * General function that allows you to delete by id
+     * @param {int} id 
      * @returns an instance
      */
     static async delete (id) {
@@ -357,7 +355,7 @@ class CoreModel {
     /**
      * Create an admin account
      * @param {object} privateFields 
-     * @returns 
+     * @returns an instance
      */
     async addAdmin (privateFields = null){
         const fields = []; 
@@ -400,6 +398,10 @@ class CoreModel {
         return response.rows[0];
     };
 
+    /**
+     * Find tableName in DB
+     * @returns an array of tableName
+     */
     static async findTableName(){
         const query = `SELECT 
         TABLE_NAME
@@ -425,11 +427,15 @@ class CoreModel {
         }
     };
 
+    /**
+     * Find unit measure in DB
+     * @returns an array of object unit measure
+     */
     static async findMeasure () {
         const query = `SELECT unnest(enum_range(NULL::measure)) AS label;`
 
         try{
-            const response = await ofrigo.query(query);
+            const response = await ofrigo.query(query);;
             return response.rows;
         }catch(error){
             console.log(error);

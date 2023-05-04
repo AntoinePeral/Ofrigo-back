@@ -1,6 +1,9 @@
 const session = require('express-session');
 const { Account } = require("../../api/model");
 
+/**
+ * Setup the session 
+ */
 const setupSession = session({
     secret: process.env.TOKEN_SECRET,
     resave: false,// Forcer la session a être enregistrée dans le session store, meme si la session n'a pas été modifiée pendant la requête
@@ -8,6 +11,12 @@ const setupSession = session({
     cookie: { secure: false }//Pour le HTTP(false)/HTTPS(true)
 });
 
+/**
+ * Add user to locals to be used on all the views
+ * @param {req} req Express request
+ * @param {res} res  Express response
+ * @param {function} next call the next middleware
+ */
 async function addUserToLocals(req, res, next) {
     const userId = req.session.userId;
     const user = await Account.findOne(userId);
@@ -18,9 +27,6 @@ async function addUserToLocals(req, res, next) {
 
     req.session.user = user;
     res.locals.userLogin = user;
-
-    console.log("locals",res.locals.userLogin);
-    // console.log("locals2 avec req",req.locals.userLogin.email);
     
     next();
 }

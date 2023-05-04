@@ -8,11 +8,10 @@ const errorModule = {
     /**
      * Method mananging errors
      * @param {*} err Errors
-     * @param {object} req Express resquest
+     * @param {object} req  Express req -Express resquest
      * @param {object} res Express response. Send a response to the client
-     * @param {function} next Run the next middleware
      */
-    async manage(err, req, res, next) {
+    async manage(err, req, res) {
         await errorModule.log(err, req.url);
         if (!err.message) {
             switch (err.code) {
