@@ -4,8 +4,8 @@ const nameFormat = /^[a-zA-Z\u00C0-\u00FF-\-_]{2,100}$/u;
 const emailFormat = /^[\w\-_]+(\.[\w\-_]+)?@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)?\.[a-z]{2,}$/u;
 const passwordFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&\/$.#!?§:;+\-%])[A-Za-z\d!?:;@$!%*?&\/$.#%\-]{8,}$/u;
 const roleFormat = /^(user|admin)$/u;
-const titleFormat = /^[a-zA-Z0-9\s_,.!-'"?]{2,100}$/u;
-const littleTitleFormat = /^[a-zA-Z0-9\s_,.!-'"?]{2,50}$/u;
+const titleFormat = /^[a-zA-Z0-9\u00C0-\u00FF-\s_,.!-'"?]{2,100}$/u;
+const littleTitleFormat = /^[a-zA-Z0-9\u00C0-\u00FF-\s_,.!-'"?]{2,50}$/u;
 const unitFormat = /^[a-z.à-ÿ]{1,20}$/u;
 
 const adminAccountSchema = Joi.object({

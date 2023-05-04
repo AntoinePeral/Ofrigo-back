@@ -14,7 +14,7 @@
         </ul>
         <div class="update-delete">
             <% if(message.email !== locals.userLogin.email) { %>
-                <a class="icones-message icones-answer" href="mailto:<%= message.email %>"><img src="/picture/icones/5.png" alt="answer"></a>
+                <a class="icones-message icones-answer" href="https://mail.google.com/mail/?view=cm&fs=1&to=<%= message.email %>" target="_blank"><img src="/picture/icones/5.png" alt="answer"></a>
             <% }%>
             <% if(message.email == locals.userLogin.email) { %>
                 <a class="icones-message" href="/admin/message/update/<%= message.id %>"><img src="/picture/icones/2.png" alt="Update"></a>
