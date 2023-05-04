@@ -36,21 +36,22 @@ app.use(
   recipe, 
   message, 
   tag, 
-);
-app.use(middlewares.setupSession);
-app.use(middlewares.addUserToLocals);
-app.use(
-  loginAdmin, 
-  homeRouter, 
-  categoryRouter, 
-  ingredientRouter, 
-  messageRouter, 
-  tagRouter,
-  recipeRouter,
-  accountRouter,
-);
+  );
+  app.use(middlewares.setupSession);
+  app.use(middlewares.addUserToLocals);
+  app.use(
+    loginAdmin, 
+    homeRouter, 
+    categoryRouter, 
+    ingredientRouter, 
+    messageRouter, 
+    tagRouter,
+    recipeRouter,
+    accountRouter,
+    );
 
-app.use(home.menu, errorModule._404);
-// app.use(errorModule.manage);
+app.use(errorModule._404);
+app.use(home.menu, errorModule.notFound);
+app.use(errorModule.manage);
 
 module.exports = app;

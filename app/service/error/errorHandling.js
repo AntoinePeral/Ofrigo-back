@@ -11,7 +11,8 @@ const errorModule = {
      * @param {object} req  Express req -Express resquest
      * @param {object} res Express response. Send a response to the client
      */
-    async manage(err, req, res) {
+    async manage(err, req, res, next) {
+        console.log('je suis dans le error manage');
         await errorModule.log(err, req.url);
         if (!err.message) {
             switch (err.code) {
@@ -36,6 +37,7 @@ const errorModule = {
         }
 
     },
+
     /**
      * Method to manage 404 error
      * @param {*} _ 
@@ -44,6 +46,15 @@ const errorModule = {
      * @return {APIError} error
      */
     _404(_, res, next) {
+        return next(new APIError('404 message', 404));
+        // res.status(404).render('404', {
+        //     css: '/css/404.css',
+        //     homeName: "404"
+        // });
+    },
+
+
+    notFound(_, res, next) {
         // return next(new APIError('404 message', 404));
         res.status(404).render('404', {
             css: '/css/404.css',

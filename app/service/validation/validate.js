@@ -397,7 +397,6 @@ const validationModule = {
                 next(new APIError(error.message, 400));
             }
             else{
-
                 next();
             }
         };
