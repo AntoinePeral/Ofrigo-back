@@ -45,9 +45,12 @@ const categoryController = {
             category.created_at = dayjs(category.created_at).format('DD-MM-YYYY HH:mm:ss');
             category.updated_at = dayjs(category.updated_at).format('DD-MM-YYYY HH:mm:ss');
     
-            for(const ingredient of category.ingredient){
-                ingredient.created_at = dayjs(ingredient.created_at).format('DD-MM-YYYY HH:mm:ss');
-                ingredient.updated_at = dayjs(ingredient.updated_at).format('DD-MM-YYYY HH:mm:ss');
+            if (category.ingredient) {
+                for(const ingredient of category.ingredient){
+                    ingredient.created_at = dayjs(ingredient.created_at).format('DD-MM-YYYY HH:mm:ss');
+                    ingredient.updated_at = dayjs(ingredient.updated_at).format('DD-MM-YYYY HH:mm:ss');
+                }
+
             }
     
             res.render("categorie", {
