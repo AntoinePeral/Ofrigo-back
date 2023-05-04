@@ -240,6 +240,12 @@ class CoreModel {
                     values.push(value);
                     counter++;
                 }
+                if(key == "updated_at"){
+                    fields.push(key + "=$" + counter);
+                    value = 'now()';
+                    values.push(value);
+                    counter++;
+                }
             });
             if(privateFields){
                 Object.entries(privateFields).forEach(([key, value]) =>{
