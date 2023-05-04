@@ -26,7 +26,7 @@ const validationModule = {
      * @returns {APIError} error
      */
     validateUserAccount(param){
-        return (req, next) => {
+        return (req, _, next) => {
             const { error } = userAccountSchema.validate(req[param]);
             
             if (error) {
