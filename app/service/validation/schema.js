@@ -58,7 +58,7 @@ const userAccountSchema = Joi.object({
         'any.required': 'le email est manquant'
     }),
     password: Joi.string().pattern(passwordFormat).required().messages({
-        'string.pattern.base': "Le mot de passe doit contenir une majuscule, une minuscule, un caractère spécial et au minimum 8 caractères",
+        'string.pattern.base': "Couple email/mot de pass incorrect",
         'string.empty': 'Le champ mot de passe ne peut pas être vide',
         'any.required': 'Le champ mot de passe est manquant'
     })
