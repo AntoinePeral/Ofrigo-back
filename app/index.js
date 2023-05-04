@@ -50,8 +50,7 @@ app.use(
     accountRouter,
     );
 
-app.use(errorModule._404);
-app.use(home.menu, errorModule.notFound);
+app.use(home.menu, errorModule._404);
 app.use(errorModule.manage);
 
 module.exports = app;
