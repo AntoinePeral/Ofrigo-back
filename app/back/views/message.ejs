@@ -14,7 +14,7 @@
         </ul>
         <div class="update-delete">
             <a class="icones-message icones-answer" href="mailto:<%= message.email %>"><img src="/picture/icones/5.png" alt="answer"></a>
-            <% if(message.email == locals.userLogin.email) { %>
+            <% if(message.email !== locals.userLogin.email) { %>
                 <a class="icones-message" href="/admin/message/update/<%= message.id %>"><img src="/picture/icones/2.png" alt="Update"></a>
             <% }%>
             <form action="/admin/message/delete/<%= message.id %>" method="post">
