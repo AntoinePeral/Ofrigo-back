@@ -2,9 +2,11 @@
 
 BEGIN;
 
+-- Create Type to define some value in these type
 CREATE TYPE rank AS ENUM ('user', 'admin');
 CREATE TYPE measure AS ENUM ('mg', 'ml', 'c.à.c', 'c.à.s', 'pincée', 'sachet', 'paquet', 'coeur', 'tranche', 'pot', 'boîte', 'bouquet', 'boule', 'rouleau', 'gousse', 'feuille', 'dose');
 
+-- Create Table
 CREATE TABLE account (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     last_name TEXT NOT NULL,
@@ -35,8 +37,9 @@ CREATE TABLE category (
 CREATE TABLE ingredient (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     label TEXT NOT NULL,
+    picture TEXT,
     unit measure,
-    category_id INTEGER NOT NULL REFERENCES category("id") ON UPDATE CASCADE ON DELETE CASCADE,
+    category_id INTEGER REFERENCES category("id"),
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
@@ -44,7 +47,7 @@ CREATE TABLE ingredient (
 CREATE TABLE recipe (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     label TEXT NOT NULL,
-    picture TEXT  NOT NULL,
+    picture TEXT,
     rate NUMERIC,
     difficulty TEXT NOT NULL,
     time TEXT NOT NULL,

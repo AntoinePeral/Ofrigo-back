@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+
+<section class="section">
+
+    <h3><%= homeName %></h3>
+
+    <% if(errorMessage) { %>
+        <div class="error">
+            <p><%= errorMessage %></p>
+        </div>
+    <% } %>
+
+    <form action="/admin/login" method="post">
+        <div class="email">
+            <input type="email" name="email" placeholder="Email" value="kevin-lienard@gmail.com">
+        </div>
+        <div class="password">
+            <input type="password" name="password" placeholder="Password" value="Password1234!">
+        </div>
+
+        <input class="connexion" type="submit" value="Connexion">
+    </form>
+
+</section>
+
+<%- include('partials/footer') %>

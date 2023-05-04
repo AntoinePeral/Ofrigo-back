@@ -1,0 +1,76 @@
+.section {
+    width: 35vw;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 3rem auto 0 auto;
+    align-items: center;
+    gap: 10px;
+}
+
+form input {
+    padding: 5px;
+    width: 15vw;
+}
+
+form label {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    padding: 5px;
+    background-color: #35373B;
+    border-radius: 5px;
+    border: 2px solid #eba81a;
+    color: white;
+}
+
+.unit-category {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    margin: 1.2rem;
+}
+
+.option label {
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 3px;
+}
+
+.create_ingredient {
+    width: 150px;
+    margin: 15px auto 0 auto;
+    padding: 5px;
+    border: 3px solid #35373B;
+    border-radius: 10px;
+    background-color: #35373B;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    box-shadow: 0px 5px 15px 1px rgba(0,0,0,0.2);
+}
+
+.create_ingredient:hover {
+    cursor: pointer;
+    border-top: 3px solid #eba81a;
+    border-bottom: 3px solid #eba81a;
+    border-left: none;
+    border-right: none;
+    transition: 0.3s ease-in-out;
+}
+
+.error {
+    background-color: red;
+    color: white;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

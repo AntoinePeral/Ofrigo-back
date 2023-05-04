@@ -8,12 +8,13 @@ const errorModule = {
     /**
      * Method mananging errors
      * @param {*} err Errors
-     * @param {object} req Express resquest
+     * @param {object} req  Express req -Express resquest
      * @param {object} res Express response. Send a response to the client
-     * @param {function} next Run the next middleware
      */
     async manage(err, req, res, next) {
+
         await errorModule.log(err, req.url);
+
         if (!err.message) {
             switch (err.code) {
                 case 400:
@@ -35,8 +36,9 @@ const errorModule = {
         } else {
             return res.status(err.code).json({message: err.message});
         }
-
+        
     },
+
     /**
      * Method to manage 404 error
      * @param {*} _ 
@@ -44,8 +46,12 @@ const errorModule = {
      * @param {function} next Run the next middleware
      * @return {APIError} error
      */
-    _404(_, __, next) {
-        return next(new APIError('404 message', 404));
+    _404(_, res, next) {
+        // return next(new APIError('404 message', 404));
+        res.status(404).render('404', {
+            css: '/css/404.css',
+            homeName: "404"
+        });
     },
 
     /**

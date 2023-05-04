@@ -4,7 +4,8 @@ const nameFormat = /^[a-zA-Z\u00C0-\u00FF-\-_]{2,100}$/u;
 const emailFormat = /^[\w\-_]+(\.[\w\-_]+)?@[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\-]+)?\.[a-z]{2,}$/u;
 const passwordFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&\/$.#!?§:;+\-%])[A-Za-z\d!?:;@$!%*?&\/$.#%\-]{8,}$/u;
 const roleFormat = /^(user|admin)$/u;
-const titleFormat = /^[a-zA-Z0-9\s_,.!-]{2,100}$/u;
+const titleFormat = /^[a-zA-Z0-9\s_,.!-'"?]{2,100}$/u;
+const littleTitleFormat = /^[a-zA-Z0-9\s_,.!-'"?]{2,50}$/u;
 const unitFormat = /^[a-z.à-ÿ]{1,20}$/u;
 
 const adminAccountSchema = Joi.object({
@@ -24,6 +25,11 @@ const adminAccountSchema = Joi.object({
         'any.required': 'L\'email est manquant'
     }),
     password: Joi.string().pattern(passwordFormat).required().messages({
+        'string.pattern.base': "Le mot de passe doit contenir une majuscule, une minuscule, un caractère spécial et au minimum 8 caractères",
+        'string.empty': 'Le champ mot de passe ne peut pas être vide',
+        'any.required': 'le champ mot de passe est manquant'
+    }),
+    confirm_password: Joi.string().pattern(passwordFormat).required().messages({
         'string.pattern.base': "Le mot de passe doit contenir une majuscule, une minuscule, un caractère spécial et au minimum 8 caractères",
         'string.empty': 'Le champ mot de passe ne peut pas être vide',
         'any.required': 'le champ mot de passe est manquant'
@@ -72,11 +78,12 @@ const ingredientSchema = Joi.object({
         'string.empty': 'Le champ label ne peut pas être vide',
         'any.required': 'Le champ label est manquant'
     }),
-    unit: Joi.string().pattern(unitFormat).messages({
-        'string.pattern.base': "Les unités de mesure ne respecte pas le nombre de caractère (max20) ou caractères non autorisés",
-        'string.empty': 'Le champ unités de mesure ne peut pas être vide'
+    // picture: Joi.string().required(),
+    unit: Joi.string().allow(null, '').pattern(unitFormat).messages({
+        'string.pattern.base': "Les unités de mesure ne respecte pas le nombre de caractère (max20) ou caractères non autorisés"
+        // 'string.empty': 'Le champ unités de mesure ne peut pas être vide'
     }),
-    category_id: Joi.number().min(1).required().messages({
+    category_id: Joi.number().allow(null, '').messages({
         'any.empty': 'Le champ catégorie ne peut pas être vide',
         'number.min': 'Un ingrédient doit être associé à une catégorie',
         'any.required': 'Le champ catégorie est manquant'
@@ -117,8 +124,8 @@ const messageSchemaUser = Joi.object({
 });
 
 const tagSchema = Joi.object({
-    label: Joi.string().pattern(titleFormat).required().messages({
-        'string.pattern.base': "Le label ne respecte pas le format (max100) ou caractères non autorisés",
+    label: Joi.string().pattern(littleTitleFormat).required().messages({
+        'string.pattern.base': "Le label ne respecte pas le format (max50) ou caractères non autorisés",
         'string.empty': 'Le champ label ne peut pas être vide',
         'any.required': 'Le champ label est manquant'
     }),
@@ -144,7 +151,7 @@ const stepSchema = Joi.object({
 const account_has_ingredientSchema = Joi.object({
     ingredient_id: Joi.number().min(1).required().messages({
         'number.empty': 'Un ingrédient doit être sélectionné',
-        'any.required': 'Pour ajouter un utilisateur un ingrédient est requis'
+        'any.required': 'Un ingrédient est requis'
     }),
 });
 
@@ -176,14 +183,24 @@ const recipe_has_tag = Joi.object({
 });
 
 const recipeSchema = Joi.object({
-    label: Joi.string().required(),
-    picture: Joi.string().required(),
-    rate: Joi.string().required(),
-    difficulty: Joi.string().required(),
-    time: Joi.string().required(),
-    ingredient: Joi.array().items(ingredientSchema).required(),
-    step: Joi.array().items(stepSchema).required(),
-    tag: Joi.array().items(tagSchema).required()
+    label: Joi.string().required().messages({
+        'any.required': 'Le champ label est manquant'
+    }),
+    picture: Joi.string().required().messages({
+        'any.required': 'Le champ picture est manquant'
+    }),
+    rate: Joi.string().required().messages({
+        'any.required': 'Le champ rate est manquant'
+    }),
+    difficulty: Joi.string().required().messages({
+        'any.required': 'Le champ difficulty est manquant'
+    }),
+    time: Joi.string().required().messages({
+        'any.required': 'Le champ time est manquant'
+    }),
+    ingredient: Joi.array().items(ingredientSchema),
+    step: Joi.array().items(stepSchema),
+    tag: Joi.array().items(tagSchema)
 });
 
 const loginSchema = Joi.object({

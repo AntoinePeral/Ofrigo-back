@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+
+<section class="section">
+
+    <h3><%= homeName %></h3>
+
+    <div class="add">
+        <a class="add-icone" href="/admin/ingredient/create"><img src="/picture/icones/3.png" alt="Add"></a>
+        <span><a href="/admin/ingredient/create">Add <%= homeName.toLowerCase() %></a></span>
+    </div>
+
+    <table>
+        <thead>
+            <tr class="top">
+                <th>Id</th>
+                <th>Picture</th>
+                <th>Label</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody class="bottom">
+            <% for(const ingredient of ingredients) { %>
+                <tr><td><%= ingredient.id %></td><td><img class="picture-ingredient" src="http://kevin-lienard-server.eddi.cloud/public/picture/ingredient/<%= ingredient.picture %>" alt="<%= ingredient.picture %>"></td><td><a href="/admin/ingredient/<%= ingredient.id %>"><%= ingredient.label %></a></td><td><%= ingredient.created_at %></td><td><%= ingredient.updated_at %></td><td><a class="icones" href="/admin/ingredient/update/<%= ingredient.id %>"><img src="/picture/icones/2.png" alt="Update"></a></td><td><form action="/admin/ingredient/delete/<%= ingredient.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+            <% } %>
+        </tbody>
+    </table>
+
+</section>
+
+<%- include('partials/footer') %>

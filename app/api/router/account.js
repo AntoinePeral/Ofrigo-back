@@ -1,24 +1,23 @@
 const { Router } = require("express");
 const accountRouter = Router();
-const { account, admin } = require("../controller");
+const { account } = require("../controller");
 const validationBody = require("../../service/validation/validate");
 const authentification = require('../../service/middleware/authToken');
-const validationRole = require("../../service/middleware/adminValidator");
 
 //Public
+/** Create a user account - Use  */
 accountRouter.post("/register", validationBody.validateUserAccount('body'), account.addAccount);
 
 //User
+/** Get user account */
 accountRouter.get("/me/profile", authentification.authenticateToken, account.getUserAccount);
+/** Update account as user */
 accountRouter.put("/me/profile", authentification.authenticateToken, validationBody.validateUserAccount('body'), account.updateAccount);
+/** Delete account as user */
 accountRouter.delete("/me/profile", authentification.authenticateToken, account.deleteAccount);
+/** Add ingredient to the account as user */
 accountRouter.post('/me/profile/ingredient', authentification.authenticateToken, validationBody.validateAccount_has_ingredientSchema('body'), account.addIngredientToAccount);
+/** Delete ingredient to the account as user */
 accountRouter.delete('/me/profile/ingredient/:id(\\d+)', authentification.authenticateToken, account.deleteIngredientToAccount);
-
-//Admin
-accountRouter.get("/admin/profile", authentification.authenticateToken, admin.getAllAccount);
-accountRouter.get("/admin/profile/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, admin.getAccountById);
-accountRouter.delete("/admin/profile/:id(\\d+)", authentification.authenticateToken, validationRole.isAdmin, admin.deleteAccount);
-accountRouter.post("/admin/register", validationBody.validateUserAccount('body'), account.addAdminAccount);
 
 module.exports = accountRouter;

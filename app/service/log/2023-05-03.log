@@ -1,0 +1,28 @@
+          date          |      contexte        |     message     
+2023-05-03T07:42:47.315Z: /admin --> 404 message
+2023-05-03T07:42:47.428Z: /images/icons/gear.png --> 404 message
+2023-05-03T09:02:17.283Z: /css/message-cu.css --> 404 message
+2023-05-03T09:02:19.748Z: /css/message-cu.css --> 404 message
+2023-05-03T09:03:44.767Z: /css/message-cu.css --> 404 message
+2023-05-03T09:04:49.859Z: /css/message-cu.css --> 404 message
+2023-05-03T09:04:58.242Z: /admin/message/create --> /var/www/html/Promo/O&#39;FRIGO/projet-06-o-frigo-back/app/back/views/message-cu.ejs:13
+    11|     <% } %>
+    12| 
+ >> 13|     <% if(message) { %>
+    14| 
+    15|         <div class="message">
+    16| 
+
+message is not defined
+2023-05-03T09:17:25.566Z: /css/message-cu.css --> 404 message
+2023-05-03T09:17:26.993Z: /css/message-cu.css --> 404 message
+2023-05-03T09:17:37.686Z: /css/message-cu.css --> 404 message
+2023-05-03T09:24:07.085Z: /admin/message --> Unexpected token 'catch' in /var/www/html/Promo/O'FRIGO/projet-06-o-frigo-back/app/back/views/messages.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+2023-05-03T14:28:55.963Z: /register --> Le compte existe déjà
+2023-05-03T14:39:15.207Z: /me/profile --> Unexpected token } in JSON at position 52
+2023-05-03T14:39:25.252Z: /me/profile --> Unexpected token } in JSON at position 52
+2023-05-03T14:39:47.909Z: /me/profile --> Unexpected token } in JSON at position 52

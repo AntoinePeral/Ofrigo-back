@@ -51,6 +51,7 @@ r.updated_at,
 			json_build_object(
 				'id', i.id,
 				'label', i.label,
+				'picture', i.picture,
 				'quantity', (SELECT * FROM convertQuantity(r.id, i.id)),
 				'created_at', i.created_at,
 				'updated_at', i.updated_at,
@@ -124,6 +125,7 @@ r.updated_at,
 			json_build_object(
 				'id', i.id,
 				'label', i.label,
+				'picture', i.picture,
 				'quantity', (SELECT * FROM convertQuantity(r.id, i.id)),
 				'created_at', i.created_at,
 				'updated_at', i.updated_at,
@@ -190,6 +192,7 @@ acc.*,
 			json_build_object(
 				'id', i.id,
 				'label', i.label,
+				'picture', i.picture,
 				'unit', i.unit,
 				'category_id', i.category_id,
 				'created_at', i.created_at,
@@ -235,6 +238,7 @@ acc.*,
 			json_build_object(
 				'id', i.id,
 				'label', i.label,
+				'picture', i.picture,
 				'unit', i.unit,
 				'category_id', i.category_id,
 				'created_at', i.created_at,
@@ -301,7 +305,8 @@ $$ LANGUAGE SQL;
 CREATE OR REPLACE FUNCTION getAllIngredient ()
   RETURNS TABLE (
 	id int,
-    label little_title_validator,
+  label little_title_validator,
+	picture text,
 	unit measure,
 	category_id int,
     created_at timestamp with time zone,
@@ -315,6 +320,7 @@ SELECT *,
 	WHERE i.category_id=c.id
 ) AS category
 FROM ingredient i
+ORDER BY i.id ASC
 $$ LANGUAGE SQL;
 
 -- Function to get on ingredient by his id and return his label, unit, category_id and category.
@@ -322,6 +328,7 @@ CREATE OR REPLACE FUNCTION getOneIngredient (i_id int)
   RETURNS TABLE (
 	id int,
     label little_title_validator,
+	picture text,
 	unit measure,
 	category_id int,
     created_at timestamp with time zone,

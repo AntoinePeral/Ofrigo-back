@@ -8,15 +8,14 @@ const accountController = {
 
     /**
      * Get one account user by his id. His id is provided from the JWT bearer token
-     * @param {object} req use the req to get the id and the token
+     * @param {object} req  Express req -use the req to get the id and the token
      * @param {object} res use to response to the client. Send an JSON object
      * @param {function} next call the APIError if an error is dectected
      * @returns {APIError} return an error
      */
     async getUserAccount(req, res, next) {
         if(!req.user.id) {
-            // res.status(400).json({error: "User not provided."})
-            return next(new APIError('User not provided', 401));
+            return next(new APIError('User not provided', 403));
         }
 
         const account = await Account.findOne(req.user.id)
@@ -26,23 +25,24 @@ const accountController = {
             res.status(200).json(account);
         }
         else{
-            return next(new APIError("Not found", 404));
+            return next(new APIError("Bad request - Aucun utilisateur n'a été trouvé", 400));
         }
     },
 
     /**
      * Register a new account in DB
-     * @param {object} req use it to get the body object which contains the informations of the new account and the new JWT Token
+     * @param {object} req  Express req -use it to get the body object which contains the informations of the new account and the new JWT Token
      * @param {object} res use to response to the client. Send an JSON object
      * @param {function} next call the APIError if an error is dectected
      * @returns {APIError} return an error
+     * @returns {object} return an JWT token and the new account 
      */
     async addAccount (req, res, next) {
         const accountBody = req.body;
 
         const accountVerified = await Account.findByEmail(accountBody.email)
         if(accountVerified){
-            return next(new APIError("Le compte existe déjà", 500));
+            return next(new APIError("Bad request - Le compte existe déjà", 400));
         }
 
         // Password encrypting
@@ -57,10 +57,10 @@ const accountController = {
             debug(account);
             account = await account.add({'password': hashedPassword});
             debug(account);
-            console.log(account);
+    
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("La création de compte a échoué", 500));
         }
 
         const accessToken = authentificationModule.generateAccessToken(account);
@@ -72,51 +72,15 @@ const accountController = {
     },
 
     /**
-     * Register a new admin account in DB. Role is already defined as admin in this function
-     * @param {object} req use the req to get the body object which contains the informations of the new account and the new JWT token
-     * @param {object} res use to response to the client. Send an JSON object
-     * @param {function} next call the APIError if an error is dectected
-     * @returns {APIError} return an error
-     */
-    async addAdminAccount (req, res, next) {
-        const accountBody = req.body;
-        accountBody.role = "admin";
-
-        // Password encrypting
-        const saltRounds = 10;
-        const salt = await bcrypt.genSalt(saltRounds);
-        const hashedPassword = await bcrypt.hash(accountBody.password, salt);
-        debug(hashedPassword);
-
-        let account = new Account(accountBody);
-
-        if(account){
-            debug(account);
-            account = await account.addAdmin({'password': hashedPassword});
-            debug(account);
-        }
-        else{
-            return next(new APIError("Bad request", 500));
-        }
-
-        const accessToken = authentificationModule.generateAccessToken(account);
-        
-        return res.status(200).json({
-            accessToken,
-            account
-        });
-    },
-
-    /**
-     * Update informations account using the JWT Token ID. THe password need to be verified to use this function
-     * @param {object} req use the req to get the body object which contains the informations of the updated account
+     * Update informations account using the JWT Token ID. The password need to be verified to use this function
+     * @param {object} req  Express req -use the req to get the body object which contains the informations of the updated account
      * @param {object} res use to response to the client. Send an JSON object
      * @param {function} next call the APIError if an error is dectected
      * @returns {APIError} return an error
      */
     async updateAccount (req, res, next) {
         if(!req.user.id) {
-            return next(new APIError('User not provided', 401));
+            return next(new APIError('Forbidden - User not provided', 403));
         }
 
         const accountBody = req.body;
@@ -135,20 +99,20 @@ const accountController = {
             res.status(200).json(newAccount);
         }
         else{
-           return next(new APIError("Bad request", 500));
+           return next(new APIError("La mise à jour du compte de l'utilsateur a échoué", 400));
         }
     },
 
     /**
      * Delete an account using the JWT token id
-     * @param {object} req used to verify if an id is send to the function
+     * @param {object} req  Express req -used to verify if an id is send to the function
      * @param {object} res used to send a response to the client
      * @param {function} next call the APIError if an error is dectected
      * @returns {APIError} error
      */
     async deleteAccount (req, res, next) {
         if(!req.user.id) {
-            return next(new APIError('User not provided', 401));
+            return next(new APIError('Forbidden - User not provided', 403));
         }
 
         const response = await Account.delete(req.user.id);
@@ -158,16 +122,17 @@ const accountController = {
             res.status(200).json('Succes');
         }
         else{
-            return next(new APIError("Bad request", 500)); 
+            return next(new APIError("Le compte n'a pas pu être supprimé", 400)); 
         }
     },
 
     /**
      * Add an ingredient to an account using the id int the JWT token
-     * @param {object} req used to get the JWT token and to identify the user.id
+     * @param {object} req  Express req -used to get the JWT token and to identify the user.id
      * @param {object} res use to response to the client. Send an JSON object
      * @param {function} next call the APIError if an error is dectected
      * @returns {APIError} return an error
+     * @returns {object} return json account 
      */
     async addIngredientToAccount (req, res, next){
         if(!req.user.id) {
@@ -198,23 +163,23 @@ const accountController = {
         if(validation){
             await account.addIngredient(ingredient_id);
             account = await Account.findOne(req.user.id);
-            return  res.status(200).json(account);
+            return res.status(200).json(account);
         }
         else{
-            next(new APIError("Bad request", 500)); 
+            next(new APIError("L'ingrédient fait déjà parti du compte", 400)); 
         }
     },
 
     /**
      * Delete an ingredient to an account using the id int the JWT token
-     * @param {object} req used to get the JWT token and to identify the user.id
+     * @param {object} req  Express req -used to get the JWT token and to identify the user.id
      * @param {object} res use to response to the client. Send an JSON object
      * @param {function} next call the APIError if an error is dectected
      * @returns {APIError} return an error
      */
     async deleteIngredientToAccount(req, res, next){
         if(!req.user.id) {
-            return next(new APIError('User not provided', 401));
+            return next(new APIError('Forbidden - User not provided', 403));
         }
         
         const ingredientId = req.params.id;
@@ -241,7 +206,7 @@ const accountController = {
             res.status(200).json(account);
         }
         else{
-            return next(new APIError("Bad request", 500)); 
+            return next(new APIError("Aucun ingrédient n'a été trouvé", 400)); 
         }
     },
     

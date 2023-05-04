@@ -28,7 +28,9 @@ class Account extends CoreModel{
         this.updated_at = obj.updated_at;
 
     };
-
+    /**
+     * Getter to get the privacy password
+     */
     get password() {
         return this.#password;
     };
@@ -63,10 +65,8 @@ class Account extends CoreModel{
 
         try{
             response = await ofrigo.query(query);
-            console.log("Response de l'ingrédient", response.rows[0]);
             return response.rows[0];
         }catch(error){
-            console.log(error);
         }
     };
     
@@ -79,6 +79,54 @@ class Account extends CoreModel{
         const query = {
             text: `DELETE FROM "account_has_ingredient" WHERE "account_id"=$1 AND "ingredient_id"=$2;`,
             values: [this.id, ingredient_id]
+        };
+        let response;
+
+        try {
+            response = await ofrigo.query(query);
+            debug(response)
+        } catch (error) {
+            console.log(error);
+        }
+
+        return response.rowCount;
+    };
+
+    /**
+     * Remove an ingredient as admin
+     * @param {int} account_id 
+     * @param {int} ingredient_id 
+     * @returns an instance
+     */
+    static async removeIngredientAdmin(account_id, ingredient_id){
+        const query = {
+            text: `DELETE FROM "account_has_ingredient" WHERE "account_id"=$1 AND "ingredient_id"=$2;`,
+            values: [account_id, ingredient_id]
+        };
+        let response;
+
+        try {
+            response = await ofrigo.query(query);
+            debug(response)
+        } catch (error) {
+            console.log(error);
+        }
+
+        return response.rowCount;
+    };
+
+    /**
+     * Remove a message from as admin
+     * @param {string} account_email 
+     * @param {int} message_id 
+     * @returns an instance
+     */
+    static async removeMessageAdmin(account_email, message_id){
+        const query = {
+            text: `DELETE FROM message
+            WHERE message.email=$1
+            AND message.id=$2;`,
+            values: [account_email, message_id]
         };
         let response;
 

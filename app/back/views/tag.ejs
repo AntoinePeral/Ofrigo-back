@@ -1,13 +1,52 @@
 <%- include('partials/header') %>
+
 <section class="section">
-  <div class="list_container">
-    <h2>Liste des <%= currentItem %></h2>
-  <ul class="list_columns">
-  <% for (let index = 0; index < list.length; index++) { %>
-    <% const itemList = list[index]%>
-    <li><a href="#" id="itemList" data-id="<%= itemList.id %>"><%= itemList.label%></a></li>
-  <% } %>
-  </ul>  
-  </div>
-  <div class="infos_container">
+
+    <h3><%= homeName %></h3>
+
+    <div class="tag">
+
+        <ul>
+            <li><strong>Id : </strong><%= tag.id %></li>
+            <li><strong>Label : </strong><%= tag.label %></li>
+            <li><strong>Created at : </strong><%= tag.created_at %></li>
+            <li><strong>Updated at : </strong><%= tag.updated_at %></li>
+        </ul>
+        <div class="update-delete">
+            <a class="icones-tag" href="/admin/tag/update/<%= tag.id %>"><img src="/picture/icones/2.png" alt="Update"></a>
+            <form action="/admin/tag/delete/<%= tag.id %>" method="post">
+            <input class="icones-tag" type="image" src="/picture/icones/1.png"></form>
+        </div>
+
+    </div>
+
+    <% if(tag.recipe) { %>
+
+        <div class="recipe">
+            <h3>Recipe</h3>
+            <table>
+                <thead>
+                    <tr class="top">
+                        <th>Id</th>
+                        <th>Picture</th>
+                        <th>Label</th>
+                        <th>Created at</th>
+                        <th>Updated at</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody class="bottom">
+
+                    <% for(const recipe of tag.recipe) { %>
+                        <tr><td><%= recipe.id %></td><td><img class="picture-ingredient" src="http://kevin-lienard-server.eddi.cloud/public/picture/recipe/<%= recipe.picture %>" alt="<%= recipe.picture %>"></td><td><a href="/admin/recipe/<%= recipe.id %>"><%= recipe.label %></a></td><td><%= recipe.created_at %></td><td><%= recipe.updated_at %></td><td><form action="/admin/tag/<%= tag.id %>/recipe/<%= recipe.id %>" method="post"><input class="icones" type="image" src="/picture/icones/1.png"></form></td></tr>
+                    <% } %>
+
+                </tbody>
+            </table>
+        </div>
+
+    <% } %>
+
+</section>
+
 <%- include('partials/footer') %>

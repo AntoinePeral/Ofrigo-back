@@ -7,8 +7,9 @@ const messageController = {
     /**
      * Get all messages return json Objects in array
      * @param {*} _ 
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async getAllMessage (_, res, next){
         const message = await Message.findAll();
@@ -18,15 +19,16 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("Aucun Message n'a été trouvé", 400));
         }
     },
 
     /**
      * Get one message by his id and return json Object
-     * @param {*} req use request to get the params.id
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async getMessageById (req, res, next){
         const messageId = req.params.id;
@@ -37,15 +39,16 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-            return next(new APIError("Bad request", 400));
+            return next(new APIError("Aucune message n'a été trouvé", 400));
         }
     },
 
     /**
      * Add a message and return an object
-     * @param {*} req use request to get the body
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the body
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async addMessage (req, res, next) {
         const messageBody = req.body;
@@ -59,19 +62,20 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-            return next(new APIError("Bad request", 400));
+            return next(new APIError("L'envoie du message a échoué", 400));
         }
     },
 
     /**
      * User can add a message and return an object
-     * @param {*} req use request to get the body
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the body
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async addMessageUser (req, res, next) {
         if(!req.user.id) {
-            return next(new APIError('User not provided', 401));
+            return next(new APIError('User not provided', 403));
         }
 
         let messageBody = req.body;
@@ -87,19 +91,20 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-            return next(new APIError("Bad request", 400));
+            return next(new APIError("L'envoie du message a échoué", 400));
         }
     },
 
     /**
      * Get all messages from a user and return json Object
-     * @param {*} req use request to get user
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get user
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async getUserMessage (req, res, next) {
         if(!req.user.id) {
-            return next(new APIError('User not provided', 401));
+            return next(new APIError('User not provided', 403));
         }
 
         const message = await Message.findAllMessageUser(req.user.email);
@@ -109,19 +114,20 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("Aucun message n'a été trouvé", 400));
         }
     },
 
     /**
      * Get one messages from a user and return json Object
-     * @param {*} req use request to get the params.id
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async getUserMessageById (req, res, next) {
         if(!req.user.id) {
-            return next(new APIError('User not provided', 401));
+            return next(new APIError('User not provided', 403));
         }
 
         const messageId = req.params.id;
@@ -132,15 +138,16 @@ const messageController = {
             res.status(200).json(message);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("Aucun message n'a été trouvé", 400));
         }
     },
 
     /**
      * Update a message and return an object
-     * @param {*} req use request to get the params.id
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async updateMessage (req, res, next) {
         const messageId = req.params.id;
@@ -160,15 +167,16 @@ const messageController = {
             res.status(200).json(newMessage);
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("Le message n'a pas pu être modifié", 400));
         }
     },
 
     /**
      * Delete one message by his id and return an string
-     * @param {*} req use request to get the params.id
-     * @param {*} res use to response to the client
-     * @param {*} next use it to return an error
+     * @param {object} req  Express req -use request to get the params.id
+     * @param {object} res Express response
+     * @param {function} next use it to return an error
+     * @returns {APIError} return error
      */
     async deleteMessage (req, res, next) {
         const messageId = req.params.id;
@@ -179,7 +187,7 @@ const messageController = {
             res.status(200).json('Succes');
         }
         else{
-            return next(new APIError("Bad request", 500));
+            return next(new APIError("La suppresionn du message a échoué", 400));
         }
     },
     

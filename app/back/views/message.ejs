@@ -1,26 +1,32 @@
 <%- include('partials/header') %>
-<section class="section">
-  <div class="list_container">
-  <table>
-    <thead>
-        <tr>
-            <th colspan="2">Liste des <%= currentItem %></th>
-        </tr>
-    </thead>
-    <tbody>
-      <% for (let index = 0; index < list.length; index++) { %>
-        <% const itemList = list[index]%>
-              <tr>
-                  <td><a href="/<%=itemList.label%>"><%= itemList.label%></a>label du message</td>
-                  <td><a href="/<%=itemList.label%>"><%= itemList.content%></a></td>
-                  <td><a href="/<%=itemList.label%>"><%= itemList.email%></a></td>
-                  <td><a href="/<%=itemList.label%>"><%= itemList.created_at%></a></td>
-                  <td><a href="/<%=itemList.label%>"><%= itemList.updated_at%></a></td>
-              </tr>
-      <% } %>
-      </tbody>
-  </table>
 
-</div>
+<section class="section">
+
+    <h3><%= homeName %></h3>
+
+    <div class="info">
+        <ul>
+            <li><strong>Id : </strong><%= message.id %></li>
+            <li><strong>Email : </strong><%= message.email %></li>
+            <li><strong>Label : </strong><%= message.label %></li>
+            <li><strong>Created at : </strong><%= message.created_at %></li>
+            <li><strong>Updated at : </strong><%= message.updated_at %></li>
+        </ul>
+        <div class="update-delete">
+            <% if(message.email !== locals.userLogin.email) { %>
+                <a class="icones-message icones-answer" href="mailto:<%= message.email %>"><img src="/picture/icones/5.png" alt="answer"></a>
+            <% }%>
+            <% if(message.email == locals.userLogin.email) { %>
+                <a class="icones-message" href="/admin/message/update/<%= message.id %>"><img src="/picture/icones/2.png" alt="Update"></a>
+            <% }%>
+            <form action="/admin/message/delete/<%= message.id %>" method="post">
+            <input class="icones-message" type="image" src="/picture/icones/1.png"></form>
+        </div>
+    </div>
+    <div class="content">
+        <p><%= message.content %></p>
+    </div>
+
 </section>
+
 <%- include('partials/footer') %>
