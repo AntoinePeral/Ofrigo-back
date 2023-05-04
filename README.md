@@ -167,6 +167,5 @@
 |ETAPE|STATUT|
 |---|---|
 Test unitaires| En cours|
-Back-office | En cours|
 Fonctionalité : Création d’une recette | En cours|
 Fonctionalité : Modification d’une recette | En cours|

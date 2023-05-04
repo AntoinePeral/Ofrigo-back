@@ -21,7 +21,7 @@ form label {
     font-size: 1.2rem;
     padding: 5px;
     background-color: #35373B;
-    border-radius: 15px;
+    border-radius: 5px;
     border: 2px solid #eba81a;
     color: white;
 }
@@ -41,6 +41,7 @@ form label {
 .option label {
     margin-bottom: 10px;
     text-align: center;
+    padding: 3px;
 }
 
 .create_ingredient {

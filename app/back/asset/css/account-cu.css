@@ -42,12 +42,12 @@ form input {
 }
 
 .create_account:hover {
+    transition: 0.3s ease-in-out;
     cursor: pointer;
     border-top: 3px solid #eba81a;
     border-bottom: 3px solid #eba81a;
     border-left: none;
     border-right: none;
-    transition: 0.3s ease-in-out;
 }
 
 /* .create_account {
