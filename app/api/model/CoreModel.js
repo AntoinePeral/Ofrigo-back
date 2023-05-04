@@ -278,10 +278,17 @@ class CoreModel {
                     counter++;
                 }
                 if(key == "unit"){
-                    fields.push(key + "=$" + counter);
-                    value = null;
-                    values.push(value);
-                    counter++;
+                    if(value == ''){
+                        fields.push(key + "=$" + counter);
+                        value = null;
+                        values.push(value);
+                        counter++;
+                    }
+                    else{
+                        fields.push(key + "=$" + counter);
+                        values.push(value);
+                        counter++;
+                    }
                 }
             });
         }
