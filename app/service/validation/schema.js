@@ -183,14 +183,24 @@ const recipe_has_tag = Joi.object({
 });
 
 const recipeSchema = Joi.object({
-    label: Joi.string().required(),
-    picture: Joi.string().required(),
-    rate: Joi.string().required(),
-    difficulty: Joi.string().required(),
-    time: Joi.string().required(),
-    ingredient: Joi.array().items(ingredientSchema).required(),
-    step: Joi.array().items(stepSchema).required(),
-    tag: Joi.array().items(tagSchema).required()
+    label: Joi.string().required().messages({
+        'any.required': 'Le champ label est manquant'
+    }),
+    picture: Joi.string().required().messages({
+        'any.required': 'Le champ picture est manquant'
+    }),
+    rate: Joi.string().required().messages({
+        'any.required': 'Le champ rate est manquant'
+    }),
+    difficulty: Joi.string().required().messages({
+        'any.required': 'Le champ difficulty est manquant'
+    }),
+    time: Joi.string().required().messages({
+        'any.required': 'Le champ time est manquant'
+    }),
+    ingredient: Joi.array().items(ingredientSchema),
+    step: Joi.array().items(stepSchema),
+    tag: Joi.array().items(tagSchema)
 });
 
 const loginSchema = Joi.object({

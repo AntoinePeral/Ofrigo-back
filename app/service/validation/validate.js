@@ -373,10 +373,11 @@ const validationModule = {
             const { error } = recipeSchema.validate(req[param]);
 
             if (error) {
-                res.render('recipes', {
+                res.render('recipe-cu', {
                     errorMessage: error,
-                    css: "/css/recipes.css",
-                    homeName: "Recipes"
+                    css: "/css/recipe-cu.css",
+                    homeName: "Recipe",
+                    recipe: null
                 })
             }
             else{
