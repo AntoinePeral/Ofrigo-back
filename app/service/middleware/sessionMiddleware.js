@@ -23,10 +23,13 @@ async function addUserToLocals(req, res, next) {
 
     if(user){
         user.password = undefined;
-    }
+    } 
 
-    req.session.user = user;
-    res.locals.userLogin = user;
+        req.session.user = user;
+        res.locals.userLogin = user;
+
+
+    
     
     next();
 }
