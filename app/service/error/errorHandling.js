@@ -12,7 +12,9 @@ const errorModule = {
      * @param {object} res Express response. Send a response to the client
      */
     async manage(err, req, res, next) {
+
         await errorModule.log(err, req.url);
+
         if (!err.message) {
             switch (err.code) {
                 case 400:
@@ -34,8 +36,9 @@ const errorModule = {
         } else {
             return res.status(err.code).json({message: err.message});
         }
-
+        
     },
+
     /**
      * Method to manage 404 error
      * @param {*} _ 

@@ -17,11 +17,17 @@ const loginController = {
   async signIn(req, res, next) {
     const {email, password} = req.body;
     const account = await Account.findByEmail(email);
+    console.log('je suis dans singin');
+    console.log(account);
+    console.log(req.body);
     
     if(!account) {
-      return next(new APIError('Couple login/mot de passe est incorrect.', 401));
+      console.log('je suis dans erreur account du login');
+     return next(new APIError('Couple login/mot de passe est incorrect.', 400));
+      
     } 
     else {
+      console.log('je suis sortie de erreur');
       const hasMatchingPassword = await bcrypt.compare(password, account.password);
 
       if(!hasMatchingPassword) {
