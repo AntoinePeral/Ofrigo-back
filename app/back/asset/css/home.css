@@ -37,6 +37,7 @@ tr, td {
 
 td {
     padding-left: 15px;
+    word-wrap: break-word;
 }
 
 a {
