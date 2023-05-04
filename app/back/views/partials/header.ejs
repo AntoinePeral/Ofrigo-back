@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/picture/favicon/favicon.ico" />
-    <link rel="stylesheet" href=" /css/style2.css">
+    <link rel="stylesheet" href=" /css/style.css">
     <link rel="stylesheet" href=<%= css %>>
 
     <title><%= homeName %></title>
@@ -19,7 +19,6 @@
 
                 <span>DASHBOARD</span>
             </div>
-            <img class="burger" src="/picture//logo/Burger.png" alt="">
             <% if(locals.userLogin) {%>
                 <div class="profil">
                     <a href="/admin/<%= locals.userLogin.first_name+"-"+locals.userLogin.last_name %>"><%=locals.userLogin.first_name + ' ' + locals.userLogin.last_name %></a>
