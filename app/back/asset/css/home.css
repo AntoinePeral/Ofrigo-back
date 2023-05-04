@@ -1,0 +1,112 @@
+.all {
+    margin-top: 5vh;
+}
+
+.all h3 {
+    border-bottom: none;
+    width: 90%;
+    margin: auto;
+    padding: 0.5rem 0 0.5rem 0;
+    border-radius: 0;
+}
+
+/*========== TABLE ==========*/
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+    width: 90%;
+    box-shadow: 0px 5px 15px 3px rgba(0,0,0,0.2);
+}
+
+thead {
+    border-top: 2px solid rgb(75, 75, 75);
+    border-bottom: 2px solid rgb(75, 75, 75);
+    background-color: #35373B;
+    color: white;
+}
+
+th, td {
+    padding: 2px; 
+    /*text-align: center;*/
+}
+
+tr, td {
+    border: 1px solid rgb(75, 75, 75);
+}
+
+td {
+    padding-left: 15px;
+    word-wrap: break-word;
+}
+
+a {
+    color: black;
+}
+
+.top {
+    border-top: 4px solid #eba81a;
+}
+
+.bottom {
+    border-bottom: 4px solid #eba81a;
+}
+
+caption {
+    color: white; 
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 1.3rem;
+    margin: 0 auto 5vh auto;
+    border-top: 2px solid rgb(75, 75, 75);
+    border-bottom: 2px solid rgb(75, 75, 75);
+    border-left: 4px solid #eba81a;
+    border-right: 4px solid #eba81a;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px -2px rgba(36,36,36,0.65);
+    background-color: #35373B;
+    width: 50%;
+}
+  
+th {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    padding: 3px;
+}
+
+.get, .post, .post-connexion, .put, .delete {
+    text-align: center;
+    padding: 10px;
+    color: white;
+    width: 25px;
+}
+
+.get {
+    background-color: green;
+}
+
+.post {
+    background-color: cornflowerblue;
+}
+
+.post-connexion {
+    background-color: blue;
+}
+
+.put {
+    background-color: orange;
+}
+
+.delete {
+    background-color: red;
+}
+
+/* strong {
+    margin: 5px;
+} */
+
+/* TEST */
+td {
+    min-width: 25px;
+    max-width: 15vw;
+}

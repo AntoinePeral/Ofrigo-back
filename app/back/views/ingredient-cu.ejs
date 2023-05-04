@@ -1,0 +1,73 @@
+<%- include('partials/header') %>
+
+<section class="section">
+
+    <h3><%= homeName %></h3>
+
+    <% if(errorMessage) { %>
+        <div class="error">
+            <p><%= errorMessage %></p>
+        </div>
+    <% } %>
+
+    <% if(ingredient) { %>
+        <div class="ingredient">
+            <form action="/admin/ingredient/update/<%= ingredient.id %>" method="POST">
+                <input type="text" name="label" value="<%= ingredient.label %>" placeholder="Label">
+                <div class="unit-category">
+                    <div class="option">
+                        <label for="unit">Unit</label>
+                        <select name="unit">
+                            <option value="">Aucune</option>
+                            <% for(const measure of measures) { %>
+                                <option value="<%= measure.label %>"><%= measure.label %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="option">
+                        <label for="category_id">Category</label>
+                        <select name="category_id">
+                            <option value="">Aucune</option>
+                            <% for(const categorie of categories) { %>
+                                <option value="<%= categorie.id %>"><%= categorie.label %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                </div>
+                
+                <input class="create_ingredient" type="submit" value="Valider">
+            </form>
+        </div>
+    <% } else { %>
+    <div class="ingredient">
+        <form action="/admin/ingredient/create" method="POST">
+            <input type="text" name="label" placeholder="Label">
+            <div class="unit-category">
+                <div class="option">
+                    <label for="unit">Unit</label>
+                    <select name="unit">
+                        <option value="">Aucune</option>
+                        <% for(const measure of measures) { %>
+                            <option value="<%= measure.label %>"><%= measure.label %></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="option">
+                    <label for="category_id">Category</label>
+                    <select name="category_id">
+                        <option value="">Aucune</option>
+                        <% for(const categorie of categories) { %>
+                            <option value="<%= categorie.id %>"><%= categorie.label %></option>
+                        <% } %>
+                    </select>
+                </div>
+            </div>
+            
+            <input class="create_ingredient" type="submit" value="Valider">
+        </form>
+    </div>
+    <% } %>
+
+</section>
+
+<%- include('partials/footer') %>

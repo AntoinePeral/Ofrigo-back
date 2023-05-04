@@ -1,0 +1,60 @@
+<%- include('partials/header') %>
+
+<section class="section">
+
+    <h3><%= homeName %></h3>
+
+    <% if(errorMessage) { %>
+        <div class="error">
+            <p><%= errorMessage %></p>
+        </div>
+    <% } %>
+
+    <% if(recipe) { %>
+
+        <div class="recipe">
+
+            <form action="/admin/recipe/update/<%= recipe.id %>" method="POST">
+
+                <input type="text" name="label" value="<%= recipe.label %>" placeholder="Label">
+    
+                <input type="text" name="picture" value="<%= recipe.picture %>" placeholder="picture">
+
+                <input type="number" step="0.1" max="5" name="rate" value="<%= recipe.rate %>" placeholder="rate">
+
+                <input type="text" name="difficulty" value="<%= recipe.difficulty %>" placeholder="difficulty">
+                
+                <input type="text" name="time" value="<%= recipe.time %>" placeholder="time">
+
+                <input class="create_recipe" type="submit" value="Valider">
+
+            </form>
+        </div>
+
+    <% } else { %>
+
+        <div class="recipe">
+
+
+            <form action="/admin/recipe/create" method="POST">
+
+                <input type="text" name="label" placeholder="Label">
+
+                <input type="text" name="picture" placeholder="picture">
+
+                <input type="number" step="0.1" name="rate" placeholder="rate">
+
+                <input type="text" name="difficulty"  placeholder="difficulty">
+                
+                <input type="text" name="time" placeholder="time">
+
+                <input class="create_recipe" type="submit" value="Valider">
+
+            </form>
+        </div>
+
+    <% } %>
+
+</section>
+
+<%- include('partials/footer') %>

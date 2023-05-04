@@ -1,0 +1,424 @@
+<%- include('partials/header') %>
+
+<section class="section">
+
+
+    <h3><%= homeName %></h3>
+
+    <div class="all">
+
+        <h3>Account</h3>
+
+        <table>
+
+            <thead>
+
+                <tr class="top">
+                    <th>Verb</th>
+                    <th>Route</th>
+                    <th>Description</th>
+                </tr>
+
+            </thead>
+
+            <tbody class="bottom">
+
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/register</td>
+                    <td>Afficher à la page de création de compte</td>
+                </tr>
+                <tr>
+                    <td class="post"><strong>POST</strong></td>
+                    <td>/admin/register</td>
+                    <td>Créer un compte admin</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/login</td>
+                    <td>Afficher à la page de connexion de l'admin</td>
+                </tr>
+                <tr>
+                    <td class="post-connexion"><strong>POST</strong></td>
+                    <td>/admin/login</td>
+                    <td>Se connecter en tant qu'admin</td>
+                </tr>
+                <tr>
+                    <td class="post-connexion"><strong>POST</strong></td>
+                    <td>/admin/logout</td>
+                    <td>Se déconnecter en tant qu'admin</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/account</td>
+                    <td>Afficher tous les comptes utilisateur</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/account/:id</td>
+                    <td>Afficher un compte utilisateur</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/account/update/:id</td>
+                    <td>Afficher à la page d'update d'un compte utilisateur</td>
+                </tr>
+                <tr>
+                    <td class="put"><strong>POST</strong></td>
+                    <td>/admin/account/update/:id</td>
+                    <td>Modifier un compte utilisateur</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/account/delete/:id</td>
+                    <td>Supprimer un compte utilisateur</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/account/:accountId/ingredient/:ingredientId</td>
+                    <td>Supprimer un ingredient d'un compte utilisateur</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/account/:accountId/message/:messageId</td>
+                    <td>Supprimer un message d'un compte utilisateur</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/:name</td>
+                    <td>Afficher au profil de l'utilisateur admin</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="all">
+
+        <h3>Category</h3>
+
+        <table>
+
+            <thead>
+
+                <tr class="top">
+                    <th>Verb</th>
+                    <th>Route</th>
+                    <th>Description</th>
+                </tr>
+
+            </thead>
+
+            <tbody class="bottom">
+
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/category</td>
+                    <td>Afficher toutes les categories</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/category/:id</td>
+                    <td>Afficher une categorie</td>
+                </tr>
+                <td class="get"><strong>GET</strong></td>
+                    <td>/admin/category/create</td>
+                    <td>Afficher la page de création d'une categorie</td>
+                </tr>
+                <tr>
+                    <td class="post"><strong>POST</strong></td>
+                    <td>/admin/category/create</td>
+                    <td>Créer une categorie</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/category/update/:id</td>
+                    <td>Afficher la page d'update d'une categorie</td>
+                </tr>
+                <tr>
+                    <td class="put"><strong>POST</strong></td>
+                    <td>/admin/category/update/:id</td>
+                    <td>Modifier une categorie</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/category/delete/:id</td>
+                    <td>Supprimer une categorie</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/category/:categoryId/ingredient/:ingredientId</td>
+                    <td>Supprimer un ingredient d'une categorie</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="all">
+
+        <h3>Ingredient</h3>
+
+        <table>
+
+            <thead>
+
+                <tr class="top">
+                    <th>Verb</th>
+                    <th>Route</th>
+                    <th>Description</th>
+                </tr>
+
+            </thead>
+
+            <tbody class="bottom">
+
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/ingredient</td>
+                    <td>Afficher tous les ingrédients</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/ingredient/:id</td>
+                    <td>Afficher un ingrédient</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/ingredient/create</td>
+                    <td>Afficher la page de création d'un ingrédient</td>
+                </tr>
+                <tr>
+                    <td class="post"><strong>POST</strong></td>
+                    <td>/admin/ingredient/create</td>
+                    <td>Créer un ingrédient</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/ingredient/update/:id</td>
+                    <td>Afficher la page de modification d'un ingrédient</td>
+                </tr>
+                <tr>
+                    <td class="put"><strong>POST</strong></td>
+                    <td>/admin/ingredient/update/:id</td>
+                    <td>Modifier un ingrédient</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/ingredient/delete/:id</td>
+                    <td>Supprimer un ingrédient</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="all">
+
+        <h3>Message</h3>
+
+        <table>
+
+            <thead>
+
+                <tr class="top">
+                    <th>Verb</th>
+                    <th>Route</th>
+                    <th>Description</th>
+                </tr>
+
+            </thead>
+
+            <tbody class="bottom">
+
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/message</td>
+                    <td>Afficher tous les messages</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/message/:id</td>
+                    <td>Afficher un message</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/message/create</td>
+                    <td>Afficher la page de création d'un message en tant qu'admin</td>
+                </tr>
+                <tr>
+                    <td class="post"><strong>POST</strong></td>
+                    <td>/admin/message/create</td>
+                    <td>Envoyer un message en tant qu'admin</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/message/update/:id</td>
+                    <td>Afficher la page de modification d'un message en tant qu'admin</td>
+                </tr>
+                <tr>
+                    <td class="put"><strong>POST</strong></td>
+                    <td>/admin/message/update/:id</td>
+                    <td>Modifier un message de l'admin connecté</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/message/delete/:id</td>
+                    <td>Supprimer un message de l'admin</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="all">
+
+        <h3>Recipe</h3>
+
+        <table>
+
+            <thead>
+
+                <tr class="top">
+                    <th>Verb</th>
+                    <th>Route</th>
+                    <th>Description</th>
+                </tr>
+
+            </thead>
+
+            <tbody class="bottom">
+
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/recipe</td>
+                    <td>Afficher toutes les recettes</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/recipe/:id</td>
+                    <td>Afficher une recette</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/recipe/create</td>
+                    <td>Afficher la page de création d'une recett</td>
+                </tr>
+                <tr>
+                    <td class="post"><strong>POST</strong></td>
+                    <td>/admin/recipe/create</td>
+                    <td>Créer une recette</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/recipe/update/:id</td>
+                    <td>Afficher la page de modification d'une recette</td>
+                </tr>
+                <tr>
+                    <td class="put"><strong>POST</strong></td>
+                    <td>/admin/recipe/update/:id</td>
+                    <td>Modifier une recette</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/recipe/delete/:id</td>
+                    <td>Supprimer une recette</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/recipe/:recipeId/ingredient/:ingredientId</td>
+                    <td>Supprimer un ingredient d'une recette</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/recipe/:recipeId/tag/:tagId</td>
+                    <td>Supprimer un tag d'une recette</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/recipe/:recipeId/step/:stepId</td>
+                    <td>Supprimer une étape d'une recette</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="all">
+
+        <h3>Tag</h3>
+
+        <table>
+
+            <thead>
+
+                <tr class="top">
+                    <th>Verb</th>
+                    <th>Route</th>
+                    <th>Description</th>
+                </tr>
+
+            </thead>
+
+            <tbody class="bottom">
+
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/tag</td>
+                    <td>Afficher tous les tags</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/tag/:id</td>
+                    <td>Afficher un tag</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/tag/create</td>
+                    <td>Afficher la page de création d'un tag</td>
+                </tr>
+                <tr>
+                    <td class="post"><strong>POST</strong></td>
+                    <td>/admin/tag/create</td>
+                    <td>Créer un tag</td>
+                </tr>
+                <tr>
+                    <td class="get"><strong>GET</strong></td>
+                    <td>/admin/tag/update/:id</td>
+                    <td>Afficher la page de modification d'un tag</td>
+                </tr>
+                <tr>
+                    <td class="put"><strong>POST</strong></td>
+                    <td>/admin/tag/update/:id</td>
+                    <td>Modifier un tag</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/tag/delete/:id</td>
+                    <td>Supprimer un tag</td>
+                </tr>
+                <tr>
+                    <td class="delete"><strong>POST</strong></td>
+                    <td>/admin/tag/:tagId/recipe/:recipeId</td>
+                    <td>Supprimer une recette d'un tag</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<%- include('partials/footer') %>
