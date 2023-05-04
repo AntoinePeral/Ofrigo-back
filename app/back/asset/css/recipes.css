@@ -27,6 +27,10 @@ tr, td {
     border: 1px solid rgb(75, 75, 75);
 }
 
+td {
+    word-wrap: break-word;
+}
+
 .top {
     border-top: 4px solid #eba81a;
 }

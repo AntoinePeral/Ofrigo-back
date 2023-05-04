@@ -23,6 +23,10 @@ tr, td {
     border: 1px solid rgb(75, 75, 75);
 }
 
+td {
+    word-wrap: break-word;
+}
+
 a {
     color: black;
 }
