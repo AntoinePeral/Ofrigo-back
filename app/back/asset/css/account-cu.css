@@ -89,3 +89,12 @@ form input {
 .role {
     margin: -2vh 0 3vh 0;
 }
+
+.error {
+    background-color: red;
+    color: white;
+    max-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

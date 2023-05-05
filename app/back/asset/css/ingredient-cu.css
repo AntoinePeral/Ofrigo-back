@@ -69,7 +69,7 @@ form label {
 .error {
     background-color: red;
     color: white;
-    height: 5vh;
+    max-height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
